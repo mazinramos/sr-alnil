@@ -1,4 +1,5 @@
 import type { Chapter, Level } from "../content/types";
+import { levelPos } from "./unlock";
 
 /** يجمع كل content/chapters/ch*.ts الموجودة. الفصل الناقص يُتجاهل بدون انهيار. */
 const modules = import.meta.glob<Record<string, unknown>>("../content/chapters/ch*.ts", { eager: true });
@@ -17,8 +18,16 @@ export const getChapters = () => chapters;
 export const getChapter = (id: number) => chapters.find((c) => c.id === id);
 export const getLevel = (id: string): Level | undefined =>
   chapters.flatMap((c) => c.levels).find((l) => l.id === id);
+
+/** كل المستويات الموجودة فعلياً: الفصول بالترتيب ثم index. */
+export function getOrderedLevelIds(): string[] {
+  return chapters.flatMap((c) =>
+    [...c.levels].sort((a, b) => (levelPos(a.id)?.index ?? a.index) - (levelPos(b.id)?.index ?? b.index)).map((l) => l.id as string),
+  );
+}
+
 export const nextLevelId = (id: string): string | null => {
-  const all = chapters.flatMap((c) => c.levels.map((l) => l.id as string));
+  const all = getOrderedLevelIds();
   const i = all.indexOf(id);
   return i >= 0 && i < all.length - 1 ? all[i + 1] : null;
 };

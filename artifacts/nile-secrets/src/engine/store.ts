@@ -1,4 +1,6 @@
 import { useSyncExternalStore } from "react";
+import { getOrderedLevelIds } from "./content";
+import { chapterLevelIds, isLevelUnlockedIn, unlockedIn } from "./unlock";
 
 /** CONTRACT §4 */
 export type LevelResult = { stars: 1 | 2 | 3; hints: number; attempts: number };
@@ -43,26 +45,22 @@ export function calcStars(hints: number, wrongAttempts: number): 1 | 2 | 3 {
   return 1;
 }
 
-/* ---------- فتح المستويات والفصول ---------- */
-export function isLevelUnlocked(p: ProgressV2, id: string): boolean {
-  const pos = parseLevelId(id);
-  if (!pos) return false;
-  if (pos.chapter === 1 && pos.index === 1) return true;
-  if (pos.index > 1) return !!p.completed[levelId(pos.chapter, pos.index - 1)];
-  // أول مستوى في فصل: مستوى 7 من الفصل السابق مكتمل
-  return !!p.completed[levelId(pos.chapter - 1, LEVELS_PER_CHAPTER)];
+/* ---------- فتح المستويات والفصول (CONTRACT §4 المحدّث) ----------
+ * المستوى يُفتح لو المستوى *الموجود* السابق في ترتيب المحتوى مكتمل.
+ * الفصل يُفتح لو آخر مستوى موجود في الفصل السابق مكتمل (= أول مستوى فيه يُفتح). */
+export const isLevelUnlocked = (p: ProgressV2, id: string, order: readonly string[] = getOrderedLevelIds()) =>
+  isLevelUnlockedIn(p.completed, id, order);
+
+export function isChapterUnlocked(p: ProgressV2, chapter: number, order: readonly string[] = getOrderedLevelIds()) {
+  const first = chapterLevelIds(chapter, order)[0];
+  return first ? isLevelUnlockedIn(p.completed, first, order) : false;
 }
-export const isChapterUnlocked = (p: ProgressV2, chapter: number) =>
-  isLevelUnlocked(p, levelId(chapter, 1));
 
-export const unlockedLevels = (p: ProgressV2): string[] =>
-  ALL_LEVEL_IDS.filter((id) => isLevelUnlocked(p, id));
+export const unlockedLevels = (p: ProgressV2, order: readonly string[] = getOrderedLevelIds()): string[] =>
+  unlockedIn(p.completed, order);
 
-export const chapterStars = (p: ProgressV2, chapter: number) =>
-  Array.from({ length: LEVELS_PER_CHAPTER }, (_, i) => p.completed[levelId(chapter, i + 1)]?.stars ?? 0).reduce<number>(
-    (a, b) => a + b,
-    0,
-  );
+export const chapterStars = (p: ProgressV2, chapter: number, order: readonly string[] = getOrderedLevelIds()) =>
+  chapterLevelIds(chapter, order).reduce((sum, id) => sum + (p.completed[id]?.stars ?? 0), 0);
 
 /* ---------- ترحيل V1 → V2 ---------- */
 /** المراحل الخمس القديمة (الفهرس 0..4) تتحوّل إلى هذه المستويات. */

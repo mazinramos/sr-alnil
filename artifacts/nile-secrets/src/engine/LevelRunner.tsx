@@ -86,7 +86,7 @@ export default function LevelRunner({ level }: { level: Level }) {
             <button
               className="rounded-lg bg-[var(--ember)] font-bold text-[var(--ink)] disabled:opacity-40"
               disabled={hints >= 3}
-              onClick={() => setHints((h) => (h < 3 ? ((h + 1) as 1 | 2 | 3) : h))}
+              onClick={() => { setWrong(false); setHints((h) => (h < 3 ? ((h + 1) as 1 | 2 | 3) : h)); }}
             >
               {hints >= 3 ? "لا مزيد من التلميحات" : `تلميح (${hints}/3)`}
             </button>
