@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import ItemIcon, { iconSrc } from "../../engine/ItemIcon";
 import type { Item, PuzzleConfig, PuzzleProps } from "../../content/types";
 
 type Cfg = Extract<PuzzleConfig, { type: "memory" }>;
@@ -14,15 +15,11 @@ function seeded(seedStr: string) {
   };
 }
 
-/** عرض الأيقونة: صورة `/art/items/{icon}.webp` أو مسار يبدأ بـ "/"، وإن غابت يبقى النص.
- *  TODO(D): استبدلي هذا بـ engine/ItemIcon.tsx حين يصل من B (يُنتظر شكل الـ props). */
+/** وجه البطاقة: ItemIcon من المحرّك (يعرض label نصاً إن غابت الصورة). بدون أيقونة نعرض label مباشرة. */
 function IconFace({ item }: { item: Item }) {
-  const [bad, setBad] = useState(false);
-  const src = item.icon ? (item.icon.startsWith("/") ? item.icon : `/art/items/${item.icon}.webp`) : null;
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-1 p-1 text-center">
-      {src && !bad && <img src={src} alt="" className="h-3/5 w-3/5 object-contain" onError={() => setBad(true)} draggable={false} />}
-      <span className="text-[11px] font-bold leading-tight">{item.label}</span>
+    <div className="flex h-full w-full items-center justify-center p-1 text-center text-[12px] font-bold leading-tight">
+      {iconSrc(item.icon) ? <ItemIcon item={item} size={48} /> : item.label}
     </div>
   );
 }
