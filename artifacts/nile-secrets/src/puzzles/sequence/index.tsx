@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, type DragEvent } from "react";
 import type { Item, PuzzleConfig, PuzzleProps } from "../../content/types";
+import ItemIcon, { iconSrc } from "../../engine/ItemIcon";
 
 type Cfg = Extract<PuzzleConfig, { type: "sequence" }>;
 
@@ -16,10 +17,11 @@ function shuffled(items: Item[], solution: string[]): Item[] {
   return arr;
 }
 
-// Item.icon معرّف أيقونة؛ سنستعمل engine/ItemIcon حين يصل. لحينها نعرض label.
-function Card({ item }: { item: Item; small?: boolean }) {
+function Card({ item, small }: { item: Item; small?: boolean }) {
+  const hasIcon = !!iconSrc(item.icon);
   return (
     <span className="flex flex-col items-center justify-center gap-1 text-center leading-tight">
+      {hasIcon && <ItemIcon item={item} size={small ? 32 : 48} />}
       <span className="text-sm font-bold">{item.label}</span>
     </span>
   );

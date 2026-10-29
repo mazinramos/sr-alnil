@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { PuzzleConfig, PuzzleProps } from "../../content/types";
+import ItemIcon, { iconSrc } from "../../engine/ItemIcon";
 
 type Cfg = Extract<PuzzleConfig, { type: "choice" }>;
 
@@ -76,6 +77,7 @@ export default function ChoicePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
               >
                 {on ? "✓" : ""}
               </span>
+              {iconSrc(o.icon) && <ItemIcon item={o} size={36} />}
               <span className="flex flex-col leading-snug">
                 <span className="text-base">{o.label}</span>
                 {o.detail && <span className="text-xs opacity-75">{o.detail}</span>}

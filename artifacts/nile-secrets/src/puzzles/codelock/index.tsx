@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Item, PuzzleConfig, PuzzleProps } from "../../content/types";
+import ItemIcon, { iconSrc } from "../../engine/ItemIcon";
 
 type Cfg = Extract<PuzzleConfig, { type: "codelock" }>;
 
@@ -17,8 +18,15 @@ function shuffled(symbols: Item[], solution: string[]): Item[] {
   return arr;
 }
 
-// Item.icon معرّف أيقونة؛ سنستعمل engine/ItemIcon حين يصل. لحينها نعرض label.
 function Face({ item }: { item: Item }) {
+  if (iconSrc(item.icon)) {
+    return (
+      <span className="flex flex-col items-center gap-0.5 text-center leading-tight">
+        <ItemIcon item={item} size={40} />
+        <span className="text-xs font-bold">{item.label}</span>
+      </span>
+    );
+  }
   return <span className="text-center text-sm font-bold leading-tight">{item.label}</span>;
 }
 
