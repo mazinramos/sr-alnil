@@ -6,7 +6,9 @@ export type Route = { path: string[]; query: URLSearchParams };
 
 function parse(): Route {
   const h = window.location.hash.replace(/^#/, "") || "/";
-  const [p, q = ""] = h.split("?");
+  const qi = h.indexOf("?");
+  const p = qi < 0 ? h : h.slice(0, qi);
+  const q = qi < 0 ? "" : h.slice(qi + 1);
   return { path: p.split("/").filter(Boolean), query: new URLSearchParams(q) };
 }
 

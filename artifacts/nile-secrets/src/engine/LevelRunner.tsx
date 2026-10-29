@@ -4,6 +4,8 @@ import { getPuzzleComponent } from "./registry";
 import { completeLevel, discoverClues, setLastLevel } from "./store";
 import { navigate } from "./router";
 import { nextLevelId } from "./content";
+import Portrait from "./Portrait";
+import { getCharacter } from "./characters";
 
 type Phase = "play" | "done";
 
@@ -49,16 +51,20 @@ export default function LevelRunner({ level }: { level: Level }) {
       <img src={level.background} alt="" className="hidden" onError={() => setImgOk(false)} />
       <div className="flex-1 bg-black/45 p-4 pb-0 backdrop-blur-[1px]">
         <header className="mb-3 flex items-center justify-between">
-          <button className="rounded-lg bg-black/40 px-3" onClick={() => navigate("/")}>الخريطة</button>
+          <button className="rounded-lg bg-black/40 px-3" onClick={() => navigate(`/chapter/${level.chapter}`)}>الفصل</button>
           <h1 className="text-lg font-extrabold">{level.title}</h1>
           <span className="text-sm opacity-80">محاولات: {attempts}</span>
         </header>
 
-        <section className="mb-3 rounded-xl bg-[var(--papyrus)] p-3 text-[var(--ink)]">
-          {level.dialogue.map((d, i) => (
-            <p key={i} className="mb-1 text-sm"><b>{d.speaker}: </b>{d.text}</p>
-          ))}
-          <p className="mt-2 border-t border-black/20 pt-2 font-bold">{level.objective}</p>
+        <section className="mb-3 flex gap-3 rounded-xl bg-[var(--papyrus)] p-3 text-[var(--ink)]">
+          <Portrait id={level.character} size={64} />
+          <div className="min-w-0 flex-1">
+            <small className="opacity-70">{getCharacter(level.character)?.name}</small>
+            {level.dialogue.map((d, i) => (
+              <p key={i} className="mb-1 text-sm"><b>{d.speaker}: </b>{d.text}</p>
+            ))}
+            <p className="mt-2 border-t border-black/20 pt-2 font-bold">{level.objective}</p>
+          </div>
         </section>
 
         <section className="mb-3 grid gap-2">
