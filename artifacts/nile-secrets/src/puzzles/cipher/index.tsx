@@ -22,7 +22,7 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
 
   const glyph = useMemo(() => {
     const m = new Map<string, string>();
-    key.forEach((k) => m.set(k.id, k.icon ?? k.label));
+    key.forEach((k) => m.set(k.id, k.label)); // TODO: ItemIcon حين يدفعه B
     return m;
   }, [key]);
 
@@ -95,7 +95,7 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
         <div className="flex flex-wrap justify-center gap-2">
           {key.map((k) => (
             <div key={k.id} className="flex min-w-[44px] flex-col items-center rounded-lg bg-black/20 px-2 py-1">
-              <span className="text-xl leading-none">{k.icon ?? k.label}</span>
+              <span className="text-xl leading-none">{k.label}</span>
               {k.detail && <span className="mt-1 text-base font-bold" style={{ color: "var(--ember)" }}>{k.detail}</span>}
             </div>
           ))}
