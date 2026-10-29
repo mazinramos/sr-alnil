@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  --nile-deep: #1b2a2f;
+  --nile-water: #2f6b73;
+  --papyrus: #efe3c8;
+  --ink: #2a2118;
+  --ember: #d8923a;
+  --text-scale: 1;
+}
+
+html, body, #root { height: 100%; }
+html { font-size: calc(16px * var(--text-scale)); }
+body {
+  margin: 0;
+  font-family: "Cairo", system-ui, sans-serif;
+  background: var(--nile-deep);
+  color: var(--papyrus);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font-family: inherit; min-height: 44px; min-width: 44px; }
+:focus-visible { outline: 3px solid var(--ember); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
