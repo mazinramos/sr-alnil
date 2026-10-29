@@ -1,7 +1,7 @@
 import type { PuzzleConfig } from "../../content/types";
 
 // تحقق التفرّد (شغّلته): مجموعات جزئية بحد أقصى 3 قطع تساوي 28 → {11,17} فقط.
-// القاعدة: يوجد حل واحد بالضبط، ومع ذلك التخمين العشوائي غير عملي لأن القطع تُختار من 6 مع حد 3.
+// زر التأكيد دائماً ظاهر؛ مجموع غير مطابق = onResult(false).
 export const demo: Extract<PuzzleConfig, { type: "balance" }> = {
   type: "balance",
   target: 28,

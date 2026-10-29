@@ -8,6 +8,7 @@ export default function BalancePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
   const [placed, setPlaced] = useState<string[]>([]);
   const [msg, setMsg] = useState("");
   const [done, setDone] = useState(false);
+  const [shake, setShake] = useState(false);
   const timer = useRef<number | undefined>(undefined);
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
@@ -24,9 +25,15 @@ export default function BalancePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
   }
 
   function confirm() {
-    if (!match || done) return;
-    setDone(true);
-    timer.current = window.setTimeout(() => onResult(true), 700);
+    if (done || placed.length === 0) return;
+    if (match) {
+      setDone(true);
+      timer.current = window.setTimeout(() => onResult(true), 700);
+    } else {
+      setShake(true);
+      onResult(false);
+      timer.current = window.setTimeout(() => setShake(false), 500);
+    }
   }
 
   // موجب: الكفة اليمنى (الهدف) أثقل → تميل لأسفل
@@ -49,7 +56,8 @@ export default function BalancePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
 
   return (
     <div className="flex flex-col gap-3">
-      <svg viewBox="0 0 300 165" className="w-full" role="img" aria-label={`الكفة ${sum} والهدف ${target}`}>
+      <style>{`@keyframes bal-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}50%{transform:translateX(7px)}75%{transform:translateX(-4px)}}`}</style>
+      <svg style={{ animation: shake ? "bal-shake .45s" : undefined }} viewBox="0 0 300 165" className="w-full" role="img" aria-label={`الكفة ${sum} والهدف ${target}`}>
         <rect x={146} y={60} width={8} height={90} rx={3} fill="#8a6a3d" />
         <rect x={110} y={148} width={80} height={8} rx={4} fill="#8a6a3d" />
         <g style={{ transform: `rotate(${angle}deg)`, transformOrigin: "150px 60px", transition: ease }}>
@@ -91,11 +99,14 @@ export default function BalancePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
         })}
       </div>
 
-      {match && !done && (
-        <button type="button" onClick={confirm} className="rounded-lg bg-[var(--ember)] font-bold text-[var(--ink)]">
-          تأكيد
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={confirm}
+        disabled={done || placed.length === 0}
+        className="rounded-lg bg-[var(--ember)] font-bold text-[var(--ink)] disabled:opacity-40"
+      >
+        تأكيد
+      </button>
     </div>
   );
 }
