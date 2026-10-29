@@ -16,19 +16,10 @@ function shuffled(items: Item[], solution: string[]): Item[] {
   return arr;
 }
 
-function Card({ item, small }: { item: Item; small?: boolean }) {
-  const [iconOk, setIconOk] = useState(true);
+// Item.icon معرّف أيقونة؛ سنستعمل engine/ItemIcon حين يصل. لحينها نعرض label.
+function Card({ item }: { item: Item; small?: boolean }) {
   return (
     <span className="flex flex-col items-center justify-center gap-1 text-center leading-tight">
-      {item.icon && iconOk && (
-        <img
-          src={item.icon}
-          alt=""
-          draggable={false}
-          onError={() => setIconOk(false)}
-          className={small ? "h-8 w-8 object-contain" : "h-12 w-12 object-contain"}
-        />
-      )}
       <span className="text-sm font-bold">{item.label}</span>
     </span>
   );
