@@ -74,7 +74,7 @@ export default function LevelRunner({ level }: { level: Level }) {
         {phase === "play" && (
           <section className="mb-3 rounded-xl bg-black/50 p-3">
             <Suspense fallback={<p className="p-4 text-center">…</p>}>
-              <Puzzle config={level.puzzle} hintLevel={hints} onResult={onResult} />
+              <Puzzle config={level.puzzle} background={level.background} hintLevel={hints} onResult={onResult} />
             </Suspense>
             {wrong && <p role="alert" className="mt-2 text-center text-sm text-[var(--ember)]">ليست الإجابة الصحيحة بعد. راجعي الدلائل وجرّبي مرة أخرى.</p>}
           </section>

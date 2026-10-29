@@ -38,11 +38,12 @@ export interface Level {
 export interface Chapter {
   id: number; title: string; location: string; summary: string;
   mapPiece: { id: string; label: string };
-  levels: Level[];                   // 7 بالضبط
+  levels: Level[];                   // الموجود فعلياً (1..7) بترتيب index
 }
 
 export interface PuzzleProps<C extends PuzzleConfig> {
   config: C;
+  background: string;                // مسار خلفية المستوى؛ hotspot وroute يرسمانه بإطار 3:2 ويضعان النقاط فوقه بالنسب المئوية
   hintLevel: 0 | 1 | 2 | 3;          // المحرّك يمرّرو؛ النوع يقدر يبرز تلميح بصري (اختياري)
   onResult: (correct: boolean) => void;  // يُنادى عند كل "تأكيد"، النوع ما بيقرر النجوم
 }
