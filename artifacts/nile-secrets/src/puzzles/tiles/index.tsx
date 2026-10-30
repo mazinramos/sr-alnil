@@ -24,7 +24,7 @@ const openings = (c: Cell) => (OPEN[kindOf(c.id)] ?? []).map((d) => (d + norm(c.
 
 export default function TilesPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
   const { tiles, solution } = config;
-  const image = (config as unknown as { image?: string }).image;
+  const image = config.image;
   const [cols, rowsRaw] = config.size;
   const rows = cols * rowsRaw === tiles.length ? rowsRaw : Math.ceil(tiles.length / cols);
 
