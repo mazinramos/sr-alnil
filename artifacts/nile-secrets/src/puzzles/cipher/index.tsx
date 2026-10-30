@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { PuzzleConfig, PuzzleProps } from "../../content/types";
+import type { Item, PuzzleConfig, PuzzleProps } from "../../content/types";
+import ItemIcon from "../../engine/ItemIcon";
 
 type Cfg = Extract<PuzzleConfig, { type: "cipher" }>;
 
@@ -20,11 +21,8 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
   const { key, cipherText, answer } = config;
   const isSep = (t: string) => t === SEP || t === " ";
 
-  const glyph = useMemo(() => {
-    const m = new Map<string, string>();
-    key.forEach((k) => m.set(k.id, k.label)); // TODO: ItemIcon حين يدفعه B
-    return m;
-  }, [key]);
+  const glyph = useMemo(() => new Map<string, Item>(key.map((k) => [k.id, k])), [key]);
+  const sym = (id: string) => glyph.get(id) ?? { label: id };
 
   // رموز فريدة بترتيب ظهورها؛ الرمز المكرر يشارك الخانة نفسها.
   const symbols = useMemo(() => {
@@ -95,7 +93,7 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
         <div className="flex flex-wrap justify-center gap-2">
           {key.map((k) => (
             <div key={k.id} className="flex min-w-[44px] flex-col items-center rounded-lg bg-black/20 px-2 py-1">
-              <span className="text-xl leading-none">{k.label}</span>
+              <span className="text-xl leading-none"><ItemIcon item={k} size={32} /></span>
               {k.detail && <span className="mt-1 text-base font-bold" style={{ color: "var(--ember)" }}>{k.detail}</span>}
             </div>
           ))}
@@ -112,11 +110,11 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
               key={i}
               type="button"
               onClick={() => !done && setActive(t)}
-              aria-label={`رمز ${glyph.get(t) ?? t}${vals[t] ? ` حرفه ${vals[t]}` : ""}`}
+              aria-label={`رمز ${sym(t).label}${vals[t] ? ` حرفه ${vals[t]}` : ""}`}
               className="flex w-[44px] flex-col items-center gap-1 rounded-lg p-0"
               style={{ minHeight: 72 }}
             >
-              <span className="text-2xl leading-none">{glyph.get(t) ?? t}</span>
+              <span className="text-2xl leading-none"><ItemIcon item={sym(t)} size={32} /></span>
               <span
                 className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold"
                 style={{

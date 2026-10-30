@@ -287,7 +287,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
         >
           {tray.length === 0 && <span className="text-sm opacity-60">الصينية فارغة</span>}
           {tray.map((id) => {
-            const w = Math.max(44, Math.min(pw, 96));
+            const w = Math.max(44, Math.min(pw, 64));
             const h = Math.max(44, w * (ph / pw));
             return (
               <button
