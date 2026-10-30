@@ -24,7 +24,7 @@ Half-body character portrait, painterly realistic digital painting, same style, 
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 ```
 
-**ملاحظة تقنية من الـ repo:** `puzzles/jigsaw` يقرأ `"/art/ui/map-full.webp#strip=N"` حيث N=1 أقصى اليمين، فالخريطة لازم تتقسّم تكوينياً لخمسة أشرطة عمودية متساوية (كل شريط ~307px من 1536).
+**ملاحظة تقنية من الـ repo (محدّثة):** `puzzles/jigsaw` يقرأ `"/art/ui/map-full.webp#cell=n"` على شبكة **3×2 من خلايا مربعة** (≈512×512 من 1536×1024). ترقيم الخلايا: 1 أعلى اليمين، 2 أعلى الوسط، 3 أعلى اليسار، 4 أسفل اليسار، 5 أسفل الوسط، 6 أسفل اليمين (زخرفية). الفصل n يستعمل `cell=n`، والفصل 5 يركّب الصورة كاملة (12 قطعة). الصيغة القديمة `#strip=n` ملغاة. التفاصيل في `NOTE_MAPFULL_CELLS.md`.
 
 **استثناء واحد (يحتاج موافقة A):** `ui/map-full` و`ui/nile-map` خرائط مسطّحة، فبرومبتاتها تستعمل STYLE_ANCHOR حرفياً ثم تكتب في المشهد: "this is a flat top-down map, ignore the horizon and empty-lower-third rule".
 
@@ -152,12 +152,12 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 1. مسار صورة لغز c4: `public/art/c4/l2-puzzle.webp` (1024×1024).
 2. IDs الشخصيات: `nour, safiya, bashir, adam, saif, yunus, halima, hala, othman, rihab` والصيغة `{id}-{mood}`.
 3. البورتريه 768 (العقد).
-4. `docs/SYMBOLS.md` جاهز: الشمس، الموجة، الميزان، العين، الخيط (`symbol-c1..c5`). تظهر بشكل صغير على أشرطة `ui/map-full`، رمز لكل شريط.
+4. `docs/SYMBOLS.md` جاهز: الشمس، الموجة، الميزان، العين، الخيط (`symbol-c1..c5`). تظهر بشكل صغير (≈12% من العرض) على خلايا `ui/map-full`، رمز لكل خلية من 1 إلى 5.
 5. المرجع في `docs/reference/` (`village.jpg` و`nour.png`). بورتريهات neutral لـ nour وadam وyunus وhala موجودة في `public/art/chars` ولا تُعاد (لم تكن في الجرد أصلاً).
 6. استثناء الخرائط من الأنكور: موافق.
 7. أسماء الأيقونات مؤقتة: قبل كل دفعة `grep "icon:" src/content/chapters/*.ts` وتحديث الجرد وإبلاغ مازن بالتغيير.
 
-**تعديل لاحق (الدفعة 1):** `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
+**تعديل لاحق (الدفعة 1):** (أ) `ui/map-full` صار خلايا لا شرائح. (ب) أيقونات `jar-*` تُظهر المحتوى بلا أغطية ملوّنة. (ج) `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
 
 ---
 

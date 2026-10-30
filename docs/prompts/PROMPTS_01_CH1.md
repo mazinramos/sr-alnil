@@ -1,21 +1,25 @@
-# PROMPTS_01_CH1 — الدفعة 1: الفصل الأول (القرية القديمة)
+# PROMPTS_01 — الدفعة 1: الفصل الأول (القرية القديمة)
 
-> الحساب F — مدير الفن. الدفعة 0 معتمدة من A. **27 صورة.** كل برومبت كامل وجاهز للنسخ.
-> الترتيب: `ui-map-full` أولاً (5 مستويات jigsaw تعتمد عليه) ← `ui-title` ← الطبقة A ← الطبقة B.
+> الحساب F — مدير الفن. **27 صورة.** كل برومبت كامل وجاهز للنسخ.
+> الترتيب: `ui-map-full` أولاً (jigsaw في الفصول الخمسة يعتمد عليه) ← `ui-title` ← الطبقة A ← الطبقة B.
+> **نسخة محدّثة (31/10):** الخريطة صارت شبكة 3×2 خلايا (`#cell=n`)، وطُوبقت c1-l1 وc1-l4 والجرار مع `ch1.ts`، وتوحّدت أوصاف الشخصيات الثابتة.
 
 ## طريقة العمل لكل صورة (مازن)
-1. افتح أداة التوليد وارفق المرجع المكتوب في حقل «المرجع المرفق»: `docs/reference/village.jpg` (خلفيات وشاشات وأيقونات) أو `docs/reference/nour.png` (بورتريهات).
-2. انسخ كتلة «البرومبت الكامل» كما هي بدون تعديل.
-3. افحص الناتج بنقاط «فحص القبول» وبقائمة «تجنّب». لو فشلت نقطة، أعد التوليد.
+1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات والأيقونات: `docs/reference/village.jpg`. البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
+2. انسخ كتلة «البرومبت الكامل» كما هي بدون تعديل. لا تحذف سطر الوصف الثابت للشخصية.
+3. افحص الناتج بنقاط «فحص القبول» وقائمة «تجنّب». لو فشلت نقطة، أعد التوليد (أو استعمل البديل المختصر في `GENERATION_ORDER.md`).
 4. حوّل واحفظ بالاسم والمقاس بالضبط: `cwebp -q 80`. البورتريهات والأيقونات تُزال خلفيتها أولاً.
-5. للألغاز المعتمدة على مواضع (hotspot): بعد الحفظ افتح `#/preview/coords?img=/art/c1/l1.webp` وخذ الإحداثيات الفعلية.
+5. لألغاز المواضع (hotspot وroute): بعد الحفظ افتح `#/preview/coords?img=/art/cN/lM.webp` وسلّم الإحداثيات لصاحب الفصل.
 
 **حدود الحجم:** خلفية ≤ 250KB، شاشة عامة ≤ 300KB، بورتريه ≤ 200KB، أيقونة ≤ 40KB.
 
-## تغييرات عن الجرد (الدفعة 0)
-- الجرار الأربعة (`jar-*`) رُفعت من B إلى **A** لأن c1-l4 (matching) من الطبقة A وتحتاجها.
-- لا توجد تغييرات في أسماء الأيقونات من `grep "icon:"`: `src/content/chapters/` غير موجود بعد (لم يسلّم C ch1.ts). سأعيد الفحص قبل الدفعة 2.
-- البورتريهات neutral الأربعة (nour, adam, yunus, hala) لم تكن في الجرد أصلاً، فلا حذف مطلوب.
+## ملاحظات هذه الدفعة
+- **ui-map-full:** أعيدت كتابته على شبكة **3×2 من خلايا مربعة** (`#cell=n`) حسب `NOTE_MAPFULL_CELLS.md`: نهر S متصل، معلم ورمز لكل خلية 1 إلى 5، والخلية 6 زخرفية (بوصلة بلا حروف).
+- **c1-l1:** مواضع الرموز الثلاثة صارت مطابقة لتلميحات `ch1.ts` (كوّة معتمة عليا يسرى، إطار الباب الخشبي، بين الجرار والسلّة). إن كنت ولّدتها بالنسخة القديمة فأعد التوليد.
+- **c1-l4:** الجرار الأربع **متطابقة الشكل وتختلف بلون الغطاء فقط** (أحمر، أزرق، أخضر، بنّي) كما في الدلائل. إن ولّدتها بالنسخة القديمة فأعد التوليد.
+- **أيقونات `jar-*`:** تُظهر المحتوى (قمح، حنّاء، بخور، تمر) بلا أغطية ملوّنة حتى لا تكشف حل c1-l4.
+- **البورتريهات:** كل برومبت يلصق «الوصف الثابت» للشخصية حرفياً (المصدر `CHARACTERS.md`). أوصاف صفية وبشير ونور لم تتغير عن النسخة السابقة.
+- الجرد: لا تغيير في الأسماء. `ch1.ts` لا يضع `icon:` إلا للجرار الأربع؛ باقي أيقونات ch1 (`sun-disc`, `bird-carving`, `boat-piece`, `calendar-page`, `old-photo`, `clay-seal`) تبقى مؤقتة حتى يكتب C المستويات B.
 
 ---
 
@@ -23,38 +27,43 @@
 - الملف: `public/art/ui/map-full.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: خريطة صفية الكاملة. 5 مستويات jigsaw (l7 في كل فصل) تقتطع منها قصاصة بـ `#strip=N` (1 = أقصى اليمين)، والفصل 5 يركّبها كاملة. تظهر أيضاً في شاشة الخريطة.
-- المرجع المرفق: `village.jpg`
+- الغرض: خريطة صفية الكاملة. jigsaw يقتطع منها خلية مربعة بـ `#cell=n` (شبكة 3×2): الفصل n يستعمل الخلية n، والفصل 5 يركّب الصورة كاملة (12 قطعة). تظهر أيضاً في شاشة الخريطة.
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
 Override for this image only: this is a flat top-down map, ignore the horizon and empty-lower-third rule.
-Scene: An old hand-drawn treasure-style map of an imagined Nile valley, laid flat on aged parchment paper seen straight from above. Sandy-gold paper with warm brown stains, soft fold creases, slightly frayed deckled edges, a thin hand-inked terracotta border frame with a clear empty margin all around. The paper is divided into FIVE vertical strips of exactly equal width (each strip is 20 percent of the image width), separated only by faint soft fold creases, never by hard lines. One continuous river, drawn in calm Nile-blue watercolor wash with darker blue-brown ink banks, meanders from the right edge to the left edge through all five strips; it crosses every strip boundary at about 55 to 60 percent of the image height so the strips join smoothly. Each strip has a small ink-and-wash miniature landscape, no text:
-Strip 1 (rightmost): a small cluster of mud-brick houses with a few palms on the bank.
-Strip 2: a low island with reeds in the middle of the river.
-Strip 3: a few market awnings and canopies on the bank.
-Strip 4: broken stone walls and two fallen columns beside the water.
-Strip 5 (leftmost): a quiet shore with a small wooden jetty and a moored boat.
-At the top of each strip, centered in the strip, one small embossed gold-copper emblem about 7 percent of the image width: strip 1 a sun disc with short rays, strip 2 three wavy water lines, strip 3 a balance scale with two level pans, strip 4 a carved eye, strip 5 a thread tied in a knot.
-Composition: flat top-down parchment, nothing perspective, emblems all at the same height near the top, river as the visual spine, quiet empty paper around the miniatures.
-Constraints: no text, no letters, no numbers, no compass letters, no pseudo-writing, no people, no watermark.
+Scene: An old hand-drawn treasure-style map of an imagined Nile valley, laid flat on aged parchment paper seen straight from above. Sandy-gold paper with warm brown stains and a very faint paper grain, soft fold creases, slightly frayed deckled edges. The image is divided into a grid of SIX equal SQUARE cells, 3 columns by 2 rows, each cell exactly one third of the image width (about 512x512 pixels). Cell numbering: top row from right to left is cell 1, cell 2, cell 3; bottom row from left to right is cell 4, cell 5, cell 6. Cell borders are marked only by faint soft fold creases, never by hard lines, and nothing important sits within 5 percent of a cell border.
+One single continuous Nile river in an S shape, drawn in calm Nile-blue watercolor wash with darker blue-brown ink banks, about 3 percent of the image width: it enters from the right edge at about 32 percent of the height, flows left through cell 1 and cell 2, crosses into cell 3, turns down at the left side and flows through cell 4, then right through cell 5 and leaves at the bottom edge at the center. It crosses each cell border cleanly and without any break, roughly perpendicular to the border, at these points (x, y as percent of the image): right edge entry (100, 32), border between cell 1 and 2 at (67, 38), border between cell 2 and 3 at (33, 36), border between cell 3 and 4 at (22, 50), border between cell 4 and 5 at (33, 84), exit at the bottom edge (50, 100).
+Each of cells 1 to 5 contains one clear small ink-and-wash landmark on the bank, no text:
+Cell 1: a small cluster of mud-brick houses with a few palms, on the south bank near (86, 41).
+Cell 2: a low island with reeds in the middle of the river near (50, 37).
+Cell 3: a few market awnings and canopies on the left bank near (11, 40).
+Cell 4: a broken stone wall and two fallen columns near (10, 88).
+Cell 5: a quiet shore with a small wooden jetty and a moored wooden boat near (58, 85).
+In the upper area of each cell 1 to 5, one embossed gold-copper emblem about 12 percent of the image width, simple and bold: cell 1 a sun disc with short rays at (77, 15); cell 2 three wavy water lines at (43, 15); cell 3 a balance scale with two level pans at (10, 15); cell 4 a carved eye in a stone at (10, 65); cell 5 a thread tied in a knot at (43, 65).
+Cell 6 (bottom right) is purely decorative: only a simple compass rose with no letters at about (83, 75) and a thin hand-inked terracotta border ornament, no landmarks, otherwise empty parchment.
+Composition: flat top-down parchment, no perspective, each cell reads as its own balanced square picture, the river is the visual spine that links them.
+Constraints: no text, no letters, no numbers, no compass letters, no pseudo-writing, no people, no faces, no watermark.
 ```
 - مواضع إلزامية:
-  - الرموز الخمسة أعلى كل شريط، مراكزها: الشمس x≈90%,y≈14% | الموجة x≈70%,y≈14% | الميزان x≈50%,y≈14% | العين x≈30%,y≈14% | الخيط x≈10%,y≈14%
-  - النهر يقطع حدود الأشرطة عند x≈80% وx≈60% وx≈40% وx≈20% في ارتفاع y≈55-60%
-  - الأشرطة الخمسة بعرض متساوٍ (~307px لكل واحد من 1536)
-- تجنّب: كتابة أو حروف شبه عربية أو إنجليزية على الخريطة، بوصلة بحروف أو مقياس رسم، شرائط بعروض غير متساوية، نهر ينقطع أو ينتهي داخل الصورة، أزرق مشبع أو ظلال ثلاثية الأبعاد، ناس أو مراكب كبيرة
+  - كل خلية مربع ≈512×512: خلية 1 أعلى اليمين، 2 أعلى الوسط، 3 أعلى اليسار، 4 أسفل اليسار، 5 أسفل الوسط، 6 أسفل اليمين (زخرفية)
+  - النهر S متصل يقطع الحدود عند (x,y): دخول (100,32) | بين 1 و2 (67,38) | بين 2 و3 (33,36) | بين 3 و4 (22,50) | بين 4 و5 (33,84) | خروج (50,100)
+  - الرموز بحجم ≈12% من العرض: شمس (77,15) | موجة (43,15) | ميزان (10,15) | عين (10,65) | خيط (43,65)
+  - المعالم: قرية (86,41) | جزيرة (50,37) | سوق (11,40) | أطلال (10,88) | ضفة وجسر خشبي (58,85)
+  - الخلية 6 بوصلة بلا حروف وإطار فقط، ولا عناصر مهمة على خطوط الحدود بين الخلايا (هامش 5%)
+- تجنّب: كتابة أو حروف شبه عربية أو إنجليزية على الخريطة، بوصلة بحروف (N/E/S/W) أو مقياس رسم، خلايا غير مربعة أو غير متساوية، نهر ينقطع عند حدود الخلايا أو ينتهي داخل الصورة، معلم أو رمز يقع على خط الحدود فيُقطَع عند القصّ، وجوه أو أشخاص، أزرق مشبع أو منظور ثلاثي الأبعاد
 - فحص القبول:
-  1. خمسة أشرطة متساوية تقريباً والرمز الصحيح في كل شريط بالترتيب (من اليمين: شمس، موجة، ميزان، عين، خيط)
-  2. النهر متصل ويقطع كل الحدود بين الأشرطة
-  3. لا نص أو حروف، وألوان الورق والحبر هادئة كأنها من نفس عالم village.jpg
+  1. ست خلايا مربعة متساوية تُقرأ بوضوح، والرموز في الخلايا 1 إلى 5 بالترتيب الصحيح (شمس، موجة، ميزان، عين، خيط)
+  2. النهر متصل على شكل S ويقطع كل حدود الخلايا بلا انقطاع، والخلية 6 زخرفية فقط
+  3. لا نص أو حروف، ولا عنصر مهم على خطوط الحدود، وألوان ورق وحبر هادئة من عالم village.jpg
 
 ### 2 — ui-title
 - الملف: `public/art/ui/title.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: خلفية شاشة العنوان. اسم اللعبة يُكتب بالكود فوق الصورة، لذلك الثلث العلوي لازم يكون هادئاً وفارغاً.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -75,53 +84,56 @@ Constraints: no text, no letters, no numbers, no people, no watermark.
 - الملف: `public/art/c1/l1.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: خلفية c1-l1 «الغرفة التي لم تتغير» (hotspot): اللاعبة تبحث عن 3 رموز مخفية. تُستعمل أيضاً كخلفية احتياطية للفصل 1 بـ focal مختلف.
-- المرجع المرفق: `village.jpg`
+- الغرض: خلفية c1-l1 «الغرفة التي لم تتغير» (hotspot): اللاعبة تبحث عن 3 رموز مخفية. الأماكن مطابقة لتلميحات `ch1.ts` (كوّة معتمة عليا يسرى، إطار الباب الخشبي، بين الجرار والسلّة).
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: Interior of an old Sudanese mud-brick room that has not changed in decades, late-afternoon golden light. A small open window on the right wall lets in warm gold light with floating dust motes and a glimpse of the Nile and a palm outside. Thick rough clay walls, a wooden roof beam with woven reed ceiling, a worn reed mat on the packed-earth floor. Left-center: an old carved wooden chest with a rounded lid. Right side: three clay jars of different sizes on a low clay bench. A low wooden stool near the center. Hidden in the room but visible to a careful eye: (1) a small copper sun disc hanging from an iron nail on the left wall, dull with age; (2) a simple bird carved into the front edge of a wooden shelf on the right wall; (3) a small weathered wooden boat-shaped fragment resting on the stool. The three hidden items are small, in clearly separate areas and not touching each other. Warm violet shadows in corners.
-Composition: camera at eye level facing the back wall, slight depth. The window and floor line give a clear horizon-like line at about 55 percent. The lower third is the empty mat and floor.
+Scene: Interior of an old Sudanese mud-brick room that has not changed in decades, late-afternoon golden light. On the left-center a tall open doorway framed by a thick weathered wooden lintel and a wooden door jamb on its right side, bright golden daylight pouring in through it with floating dust motes and a glimpse of the Nile outside. High up in the wall above and to the left of the doorway a small dark recess (a niche in the clay wall) holding a dull aged copper sun disc, partly in shadow. A simple bird carved in shallow relief on the wooden door jamb. On the floor just inside the doorway, left of the center, a group of clay jars and a woven reed basket standing close together, and among them a small weathered wooden boat-shaped fragment leaning between a jar and the basket. On the right half of the room: an old carved wooden chest with a rounded lid against the wall, a low wooden stool, a worn reed mat on the packed-earth floor. Thick rough clay walls, a woven reed ceiling with a wooden beam, warm violet shadows in the corners.
+The three hidden items are small, clearly separated from each other, visible to a careful eye but not obvious.
+Composition: camera at eye level facing the back wall, slight depth. The doorway occupies roughly x 12 to 40 percent. The floor line gives a horizon-like division at about 62 percent. The right half and the lower area are calm.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
-  - قرص نحاسي صغير على مسمار بالجدار الأيسر: x≈20%, y≈30%
-  - نقش طائر على حافة رف خشبي بالجدار الأيمن: x≈80%, y≈42%
-  - قطعة مركب خشبية صغيرة فوق الكرسي الخشبي: x≈50%, y≈68%
-  - الثلاثة متباعدة (فرق أفقي ≥ 30% بين كل اثنين) وغير متلاصقة
-- تجنّب: الرموز الثلاثة ملتصقة أو في مكان واحد، الرمز مخفي لدرجة لا تُرى، نص أو رموز مكتوبة على الجدران، أثاث حديث أو إضاءة كهربائية، أشخاص، إضاءة نيون بنفسجية
+  - قرص نحاسي باهت داخل كوّة صغيرة معتمة في الجدار: x≈19%, y≈13% (r≈5%)
+  - نقش طائر على إطار الباب الخشبي الأيمن: x≈36%, y≈32% (r≈5%)
+  - قطعة مركب خشبية صغيرة بين الجرار والسلّة داخل الباب: x≈28%, y≈68% (r≈6%)
+  - الإحداثيات من `ch1.ts` مؤقتة وتُضبط بصفحة `/preview/coords` بعد وصول الصورة الفعلية
+  - الرموز الثلاثة في مناطق منفصلة وغير متلاصقة
+- تجنّب: الرموز الثلاثة ملتصقة أو في مكان واحد، الرمز مخفي لدرجة لا يُرى، نص أو رموز مكتوبة على الجدران، أثاث حديث أو إضاءة كهربائية، أشخاص، إضاءة نيون بنفسجية
 - فحص القبول:
-  1. الرموز الثلاثة ظاهرة لعين منتبهة ومتباعدة في مناطق مختلفة
+  1. الكوّة المعتمة العليا اليسرى فيها قرص نحاسي، وطائر منقوش على إطار الباب، وقطعة مركب بين الجرار والسلّة
   2. ضوء العصر الذهبي نفسه في village.jpg، وألوان الطين والخشب هادئة
-  3. لا نص ولا أشخاص والثلث السفلي هادئ
+  3. لا نص ولا أشخاص والرموز الثلاثة متباعدة
 
 ### 4 — c1-l4
 - الملف: `public/art/c1/l4.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: خلفية c1-l4 «الجرار الأربعة» (matching): رف جرار فخارية في ركن الغرفة.
-- المرجع المرفق: `village.jpg`
+- الغرض: خلفية c1-l4 «الجرار الأربعة» (matching): جرار متطابقة الشكل يميّزها لون الغطاء فقط (أحمر، أزرق، أخضر، بنّي) حسب `ch1.ts`.
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: A corner of the same old mud-brick room, a long rough wooden shelf mounted on a thick clay wall holding exactly four clay jars in one even row, each clearly different so they can be told apart: (1) a wide round-bellied jar with a cloth cover tied with cord; (2) a tall narrow-necked jar with a faint reddish-orange stain at the rim; (3) a small jar with a perforated clay lid and a faint soot mark; (4) a squat jar with a woven palm-leaf lid. Soft late-afternoon golden light enters from a small window on the left and rakes across the jars, casting long warm violet shadows on the wall. A woven reed mat and a small clay bowl on the floor below, a faint cobweb of light in the corner, textured plaster with small cracks.
-Composition: camera at shelf height, slightly angled. The shelf runs across the middle at y about 45 to 55 percent. The four jars are evenly spaced at x about 20, 40, 60 and 80 percent. A wall line gives the horizon-like division. The lower third is the empty floor and mat.
-Constraints: no text, no letters, no numbers, no people, no watermark; no labels on the jars.
+Scene: A corner of the same old mud-brick room, a long rough wooden shelf mounted on a thick clay wall holding exactly four IDENTICAL round-bellied terracotta jars of the same size and shape in one even row. The only difference between the jars is the color of their covers, each cover a piece of cloth tied with natural cord over the mouth: the first jar has a muted RED cover, the second a muted NILE-BLUE cover, the third a muted GREEN cover, the fourth a muted BROWN cover. A tiny folded slip of white paper (completely blank) is tucked under the edge of each cover. Soft late-afternoon golden light enters from a small window on the left and rakes across the jars, casting long warm violet shadows on the wall. A woven reed mat and a small clay bowl on the floor below, textured plaster with small cracks.
+Composition: camera at shelf height, slightly angled. The shelf runs across the middle at y about 45 to 55 percent. The four jars are evenly spaced at x about 20, 40, 60 and 80 percent, left to right: red, blue, green, brown. A wall line gives the horizon-like division. The lower third is the empty floor and mat.
+Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
-  - الجرار الأربعة على رف واحد بالترتيب من اليسار: غطاء قماش x≈20% | رقبة طويلة x≈40% | غطاء مثقّب x≈60% | غطاء سعف x≈80% (y≈45-55%)
-- تجنّب: جرار متطابقة الشكل (لازم تتميّز)، ملصقات أو كتابة على الجرار، أكثر أو أقل من 4 جرار، ضوء ساطع يحرق الألوان
+  - الجرار الأربع متطابقة الشكل على رف واحد بالترتيب من اليسار: غطاء أحمر x≈20% | أزرق x≈40% | أخضر x≈60% | بنّي x≈80% (y≈45-55%)
+  - ورقة بيضاء صغيرة فارغة تبرز من تحت كل غطاء
+- تجنّب: جرار مختلفة الشكل أو الحجم (لازم تتطابق وتختلف بلون الغطاء فقط)، ألوان أغطية مشبعة أو متقاربة (أحمر وبنّي لازم يتميّزا)، كتابة على الأوراق أو الجرار، أكثر أو أقل من 4 جرار
 - فحص القبول:
-  1. أربع جرار فقط، لكل واحدة شكل وغطاء مختلف بوضوح
+  1. أربع جرار متطابقة تماماً بأغطية: أحمر، أزرق، أخضر، بنّي بوضوح
   2. الرف في منتصف الصورة والثلث السفلي هادئ
-  3. ضوء دافئ وألوان فخار هادئة بلا نص
+  3. ضوء دافئ، ولا نص (الأوراق فارغة)
 
 ### 5 — c1-l7
 - الملف: `public/art/c1/l7.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: خلفية c1-l7 «القطعة الأولى» (jigsaw boss): الفناء عند الغروب. تُستعمل أيضاً كصورة ختام الفصل 1.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -141,16 +153,16 @@ Constraints: no text, no letters, no numbers, no people, no watermark.
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: صفية الجدة بصورة قديمة باهتة. تظهر في الفصل 1 (دفتر وغرفة الجدة) وفي رسالة الفصل 5.
-- المرجع المرفق: `nour.png`
+- المرجع المرفق: `docs/reference/nour.png`
 - البرومبت الكامل (للصق):
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
-Subject: An elderly Sudanese woman in her seventies, calm gentle face with soft deep lines and kind steady eyes, a faint peaceful half-smile. She wears a white cotton tob draped over her head and shoulders, with a simple plain edge. The image should look like a faded old photograph that has been painted: slightly desaturated warm sepia-tinted tones, soft focus, gentle low contrast, faint paper-age warmth in the skin tones, while the background stays plain flat light-gray for cutout. Slight three-quarter view, shoulders turned a little to the left. Hands out of frame.
+Subject: An elderly Sudanese woman in her seventies, calm gentle face with soft deep lines and kind steady eyes, a faint peaceful half-smile. She wears a white cotton tob draped over her head and shoulders, with a simple plain edge. The image should look like a faded old photograph that has been painted: slightly desaturated warm sepia-tinted tones, soft focus, gentle low contrast, faint paper-age warmth in the skin tones. Slight three-quarter view, shoulders turned a little to the left.
 Expression: neutral, serene, warm.
 Constraints: no text, no letters, no watermark, plain flat light-gray background, nothing behind the subject.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: إطار صورة أو حواف ورق أو كتابة، ملامح شابة أو مكياج، ألوان زاهية بدل الباهتة، ذراعين أو أيدٍ مشوّهة، مجوهرات لامعة
+- تجنّب: إطار صورة أو حواف ورق أو كتابة، ملامح شابة أو مكياج، ألوان زاهية بدل الباهتة، أيدٍ ظاهرة مشوّهة، مجوهرات لامعة
 - فحص القبول:
   1. تبدو امرأة مسنّة هادئة بصورة قديمة باهتة (دفء سيبيا خفيف)
   2. الخلفية رمادية فاتحة مسطحة وحواف نظيفة للقص
@@ -160,12 +172,12 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الملف: `public/art/chars/bashir-neutral.webp`
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: بشير، جار الجدة وحافظ الحكايات. يتكلم في حوارات الفصل 1.
-- المرجع المرفق: `nour.png`
+- الغرض: بشير، جار الجدة وحافظ الحكايات. يتكلم في مستويات الفصل 1 كلها.
+- المرجع المرفق: `docs/reference/nour.png`
 - البرومبت الكامل (للصق):
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
-Subject: A Sudanese man in his sixties, the grandmother's old neighbor and keeper of stories, warm weathered face with deep smile lines, short neat gray beard, kind amused eyes and a light gentle smile. He wears a clean white cloth turban (imama) wound neatly, and a long off-white cotton jalabiya with a rounded collar, a folded muted blue-gray cloth over one shoulder. Slight three-quarter view, shoulders turned a little to the right so he faces the player's left. Hands out of frame. Visually consistent with the other existing portraits (simple worn natural fabrics, soft painterly faces).
+Subject: A Sudanese man in his sixties, the grandmother's old neighbor and keeper of stories, warm weathered face with deep smile lines, short neat gray beard, kind amused eyes. He wears a clean white cloth turban (imama) wound neatly, and a long off-white cotton jalabiya with a rounded collar, a folded muted blue-gray cloth over one shoulder. Slight three-quarter view, shoulders turned a little to the right.
 Expression: gentle light smile, friendly and trustworthy.
 Constraints: no text, no letters, no watermark, plain flat light-gray background, nothing behind the subject.
 ```
@@ -181,16 +193,16 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: تعبير القلق لنور في لحظات التوتر في حوارات الفصول.
-- المرجع المرفق: `nour.png`
+- المرجع المرفق: `docs/reference/nour.png`
 - البرومبت الكامل (للصق):
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
-Subject: The same young Sudanese woman as in the reference image, KEEP THE EXACT SAME FACE, hair, navy-blue draped headscarf, worn gray-blue jacket over a cream shirt, and the same dark notebook held at the lower right, the same half-body framing and slight three-quarter pose turned to the left as the reference. Only the facial expression and the small head tilt change.
+Subject: A young Sudanese woman in her early twenties, smooth dark-brown skin, calm direct dark eyes, strong straight eyebrows, full lips, small curls of black hair showing at the temple. She wears a navy-blue draped headscarf wrapped loosely around her head and neck, a worn gray-blue canvas jacket with a turned collar over a cream cotton shirt, and holds a dark brown spiral notebook against the lower right of the frame. Half-body, shoulders turned slightly to the left. KEEP THE EXACT SAME FACE, hair, clothing and framing as the attached portrait of this character; only the facial expression and a small head tilt change.
 Expression: worried and anxious. Eyebrows drawn together and slightly raised in the middle, eyes looking slightly off to the side with a hint of concern, lips pressed together, a small tension in the jaw. Natural, not melodramatic.
 Constraints: no text, no letters, no watermark, plain flat light-gray background, nothing behind the subject.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: وجه مختلف عن nour.png، دموع أو مبالغة مسرحية، تغيير الملابس أو الدفتر، تغيير اتجاه الجسم
+- تجنّب: وجه مختلف عن nour.png، مبالغة مسرحية أو دموع، تغيير الملابس أو الدفتر أو اتجاه الجسم
 - فحص القبول:
   1. نفس الوجه والحجاب والجاكيت والدفتر في nour.png بالضبط
   2. التعبير قلق واضح لكن طبيعي
@@ -201,18 +213,18 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: تعبير الابتسام لنور عند النجاح والاكتشاف.
-- المرجع المرفق: `nour.png`
+- المرجع المرفق: `docs/reference/nour.png`
 - البرومبت الكامل (للصق):
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
-Subject: The same young Sudanese woman as in the reference image, KEEP THE EXACT SAME FACE, hair, navy-blue draped headscarf, worn gray-blue jacket over a cream shirt, and the same dark notebook held at the lower right, the same half-body framing and slight three-quarter pose turned to the left as the reference. Only the facial expression and the small head tilt change.
+Subject: A young Sudanese woman in her early twenties, smooth dark-brown skin, calm direct dark eyes, strong straight eyebrows, full lips, small curls of black hair showing at the temple. She wears a navy-blue draped headscarf wrapped loosely around her head and neck, a worn gray-blue canvas jacket with a turned collar over a cream cotton shirt, and holds a dark brown spiral notebook against the lower right of the frame. Half-body, shoulders turned slightly to the left. KEEP THE EXACT SAME FACE, hair, clothing and framing as the attached portrait of this character; only the facial expression and a small head tilt change.
 Expression: smiling warmly. A soft genuine smile with the corners of the lips raised and a little crinkle around bright relieved eyes, looking toward the viewer. Natural, not a wide cartoon grin.
 Constraints: no text, no letters, no watermark, plain flat light-gray background, nothing behind the subject.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: ابتسامة عريضة مبالغ فيها، وجه مختلف عن nour.png، تغيير الملابس أو الدفتر
+- تجنّب: وجه مختلف عن nour.png، مبالغة مسرحية أو دموع، تغيير الملابس أو الدفتر أو اتجاه الجسم
 - فحص القبول:
-  1. نفس الوجه والملابس والدفتر في nour.png
+  1. نفس الوجه والحجاب والجاكيت والدفتر في nour.png بالضبط
   2. ابتسامة دافئة طبيعية وعينان مرتاحتان
   3. الخلفية رمادية فاتحة نظيفة
 
@@ -221,18 +233,18 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: تعبير العزم لنور في الألغاز الصعبة وقبل البوس.
-- المرجع المرفق: `nour.png`
+- المرجع المرفق: `docs/reference/nour.png`
 - البرومبت الكامل (للصق):
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
-Subject: The same young Sudanese woman as in the reference image, KEEP THE EXACT SAME FACE, hair, navy-blue draped headscarf, worn gray-blue jacket over a cream shirt, and the same dark notebook held at the lower right, the same half-body framing and slight three-quarter pose turned to the left as the reference. Only the facial expression and the small head tilt change.
+Subject: A young Sudanese woman in her early twenties, smooth dark-brown skin, calm direct dark eyes, strong straight eyebrows, full lips, small curls of black hair showing at the temple. She wears a navy-blue draped headscarf wrapped loosely around her head and neck, a worn gray-blue canvas jacket with a turned collar over a cream cotton shirt, and holds a dark brown spiral notebook against the lower right of the frame. Half-body, shoulders turned slightly to the left. KEEP THE EXACT SAME FACE, hair, clothing and framing as the attached portrait of this character; only the facial expression and a small head tilt change.
 Expression: determined and resolute. A steady direct gaze straight at the viewer, eyebrows slightly lowered, lips closed and firm, jaw set, chin lifted a little. Calm strength, not anger.
 Constraints: no text, no letters, no watermark, plain flat light-gray background, nothing behind the subject.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: غضب أو عبوس مبالغ فيه، وجه مختلف عن nour.png، تغيير الملابس أو الدفتر
+- تجنّب: وجه مختلف عن nour.png، مبالغة مسرحية أو دموع، تغيير الملابس أو الدفتر أو اتجاه الجسم
 - فحص القبول:
-  1. نفس الوجه والملابس والدفتر في nour.png
+  1. نفس الوجه والحجاب والجاكيت والدفتر في nour.png بالضبط
   2. نظرة ثابتة مباشرة وقوة هادئة لا غضب
   3. الخلفية رمادية فاتحة نظيفة
 
@@ -241,7 +253,7 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: رمز الفصل 1 (الشمس) حسب SYMBOLS.md. يُمنح عند c1-l7 ويُستعمل في c4-l5 وc5-l5 وc5-l6.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -260,7 +272,7 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: الرمز المخفي الأول في c1-l1 وعنصر دليل في c1-l2.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -279,7 +291,7 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: الرمز المخفي الثاني في c1-l1 وعنصر دليل في c1-l2.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -298,7 +310,7 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
 - الغرض: الرمز المخفي الثالث في c1-l1 وعنصر دليل في c1-l2.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -316,76 +328,76 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الملف: `public/art/items/jar-wheat.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: جرّة قمح في c1-l4 (matching). كل جرة لها شكل غطاء مميّز تتفرّق به عن الباقي.
-- المرجع المرفق: `village.jpg`
+- الغرض: جواب «قمح» في c1-l4 (matching، الجهة اليمنى). يُظهر المحتوى فقط (بلا غطاء ملوّن) حتى لا يكشف الحل.
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A wide round-bellied terracotta jar with a wide mouth covered by a piece of cloth tied with cord, a few golden wheat grains and two wheat ears resting beside it. The jar silhouette and top must be clearly different from the other three jars of this set (wheat, henna, incense, dates).
-Constraints: no text, no letters, no numbers, no watermark, no label, plain flat light-gray background, only one object.
+Object: A small open round terracotta jar filled to the brim with golden wheat grains, spilling a few grains, two ears of wheat leaning on the rim. Do NOT show any red, blue, green or brown cloth cover: the icon shows only the contents, so it does not reveal the puzzle answer.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: ملصق أو كتابة على الجرة، جرّة تشبه الجرار الأخرى في الشكل، أكثر من جرّة واحدة
+- تجنّب: غطاء قماش أحمر أو أزرق أو أخضر أو بنّي (يكشف الحل)، ملصق أو كتابة، أكثر من عنصر واحد
 - فحص القبول:
-  1. جرّة قمح واضحة وغطاؤها المميّز ظاهر
-  2. تتميّز عن الجرار الثلاث الأخرى بالحجم الصغير (قارنها بجانبها)
+  1. المحتوى قمح ذهبي واضح مع سنبلتين
+  2. لا يظهر أي غطاء ملوّن
   3. خلفية رمادية فاتحة وحواف نظيفة
 
 ### 16 — jar-henna
 - الملف: `public/art/items/jar-henna.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: جرّة حنّاء في c1-l4 (matching). كل جرة لها شكل غطاء مميّز تتفرّق به عن الباقي.
-- المرجع المرفق: `village.jpg`
+- الغرض: جواب «حنّاء» في c1-l4 (matching، الجهة اليمنى). يُظهر المحتوى فقط (بلا غطاء ملوّن) حتى لا يكشف الحل.
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A tall narrow-necked terracotta jar with a reddish-orange stain at the rim, a small pinch of fine orange-brown henna powder in a small pile beside it. The jar silhouette and top must be clearly different from the other three jars of this set (wheat, henna, incense, dates).
-Constraints: no text, no letters, no numbers, no watermark, no label, plain flat light-gray background, only one object.
+Object: A small shallow terracotta dish holding a soft mound of fine orange-brown henna powder, a few green henna leaves beside it. Do NOT show any red, blue, green or brown cloth cover: the icon shows only the contents, so it does not reveal the puzzle answer.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: ملصق أو كتابة على الجرة، جرّة تشبه الجرار الأخرى في الشكل، أكثر من جرّة واحدة
+- تجنّب: غطاء قماش أحمر أو أزرق أو أخضر أو بنّي (يكشف الحل)، ملصق أو كتابة، أكثر من عنصر واحد
 - فحص القبول:
-  1. جرّة حنّاء واضحة وغطاؤها المميّز ظاهر
-  2. تتميّز عن الجرار الثلاث الأخرى بالحجم الصغير (قارنها بجانبها)
+  1. المحتوى مسحوق حنّاء برتقالي-بنّي وأوراق خضراء
+  2. لا يظهر أي غطاء ملوّن
   3. خلفية رمادية فاتحة وحواف نظيفة
 
 ### 17 — jar-incense
 - الملف: `public/art/items/jar-incense.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: جرّة بخور في c1-l4 (matching). كل جرة لها شكل غطاء مميّز تتفرّق به عن الباقي.
-- المرجع المرفق: `village.jpg`
+- الغرض: جواب «بخور» في c1-l4 (matching، الجهة اليمنى). يُظهر المحتوى فقط (بلا غطاء ملوّن) حتى لا يكشف الحل.
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A small dark-rimmed terracotta jar with a perforated clay lid and a faint soot mark around the holes, a thin delicate wisp of pale smoke rising from the holes. The jar silhouette and top must be clearly different from the other three jars of this set (wheat, henna, incense, dates).
-Constraints: no text, no letters, no numbers, no watermark, no label, plain flat light-gray background, only one object.
+Object: A small terracotta incense burner with a few glowing embers and pale resin grains on top, a thin delicate wisp of pale smoke curling up. Do NOT show any red, blue, green or brown cloth cover: the icon shows only the contents, so it does not reveal the puzzle answer.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: ملصق أو كتابة على الجرة، جرّة تشبه الجرار الأخرى في الشكل، أكثر من جرّة واحدة
+- تجنّب: غطاء قماش أحمر أو أزرق أو أخضر أو بنّي (يكشف الحل)، ملصق أو كتابة، أكثر من عنصر واحد
 - فحص القبول:
-  1. جرّة بخور واضحة وغطاؤها المميّز ظاهر
-  2. تتميّز عن الجرار الثلاث الأخرى بالحجم الصغير (قارنها بجانبها)
+  1. مبخرة صغيرة بجمر وخيط دخان رقيق
+  2. لا يظهر أي غطاء ملوّن
   3. خلفية رمادية فاتحة وحواف نظيفة
 
 ### 18 — jar-dates
 - الملف: `public/art/items/jar-dates.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة A
-- الغرض: جرّة تمر في c1-l4 (matching). كل جرة لها شكل غطاء مميّز تتفرّق به عن الباقي.
-- المرجع المرفق: `village.jpg`
+- الغرض: جواب «تمر» في c1-l4 (matching، الجهة اليمنى). يُظهر المحتوى فقط (بلا غطاء ملوّن) حتى لا يكشف الحل.
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A squat wide terracotta jar with a woven palm-leaf lid slightly lifted, three brown dates visible beside it. The jar silhouette and top must be clearly different from the other three jars of this set (wheat, henna, incense, dates).
-Constraints: no text, no letters, no numbers, no watermark, no label, plain flat light-gray background, only one object.
+Object: A wide shallow woven palm-leaf basket heaped with glossy brown dates, a few dates fallen beside it. Do NOT show any red, blue, green or brown cloth cover: the icon shows only the contents, so it does not reveal the puzzle answer.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: ملصق أو كتابة على الجرة، جرّة تشبه الجرار الأخرى في الشكل، أكثر من جرّة واحدة
+- تجنّب: غطاء قماش أحمر أو أزرق أو أخضر أو بنّي (يكشف الحل)، ملصق أو كتابة، أكثر من عنصر واحد
 - فحص القبول:
-  1. جرّة تمر واضحة وغطاؤها المميّز ظاهر
-  2. تتميّز عن الجرار الثلاث الأخرى بالحجم الصغير (قارنها بجانبها)
+  1. سلّة سعف مليئة بالتمر البنّي اللامع
+  2. لا يظهر أي غطاء ملوّن
   3. خلفية رمادية فاتحة وحواف نظيفة
 
 ### 19 — c1-l2
@@ -393,7 +405,7 @@ Constraints: no text, no letters, no numbers, no watermark, no label, plain flat
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: خلفية c1-l2 «نقش الصندوق» (sequence): لقطة قريبة للصندوق المفتوح نصفاً.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -414,7 +426,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: خلفية c1-l3 «هامش الدفتر» (choice): دفتر مفتوح على طاولة قرب النافذة.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -435,7 +447,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; handwriti
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: خلفية c1-l5 «تقويم صفية» (codelock): فناء البيت وتقويم على الجدار.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -456,7 +468,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; the calen
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: خلفية c1-l6 «صور قديمة» (memory): صندوق صور ممزقة على حصير.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -476,7 +488,7 @@ Constraints: no text, no letters, no numbers, no people, no faces, no watermark.
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: خلفية شاشة اختيار الفصل (نظرة عامة على النيل). تُوضع عليها 5 عُقد فصول بالكود.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
@@ -497,18 +509,18 @@ Constraints: no text, no letters, no numbers, no people, no watermark.
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: تعبير الفضول لنور عند اكتشاف شيء جديد.
-- المرجع المرفق: `nour.png`
+- المرجع المرفق: `docs/reference/nour.png`
 - البرومبت الكامل (للصق):
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
-Subject: The same young Sudanese woman as in the reference image, KEEP THE EXACT SAME FACE, hair, navy-blue draped headscarf, worn gray-blue jacket over a cream shirt, and the same dark notebook held at the lower right, the same half-body framing and slight three-quarter pose turned to the left as the reference. Only the facial expression and the small head tilt change.
+Subject: A young Sudanese woman in her early twenties, smooth dark-brown skin, calm direct dark eyes, strong straight eyebrows, full lips, small curls of black hair showing at the temple. She wears a navy-blue draped headscarf wrapped loosely around her head and neck, a worn gray-blue canvas jacket with a turned collar over a cream cotton shirt, and holds a dark brown spiral notebook against the lower right of the frame. Half-body, shoulders turned slightly to the left. KEEP THE EXACT SAME FACE, hair, clothing and framing as the attached portrait of this character; only the facial expression and a small head tilt change.
 Expression: curious and intrigued. A slight tilt of the head, eyebrows gently raised, eyes bright and looking slightly off to the side and upward at something just out of frame, lips softly parted. Natural, not exaggerated.
 Constraints: no text, no letters, no watermark, plain flat light-gray background, nothing behind the subject.
 ```
 - مواضع إلزامية: لا يوجد
-- تجنّب: فم مفتوح بمبالغة (صدمة)، وجه مختلف عن nour.png، تغيير الملابس أو الدفتر
+- تجنّب: وجه مختلف عن nour.png، مبالغة مسرحية أو دموع، تغيير الملابس أو الدفتر أو اتجاه الجسم
 - فحص القبول:
-  1. نفس الوجه والملابس والدفتر في nour.png
+  1. نفس الوجه والحجاب والجاكيت والدفتر في nour.png بالضبط
   2. ميل رأس خفيف وحاجبان مرفوعان قليلاً بفضول
   3. الخلفية رمادية فاتحة نظيفة
 
@@ -517,7 +529,7 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: أيقونة تقويم صفية في c1-l5 (codelock).
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -536,7 +548,7 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: أيقونة قطعة الصورة القديمة في c1-l6 (memory).
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -555,7 +567,7 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: أيقونة ختم الطين، دليل إضافي في الفصل 1.
-- المرجع المرفق: `village.jpg`
+- المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
@@ -602,9 +614,8 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 | 26 | old-photo | B | [ ] | [ ] | [ ] | |
 | 27 | clay-seal | B | [ ] | [ ] | [ ] | |
 
-## أسئلة وملاحظات لـ A وC
-1. **c1-l2 (sequence):** نقش غطاء الصندوق في الصورة عمداً باهت وغير مقروء حتى لا يناقض ترتيب الحل في `ch1.ts`. الترتيب الفعلي يصل اللاعبة عبر الدليل المكتوب.
-2. **c1-l5 (codelock):** التقويم الخشبي في الصورة بلا أرقام. تواريخ التقويم تظهر كدليل مكتوب في `Clue`.
-3. **c1-l1 (hotspot):** المواضع المذكورة تقريبية. C يضع `x,y,r` النهائية من صفحة `/preview/coords` بعد وصول الصورة الفعلية.
-4. **الأيقونات:** `sun-disc` و`bird-carving` و`boat-piece` تقابل الرموز الثلاثة في c1-l1. تأكيد أسمائها من `ch1.ts` عند وصوله.
-5. **ui-map-full:** الرموز الخمسة صغيرة على الأشرطة. الجدول السابق مطابق لـ `docs/SYMBOLS.md` (شمس، موجة، ميزان، عين، خيط).
+## أسئلة وملاحظات لأصحاب الفصول
+1. **c1-l1 (hotspot):** الإحداثيات من `ch1.ts` ما زالت مؤقتة. بعد وصول الصورة تُضبط بـ `/preview/coords`.
+2. **c1-l2 (sequence):** نقش غطاء الصندوق باهت عمداً حتى لا يناقض ترتيب الحل. C يؤكد.
+3. **c1-l5 (codelock):** التقويم الخشبي بلا أرقام؛ التواريخ تأتي في الدلائل المكتوبة.
+4. **ui-map-full:** مطابقة لـ `docs/SYMBOLS.md` ولـ `NOTE_MAPFULL_CELLS.md`؛ التفاصيل في فحص القبول.
