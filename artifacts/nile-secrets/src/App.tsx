@@ -7,6 +7,8 @@ import ChapterSelect from "./engine/ChapterSelect";
 import LevelMap from "./engine/LevelMap";
 import PreviewPage from "./engine/PreviewPage";
 import CoordsPage from "./engine/CoordsPage";
+import TitleScreen from "./engine/TitleScreen";
+import EndingScreen from "./engine/EndingScreen";
 
 export default function App() {
   const route = useRoute();
@@ -26,7 +28,9 @@ export default function App() {
     if (!isLevelUnlocked(progress, arg)) return <Notice text="أكملي المستوى السابق أولاً." />;
     return <LevelRunner level={level} />;
   }
-  return <ChapterSelect />;
+  if (section === "map") return <ChapterSelect />;
+  if (section === "ending") return <EndingScreen />;
+  return <TitleScreen />;
 }
 
 function Notice({ text }: { text: string }) {

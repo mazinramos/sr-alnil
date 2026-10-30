@@ -1,38 +1,42 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
+import { BookOpen, ChevronRight, Compass, Eye, HelpCircle, Sparkles } from "lucide-react";
 import type { Level } from "../content/types";
 import { getPuzzleComponent } from "./registry";
 import { completeLevel, discoverClues, setLastLevel } from "./store";
 import { navigate } from "./router";
-import { nextLevelId } from "./content";
+import { getChapter, nextLevelId } from "./content";
 import Portrait from "./Portrait";
-import { getCharacter } from "./characters";
+import { CHARACTERS, getCharacter } from "./characters";
+import { Drawer } from "./Drawers";
+import { layered, PUZZLE_NAMES, pad2, STOP_ART } from "./legacyArt";
 
 type Phase = "play" | "done";
 
-/** هيكل أولي (اليوم 1): خلفية + fallback، حوار، دلائل، لغز، تلميحات، محاولات، نتيجة بنجوم. */
+/** شاشة المستوى بتصميم ريبلت: سرد جانبي (حوار + هدف + دلائل) ولوحة اللغز. المنطق (نجوم/تلميحات) من store. */
 export default function LevelRunner({ level }: { level: Level }) {
   const [hints, setHints] = useState<0 | 1 | 2 | 3>(0);
   const [attempts, setAttempts] = useState(0);
   const [wrong, setWrong] = useState(false);
   const [phase, setPhase] = useState<Phase>("play");
   const [stars, setStars] = useState<1 | 2 | 3>(1);
-  const [imgOk, setImgOk] = useState(true);
+  const [overlay, setOverlay] = useState<"notebook" | "inventory" | null>(null);
 
   useEffect(() => {
-    setHints(0); setAttempts(0); setWrong(false); setPhase("play"); setImgOk(true);
+    setHints(0); setAttempts(0); setWrong(false); setPhase("play"); setOverlay(null);
     setLastLevel(level.id);
     discoverClues(level.clues.map((c) => c.id));
+    window.scrollTo(0, 0);
   }, [level.id]);
 
   const Puzzle = useMemo(() => getPuzzleComponent(level.puzzle.type), [level.puzzle.type]);
+  const ch = getChapter(level.chapter);
   const f = level.focal;
-  const bgStyle: React.CSSProperties = imgOk
-    ? {
-        backgroundImage: `url(${level.background})`,
-        backgroundSize: f?.zoom ? `${f.zoom * 100}%` : "cover",
-        backgroundPosition: f ? `${f.x}% ${f.y}%` : "center",
-      }
-    : { backgroundImage: "linear-gradient(160deg, #2f6b73 0%, #1b2a2f 70%)" };
+  const art = STOP_ART[level.chapter - 1];
+  const imgStyle: React.CSSProperties = {
+    backgroundImage: layered(level.background, art),
+    backgroundSize: f?.zoom ? `${f.zoom * 100}%, cover` : "cover",
+    backgroundPosition: f ? `${f.x}% ${f.y}%, center` : "center",
+  };
 
   function onResult(correct: boolean) {
     const n = attempts + 1;
@@ -45,77 +49,90 @@ export default function LevelRunner({ level }: { level: Level }) {
   }
 
   const next = nextLevelId(level.id);
+  const lines = level.dialogue.map((d) => ({ ...d, who: Object.values(CHARACTERS).find((c) => c.name === d.speaker)?.id ?? level.character }));
+  const isFinal = !next;
+
   return (
-    <div className="relative mx-auto flex min-h-full max-w-xl flex-col" style={bgStyle}>
-      {/* يتحقق من وجود الصورة بدون تخريب الواجهة */}
-      <img src={level.background} alt="" className="hidden" onError={() => setImgOk(false)} />
-      <div className="flex-1 bg-black/45 p-4 pb-0 backdrop-blur-[1px]">
-        <header className="mb-3 flex items-center justify-between">
-          <button className="rounded-lg bg-black/40 px-3" onClick={() => navigate(`/chapter/${level.chapter}`)}>الفصل</button>
-          <h1 className="text-lg font-extrabold">{level.title}</h1>
-          <span className="text-sm opacity-80">محاولات: {attempts}</span>
+    <main className="game-shell" dir="rtl">
+      <section className="stage-screen">
+        <div className="stage-image" style={imgStyle} />
+        <div className="stage-vignette" />
+        <header className="stage-topbar">
+          <button className="glass-button" onClick={() => navigate(`/chapter/${level.chapter}`)}><ChevronRight size={17} /> <span>خريطة الفصل</span></button>
+          <div className="chapter-indicator"><span>الفصل {pad2(level.chapter)}</span><i />المستوى {level.index} من 7</div>
+          <div className="stage-tools">
+            <button className="glass-button" onClick={() => setOverlay("notebook")}><BookOpen size={17} /><span>الدفتر</span></button>
+            <button className="glass-button" onClick={() => setOverlay("inventory")}><Compass size={17} /><span>الحقيبة</span></button>
+          </div>
         </header>
 
-        <section className="mb-3 flex gap-3 rounded-xl bg-[var(--papyrus)] p-3 text-[var(--ink)]">
-          <Portrait id={level.character} size={64} />
-          <div className="min-w-0 flex-1">
-            <small className="opacity-70">{getCharacter(level.character)?.name}</small>
-            {level.dialogue.map((d, i) => (
-              <p key={i} className="mb-1 text-sm"><b>{d.speaker}: </b>{d.text}</p>
+        <div className="stage-body">
+          <aside className="stage-narrative">
+            <div className="stage-kicker"><span>المستوى {pad2(level.index)}</span><i />{ch?.location ?? ""}</div>
+            <h1>{level.title}</h1>
+            {lines.map((d, i) => (
+              <div className="character-quote dialogue-line" key={i}>
+                <div className="portrait-wrap"><Portrait id={d.who} size={56} /></div>
+                <div className="quote-text"><b>{d.speaker}<small>{getCharacter(d.who)?.role}</small></b><p>«{d.text}»</p></div>
+              </div>
             ))}
-            <p className="mt-2 border-t border-black/20 pt-2 font-bold">{level.objective}</p>
-          </div>
-        </section>
-
-        <section className="mb-3 grid gap-2">
-          {level.clues.map((c) => (
-            <article key={c.id} className="rounded-lg bg-black/45 p-3 text-sm">
-              <b>{c.title}</b>
-              <p>{c.text}</p>
-              <small className="opacity-70">{c.source}</small>
-            </article>
-          ))}
-        </section>
-
-        {phase === "play" && (
-          <section className="mb-3 rounded-xl bg-black/50 p-3">
-            <Suspense fallback={<p className="p-4 text-center">…</p>}>
-              <Puzzle config={level.puzzle} background={level.background} hintLevel={hints} onResult={onResult} />
-            </Suspense>
-            {wrong && <p role="alert" className="mt-2 text-center text-sm text-[var(--ember)]">ليست الإجابة الصحيحة بعد. راجعي الدلائل وجرّبي مرة أخرى.</p>}
-          </section>
-        )}
-
-        {phase === "play" && (
-          <footer className="sticky bottom-0 -mx-4 flex flex-col gap-2 bg-[var(--nile-deep)]/95 p-3">
-            {hints > 0 && <p className="text-sm">تلميح {hints}: {level.hints[hints - 1]}</p>}
-            <button
-              className="rounded-lg bg-[var(--ember)] font-bold text-[var(--ink)] disabled:opacity-40"
-              disabled={hints >= 3}
-              onClick={() => { setWrong(false); setHints((h) => (h < 3 ? ((h + 1) as 1 | 2 | 3) : h)); }}
-            >
-              {hints >= 3 ? "لا مزيد من التلميحات" : `تلميح (${hints}/3)`}
-            </button>
-          </footer>
-        )}
-
-        {phase === "done" && (
-          <section className="mb-4 rounded-xl bg-[var(--papyrus)] p-4 text-center text-[var(--ink)]">
-            <p aria-label={`${stars} من 3 نجوم`} className="text-3xl tracking-widest">
-              {"★".repeat(stars)}{"☆".repeat(3 - stars)}
-            </p>
-            <p className="my-2">{level.successText}</p>
-            <div className="flex gap-2">
-              <button className="flex-1 rounded-lg bg-black/10 font-bold" onClick={() => navigate("/")}>الخريطة</button>
-              {next && (
-                <button className="flex-1 rounded-lg bg-[var(--nile-water)] font-bold text-white" onClick={() => navigate(`/level/${next}`)}>
-                  المستوى التالي
-                </button>
-              )}
+            <div className="objective"><span className="objective-icon"><Eye size={17} /></span><div><small>ما ينبغي فعله</small><p>{level.objective}</p></div></div>
+            <div className="clue-area">
+              <div className="clue-heading"><span>ما تلاحظينه</span><small>{level.clues.length} / {level.clues.length}</small></div>
+              <div className="clue-list">
+                {level.clues.map((c, idx) => (
+                  <div key={c.id} className="clue-card found static">
+                    <span className="clue-index">{idx + 1}</span>
+                    <span><b>{c.title}</b><small>{c.text}</small><small className="clue-src">{c.source}</small></span>
+                  </div>
+                ))}
+              </div>
             </div>
+          </aside>
+
+          <section className="puzzle-panel is-engine" aria-label={level.title}>
+            <div className="puzzle-top">
+              <div><span className="puzzle-label">ملفّ الاستدلال</span><h2>{PUZZLE_NAMES[level.puzzle.type] ?? "لغز"}</h2></div>
+              <span className="puzzle-number">{pad2(level.index)}<i>/07</i></span>
+            </div>
+
+            {phase === "play" ? (
+              <>
+                <div className="puzzle-host">
+                  <Suspense fallback={<p style={{ textAlign: "center", padding: 16 }}>…</p>}>
+                    <Puzzle config={level.puzzle} background={level.background} hintLevel={hints} onResult={onResult} />
+                  </Suspense>
+                </div>
+                {wrong && <p role="alert" className="wrong-note">ليست الإجابة الصحيحة بعد. راجعي الدلائل وجرّبي مرة أخرى.</p>}
+                {hints > 0 && <div className="hint-note" role="status"><Sparkles size={16} /><span>{level.hints[hints - 1]}</span></div>}
+                <div className="puzzle-bottom">
+                  <button
+                    className="hint-button"
+                    disabled={hints >= 3}
+                    onClick={() => { setWrong(false); setHints((h) => (h < 3 ? ((h + 1) as 1 | 2 | 3) : h)); }}
+                  >
+                    <HelpCircle size={16} /> {hints >= 3 ? "لا مزيد من التلميحات" : `تلميح اختياري (${hints}/3)`}
+                  </button>
+                  <span>لا يوجد مؤقّت</span>
+                </div>
+              </>
+            ) : (
+              <div className="result-card">
+                <p className="result-stars" aria-label={`${stars} من 3 نجوم`}>{"★".repeat(stars)}{"☆".repeat(3 - stars)}</p>
+                <p>{level.successText}</p>
+                <div className="result-actions">
+                  <button className="button button-quiet" onClick={() => navigate(`/chapter/${level.chapter}`)}>خريطة الفصل</button>
+                  {isFinal
+                    ? <button className="button button-light" onClick={() => navigate("/ending")}>الخاتمة</button>
+                    : <button className="button button-light" onClick={() => navigate(`/level/${next}`)}>المستوى التالي</button>}
+                </div>
+              </div>
+            )}
           </section>
-        )}
-      </div>
-    </div>
+        </div>
+        <div className="stage-footnote"><span>محاولات: {attempts}</span><span><i /> تقدمك محفوظ تلقائياً</span></div>
+        {overlay && <Drawer mode={overlay} close={() => setOverlay(null)} />}
+      </section>
+    </main>
   );
 }
