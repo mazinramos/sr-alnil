@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from "react";
 import { getOrderedLevelIds } from "./content";
-import { chapterLevelIds, isLevelUnlockedIn, unlockedIn } from "./unlock";
+import { chapterLevelIds, isChapterUnlockedIn, isLevelUnlockedIn, unlockedIn } from "./unlock";
+import { STORAGE_KEY_V1, v1CompletedFromRaw } from "./migrate";
 
 /** CONTRACT §4 */
 export type LevelResult = { stars: 1 | 2 | 3; hints: number; attempts: number };
@@ -51,10 +52,8 @@ export function calcStars(hints: number, wrongAttempts: number): 1 | 2 | 3 {
 export const isLevelUnlocked = (p: ProgressV2, id: string, order: readonly string[] = getOrderedLevelIds()) =>
   isLevelUnlockedIn(p.completed, id, order);
 
-export function isChapterUnlocked(p: ProgressV2, chapter: number, order: readonly string[] = getOrderedLevelIds()) {
-  const first = chapterLevelIds(chapter, order)[0];
-  return first ? isLevelUnlockedIn(p.completed, first, order) : false;
-}
+export const isChapterUnlocked = (p: ProgressV2, chapter: number, order: readonly string[] = getOrderedLevelIds()) =>
+  isChapterUnlockedIn(p.completed, chapter, order);
 
 export const unlockedLevels = (p: ProgressV2, order: readonly string[] = getOrderedLevelIds()): string[] =>
   unlockedIn(p.completed, order);
@@ -62,18 +61,10 @@ export const unlockedLevels = (p: ProgressV2, order: readonly string[] = getOrde
 export const chapterStars = (p: ProgressV2, chapter: number, order: readonly string[] = getOrderedLevelIds()) =>
   chapterLevelIds(chapter, order).reduce((sum, id) => sum + (p.completed[id]?.stars ?? 0), 0);
 
-/* ---------- ترحيل V1 → V2 ---------- */
-/** المراحل الخمس القديمة (الفهرس 0..4) تتحوّل إلى هذه المستويات. */
-export const V1_STAGE_TO_LEVEL = ["c1-l2", "c2-l1", "c3-l1", "c4-l1", "c5-l7"] as const;
-
-/** دالة صافية: تاخد فهارس المراحل المكتملة في V1 وترجع تقدّم V2. قراءة مفتاح V1 من localStorage تنتظر شكله الفعلي. */
-export function migrateV1(completedStageIndexes: number[]): ProgressV2 {
-  const p = defaultProgress();
-  for (const i of completedStageIndexes) {
-    const id = V1_STAGE_TO_LEVEL[i];
-    if (id) p.completed[id] = { stars: 1, hints: 0, attempts: 1 };
-  }
-  return p;
+/* ---------- ترحيل V1 → V2 ----------
+ * عند أول فتح بدون مفتاح V2: نقرأ مفتاح V1 (ريبلت) ونحوّل المراحل المكتملة. مفتاح V1 لا يُمسح. */
+export function migrateV1(raw: string | null): ProgressV2 {
+  return { ...defaultProgress(), completed: v1CompletedFromRaw(raw) };
 }
 
 /* ---------- تخزين محلي بحذر ---------- */
@@ -88,7 +79,14 @@ function isValid(x: unknown): x is ProgressV2 {
 function read(): ProgressV2 {
   try {
     const raw = localStorage.getItem(STORAGE_KEY_V2);
-    if (!raw) return defaultProgress();
+    if (!raw) {
+      const migrated = migrateV1(localStorage.getItem(STORAGE_KEY_V1));
+      if (Object.keys(migrated.completed).length) {
+        migrated.lastLevel = Object.keys(migrated.completed)[0];
+        try { localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(migrated)); } catch { storageOk = false; }
+      }
+      return migrated;
+    }
     const parsed = JSON.parse(raw);
     return isValid(parsed) ? { ...defaultProgress(), ...parsed } : defaultProgress();
   } catch {

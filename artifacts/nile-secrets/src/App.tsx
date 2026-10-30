@@ -9,14 +9,18 @@ import PreviewPage from "./engine/PreviewPage";
 import CoordsPage from "./engine/CoordsPage";
 import TitleScreen from "./engine/TitleScreen";
 import EndingScreen from "./engine/EndingScreen";
+import RewardScreen from "./engine/RewardScreen";
+import { installClickSound } from "./engine/audio";
 
 export default function App() {
   const route = useRoute();
   const progress = useProgress();
 
   useEffect(() => {
-    document.documentElement.style.setProperty("--text-scale", String(progress.settings.textScale));
+    document.documentElement.dataset.textScale = String(progress.settings.textScale);
   }, [progress.settings.textScale]);
+
+  useEffect(() => installClickSound(), []);
 
   const [section, arg] = route.path;
 
@@ -28,6 +32,7 @@ export default function App() {
     if (!isLevelUnlocked(progress, arg)) return <Notice text="أكملي المستوى السابق أولاً." />;
     return <LevelRunner level={level} />;
   }
+  if (section === "reward" && arg) return <RewardScreen chapter={Number(arg)} />;
   if (section === "map") return <ChapterSelect />;
   if (section === "ending") return <EndingScreen />;
   return <TitleScreen />;

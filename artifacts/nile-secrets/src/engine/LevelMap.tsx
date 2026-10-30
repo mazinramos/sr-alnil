@@ -4,6 +4,7 @@ import { getChapter, getOrderedLevelIds } from "./content";
 import { navigate } from "./router";
 import { isChapterUnlocked, isLevelUnlocked, useProgress } from "./store";
 import { chapterLevelIds } from "./unlock";
+import { SettingsButton, SettingsDialog } from "./SettingsDialog";
 import { Drawer } from "./Drawers";
 import { layered, pad2, STOP_ART } from "./legacyArt";
 
@@ -11,6 +12,7 @@ import { layered, pad2, STOP_ART } from "./legacyArt";
 export default function LevelMap({ chapter }: { chapter: number }) {
   const p = useProgress();
   const [overlay, setOverlay] = useState<"notebook" | "inventory" | null>(null);
+  const [settings, setSettings] = useState(false);
   const order = getOrderedLevelIds();
   const ch = getChapter(chapter);
   const ids = chapterLevelIds(chapter, order);
@@ -49,6 +51,7 @@ export default function LevelMap({ chapter }: { chapter: number }) {
           </button>
           <div className="header-progress"><span>{ch.title}</span><div className="progress-track"><i style={{ width: `${(doneCount / n) * 100}%` }} /></div><b>{pad2(doneCount)} / {pad2(n)}</b></div>
           <div className="header-tools">
+            <SettingsButton onClick={() => setSettings(true)} />
             <button className="icon-button" onClick={() => setOverlay("notebook")} aria-label="فتح دفتر الملاحظات"><BookOpen size={19} /><span>الدفتر</span></button>
             <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="فتح الحقيبة"><Compass size={19} /><span>الحقيبة</span></button>
           </div>
@@ -101,6 +104,7 @@ export default function LevelMap({ chapter }: { chapter: number }) {
         </div>
         <footer className="map-footer"><span>سرّ النيل <i>—</i> {ch.title}</span><button className="subtle-button" onClick={() => navigate("/map")}>خريطة الرحلة</button></footer>
         {overlay && <Drawer mode={overlay} close={() => setOverlay(null)} />}
+        {settings && <SettingsDialog close={() => setSettings(false)} />}
       </section>
     </main>
   );

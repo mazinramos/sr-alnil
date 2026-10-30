@@ -15,3 +15,11 @@ assert.equal(isLevelUnlockedIn(done("c1-l1"), "c1-l2", order), false, "مستو�
 assert.deepEqual(chapterLevelIds(2, order), ["c2-l1", "c2-l4", "c2-l7"]);
 assert.deepEqual(unlockedIn({}, []), [], "محتوى فاضي لا ينهار");
 console.log("unlock checks: OK");
+
+// --- مكتمل = مفتوح، والفصل يُفتح لو أي مستوى فيه مكتمل (تقدّم مُرحَّل) ---
+import { isChapterUnlockedIn } from "../src/engine/unlock.ts";
+assert.equal(isLevelUnlockedIn(done("c2-l1"), "c2-l1", order), true);
+assert.equal(isChapterUnlockedIn(done("c2-l1"), 2, order), true, "الفصل 2 مفتوح لأن c2-l1 مكتمل");
+assert.equal(isChapterUnlockedIn({}, 2, order), false);
+assert.equal(isChapterUnlockedIn({}, 9, order), false, "فصل بلا محتوى مقفول");
+console.log("chapter checks: OK");

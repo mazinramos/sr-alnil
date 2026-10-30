@@ -5,6 +5,7 @@ import { navigate } from "./router";
 import { ALL_LEVEL_IDS, chapterStars, isChapterUnlocked, isStorageOk, resetProgress, useProgress } from "./store";
 import { chapterLevelIds } from "./unlock";
 import { ConfirmDialog, Drawer } from "./Drawers";
+import { SettingsButton, SettingsDialog } from "./SettingsDialog";
 import { CHAPTER_FALLBACK, pad2, STOP_ART } from "./legacyArt";
 
 /** مواضع المحطات الخمس كما في خريطة ريبلت الأصلية. */
@@ -18,6 +19,7 @@ export default function ChapterSelect() {
   const p = useProgress();
   const order = getOrderedLevelIds();
   const [overlay, setOverlay] = useState<"notebook" | "inventory" | null>(null);
+  const [settings, setSettings] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const doneLevels = Object.keys(p.completed).length;
 
@@ -47,6 +49,7 @@ export default function ChapterSelect() {
           </button>
           <div className="header-progress"><span>مسار الرحلة</span><div className="progress-track"><i style={{ width: `${(doneLevels / ALL_LEVEL_IDS.length) * 100}%` }} /></div><b>{pad2(doneLevels)} / {ALL_LEVEL_IDS.length}</b></div>
           <div className="header-tools">
+            <SettingsButton onClick={() => setSettings(true)} />
             <button className="icon-button" onClick={() => setOverlay("notebook")} aria-label="فتح دفتر الملاحظات"><BookOpen size={19} /><span>الدفتر</span>{p.discoveredClues.length > 0 && <i className="tool-count">{p.discoveredClues.length}</i>}</button>
             <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="فتح الحقيبة"><Compass size={19} /><span>الحقيبة</span></button>
           </div>
@@ -105,6 +108,7 @@ export default function ChapterSelect() {
           <button className="subtle-button" onClick={() => setConfirm(true)}><RotateCcw size={14} /> إعادة الحكاية</button>
         </footer>
         {overlay && <Drawer mode={overlay} close={() => setOverlay(null)} />}
+        {settings && <SettingsDialog close={() => setSettings(false)} />}
         {confirm && <ConfirmDialog onCancel={() => setConfirm(false)} onConfirm={() => { resetProgress(); setConfirm(false); navigate("/"); }} />}
       </section>
     </main>

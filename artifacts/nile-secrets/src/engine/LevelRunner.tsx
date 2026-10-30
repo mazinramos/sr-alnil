@@ -8,6 +8,7 @@ import { getChapter, nextLevelId } from "./content";
 import Portrait from "./Portrait";
 import { CHARACTERS, getCharacter } from "./characters";
 import { Drawer } from "./Drawers";
+import { playError, playSuccess } from "./audio";
 import { layered, PUZZLE_NAMES, pad2, STOP_ART } from "./legacyArt";
 
 type Phase = "play" | "done";
@@ -45,11 +46,16 @@ export default function LevelRunner({ level }: { level: Level }) {
       setWrong(false);
       setStars(completeLevel(level.id, hints, n));
       setPhase("done");
-    } else setWrong(true);
+      playSuccess();
+    } else {
+      setWrong(true);
+      playError();
+    }
   }
 
   const next = nextLevelId(level.id);
   const lines = level.dialogue.map((d) => ({ ...d, who: Object.values(CHARACTERS).find((c) => c.name === d.speaker)?.id ?? level.character }));
+  const isBoss = !!level.isBoss || level.index === 7;
   const isFinal = !next;
 
   return (
@@ -122,10 +128,12 @@ export default function LevelRunner({ level }: { level: Level }) {
                 <p>{level.successText}</p>
                 <div className="result-actions">
                   <button className="button button-quiet" onClick={() => navigate(`/chapter/${level.chapter}`)}>خريطة الفصل</button>
-                  {isFinal
-                    ? <button className="button button-light" onClick={() => navigate("/ending")}>الخاتمة</button>
-                    : <button className="button button-light" onClick={() => navigate(`/level/${next}`)}>المستوى التالي</button>}
-                </div>
+                  {isBoss
+                    ? <button className="button button-light" onClick={() => navigate(`/reward/${level.chapter}`)}>قطعة الخريطة</button>
+                    : isFinal
+                      ? <button className="button button-light" onClick={() => navigate("/ending")}>الخاتمة</button>
+                      : <button className="button button-light" onClick={() => navigate(`/level/${next}`)}>المستوى التالي</button>}
+                  </div>
               </div>
             )}
           </section>
