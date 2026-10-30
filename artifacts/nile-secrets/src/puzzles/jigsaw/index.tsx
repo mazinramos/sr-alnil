@@ -7,12 +7,20 @@ const STRIPS = 5;
 const WRONG_LIMIT = 10;
 const FALLBACK_ASPECT = 3 / 2;
 
-/** "/art/ui/map-full.webp#strip=2" → المسار + القصاصة (1 = أقصى اليمين). */
+/** خلايا الخريطة: شبكة 3×2 مربعة، الترقيم من أعلى اليمين (RTL): 1 2 3 فوق ثم 4 5 6 تحت من اليسار لليمين. [عمود، صف] */
+const CELLS: [number, number][] = [[2, 0], [1, 0], [0, 0], [0, 1], [1, 1], [2, 1]];
+
+/** "/art/ui/map-full.webp#cell=2" → المسار + منطقة الصورة (rx, ry, rw, rh بالنسب). "#strip=n" قديم (5 شرائح) ما زال مدعوماً. */
 function parseImage(raw: string) {
   const [src, frag = ""] = raw.split("#");
+  const c = /cell=(\d+)/.exec(frag);
+  if (c) {
+    const [col, row] = CELLS[Math.min(CELLS.length, Math.max(1, Number(c[1]))) - 1];
+    return { src, rx: col / 3, ry: row / 2, rw: 1 / 3, rh: 1 / 2 };
+  }
   const m = /strip=(\d+)/.exec(frag);
   const n = m ? Math.min(STRIPS, Math.max(1, Number(m[1]))) : 0;
-  return n ? { src, fx0: (STRIPS - n) / STRIPS, fw: 1 / STRIPS } : { src, fx0: 0, fw: 1 };
+  return n ? { src, rx: (STRIPS - n) / STRIPS, ry: 0, rw: 1 / STRIPS, rh: 1 } : { src, rx: 0, ry: 0, rw: 1, rh: 1 };
 }
 
 /** أقرب شبكة cols×rows لعدد الأجزاء بحيث تقترب القطعة من المربع. */
@@ -60,7 +68,7 @@ function tornClip(seed: string) {
 
 export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
   const N = Math.max(2, Math.min(15, config.pieces));
-  const { src, fx0, fw } = useMemo(() => parseImage(config.image), [config.image]);
+  const { src, rx, ry, rw, rh } = useMemo(() => parseImage(config.image), [config.image]);
 
   const [nat, setNat] = useState<{ w: number; h: number } | null>(null);
   const [failed, setFailed] = useState(false);
@@ -73,7 +81,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
     return () => { im.onload = null; im.onerror = null; };
   }, [src]);
 
-  const aspect = nat ? (nat.w * fw) / nat.h : fw < 1 ? FALLBACK_ASPECT * fw : FALLBACK_ASPECT;
+  const aspect = nat ? (nat.w * rw) / (nat.h * rh) : (FALLBACK_ASPECT * rw) / rh;
   const [cols, rows] = useMemo(() => gridFor(N, aspect), [N, aspect]);
   const order = useMemo(() => shuffled(N, config.image + N), [N, config.image]);
   const clip = useMemo(() => tornClip(config.image), [config.image]);
@@ -104,15 +112,15 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
 
   const bgStyle = (id: number): React.CSSProperties => {
     const col = id % cols, row = Math.floor(id / cols);
-    const cw = cols / fw;
-    const px = cw > 1 ? ((fx0 * cols) / fw + col) / (cw - 1) * 100 : 0;
-    const py = rows > 1 ? (row / (rows - 1)) * 100 : 0;
+    const cw = cols / rw, chh = rows / rh;
+    const px = cw > 1 ? ((rx * cols) / rw + col) / (cw - 1) * 100 : 0;
+    const py = chh > 1 ? ((ry * rows) / rh + row) / (chh - 1) * 100 : 0;
     if (failed) {
       return { background: `linear-gradient(${135 + id * 17}deg, var(--nile-water), var(--ember))` };
     }
     return {
       backgroundImage: `url("${src}")`,
-      backgroundSize: `${cw * 100}% ${rows * 100}%`,
+      backgroundSize: `${cw * 100}% ${chh * 100}%`,
       backgroundPosition: `${px}% ${py}%`,
       backgroundRepeat: "no-repeat",
     };
@@ -220,7 +228,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
 
       {peek && !failed && (
         <div className="mx-auto mb-3 overflow-hidden rounded-lg opacity-90" style={{ width: "40%", aspectRatio: String(aspect) }}>
-          <div className="h-full w-full" style={{ ...bgStyle(0), backgroundImage: `url("${src}")`, backgroundSize: `${100 / fw}% 100%`, backgroundPosition: `${fw < 1 ? (fx0 / (1 - fw)) * 100 : 0}% 0%` }} />
+          <div className="h-full w-full" style={{ ...bgStyle(0), backgroundImage: `url("${src}")`, backgroundSize: `${100 / rw}% ${100 / rh}%`, backgroundPosition: `${rw < 1 ? (rx / (1 - rw)) * 100 : 0}% ${rh < 1 ? (ry / (1 - rh)) * 100 : 0}%` }} />
         </div>
       )}
 

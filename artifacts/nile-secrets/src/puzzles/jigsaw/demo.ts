@@ -4,6 +4,6 @@ import type { PuzzleConfig } from "../../content/types";
 // صيغة القصاصة: "#strip=n" بعد المسار (n=1..5 من اليمين). بدونها تُستعمل الصورة كاملة.
 export const demo: PuzzleConfig = {
   type: "jigsaw",
-  image: "/art/ui/map-full.webp#strip=1",
+  image: "/art/ui/map-full.webp#cell=1",
   pieces: 6,
 };

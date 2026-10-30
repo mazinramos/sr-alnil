@@ -105,7 +105,7 @@ const ch2: Chapter = {
         { id: "c2-l7-edges", title: "الإطار", text: "الأجزاء الواقعة على الحافة الخارجية لها حافة مستقيمة واحدة على الأقل. ابدئي بالإطار ثم الوسط.", source: "آدم" },
         { id: "c2-l7-lines", title: "الخطوط المتصلة", text: "الخطوط والألوان تتّصل عند حواف الأجزاء المتجاورة، وهذا ما يدلّك على الجار الصحيح.", source: "سيف" },
       ],
-      puzzle: { type: "jigsaw", image: "/art/ui/map-full.webp#strip=2", pieces: 8 },
+      puzzle: { type: "jigsaw", image: "/art/ui/map-full.webp#cell=2", pieces: 8 },
       hints: [
         "ابدئي بالأجزاء ذات الحافتين المستقيمتين.",
         "أكملي الإطار الخارجي أولاً ثم املئي الوسط.",
