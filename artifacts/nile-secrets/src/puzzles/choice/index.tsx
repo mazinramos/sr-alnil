@@ -77,9 +77,12 @@ export default function ChoicePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
               >
                 {on ? "✓" : ""}
               </span>
-              {iconSrc(o.icon) && <ItemIcon item={o} size={36} />}
               <span className="flex flex-col leading-snug">
-                <span className="text-base">{o.label}</span>
+                {iconSrc(o.icon) ? (
+                  <ItemIcon item={o} size={36} showLabel className="text-base" />
+                ) : (
+                  <span className="text-base">{o.label}</span>
+                )}
                 {o.detail && <span className="text-xs opacity-75">{o.detail}</span>}
               </span>
             </button>

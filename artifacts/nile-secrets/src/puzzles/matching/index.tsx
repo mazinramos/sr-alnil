@@ -122,9 +122,12 @@ export default function MatchingPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
                 style={status === "right" ? { boxShadow: "0 0 10px 2px rgba(216,146,58,.6)" } : undefined}
               >
                 {linked && <Badge n={pairNo(it.id)} />}
-                {iconSrc(it.icon) && <ItemIcon item={it} size={36} />}
                 <span className="flex flex-col leading-tight">
-                  <span className="text-sm font-bold">{it.label}</span>
+                  {iconSrc(it.icon) ? (
+                    <ItemIcon item={it} size={36} showLabel className="text-sm font-bold" />
+                  ) : (
+                    <span className="text-sm font-bold">{it.label}</span>
+                  )}
                   {it.detail && <span className="text-xs opacity-75">{it.detail}</span>}
                 </span>
               </button>
@@ -145,9 +148,12 @@ export default function MatchingPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
                 style={status === "right" ? { boxShadow: "0 0 10px 2px rgba(216,146,58,.6)" } : undefined}
               >
                 {owner && <Badge n={pairNo(owner)} />}
-                {iconSrc(it.icon) && <ItemIcon item={it} size={36} />}
                 <span className="flex flex-col leading-tight">
-                  <span className="text-sm font-bold">{it.label}</span>
+                  {iconSrc(it.icon) ? (
+                    <ItemIcon item={it} size={36} showLabel className="text-sm font-bold" />
+                  ) : (
+                    <span className="text-sm font-bold">{it.label}</span>
+                  )}
                   {it.detail && <span className="text-xs opacity-75">{it.detail}</span>}
                 </span>
               </button>

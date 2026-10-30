@@ -18,13 +18,13 @@ function shuffled(items: Item[], solution: string[]): Item[] {
 }
 
 function Card({ item, small }: { item: Item; small?: boolean }) {
-  const hasIcon = !!iconSrc(item.icon);
-  return (
-    <span className="flex flex-col items-center justify-center gap-1 text-center leading-tight">
-      {hasIcon && <ItemIcon item={item} size={small ? 32 : 48} />}
-      <span className="text-sm font-bold">{item.label}</span>
-    </span>
-  );
+  // ItemIcon يعرض label بنفسه عند غياب الصورة، فنمرّر showLabel حتى لا يتكرر النص.
+  if (iconSrc(item.icon)) {
+    return (
+      <ItemIcon item={item} size={small ? 32 : 48} showLabel className="flex-col gap-1 text-center text-sm font-bold leading-tight" />
+    );
+  }
+  return <span className="text-center text-sm font-bold leading-tight">{item.label}</span>;
 }
 
 export default function SequencePuzzle({ config, onResult }: PuzzleProps<Cfg>) {

@@ -19,13 +19,9 @@ function shuffled(symbols: Item[], solution: string[]): Item[] {
 }
 
 function Face({ item }: { item: Item }) {
+  // ItemIcon يعرض label بنفسه عند غياب الصورة، فنمرّر showLabel حتى لا يتكرر النص.
   if (iconSrc(item.icon)) {
-    return (
-      <span className="flex flex-col items-center gap-0.5 text-center leading-tight">
-        <ItemIcon item={item} size={40} />
-        <span className="text-xs font-bold">{item.label}</span>
-      </span>
-    );
+    return <ItemIcon item={item} size={40} showLabel className="flex-col gap-0.5 text-center text-xs font-bold leading-tight" />;
   }
   return <span className="text-center text-sm font-bold leading-tight">{item.label}</span>;
 }

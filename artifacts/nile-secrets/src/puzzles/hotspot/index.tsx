@@ -93,21 +93,35 @@ export default function HotspotPuzzle({ config, background, hintLevel, onResult 
         @keyframes hs-pulse { 0%,100%{opacity:.55} 50%{opacity:1} }
       `}</style>
 
-      <div className="mb-2 flex min-h-[44px] flex-wrap items-center gap-2">
+      {/* شريط الاكتشافات: تخطيط ثابت (خانة لكل عنصر مطلوب) فلا يتحرّك الإطار عند أي اكتشاف. */}
+      <div className="mb-2 flex items-center gap-2">
         <span
-          className="rounded-full bg-black/45 px-3 py-1 text-sm font-bold text-[var(--ember)]"
+          className="shrink-0 rounded-full bg-black/45 px-3 py-1 text-sm font-bold text-[var(--ember)]"
           aria-live="polite"
         >
           {found.length}/{needed}
         </span>
-        {found.map((id) => {
-          const t = targets.find((x) => x.id === id);
-          return (
-            <span key={id} className="rounded-full bg-[var(--nile-water)] px-3 py-1 text-sm text-[var(--papyrus)]">
-              {t?.label} ✓
-            </span>
-          );
-        })}
+        <div
+          className="grid flex-1 gap-2"
+          style={{ gridTemplateColumns: `repeat(${Math.min(needed, 3)}, minmax(0, 1fr))` }}
+        >
+          {Array.from({ length: needed }, (_, i) => {
+            const t = targets.find((x) => x.id === found[i]);
+            return (
+              <span
+                key={i}
+                className="flex h-10 items-center justify-center rounded-2xl px-2 text-center text-xs leading-tight"
+                style={{
+                  background: t ? "var(--nile-water)" : "rgba(0,0,0,.3)",
+                  color: t ? "var(--papyrus)" : "rgba(239,227,200,.35)",
+                  border: t ? "1px solid transparent" : "1px dashed rgba(239,227,200,.3)",
+                }}
+              >
+                <span className="line-clamp-2">{t ? `${t.label} ✓` : "؟"}</span>
+              </span>
+            );
+          })}
+        </div>
       </div>
 
       <div
