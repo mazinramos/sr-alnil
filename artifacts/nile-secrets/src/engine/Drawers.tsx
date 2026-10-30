@@ -2,6 +2,8 @@ import { BookOpen, Compass, RotateCcw, X, ChevronLeft } from "lucide-react";
 import { getChapters } from "./content";
 import { useProgress } from "./store";
 import { pad2 } from "./legacyArt";
+import { ownedSymbols } from "./symbols";
+import ItemIcon from "./ItemIcon";
 
 /** الدفتر والحقيبة بنفس تصميم ريبلت. الدلائل من المحتوى، والقطع = قطع الخريطة لفصول أنهت لاعبتها البوس. */
 export function useNotebookData() {
@@ -18,6 +20,7 @@ export function useNotebookData() {
 
 export function Drawer({ mode, close }: { mode: "notebook" | "inventory"; close: () => void }) {
   const { clues, rewards } = useNotebookData();
+  const symbols = ownedSymbols(useProgress());
   const notebook = mode === "notebook";
   return (
     <div className="overlay-backdrop" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) close(); }}>
@@ -43,6 +46,16 @@ export function Drawer({ mode, close }: { mode: "notebook" | "inventory"; close:
                   <div className="inventory-item" key={r.n}><span className="relic-shape">{["◒", "⌁", "▤", "▱", "◇"][r.n - 1] ?? "◇"}</span><b>{r.label}</b><small>الفصل {pad2(r.n)}</small></div>
                 )) : <div className="empty-notebook"><Compass size={25} /><b>الحقيبة خفيفة</b><span>تُضاف قطعة الخريطة عند إنهاء آخر مستوى في كل فصل.</span></div>}
               </div>
+              {symbols.length > 0 && (
+                <div className="inventory-grid" style={{ marginTop: 14 }}>
+                  {symbols.map((y) => (
+                    <div className="inventory-item" key={y.id}>
+                      <span className="relic-shape"><ItemIcon item={{ label: y.name, icon: y.id }} size={40} /></span>
+                      <b>رمز {y.name}</b><small>{y.meaning}</small>
+                    </div>
+                  ))}
+                </div>
+              )}
               <div className="inventory-count"><span>ما جُمع</span><b>{pad2(rewards.length)} / 05</b></div>
             </>
           )}
