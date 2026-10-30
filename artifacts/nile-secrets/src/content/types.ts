@@ -8,7 +8,7 @@ export type PuzzleConfig =
   | { type: "choice";    question: string; options: Item[]; correct: string[]; multi?: boolean }
   | { type: "route";     nodes: { id: string; x: number; y: number; label: string; detail?: string }[]; pick: number; solution: string[] }
   | { type: "balance";   weights: { id: string; label: string; value: number }[]; target: number; maxItems?: number }
-  | { type: "tiles";     size: [number, number]; tiles: { id: string; rot: number }[]; solution: { id: string; rot: number }[] }
+  | { type: "tiles";     image?: string; size: [number, number]; tiles: { id: string; rot: number }[]; solution: { id: string; rot: number }[] }
   | { type: "memory";    pairs: Item[] }
   | { type: "cipher";    key: Item[]; cipherText: string[]; answer: string[] }
   | { type: "deduction"; rows: Item[]; cols: Item[]; solution: Record<string, string> }
