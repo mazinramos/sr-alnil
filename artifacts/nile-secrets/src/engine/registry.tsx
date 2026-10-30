@@ -14,15 +14,21 @@ const demos = import.meta.glob<{ demo: PuzzleConfig }>("../puzzles/*/demo.ts");
 const typeOf = (path: string) => path.split("/")[2];
 
 function Missing({ onResult, config }: PuzzleProps<PuzzleConfig>) {
+  // لا يظهر إلا لنوع غير موجود ملفه فعلاً. في الإنتاج رسالة هادئة بدون كلمات تطوير.
+  if (!import.meta.env.DEV) {
+    return (
+      <div className="rounded-xl border border-dashed border-[var(--ember)] p-5 text-center">
+        <p className="font-bold">هذا اللغز غير متاح حالياً.</p>
+      </div>
+    );
+  }
   return (
     <div className="rounded-xl border border-dashed border-[var(--ember)] p-5 text-center">
       <p className="mb-1 font-bold">هذا اللغز قيد التطوير</p>
       <p className="mb-3 text-sm opacity-80">النوع: {config.type}</p>
-      {import.meta.env.DEV && (
-        <button className="rounded-lg bg-[var(--ember)] px-4 font-bold text-[var(--ink)]" onClick={() => onResult(true)}>
-          تخطّي (للتطوير فقط)
-        </button>
-      )}
+      <button className="rounded-lg bg-[var(--ember)] px-4 font-bold text-[var(--ink)]" onClick={() => onResult(true)}>
+        تخطّي (للتطوير فقط)
+      </button>
     </div>
   );
 }
