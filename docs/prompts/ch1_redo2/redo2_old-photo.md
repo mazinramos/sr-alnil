@@ -8,7 +8,7 @@
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 1 — الطبقة B
 - الغرض: أيقونة قطعة الصورة القديمة في c1-l6 (memory).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, soft shading, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
