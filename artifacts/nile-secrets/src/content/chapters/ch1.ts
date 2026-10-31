@@ -45,6 +45,7 @@ const ch1: Chapter = {
       ],
       successText: "ثلاثة رموز، وكل واحد كان في مكان يشبهه. بدأت نور تفهم طريقة جدّتها في الإخفاء.",
     },
+    // allow-low-permutations
     {
       id: "c1-l2",
       chapter: 1,
