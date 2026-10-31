@@ -2,9 +2,9 @@
 
 > مولَّد آلياً بـ `python3 docs/prompts/make_status.py` (آخر تحديث 2026-10-31). لا تعدّله يدوياً. الحالة: **موجودة** (صورة فعلية) | **مؤقتة** (صورة من النسخة الأولى تُستبدل بنفس الاسم) | **ناقصة** (لا ملف؛ تسقط الواجهة لبديل). الطبقة A لازمة للتسليم.
 
-**المخطّط 101 صورة:** موجودة 27، مؤقتة 4، ناقصة 70.
-**الطبقة A:** موجودة 18 من 60، مؤقتة 4، ناقصة 38.
-**الطبقة B:** موجودة 9 من 41، مؤقتة 0، ناقصة 32.
+**المخطّط 101 صورة:** موجودة 37، مؤقتة 3، ناقصة 61.
+**الطبقة A:** موجودة 22 من 60، مؤقتة 3، ناقصة 35.
+**الطبقة B:** موجودة 15 من 41، مؤقتة 0، ناقصة 26.
 
 ## دفعة الفصل 1 (27)
 
@@ -69,10 +69,10 @@
 
 | # | ID | النوع | الملف | الحالة | الطبقة |
 |---|---|---|---|---|---|
-| 01 | `c3-l1` | خلفية | `c3/l1.webp` | مؤقتة | A |
-| 02 | `c3-l4` | خلفية | `c3/l4.webp` | ناقصة | A |
-| 03 | `c3-l7` | خلفية | `c3/l7.webp` | ناقصة | A |
-| 04 | `halima-neutral` | بورتريه | `chars/halima-neutral.webp` | ناقصة | A |
+| 01 | `c3-l1` | خلفية | `c3/l1.webp` | موجودة | A |
+| 02 | `c3-l4` | خلفية | `c3/l4.webp` | موجودة | A |
+| 03 | `c3-l7` | خلفية | `c3/l7.webp` | موجودة | A |
+| 04 | `halima-neutral` | بورتريه | `chars/halima-neutral.webp` | موجودة | A |
 | 05 | `symbol-c3` | أيقونة | `items/symbol-c3.webp` | ناقصة | A |
 | 06 | `bead-blue` | أيقونة | `items/bead-blue.webp` | ناقصة | A |
 | 07 | `copper-weight` | أيقونة | `items/copper-weight.webp` | ناقصة | A |
@@ -81,12 +81,12 @@
 | 10 | `spice-cinnamon` | أيقونة | `items/spice-cinnamon.webp` | ناقصة | A |
 | 11 | `spice-clove` | أيقونة | `items/spice-clove.webp` | ناقصة | A |
 | 12 | `spice-pepper` | أيقونة | `items/spice-pepper.webp` | ناقصة | A |
-| 13 | `c3-l2` | خلفية | `c3/l2.webp` | ناقصة | B |
-| 14 | `c3-l3` | خلفية | `c3/l3.webp` | ناقصة | B |
-| 15 | `c3-l5` | خلفية | `c3/l5.webp` | ناقصة | B |
-| 16 | `c3-l6` | خلفية | `c3/l6.webp` | ناقصة | B |
-| 17 | `halima-smiling` | بورتريه | `chars/halima-smiling.webp` | ناقصة | B |
-| 18 | `yunus-smiling` | بورتريه | `chars/yunus-smiling.webp` | ناقصة | B |
+| 13 | `c3-l2` | خلفية | `c3/l2.webp` | موجودة | B |
+| 14 | `c3-l3` | خلفية | `c3/l3.webp` | موجودة | B |
+| 15 | `c3-l5` | خلفية | `c3/l5.webp` | موجودة | B |
+| 16 | `c3-l6` | خلفية | `c3/l6.webp` | موجودة | B |
+| 17 | `halima-smiling` | بورتريه | `chars/halima-smiling.webp` | موجودة | B |
+| 18 | `yunus-smiling` | بورتريه | `chars/yunus-smiling.webp` | موجودة | B |
 | 19 | `ledger-page` | أيقونة | `items/ledger-page.webp` | ناقصة | B |
 | 20 | `tea-glass` | أيقونة | `items/tea-glass.webp` | ناقصة | B |
 
@@ -134,6 +134,6 @@
 
 ## المتبقي (غير موجودة) حسب الأولوية
 
-**الطبقة A (42):** `c2-l1` (مؤقتة), `c2-l4`, `c2-l7`, `saif-neutral`, `symbol-c2`, `star-sign-1`, `star-sign-2`, `star-sign-3`, `star-sign-4`, `star-sign-5`, `c3-l1` (مؤقتة), `c3-l4`, `c3-l7`, `halima-neutral`, `symbol-c3`, `bead-blue`, `copper-weight`, `weaver-shuttle`, `spice-cumin`, `spice-cinnamon`, `spice-clove`, `spice-pepper`, `c4-l1` (مؤقتة), `c4-l4`, `c4-l7`, `othman-neutral`, `symbol-c4`, `carve-light`, `carve-wing`, `carve-channel`, `carve-anchor`, `c4-l2-puzzle`, `carve-star`, `carve-reed`, `c5-l1`, `c5-l4`, `c5-l7` (مؤقتة), `rihab-neutral`, `symbol-c5`, `notebook-safiya`, `brass-scale`, `stone-key`
+**الطبقة A (38):** `c2-l1` (مؤقتة), `c2-l4`, `c2-l7`, `saif-neutral`, `symbol-c2`, `star-sign-1`, `star-sign-2`, `star-sign-3`, `star-sign-4`, `star-sign-5`, `symbol-c3`, `bead-blue`, `copper-weight`, `weaver-shuttle`, `spice-cumin`, `spice-cinnamon`, `spice-clove`, `spice-pepper`, `c4-l1` (مؤقتة), `c4-l4`, `c4-l7`, `othman-neutral`, `symbol-c4`, `carve-light`, `carve-wing`, `carve-channel`, `carve-anchor`, `c4-l2-puzzle`, `carve-star`, `carve-reed`, `c5-l1`, `c5-l4`, `c5-l7` (مؤقتة), `rihab-neutral`, `symbol-c5`, `notebook-safiya`, `brass-scale`, `stone-key`
 
-**الطبقة B (32):** `c2-l2`, `c2-l3`, `c2-l5`, `c2-l6`, `adam-smiling`, `adam-serious`, `knot-red`, `knot-blue`, `knot-yellow`, `knot-green`, `river-stone`, `cargo-sack`, `c3-l2`, `c3-l3`, `c3-l5`, `c3-l6`, `halima-smiling`, `yunus-smiling`, `ledger-page`, `tea-glass`, `c4-l2`, `c4-l3`, `c4-l5`, `c4-l6`, `hala-serious`, `torch`, `carve-smooth`, `c5-l2`, `c5-l3`, `c5-l5`, `c5-l6`, `rihab-serious`
+**الطبقة B (26):** `c2-l2`, `c2-l3`, `c2-l5`, `c2-l6`, `adam-smiling`, `adam-serious`, `knot-red`, `knot-blue`, `knot-yellow`, `knot-green`, `river-stone`, `cargo-sack`, `ledger-page`, `tea-glass`, `c4-l2`, `c4-l3`, `c4-l5`, `c4-l6`, `hala-serious`, `torch`, `carve-smooth`, `c5-l2`, `c5-l3`, `c5-l5`, `c5-l6`, `rihab-serious`

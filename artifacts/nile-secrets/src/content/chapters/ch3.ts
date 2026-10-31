@@ -183,11 +183,11 @@ const ch3: Chapter = {
         needed: 5,
         // إحداثيات F المؤقتة (docs/prompts/ch3/15_c3-l5.md): تُضبط عبر /preview/coords بعد وصول c3/l5.webp. طاقة القماش على الرفّ (72,25) ليست هدفاً.
         targets: [
-          { id: "beads", label: "الخرز الأزرق", x: 12, y: 38, r: 6.5 },
-          { id: "bell", label: "الجرس النحاسي", x: 45, y: 14, r: 6 },
-          { id: "lamp", label: "المصباح الطيني", x: 86, y: 48, r: 6.5 },
-          { id: "spool", label: "بكرة الخيط الأصفر", x: 30, y: 62, r: 6.5 },
-          { id: "stool", label: "المقعد والقماش", x: 60, y: 70, r: 7 },
+          { id: "beads", label: "الخرز الأزرق", x: 16, y: 38, r: 6.5 },
+          { id: "bell", label: "الجرس النحاسي", x: 55, y: 18, r: 6 },
+          { id: "lamp", label: "المصباح الطيني", x: 90, y: 48, r: 6.5 },
+          { id: "spool", label: "بكرة الخيط الأصفر", x: 31, y: 54, r: 6.5 },
+          { id: "stool", label: "المقعد والقماش", x: 75, y: 69, r: 7 },
         ],
       },
       hints: [

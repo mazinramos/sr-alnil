@@ -2,7 +2,7 @@
 
 > مولَّد آلياً بـ `npm run report:assets` — لا تعدّلي يدوياً. الأولوية **A** = مستعمل في l1 أو l4 أو l7 (طبقة التسليم الأدنى).
 
-**المطلوب 71 ملفاً، الناقص 45** (منها أولوية A: 28) — مستويات في المحتوى: 35.
+**المطلوب 71 ملفاً، الناقص 38** (منها أولوية A: 25) — مستويات في المحتوى: 35.
 
 ## شاشات الواجهة (1536×1024)
 
@@ -18,12 +18,6 @@
 | 2 | B | `public/art/c2/l3.webp` | c2-l3 |
 | 2 | B | `public/art/c2/l5.webp` | c2-l5 |
 | 2 | B | `public/art/c2/l6.webp` | c2-l6 |
-| 3 | A | `public/art/c3/l4.webp` | c3-l4 |
-| 3 | A | `public/art/c3/l7.webp` | c3-l7 |
-| 3 | B | `public/art/c3/l2.webp` | c3-l2 |
-| 3 | B | `public/art/c3/l3.webp` | c3-l3 |
-| 3 | B | `public/art/c3/l5.webp` | c3-l5 |
-| 3 | B | `public/art/c3/l6.webp` | c3-l6 |
 | 4 | A | `public/art/c4/l4.webp` | c4-l4 |
 | 4 | A | `public/art/c4/l7.webp` | c4-l7 |
 | 4 | B | `public/art/c4/l2.webp` | c4-l2 |
@@ -42,7 +36,6 @@
 | الفصل | أولوية | الملف | مستعمل في |
 |---|---|---|---|
 | 2 | A | `public/art/chars/saif-neutral.webp` | c2-l1، c2-l2، c2-l3، c2-l4، c2-l5، c2-l6، c2-l7 |
-| 3 | A | `public/art/chars/halima-neutral.webp` | c3-l4، c3-l6 |
 | 4 | A | `public/art/chars/othman-neutral.webp` | c4-l1، c4-l2، c4-l3، c4-l4، c4-l5، c4-l7 |
 | 5 | A | `public/art/chars/rihab-neutral.webp` | c5-l1، c5-l2، c5-l3، c5-l4، c5-l5، c5-l6، c5-l7 |
 
