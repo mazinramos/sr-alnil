@@ -1,0 +1,280 @@
+// ============================================================================
+// قالب فصل جديد — سرّ النيل.   لا يُحمَّل في اللعبة (امتداده .txt).
+// الاستعمال:  node scripts/new-chapter.mjs 6     ← يولّد src/content/chapters/ch6.ts
+// كل {{N}} يُستبدل برقم الفصل. القالب يعمل كما هو (يمرّ test:content ويُلعَب)،
+// لكن نصوصه مؤقتة: استبدلي كل ما فيه علامة «غيّري» قبل التسليم.
+//
+// قواعد عامة يفحصها `npm run test:content` (ويفشل عند مخالفتها):
+//  • اسم الملف chN.ts و id الفصل = N.      • id المستوى = c{N}-l{index} حرفياً.
+//  • من 1 إلى 7 مستويات، index من 1 إلى 7، والمستوى 7 بوس: isBoss: true و reward.
+//  • hints ثلاثة نصوص غير فارغة بالضبط.     • dialogue من 2 إلى 4 أسطر.
+//  • clues دليلان على الأقل (والأفضل 2–3؛ الرابع يعطي تحذيراً فقط).
+//  • معرّفات الأدلة فريدة في اللعبة كلها (استعملي c{N}-l{i}-k{j}).
+//  • background يبدأ بـ /art/.   • حل اللغز موجود فعلاً بين عناصره.
+// ما لا يفحصه الفاحص (راجعيه يدوياً): أن الحل وحيد، وأن النص الظاهر لا يكشف الحل،
+// وأن الأدلة تكفي لاستنتاج الحل، وأن speaker يطابق اسم شخصية في CHARACTERS.
+// ============================================================================
+import type { Chapter } from "../types";
+
+const ch{{N}}: Chapter = {
+  id: {{N}},                                   // يجب أن يساوي رقم الملف
+  title: "الفصل {{N}} — غيّري العنوان",        // يظهر على الخريطة وفي رأس الصفحة
+  location: "غيّري المكان",                    // سطر قصير تحت العنوان
+  summary: "غيّري: جملتان عن قصة الفصل بلا كشف الحل.",
+  mapPiece: { id: "map-piece-{{N}}", label: "قطعة الخريطة رقم {{N}}" }, // id فريد عبر الفصول
+  levels: [
+    // ───────────── المستوى 1 — matching (الطبقة A) ─────────────
+    {
+      id: "c{{N}}-l1",
+      chapter: {{N}},
+      index: 1,
+      title: "غيّري: عنوان المستوى 1",
+      difficulty: 2,                           // 1..5 (سهل → صعب)
+      background: "/art/c{{N}}/l1.webp",       // 1536×1024 (3:2) ≤250KB؛ تُنتج لاحقاً
+      character: "nour",                       // معرّف في CHARACTERS (engine/characters.ts)
+      dialogue: [                              // 2–4 أسطر؛ speaker = اسم الشخصية كما في CHARACTERS
+        { speaker: "نور", text: "غيّري: سطر أول يقدّم المشهد." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ يوجّه دون كشف الحل." },
+      ],
+      objective: "غيّري: جملة واحدة تقول ما على اللاعبة أن تفعله.",
+      clues: [                                 // 2–3 دلائل، والحل يُستنتج منها وحدها
+        { id: "c{{N}}-l1-k1", title: "دليل 1", text: "غيّري: «ب» يخصّ «أ».", source: "المصدر" },
+        { id: "c{{N}}-l1-k2", title: "دليل 2", text: "غيّري: «د» يخصّ «ج».", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "matching",
+        left: [
+          { id: "a", label: "غيّري 1", icon: "icon-a" },   // icon: معرّف أيقونة → /art/items/icon-a.webp (256×256)
+          { id: "b", label: "غيّري 2", icon: "icon-b" },
+          { id: "c", label: "غيّري 3" },                   // بدون icon يظهر النص فقط
+        ],
+        right: [
+          { id: "x", label: "مصدر 1" },
+          { id: "y", label: "مصدر 2" },
+          { id: "z", label: "مصدر 3" },
+        ],
+        solution: { a: "x", b: "y", c: "z" },              // كل left له قيمة من right
+      },
+      hints: [                                 // ثلاثة بالضبط؛ الثالث وحده يجوز أن يكشف الحل
+        "تلميح 1: اتجاه عام بلا تفاصيل.",
+        "تلميح 2: يضيّق الاحتمالات.",
+        "تلميح 3: يكشف الحل.",
+      ],
+      successText: "غيّري: جملة تُغلق المشهد.",
+    },
+
+    // ───────────── المستوى 2 — deduction ─────────────
+    {
+      id: "c{{N}}-l2",
+      chapter: {{N}},
+      index: 2,
+      title: "غيّري: عنوان المستوى 2",
+      difficulty: 3,
+      background: "/art/c{{N}}/l2.webp",
+      character: "nour",
+      dialogue: [
+        { speaker: "نور", text: "غيّري: سطر أول." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ." },
+      ],
+      objective: "غيّري: اعرفي من يرتبط بماذا.",
+      clues: [
+        // تحقّقي بالحصر أن الدلائل تعطي حلاً واحداً فقط (الجدول 3×3 = 6 احتمالات)
+        { id: "c{{N}}-l2-k1", title: "دليل 1", text: "غيّري: الصف الأول ليس العمود الثاني ولا الثالث.", source: "المصدر" },
+        { id: "c{{N}}-l2-k2", title: "دليل 2", text: "غيّري: الصف الثاني ليس العمود الثالث.", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "deduction",
+        rows: [{ id: "r1", label: "صف 1" }, { id: "r2", label: "صف 2" }, { id: "r3", label: "صف 3" }],
+        cols: [{ id: "c1", label: "عمود 1" }, { id: "c2", label: "عمود 2" }, { id: "c3", label: "عمود 3" }],
+        solution: { r1: "c1", r2: "c2", r3: "c3" },       // تقابل كامل: لا يتكرر عمود
+      },
+      hints: ["تلميح 1.", "تلميح 2.", "تلميح 3: الحل."],
+      successText: "غيّري.",
+    },
+
+    // ───────────── المستوى 3 — balance ─────────────
+    {
+      id: "c{{N}}-l3",
+      chapter: {{N}},
+      index: 3,
+      title: "غيّري: عنوان المستوى 3",
+      difficulty: 3,
+      background: "/art/c{{N}}/l3.webp",
+      character: "nour",
+      dialogue: [
+        { speaker: "نور", text: "غيّري: سطر أول." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ." },
+      ],
+      objective: "غيّري: ضعي أوزاناً تساوي الهدف.",
+      clues: [
+        { id: "c{{N}}-l3-k1", title: "الهدف", text: "غيّري: على الكفة الأخرى اثنتا عشرة وحدة.", source: "الميزان" },
+        { id: "c{{N}}-l3-k2", title: "الحد", text: "غيّري: لا تتّسع الكفة لأكثر من قطعتين.", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "balance",
+        target: 12,
+        maxItems: 2,                              // تحقّقي أن المجموعة وحيدة: هنا 5+7 فقط
+        weights: [
+          { id: "w3", label: "وزن 3", value: 3 },
+          { id: "w5", label: "وزن 5", value: 5 },
+          { id: "w7", label: "وزن 7", value: 7 },
+          { id: "w11", label: "وزن 11", value: 11 },
+        ],
+      },
+      hints: ["تلميح 1.", "تلميح 2.", "تلميح 3: 5 و7."],
+      successText: "غيّري.",
+    },
+
+    // ───────────── المستوى 4 — memory (الطبقة A) ─────────────
+    {
+      id: "c{{N}}-l4",
+      chapter: {{N}},
+      index: 4,
+      title: "غيّري: عنوان المستوى 4",
+      difficulty: 3,
+      background: "/art/c{{N}}/l4.webp",
+      character: "nour",
+      dialogue: [
+        { speaker: "نور", text: "غيّري: سطر أول." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ." },
+      ],
+      objective: "غيّري: اجمعي كل عنصر مع قرينه.",
+      clues: [
+        { id: "c{{N}}-l4-k1", title: "دليل 1", text: "غيّري: وصف يساعد على التذكّر.", source: "المصدر" },
+        { id: "c{{N}}-l4-k2", title: "دليل 2", text: "غيّري: وصف ثانٍ.", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "memory",
+        pairs: [                                  // كل عنصر يصير بطاقتين
+          { id: "m1", label: "عنصر 1" },
+          { id: "m2", label: "عنصر 2" },
+          { id: "m3", label: "عنصر 3" },
+          { id: "m4", label: "عنصر 4" },
+        ],
+      },
+      hints: ["تلميح 1.", "تلميح 2.", "تلميح 3."],
+      successText: "غيّري.",
+    },
+
+    // ───────────── المستوى 5 — hotspot ─────────────
+    {
+      id: "c{{N}}-l5",
+      chapter: {{N}},
+      index: 5,
+      title: "غيّري: عنوان المستوى 5",
+      difficulty: 4,
+      background: "/art/c{{N}}/l5.webp",
+      character: "nour",
+      dialogue: [
+        { speaker: "نور", text: "غيّري: سطر أول." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ." },
+      ],
+      objective: "غيّري: اعثري على العناصر في المشهد.",
+      clues: [
+        { id: "c{{N}}-l5-k1", title: "دليل 1", text: "غيّري: ما الذي تبحثين عنه.", source: "المصدر" },
+        { id: "c{{N}}-l5-k2", title: "دليل 2", text: "غيّري: أين تنظرين.", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "hotspot",
+        needed: 3,
+        // x,y,r بالنسبة المئوية (0–100) من الصورة. لا تخمّني: بعد وصول الصورة افتحي
+        // #/preview/coords?img=/art/c{{N}}/l5.webp واضغطي على كل هدف لتقرئي الإحداثيات.
+        targets: [
+          { id: "t1", label: "هدف 1", x: 25, y: 35, r: 6 },
+          { id: "t2", label: "هدف 2", x: 60, y: 50, r: 6 },
+          { id: "t3", label: "هدف 3", x: 75, y: 25, r: 6 },
+        ],
+      },
+      hints: ["تلميح 1.", "تلميح 2.", "تلميح 3."],
+      successText: "غيّري.",
+    },
+
+    // ───────────── المستوى 6 — choice (multi) ─────────────
+    {
+      id: "c{{N}}-l6",
+      chapter: {{N}},
+      index: 6,
+      title: "غيّري: عنوان المستوى 6",
+      difficulty: 4,
+      background: "/art/c{{N}}/l6.webp",
+      character: "nour",
+      dialogue: [
+        { speaker: "نور", text: "غيّري: سطر أول." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ." },
+      ],
+      objective: "غيّري: اختاري الإجابتين الصحيحتين.",
+      clues: [
+        { id: "c{{N}}-l6-k1", title: "دليل 1", text: "غيّري: ما يستبعد خيارين.", source: "المصدر" },
+        { id: "c{{N}}-l6-k2", title: "دليل 2", text: "غيّري: ما يؤكّد الصحيحين.", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "choice",
+        multi: true,                              // لازم true إن كان correct أكثر من واحد
+        question: "غيّري: نص السؤال؟",
+        options: [                                // المشتّتات يجب أن تبدو معقولة
+          { id: "a", label: "خيار أ" },
+          { id: "b", label: "خيار ب" },
+          { id: "c", label: "خيار ج" },
+          { id: "d", label: "خيار د" },
+          { id: "e", label: "خيار هـ" },
+        ],
+        correct: ["b", "d"],
+      },
+      hints: ["تلميح 1.", "تلميح 2.", "تلميح 3: ب ود (اقتبسي نص الخيارين لا حروفهما: الواجهة لا تعرض الحروف)."],
+      successText: "غيّري.",
+    },
+
+    // ───────────── المستوى 7 — jigsaw (بوس، الطبقة A) ─────────────
+    {
+      id: "c{{N}}-l7",
+      chapter: {{N}},
+      index: 7,
+      title: "غيّري: عنوان البوس",
+      difficulty: 5,
+      background: "/art/c{{N}}/l7.webp",
+      character: "nour",
+      isBoss: true,                               // إلزامي في المستوى 7
+      dialogue: [
+        { speaker: "نور", text: "غيّري: سطر أول." },
+        { speaker: "نور", text: "غيّري: سطر ثانٍ." },
+      ],
+      objective: "غيّري: ركّبي قطعة الخريطة.",
+      clues: [
+        { id: "c{{N}}-l7-k1", title: "دليل 1", text: "غيّري: كيف تبدئين.", source: "المصدر" },
+        { id: "c{{N}}-l7-k2", title: "دليل 2", text: "غيّري: ما يربط الأجزاء.", source: "المصدر" },
+      ],
+      puzzle: {
+        type: "jigsaw",
+        // الفصول 1–5 تستعمل "/art/ui/map-full.webp#cell=N" (الخلايا 1..6 فقط).
+        // الفصل 6 فما فوق: صورة قطعة خاصة بالفصل بلا #cell (1024×1024 أو 3:2). قرار نهائي: docs/EXPANSION_GAPS.md §5.
+        image: "/art/c{{N}}/map-piece.webp",
+        pieces: 6,                                // 2..15 (مثال: 6 = 2×3، 9 = 3×3، 12 = 4×3)
+      },
+      hints: ["تلميح 1.", "تلميح 2.", "تلميح 3."],
+      successText: "غيّري.",
+      reward: { id: "map-piece-{{N}}", label: "قطعة الخريطة رقم {{N}}" }, // إلزامي في البوس؛ يطابق mapPiece
+    },
+  ],
+};
+
+export default ch{{N}};
+
+/* ============================================================================
+   مرجع: صيغ الألغاز الاثنا عشر (انسخي ما تحتاجين إلى puzzle)
+   ----------------------------------------------------------------------------
+   sequence : { type:"sequence", items:[{id,label}], solution:["id",...] }
+   hotspot  : { type:"hotspot", needed:3, targets:[{id,label,x,y,r}] }
+   matching : { type:"matching", left:[Item], right:[Item], solution:{leftId:rightId} }
+   codelock : { type:"codelock", length:4, symbols:[Item], solution:["id",...] }   // زر التأكيد «افتحي»
+   choice   : { type:"choice", question, options:[Item], correct:["id"], multi?:true }
+   route    : { type:"route", pick:5, nodes:[{id,x,y,label,detail?}], solution:["id",...] }
+   balance  : { type:"balance", target:30, maxItems?:3, weights:[{id,label,value}] }
+   tiles    : { type:"tiles", image?:"/art/cN/lX-puzzle.webp", size:[3,3],
+                tiles:[{id,rot}], solution:[{id,rot}] }     // ترتيب solution = موضع القصّ من الصورة
+   memory   : { type:"memory", pairs:[Item] }
+   cipher   : { type:"cipher", key:[{id,label,detail?}], cipherText:["k1","k2","|","k3"],
+                answer:["ا","ل","|","م"] }   // "|" فاصل كلمات؛ detail = الحرف المقابل ويجب أن يطابق answer
+   deduction: { type:"deduction", rows:[Item], cols:[Item], solution:{rowId:colId} }
+   jigsaw   : { type:"jigsaw", image:"/art/ui/map-full.webp#cell=N", pieces:2..15 }
+   Item = { id, label, detail?, icon? }   // icon: معرّف أيقونة أو مسار يبدأ بـ /
+   ============================================================================ */
