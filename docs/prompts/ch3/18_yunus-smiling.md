@@ -1,6 +1,6 @@
 # صورة 18 — yunus-smiling
 
-> **الخطوة 1:** افتح محادثة جديدة في جيمناي وارفق: `00_RULES_FOR_GEMINI.md` + صورة المرجع `_references/nour.png`.
+> **الخطوة 1:** افتح محادثة جديدة في جيمناي وارفق: `00_RULES_FOR_GEMINI.md` + `_references/nour.png` + `_references/yunus-neutral.png` (وجه الشخصية نفسها، ليبقى الوجه ثابتاً).
 > **الخطوة 2:** قل لجيمناي: «نفّذ هذا الملف: ولّد صورة واحدة فقط، واكتب تحتها اسم الملف: yunus-smiling.png».
 > **الخطوة 3:** حين ترضى عن الصورة احفظها باسم **`yunus-smiling.png`** (هذا الاسم بالضبط) وأرسلها لـ Claude A ليحوّلها ويضعها في `public/art/chars/yunus-smiling.webp`.
 
