@@ -256,20 +256,20 @@ Constraints: no text, no letters, no numbers, no people, no faces, no watermark.
 - الملف: `public/art/c4/l3.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 4 — الطبقة B
-- الغرض: خلفية c4-l3 «مفتاح النقوش» (cipher): عمود حجري عليه نقش ومفتاح.
+- الغرض: خلفية c4-l3 «مفتاح النقوش» (cipher): عمود حجري عليه نقش ومفتاح. شريط النقش بعشرة رموز هندسية تطابق مفتاح الشفرة في `ch4.ts` (تحديث E 31/10).
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: Inside a ruined hall of the old river ruins, a tall round standing sandstone column in the center catches a single shaft of warm golden light from a high gap in the ceiling. Carved around the column at eye level is a horizontal band of eight small distinct abstract pictograms in two rows of four, simple geometric shapes only (a circle, a triangle, a wavy line, a cross, a diamond, a square, a crescent and a dot ring), none of them letters. Cool gray-ochre stone, warm violet shadows, sand on the floor, a fallen block beside the base, faint dust in the beam. No people.
+Scene: Inside a ruined hall of the old river ruins, a tall round standing sandstone column in the center catches a single shaft of warm golden light from a high gap in the ceiling. Carved around the column at eye level is a horizontal band of ten small distinct pictograms in two rows of five, simple geometric shapes only and none of them letters: an upright triangle, a diamond, a square, a solid circle, an inverted triangle, four circles each half-filled in a different direction (left half, right half, top half, bottom half), and a square inside a square. Cool gray-ochre stone, warm violet shadows, sand on the floor, a fallen block beside the base, faint dust in the beam. No people.
 Composition: camera at eye level facing the column, the carved band at about x 50 percent, y 42 percent, large enough to read the shapes. A floor line gives a horizon-like division at about 66 percent. The lower third is the empty sandy floor.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
-  - شريط النقش على العمود x≈50%,y≈42% بثمانية رموز هندسية في صفين
-- تجنّب: حروف أو أحرف شبه عربية في النقش، أشخاص، رموز كثيرة صغيرة لا تُقرأ، ضوء نيون
+  - شريط النقش على العمود x≈50%,y≈42% بعشرة رموز هندسية في صفين من خمسة: مثلث، معيّن، مربع، دائرة ممتلئة، مثلث مقلوب، أربع دوائر نصف ممتلئة باتجاهات مختلفة، مربع داخل مربع
+- تجنّب: حروف أو أحرف شبه عربية في النقش، رموز إيموجي أو نجوم ورموز زخرفية معقّدة، أشخاص، رموز كثيرة صغيرة لا تُقرأ، ضوء نيون
 - فحص القبول:
-  1. عمود حجري بشريط من ثمانية رموز هندسية بسيطة (لا حروف)
+  1. عمود حجري بشريط من عشرة رموز هندسية بسيطة (لا حروف) في صفين
   2. شعاع ضوء دافئ وألوان حجر هادئة
   3. لا نص ولا أشخاص والثلث السفلي هادئ
 
@@ -442,6 +442,6 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 ## أسئلة وملاحظات لأصحاب الفصول
 1. **c4-l4 (A):** تأكيد تفسيري: المحطات منصّات حجرية مربعة بمشاعل قائمة في قاعة مرئية من زاوية عالية (لا ممر بمنظور مباشر)، لأن الإحداثيات تتبدّل يميناً ويساراً بعرض واسع. هل هذا مقصودك؟
 2. **c4-l1 (A):** الحجر الأملس في الطرف الأيسر بعد المرسى؛ يوافق دليل هالة «بعده حجر أملس».
-3. **c4-l3 (A):** الرموز الثمانية على العمود هندسية مجرّدة (دائرة، مثلث، موجة، صليب، معيّن، مربع، هلال، حلقة نقطة)؛ لو تريد نقوش محدّدة أرسلها.
+3. **c4-l3 (E، 31/10):** شريط العمود صار بعشرة رموز هندسية تطابق مفتاح الشفرة الجديد في `ch4.ts` (▲ ◆ ■ ● ▼ وأربع دوائر نصف ممتلئة ومربع داخل مربع). لو غيّرت الرموز مجدداً أخبرني.
 4. **c4-l6 (A):** أربع مفاتيح وأربع فتحات مخازن. لو عدد المخازن غير ذلك أخبرني.
 5. **أيقونات `carve-*`:** تنتظر إضافة `icon:` في `ch4.ts` بعد وصول الصور (قرار A).
