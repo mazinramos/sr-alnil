@@ -28,11 +28,11 @@ export default function Deduction({ config, onResult }: PuzzleProps<Cfg>) {
   const confirm = () => {
     if (done) return;
     if (rows.some((r) => rowConflict(r.id)) || cols.some((c) => colConflict(c.id))) {
-      setMsg("في كل صف وكل عمود علامة ✓ واحدة فقط. راجعي العلامات المكرّرة.");
+      setMsg("في كل صف وكل عمود علامة صح واحدة فقط. راجعي العلامات المكرّرة.");
       return;
     }
     if (ticks.length < rows.length) {
-      setMsg("ما زال هناك صفوف بلا ✓. استعيني بالأدلة أعلاه.");
+      setMsg("ما زال هناك صفوف بلا علامة صح. استعيني بالأدلة أعلاه.");
       return;
     }
     const ok = rows.every((r) => marks[key(r.id, solution[r.id])] === 2);
@@ -40,12 +40,17 @@ export default function Deduction({ config, onResult }: PuzzleProps<Cfg>) {
     else { setMsg("في الجدول علامة لا تتفق مع الأدلة. اقرئي الأدلة مرة أخرى."); onResult(false); }
   };
 
-  const glyph = (v: Mark) => (v === 2 ? "✓" : v === 1 ? "✗" : "");
+  const glyph = (v: Mark) =>
+    v === 2 ? (
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+    ) : v === 1 ? (
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
+    ) : null;
 
   return (
     <div dir="rtl" className="mx-auto w-full max-w-xl">
       <p className="mb-2 text-center text-sm opacity-80">
-        اضغطي الخانة: مرة لـ ✗ (غير ممكن)، مرتين لـ ✓ (مؤكّد)، ثلاثاً للمسح.
+        اضغطي الخانة: مرة لعلامة الخطأ (غير ممكن)، مرتين لعلامة الصح (مؤكّد)، ثلاثاً للمسح.
       </p>
 
       <div className="overflow-x-auto">
