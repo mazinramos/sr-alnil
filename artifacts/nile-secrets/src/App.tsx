@@ -10,9 +10,19 @@ import CoordsPage from "./engine/CoordsPage";
 import TitleScreen from "./engine/TitleScreen";
 import EndingScreen from "./engine/EndingScreen";
 import RewardScreen from "./engine/RewardScreen";
+import ErrorBoundary from "./engine/ErrorBoundary";
 import { installClickSound } from "./engine/audio";
 
 export default function App() {
+  const route = useRoute();
+  return (
+    <ErrorBoundary variant="full" resetKey={route.path.join("/")}>
+      <Routes />
+    </ErrorBoundary>
+  );
+}
+
+function Routes() {
   const route = useRoute();
   const progress = useProgress();
 

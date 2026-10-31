@@ -18,4 +18,8 @@ for (const needle of [
 ]) {
   assert.ok(out.includes(needle), `لم يُكتشف: ${needle}`);
 }
+// فحص الاحتمالات: c3-l1 يُحذَّر، c3-l2 (بتعليق الاستثناء) وc3-l3 (360 احتمالاً) لا
+assert.ok(/! c3-l1 — sequence: 6 احتمالاً/.test(out), "c3-l1 يجب أن يُحذَّر");
+assert.ok(!/! c3-l2 /.test(out), "c3-l2 معلَّم بالاستثناء فلا يُحذَّر");
+assert.ok(!/! c3-l3 /.test(out), "c3-l3 فيه 360 احتمالاً فلا يُحذَّر");
 console.log("content selftest: OK");

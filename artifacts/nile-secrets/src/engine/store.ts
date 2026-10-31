@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from "react";
 import { getOrderedLevelIds } from "./content";
 import { chapterLevelIds, isChapterUnlockedIn, isLevelUnlockedIn, unlockedIn } from "./unlock";
-import { STORAGE_KEY_V1, v1CompletedFromRaw } from "./migrate";
+import { STORAGE_KEY_V1, V1_DONE_KEY, v1CompletedFromRaw } from "./migrate";
 
 /** CONTRACT §4 */
 export type LevelResult = { stars: 1 | 2 | 3; hints: number; attempts: number };
@@ -80,7 +80,10 @@ function read(): ProgressV2 {
   try {
     const raw = localStorage.getItem(STORAGE_KEY_V2);
     if (!raw) {
+      // ترحيل V1 مرة واحدة فقط: بعد الترحيل أو «بدء من جديد» يُوضع V1_DONE_KEY فلا يُعاد الترحيل.
+      if (localStorage.getItem(V1_DONE_KEY)) return defaultProgress();
       const migrated = migrateV1(localStorage.getItem(STORAGE_KEY_V1));
+      try { localStorage.setItem(V1_DONE_KEY, "1"); } catch { storageOk = false; }
       if (Object.keys(migrated.completed).length) {
         migrated.lastLevel = Object.keys(migrated.completed)[0];
         try { localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(migrated)); } catch { storageOk = false; }
@@ -142,6 +145,8 @@ export function updateSettings(patch: Partial<ProgressV2["settings"]>) {
   set({ ...state, settings: { ...state.settings, ...patch } });
 }
 
+/** «بدء من جديد»: يمسح V2 ويمنع إعادة ترحيل V1 تلقائياً (مفتاح V1 نفسه لا يُمسح). */
 export function resetProgress() {
+  try { localStorage.setItem(V1_DONE_KEY, "1"); } catch { storageOk = false; }
   set(defaultProgress());
 }

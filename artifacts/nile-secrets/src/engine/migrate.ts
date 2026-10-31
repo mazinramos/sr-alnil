@@ -2,6 +2,8 @@ import type { LevelResult } from "./store";
 
 /** مفتاح تخزين النسخة الأولى (ريبلت) وشكلها: { completedStages: ("village"|"island"|"market"|"ruins"|"cove")[] } */
 export const STORAGE_KEY_V1 = "nile-secrets-progress-v1";
+/** علامة «انتهى النظر في V1»: تُوضع بعد الترحيل أو بعد «بدء من جديد» كي لا يُعاد الترحيل. */
+export const V1_DONE_KEY = "nile-secrets-v1-done";
 
 /** المراحل الخمس القديمة ← المستويات الجديدة (CONTRACT §4). */
 export const V1_STAGE_TO_LEVEL: Record<string, string> = {

@@ -6,7 +6,7 @@ import { isChapterUnlocked, isLevelUnlocked, useProgress } from "./store";
 import { chapterLevelIds } from "./unlock";
 import { SettingsButton, SettingsDialog } from "./SettingsDialog";
 import { Drawer } from "./Drawers";
-import { layered, pad2, STOP_ART } from "./legacyArt";
+import { pad2, STOP_ART, useArt } from "./legacyArt";
 
 /** مستويات الفصل على مسار النهر بنفس لغة تصميم ريبلت. المستوى 7 (boss) أكبر وبعلم. */
 export default function LevelMap({ chapter }: { chapter: number }) {
@@ -86,9 +86,9 @@ export default function LevelMap({ chapter }: { chapter: number }) {
                   aria-label={`${l.title}${done ? ` — ${done.stars} من 3 نجوم` : open ? "" : " — مقفل"}`}
                   onClick={() => navigate(`/level/${l.id}`)}
                 >
-                  <span className="lv-thumb" style={{ backgroundImage: layered(l.background, art) }}>
+                  <Thumb src={l.background} fallback={art}>
                     {!open ? <LockKeyhole size={18} /> : l.isBoss ? <Flag size={24} /> : i + 1}
-                  </span>
+                  </Thumb>
                   <span className="lv-label">{l.title}</span>
                   {done && (
                     <span className="lv-stars" aria-hidden>
@@ -108,4 +108,10 @@ export default function LevelMap({ chapter }: { chapter: number }) {
       </section>
     </main>
   );
+}
+
+/** صورة مصغّرة للمستوى: تُحمَّل خلفية المستوى، والبديل القديم لو غابت. */
+function Thumb({ src, fallback, children }: { src: string; fallback: string; children: React.ReactNode }) {
+  const bg = useArt(src, fallback);
+  return <span className="lv-thumb" style={{ backgroundImage: bg }}>{children}</span>;
 }

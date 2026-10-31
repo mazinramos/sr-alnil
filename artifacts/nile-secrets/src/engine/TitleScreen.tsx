@@ -3,16 +3,17 @@ import { ChevronLeft } from "lucide-react";
 import { navigate } from "./router";
 import { resetProgress, useProgress } from "./store";
 import { ConfirmDialog } from "./Drawers";
-import { layered, STOP_ART } from "./legacyArt";
+import { STOP_ART, useArt } from "./legacyArt";
 
 export default function TitleScreen() {
   const p = useProgress();
   const [confirm, setConfirm] = useState(false);
   const started = Object.keys(p.completed).length > 0;
+  const titleArt = useArt("/art/ui/title.webp", STOP_ART[0]);
   return (
     <main className="game-shell" dir="rtl">
       <section className="title-screen">
-        <div className="title-art" style={{ backgroundImage: layered("/art/ui/title.webp", STOP_ART[0]) }} />
+        <div className="title-art" style={{ backgroundImage: titleArt }} />
         <div className="title-shade" />
         <header className="top-mark"><span className="mark-glyph">ن</span><span>حكايات على النهر</span><span className="mark-line" /></header>
         <div className="title-content">

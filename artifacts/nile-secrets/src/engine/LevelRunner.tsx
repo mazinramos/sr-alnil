@@ -9,7 +9,8 @@ import Portrait from "./Portrait";
 import { CHARACTERS, getCharacter } from "./characters";
 import { Drawer } from "./Drawers";
 import { playError, playSuccess } from "./audio";
-import { layered, PUZZLE_NAMES, pad2, STOP_ART } from "./legacyArt";
+import ErrorBoundary from "./ErrorBoundary";
+import { PUZZLE_NAMES, pad2, STOP_ART, useArt } from "./legacyArt";
 
 type Phase = "play" | "done";
 
@@ -32,9 +33,9 @@ export default function LevelRunner({ level }: { level: Level }) {
   const Puzzle = useMemo(() => getPuzzleComponent(level.puzzle.type), [level.puzzle.type]);
   const ch = getChapter(level.chapter);
   const f = level.focal;
-  const art = STOP_ART[level.chapter - 1];
+  const levelArt = useArt(level.background, STOP_ART[level.chapter - 1]);
   const imgStyle: React.CSSProperties = {
-    backgroundImage: layered(level.background, art),
+    backgroundImage: levelArt,
     backgroundSize: f?.zoom ? `${f.zoom * 100}%, cover` : "cover",
     backgroundPosition: f ? `${f.x}% ${f.y}%, center` : "center",
   };
@@ -105,9 +106,11 @@ export default function LevelRunner({ level }: { level: Level }) {
             {phase === "play" ? (
               <>
                 <div className="puzzle-host">
-                  <Suspense fallback={<p style={{ textAlign: "center", padding: 16 }}>…</p>}>
-                    <Puzzle config={level.puzzle} background={level.background} hintLevel={hints} onResult={onResult} />
-                  </Suspense>
+                  <ErrorBoundary resetKey={level.id}>
+                    <Suspense fallback={<p style={{ textAlign: "center", padding: 16 }}>…</p>}>
+                      <Puzzle config={level.puzzle} background={level.background} hintLevel={hints} onResult={onResult} />
+                    </Suspense>
+                  </ErrorBoundary>
                 </div>
                 {wrong && <p role="alert" className="wrong-note">ليست الإجابة الصحيحة بعد. راجعي الدلائل وجرّبي مرة أخرى.</p>}
                 {hints > 0 && <div className="hint-note" role="status"><Sparkles size={16} /><span>{level.hints[hints - 1]}</span></div>}

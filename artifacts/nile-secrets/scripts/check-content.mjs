@@ -1,6 +1,6 @@
 // تشغيل: npm run test:content
 // يفحص كل مستويات src/content/chapters/*.ts ويفشل (exit 1) عند أي خطأ. التحذيرات لا تُفشل.
-import { readdir } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
@@ -16,6 +16,18 @@ const norm = (s) => String(s ?? "").replace(/[أإآ]/g, "ا").replace(/ى/g, "�
 const ids = (arr) => (Array.isArray(arr) ? arr.map((x) => x?.id) : []);
 const dupes = (arr) => arr.filter((x, i) => arr.indexOf(x) !== i);
 const isArr = Array.isArray;
+
+/** مستويات معلَّمة بتعليق  // allow-low-permutations  فوق كائن المستوى (استثناء مكتوب). */
+let currentSource = "";
+function allowLow(levelId) {
+  const at = currentSource.indexOf(`id: "${levelId}"`);
+  if (at < 0) return false;
+  const brace = currentSource.lastIndexOf("{", at);
+  let head = currentSource.slice(Math.max(0, brace - 400), brace);
+  const lastEnd = head.lastIndexOf("},");
+  if (lastEnd >= 0) head = head.slice(lastEnd + 2); // فقط ما بعد المستوى السابق
+  return /allow-low-permutations/.test(head);
+}
 
 function subsetSumPossible(values, target, maxItems) {
   // أي مجموعة جزئية (كل قطعة مرة) غير فارغة مجموعها = target وعددها ≤ maxItems (إن وُجد)
@@ -46,9 +58,13 @@ function checkPuzzle(L, p) {
       needSubset("solution", p.solution ?? [], ids(p.items));
       if (dupes(p.solution ?? []).length) err(id, "sequence: solution فيه عنصر مكرر");
       if ((p.solution ?? []).length < 2) err(id, "sequence: الحل أقصر من عنصرين");
-      const n = (p.solution ?? []).length;
-      let f = 1; for (let i = 2; i <= n; i++) f *= i;
-      if (f < 100) warn(id, `sequence: ${n} عناصر = ${f} ترتيباً فقط (<100) — تأكدي أن الحل يحتاج دليلاً مكتوباً`);
+      const slots = (p.solution ?? []).length;
+      const pool = (p.items ?? []).length;
+      let perms = 1;
+      for (let i = 0; i < slots; i++) perms *= Math.max(pool - i, 0);
+      if (perms < 100 && !allowLow(id)) {
+        warn(id, `sequence: ${perms} احتمالاً فقط (${pool} عناصر، ${slots} خانات؛ <100). أضيفي علامات تمويه أو علّقي المستوى بـ // allow-low-permutations`);
+      }
       break;
     }
     case "codelock": {
@@ -56,7 +72,7 @@ function checkPuzzle(L, p) {
       needSubset("solution", p.solution ?? [], ids(p.symbols));
       if ((p.solution ?? []).length !== p.length) err(id, `codelock: طول الحل ${(p.solution ?? []).length} ≠ length ${p.length}`);
       const combos = Math.pow((p.symbols ?? []).length, p.length ?? 0);
-      if (combos < 100) warn(id, `codelock: ${combos} احتمالاً فقط (<100)`);
+      if (combos < 100 && !allowLow(id)) warn(id, `codelock: ${combos} احتمالاً فقط (<100). أضيفي رموز تمويه أو علّقي المستوى بـ // allow-low-permutations`);
       break;
     }
     case "cipher": {
@@ -159,6 +175,7 @@ const seenClues = new Map();
 const summary = [];
 
 for (const f of files) {
+  currentSource = await readFile(path.join(DIR, f), "utf8");
   const mod = await import(pathToFileURL(path.join(DIR, f)).href);
   const ch = mod.default;
   const fileNo = Number(f.match(/\d+/)[0]);
