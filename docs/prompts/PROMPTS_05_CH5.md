@@ -113,12 +113,13 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: رمز الفصل 5 (الخيط) حسب SYMBOLS.md. يُمنح عند c5-l7 ويُستعمل في c5-l5 وc5-l6.
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A round sandstone plaque with a simple carved relief of a thread tied in a knot: one smooth thread forming a bold loop with a simple knot at its center and two short loose ends, bold and clean, readable at a small size, gold-copper color, looks chiseled into the stone with soft worn edges. Part of a matching set of five chapter symbols: the same round sandstone plaque shape, same carved relief style, same gold-copper color on a warm sand-colored stone.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: خيوط كثيرة متشابكة تضيع بالحجم الصغير، حروف أو أرقام، لمعان معدني ساطع
@@ -132,12 +133,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: دفتر صفية في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts` (الآن بلا أيقونات فتظهر نصاً).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A single old hand-bound notebook with a faded olive-green cloth cover worn at the corners, tied shut with a thin cord, slightly thick with pages, no title and no markings.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: عنوان أو كتابة على الغلاف، دفتر لولبي أسود (هذا دفتر نور)، أكثر من دفتر
@@ -151,12 +153,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: الميزان النحاسي في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts`.
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A single small hand-sized brass balance scale with a central post, a level beam and two small hanging pans, aged warm brass with soft green patina, no markings.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: كفتان غير متوازنتين، أرقام أو حروف، ميزان حديث
@@ -170,12 +173,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: مفتاح الحجر في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts`.
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A single old heavy key whose large round bow and thick shaft look carved from weathered gray-ochre stone, with a worn dark iron bit at the end, small cracks and tiny moss in the crevices.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: مفتاح حديث أو لامع، حروف أو علامات، أكثر من مفتاح
@@ -193,40 +197,42 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: A long old wooden table in a quiet archive in warm lamplight, five small square pieces of aged parchment laid in a row across it. Each piece is a small square of aged parchment, about 12 percent of the image width, with torn deckled edges, carrying a tiny ink-and-wash miniature and one small embossed gold-copper emblem, no text: the first piece shows mud-brick houses and palms with a sun disc emblem; the second a reed island with three wavy water lines; the third market awnings with a balance scale; the fourth broken walls and fallen columns with a carved eye; the fifth a quiet shore with a jetty and a thread tied in a knot. Every piece has a short stub of a blue-ink river line crossing one of its edges. A brass lamp with a soft flame at the upper left, an old magnifying glass, a reed pen and a small clay inkwell at the edges of the table, shelves of archive boxes blurred behind. No people, no writing.
+Scene: A long old wooden table in a quiet archive in warm lamplight, five small square pieces of aged parchment laid in a row across it. Each piece is a small square of aged parchment, about 12 percent of the image width, with torn deckled edges, carrying a tiny ink-and-wash miniature and one small embossed gold-copper emblem, no text: the first piece shows mud-brick houses and palms with a sun disc emblem; the second a reed island with three wavy water lines; the third market awnings with a balance scale; the fourth broken walls and fallen columns with a carved eye; the fifth a quiet shore with a jetty and a thread tied in a knot. On every piece the blue river line is a short stub that crosses the LEFT edge of the piece at its vertical middle (the river runs from piece 1 on the right to piece 5 on the left), so the five stubs sit at about x = 80, 62, 44, 26 and 8 percent and y = 52 percent. Each stub is about 3 percent of the image width and clearly darker than the parchment. A brass lamp with a soft flame at the upper left, an old magnifying glass, a reed pen and a small clay inkwell at the edges of the table, shelves of archive boxes blurred behind. No people, no writing.
 Composition: camera slightly raised looking down at the table. The pieces are in a row, from right to left: piece 1 at x about 86 percent, piece 2 at 68, piece 3 at 50, piece 4 at 32, piece 5 at 14, all at y about 52 percent, each slightly rotated by a few degrees. The river-line stubs are on the outer edges. A shelf line gives a horizon-like division at about 25 percent. The lower third is the empty table edge.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
   - خمس قطع من اليمين: قطعة1 x≈86 | 2 x≈68 | 3 x≈50 | 4 x≈32 | 5 x≈14 (كلها y≈52%)
-  - علامة خط المجرى (بقعة حبر زرقاء قصيرة) على حافة كل قطعة (مواضع مؤقتة يضبطها صاحب المستوى)
+  - علامة خط المجرى: بقعة حبر زرقاء قصيرة (≈3% من العرض) تقطع **الحافة اليسرى** لكل قطعة عند منتصفها العمودي، وأغمق من الرق: x≈80 وx≈62 وx≈44 وx≈26 وx≈8، كلها y≈52% (ملزمة بعد مراجعة D)
 - تجنّب: كتابة على القطع، أكثر أو أقل من 5 قطع، قطع متلاصقة أو متراكبة، أشخاص
 - فحص القبول:
   1. خمس قطع خريطة صغيرة متباعدة بمنمنمات ورموز مختلفة (قرية، جزيرة، سوق، أطلال، ضفة)
-  2. على حافة كل قطعة علامة نهر زرقاء قصيرة ظاهرة
+  2. على الحافة اليسرى لكل قطعة علامة نهر زرقاء قصيرة ظاهرة عند منتصفها
   3. لا نص ولا أشخاص والثلث السفلي هادئ
 
 ### 10 — c5-l3
 - الملف: `public/art/c5/l3.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 5 — الطبقة B
-- الغرض: خلفية c5-l3 «خط المجرى» (route): الخريطة ممتدة على الحصير. القطع الخمس متباعدة بفراغات يصلها اللاعب بخط الماء بالترتيب.
+- الغرض: خلفية c5-l3 «خط المجرى» (route): الخريطة ممتدة على الحصير. خمس قطع حقيقية بفراغات بينها، وقطعتان مموّهتان (ممزّقة بلا ماء، ونسخة قديمة بخط مقطوع) حسب الكود بعد مراجعة D.
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: A large woven reed mat spread on the floor of the archive in soft warm light, seen from above at a high angle. Five small square pieces of aged parchment lie on the mat with clear bare gaps of mat between them, arranged along the shape of an S: three across the top from right to left, then two across the bottom from left to center. Each piece is a small square of aged parchment, about 12 percent of the image width, with torn deckled edges, carrying a tiny ink-and-wash miniature and one small embossed gold-copper emblem, no text: the first piece shows mud-brick houses and palms with a sun disc emblem; the second a reed island with three wavy water lines; the third market awnings with a balance scale; the fourth broken walls and fallen columns with a carved eye; the fifth a quiet shore with a jetty and a thread tied in a knot. Every piece has a short stub of a blue-ink river line crossing one of its edges. A brass lamp and a small cord coil at the edge of the mat, wooden floor beyond. No people, no writing.
-Composition: high angle looking down. The pieces' centers (percent of width, height): piece 1 at (82, 26), piece 2 at (55, 22), piece 3 at (27, 27), piece 4 at (28, 62), piece 5 at (58, 68). The gaps between pieces are bare mat so a water line can be drawn across. A wooden floor line gives a horizon-like division at about 12 percent. The lower third is mostly empty mat.
+Scene: A large woven reed mat spread on the floor of the archive in soft warm light, seen from above at a high angle. Five small square pieces of aged parchment lie on the mat with clear bare gaps of mat between them, arranged along the shape of an S: three across the top from right to left, then two across the bottom from left to center. Each piece is a small square of aged parchment, about 12 percent of the image width, with torn deckled edges, carrying a tiny ink-and-wash miniature and one small embossed gold-copper emblem, no text: the first piece shows mud-brick houses and palms with a sun disc emblem; the second a reed island with three wavy water lines; the third market awnings with a balance scale; the fourth broken walls and fallen columns with a carved eye; the fifth a quiet shore with a jetty and a thread tied in a knot. On piece 1 the blue river line begins as a thin spring inside the piece and runs out through its left edge. On piece 5 the same line is at its widest and the water looks calm and still. On pieces 2, 3 and 4 the line passes through, so the five stubs would join into one continuous S-shaped river if the gaps were drawn. Add two more small pieces of parchment on the mat, the same size and style as the other five, with clear bare mat around them. One at (84,66) is a plain torn scrap with no river line and no emblem. One at (10,66) is an old faded copy whose blue river line is broken in the middle by a torn gap. Keep the five main pieces exactly where they are. A brass lamp and a small cord coil at the edge of the mat, wooden floor beyond. No people, no writing.
+Composition: high angle looking down. The five main pieces' centers (percent of width, height): piece 1 at (82, 26), piece 2 at (55, 22), piece 3 at (27, 27), piece 4 at (28, 62), piece 5 at (58, 68); the two decoy pieces at (84, 66) and (10, 66). The gaps between pieces are bare mat so a water line can be drawn across. A wooden floor line gives a horizon-like division at about 12 percent. The lower third is mostly empty mat apart from the decoys.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
-  - مراكز القطع الخمس (مؤقتة): ق1 (82,26) | ق2 (55,22) | ق3 (27,27) | ق4 (28,62) | ق5 (58,68)
-  - فراغات حصير واضحة بين القطع لرسم خط الماء
-- تجنّب: قطع متلاصقة بلا فراغ، كتابة، أشخاص، أكثر أو أقل من 5 قطع
+  - مراكز القطع الخمس الحقيقية: ق1 (82,26) | ق2 (55,22) | ق3 (27,27) | ق4 (28,62) | ق5 (58,68)
+  - قطعتان مموّهتان: قصاصة ممزّقة بلا خط ماء ولا رمز عند (84,66)، ونسخة قديمة باهتة بخط ماء مقطوع بفجوة عند (10,66)
+  - قطعة 1: الخط ينبع بخيط رفيع من داخلها ويخرج من حافتها اليسرى | قطعة 5: الخط أعرض ما يكون والماء هادئ | القطع 2 و3 و4: الخط يمرّ من خلالها
+  - فراغات حصير واضحة بين كل القطع لرسم خط الماء
+- تجنّب: قطع متلاصقة بلا فراغ، كتابة، أشخاص، أكثر من 7 قطع أو أقل (خمس حقيقية + اثنتان مموّهتان)، تغيير مواضع القطع الخمس الأساسية
 - فحص القبول:
-  1. خمس قطع على حصير بترتيب شكل S وفراغات واضحة بينها
-  2. منمنمات القطع ورموزها مطابقة لوصف الفصول الخمسة
-  3. لا نص ولا أشخاص والثلث السفلي هادئ
+  1. خمس قطع على حصير بترتيب شكل S وفراغات واضحة، والنهر يبدأ بخيط في قطعة 1 ويهدأ في قطعة 5
+  2. قطعتان مموّهتان إضافيتان: قصاصة بلا ماء عند (84,66) ونسخة بخط مقطوع عند (10,66)
+  3. لا نص ولا أشخاص وكل القطع الإضافية على الحصير بفراغ حولها
 
 ### 11 — c5-l5
 - الملف: `public/art/c5/l5.webp`

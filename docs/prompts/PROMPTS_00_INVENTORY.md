@@ -20,9 +20,10 @@ Half-body character portrait, painterly realistic digital painting, same style, 
 ```
 
 ### ICON_ANCHOR (كل الأيقونات، نسخة 2 بتاريخ 31/10)
-> عُدّل بعد تجربة مازن: أيقونة بمرجع مشهد ترجع بمشهد القرية. الآن لا مرجع للأيقونات، ويُنصّ في الأنكور على خلفية رمادية فقط بلا مشهد.
+> عُدّل بعد تجربة مازن: أيقونة بمرجع مشهد ترجع بمشهد القرية. الآن لا مرجع للأيقونات، ويُضاف في آخر كل برومبت أيقونة سطر صريح: خلفية رمادية فقط بلا مشهد (الصياغة نفسها في ملفات A الفردية).
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 
 **ملاحظة تقنية من الـ repo (محدّثة):** `puzzles/jigsaw` يقرأ `"/art/ui/map-full.webp#cell=n"` على شبكة **3×2 من خلايا مربعة** (≈512×512 من 1536×1024). ترقيم الخلايا: 1 أعلى اليمين، 2 أعلى الوسط، 3 أعلى اليسار، 4 أسفل اليسار، 5 أسفل الوسط، 6 أسفل اليمين (زخرفية). الفصل n يستعمل `cell=n`، والفصل 5 يركّب الصورة كاملة (12 قطعة). الصيغة القديمة `#strip=n` ملغاة. التفاصيل في `NOTE_MAPFULL_CELLS.md`.

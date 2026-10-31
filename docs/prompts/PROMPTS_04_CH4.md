@@ -117,12 +117,13 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: رمز الفصل 4 (العين) حسب SYMBOLS.md. يُمنح عند c4-l7 ويُستعمل في c4-l5 وc5-l5 وc5-l6 (وهو منقوش أيضاً على باب c4-l5).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A round sandstone plaque with a simple carved relief of an eye: an almond-shaped eye outline with a round iris and pupil and one short curved brow line above, bold and clean, readable at a small size, gold-copper color, looks chiseled into the stone with soft worn edges. Part of a matching set of five chapter symbols: the same round sandstone plaque shape, same carved relief style, same gold-copper color on a warm sand-colored stone.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: رموش وتفاصيل دقيقة تضيع بالحجم الصغير، عين واقعية بدل الرمز، حروف أو أرقام
@@ -136,12 +137,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «الضوء» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a sunburst: a small round center with about twelve straight rays of alternating long and short length, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: تفاصيل دقيقة تضيع بالحجم الصغير، أكثر من علامة، حروف أو أرقام، لوح دائري (هذه الأيقونات مربعة، والرموز دائرية)
@@ -155,12 +157,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «الجناح» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a single spread bird wing with five clear curved feather lines, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: تفاصيل دقيقة تضيع بالحجم الصغير، أكثر من علامة، حروف أو أرقام، لوح دائري (هذه الأيقونات مربعة، والرموز دائرية)
@@ -174,12 +177,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «المجرى» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a wavy water channel: one wide wavy groove running across with two thin parallel lines along its edges, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: تفاصيل دقيقة تضيع بالحجم الصغير، أكثر من علامة، حروف أو أرقام، لوح دائري (هذه الأيقونات مربعة، والرموز دائرية)
@@ -193,12 +197,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «المرسى» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a ship's anchor with a ring at the top, a shaft, a crossbar and two curved flukes, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: تفاصيل دقيقة تضيع بالحجم الصغير، أكثر من علامة، حروف أو أرقام، لوح دائري (هذه الأيقونات مربعة، والرموز دائرية)
@@ -343,12 +348,13 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة B
 - الغرض: مشعل الممر في c4-l4 (اختياري؛ الواجهة ترسم المحطات بنفسها).
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A single old wooden torch with a rag-wrapped head burning with a warm orange-gold flame and a thin curl of smoke, held upright, the wood dark and worn.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: ألسنة نار نيون، أكثر من مشعل، يد ظاهرة
@@ -362,12 +368,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «النجمة» في c4-l1: زخرفة أسفل الجدار وعنصر مشتّت في اللغز (ليست من التسلسل). أُضيفت بقرار A.
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of an eight-pointed star: a bold simple star with a small round center, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: نجمة بخمس رؤوس سداسية معقّدة، حروف أو أرقام، لوح دائري (هذه الأيقونات مربعة)، تفاصيل دقيقة تضيع بالحجم الصغير
@@ -381,12 +388,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «القصبة» في c4-l1: زخرفة أسفل الجدار وعنصر مشتّت في اللغز (ليست من التسلسل). أُضيفت بقرار A.
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a bundle of three tall reed stalks with narrow leaves and feathery tops, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: قصب كثيف يضيع بالحجم الصغير، حروف أو أرقام، لوح دائري، نبات مختلف (نخلة أو زهرة)
@@ -400,12 +408,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة B
 - الغرض: الحجر الأملس في c4-l1 بعد المرسى (اختياري). A: «carve-smooth (اختياري)».
-- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel of completely smooth, uncarved stone with only gentle weathering, a few hairline cracks and a soft warm patina, no carving or sign of any kind. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; this one has no carving at all.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
 - مواضع إلزامية: لا يوجد
 - تجنّب: أي نقش أو علامة على اللوح، حروف أو أرقام، لوح دائري
