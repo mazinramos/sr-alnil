@@ -411,10 +411,12 @@ function mulberry(seed) {
   const browser = await chromium.launch({ headless: !process.env.E2E_HEADED });
   const rows = [];
   let jsErrors = [];
+  const artBad = new Set(); // صور /art/ التي رجعت بحالة ≥400
   const fail = (id, type, msg, ms = 0) => rows.push({ id, type, ok: false, note: msg, stars: "-", ms });
   try {
     const ctx = await browser.newContext({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
     const page = await ctx.newPage();
+    page.on("response", (r) => { if (r.status() >= 400 && r.url().includes("/art/")) artBad.add(`${r.status()} ${new URL(r.url()).pathname}`); });
     page.on("pageerror", (e) => jsErrors.push("pageerror: " + String(e).slice(0, 140)));
     page.on("console", (m) => { if (m.type() === "error" && !NOISE.test(m.text())) jsErrors.push("console: " + m.text().slice(0, 140)); });
 
@@ -483,6 +485,8 @@ function mulberry(seed) {
         if (next) { await forceComplete(page, L.id); await reloadAt(page, `/level/${next.id}`); }
       }
     }
+
+    if (!SCEN && !ONLY.length) rows.push({ id: "(صور /art/)", type: "-", ok: artBad.size === 0, note: artBad.size ? "404: " + [...artBad].slice(0, 6).join(", ") : "", stars: "-", ms: 0 });
 
     // الخاتمة: لو مرّ المسار الكامل نكون قد وصلنا إليها
     if (!ONLY.length) {
