@@ -44,7 +44,7 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 
 ---
 
-## 3) الجرد الكامل (96 صورة)
+## 3) الجرد الكامل (98 صورة، محدّث 31/10)
 
 **الفئات:** UI = شاشات عامة | BG = خلفية مستوى | CH = بورتريه | EX = تعبير إضافي | IC = أيقونة | PZ = صورة لغز.
 **الطبقة:** A = أولوية قصوى، B = بعدها.
@@ -115,16 +115,16 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 | rihab-neutral | public/art/chars/rihab-neutral.webp | CH | A | 5 |
 | rihab-serious | public/art/chars/rihab-serious.webp | EX | B | 5 |
 
-### 3.4 الأيقونات (41) — كلها 256×256 شفاف، `public/art/items/{id}.webp`
+### 3.4 الأيقونات (43) — كلها 256×256 شفاف، `public/art/items/{id}.webp`
 > **القائمة مؤقتة:** الـ IDs النهائية تأتي من حقل `icon` في ملفات الفصول (C وD وE وA). سأعدّل بعد استلامها.
 
 | الدفعة | الأيقونات |
 |---|---|
 | 1 (11) | sun-disc, bird-carving, boat-piece, jar-wheat, jar-henna, jar-incense, jar-dates, calendar-page, old-photo, clay-seal, symbol-c1 |
 | 2 (12) | river-stone, star-sign-1, star-sign-2, star-sign-3, star-sign-4, star-sign-5, knot-red, knot-blue, knot-yellow, knot-green, cargo-sack, symbol-c2 |
-| 3 (11) | bead-blue, copper-weight, weaver-shuttle, spice-cumin, spice-cinnamon, spice-clove, spice-pepper, ledger-page, tea-glass, market-scissors, symbol-c3 |
-| 4 (6) | carving-light, carving-wing, carving-channel, carving-mooring, torch, symbol-c4 |
-| 5 (1) | symbol-c5 |
+| 3 (10) | bead-blue, copper-weight, weaver-shuttle, spice-cumin, spice-cinnamon, spice-clove, spice-pepper, ledger-page, tea-glass, symbol-c3 |
+| 4 (6) | carve-light, carve-wing, carve-channel, carve-anchor, torch, symbol-c4 |
+| 5 (4) | symbol-c5, notebook-safiya, brass-scale, stone-key |
 
 الطبقة: A لـ sun-disc وbird-carving وboat-piece وsymbol-c1..c5 (مطلوبة في c4-l5 وc5-l5/l6)، والباقي B (بديلها lucide).
 
@@ -138,10 +138,10 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 |---|---|---|---|
 | 1 | PROMPTS_01_CH1.md | 3 UI + 7 BG + صفية وبشير + 4 تعابير نور + 11 أيقونة | 27 |
 | 2 | PROMPTS_02_CH2.md | 7 BG + سيف + 2 تعبير آدم + 12 أيقونة | 22 |
-| 3 | PROMPTS_03_CH3.md | 7 BG + حليمة (2 تعبير) + تعبير يونس + 11 أيقونة | 21 |
+| 3 | PROMPTS_03_CH3.md | 7 BG + حليمة (2 تعبير) + تعبير يونس + 10 أيقونات | 20 |
 | 4 | PROMPTS_04_CH4.md | 7 BG + الحاج عثمان + تعبير هالة + c4-l2-puzzle + 6 أيقونات | 16 |
-| 5 | PROMPTS_05_CH5.md | 7 BG + رحاب (2 تعبير) + 1 أيقونة | 10 |
-| | | **المجموع** | **96** |
+| 5 | PROMPTS_05_CH5.md | 7 BG + رحاب (2 تعبير) + 4 أيقونات | 13 |
+| | | **المجموع** | **98** |
 
 الترتيب داخل كل دفعة: UI (إن وُجدت) ← الطبقة A (l1, l4, l7) ← l2, l3, l5, l6 ← بورتريهات ← أيقونات. وفي آخر كل ملف جدول تتبّع بـ checkbox.
 
@@ -157,7 +157,7 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 6. استثناء الخرائط من الأنكور: موافق.
 7. أسماء الأيقونات مؤقتة: قبل كل دفعة `grep "icon:" src/content/chapters/*.ts` وتحديث الجرد وإبلاغ مازن بالتغيير.
 
-**تعديل لاحق (الدفعة 1):** (أ) `ui/map-full` صار خلايا لا شرائح. (ب) أيقونات `jar-*` تُظهر المحتوى بلا أغطية ملوّنة. (ج) `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
+**تعديل لاحق (الدفعة 1):** (أ) `ui/map-full` صار خلايا لا شرائح. (ب) أيقونات `jar-*` تُظهر المحتوى بلا أغطية ملوّنة. (ج) تحديث 31/10: صار المجموع 98 (حُذف `market-scissors` تخميناً بلا مرجع؛ `carving-*` صارت `carve-light/wing/channel/anchor` لتطابق ids عناصر `ch4.ts`؛ أُضيفت `notebook-safiya` و`brass-scale` و`stone-key` لأزواج c5-l1). (د) `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
 
 ---
 
