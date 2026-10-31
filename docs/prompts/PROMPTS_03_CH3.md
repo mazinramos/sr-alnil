@@ -6,7 +6,7 @@
 > مصدر الحقيقة: `src/content/chapters/ch3.ts` (E) و`docs/LEVELS.md`.
 
 ## طريقة العمل لكل صورة (مازن)
-1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات والأيقونات: `docs/reference/village.jpg`. البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
+1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات: `docs/reference/village.jpg`. **الأيقونات: لا ترفق أي مرجع** (المرجع يجلب مشهد القرية). البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
 2. انسخ كتلة «البرومبت الكامل» كما هي بدون تعديل. لا تحذف سطر الوصف الثابت للشخصية.
 3. افحص الناتج بنقاط «فحص القبول» وقائمة «تجنّب». لو فشلت نقطة، أعد التوليد (أو استعمل البديل المختصر في `GENERATION_ORDER.md`).
 4. حوّل واحفظ بالاسم والمقاس بالضبط: `cwebp -q 80`. البورتريهات والأيقونات تُزال خلفيتها أولاً.
@@ -111,10 +111,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: رمز الفصل 3 (الميزان) حسب SYMBOLS.md. يُمنح عند c3-l7 ويُستعمل في c4-l5 وc5-l5 وc5-l6.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A round sandstone plaque with a simple carved relief of a balance scale: a central post, a level beam and two level hanging pans, bold and clean, readable at a small size, gold-copper color, looks chiseled into the stone with soft worn edges. Part of a matching set of five chapter symbols: the same round sandstone plaque shape, same carved relief style, same gold-copper color on a warm sand-colored stone.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -130,10 +130,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: الخرزة الزرقاء في c3-l1 (matching): الغرض الذي مصدره القوافل.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single hand-made glass bead in a deep muted Nile-blue with faint swirls, round with a small threaded hole, on a short loop of natural cord, shown large and clear.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -149,10 +149,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: الوزن النحاسي في c3-l1 (matching): الغرض الذي مصدره الحدّاد (ويُستعمل أيضاً في c3-l3).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single small aged copper weight, a squat bell-shaped cone with a flat base and a small ring on top, warm copper with green-brown patina in the crevices, no markings.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -168,10 +168,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: مكوك النسّاج في c3-l1 (matching): الغرض الذي مصدره النسّاجون.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single weaver's wooden shuttle, a slender boat-shaped piece of polished aged wood with pointed ends, a spool of cream-colored thread visible in its middle slot with a loose thread end.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -187,10 +187,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: بطاقة الكمّون في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small plain round terracotta saucer holding a soft heap of small golden ochre cumin seeds, the dominant color of the spice clearly golden ochre. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -206,10 +206,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: بطاقة القرفة في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small plain round terracotta saucer holding a small bundle of rolled cinnamon sticks in warm red-brown tied with a thin cord, the dominant color of the spice clearly warm cinnamon red-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -225,10 +225,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: بطاقة القرنفل في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small plain round terracotta saucer holding a small heap of dark maroon-brown cloves, the little nail-shaped buds with round heads, the dominant color of the spice clearly deep maroon-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -244,10 +244,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
 - الغرض: بطاقة الفلفل في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small plain round terracotta saucer holding a small heap of round charcoal-gray black peppercorns with a few green ones, the dominant color of the spice clearly charcoal gray with a few green flecks. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -385,10 +385,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة B
 - الغرض: صفحة الدفتر القديمة (اختيارية؛ لا يوجد مرجع لها في الكود حالياً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single aged ledger page, yellowed paper with faint ruled columns and rows, soft stains and a torn corner, a few abstract ink tick marks that are not letters or numbers.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -404,10 +404,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة B
 - الغرض: كوب شاي حليمة (اختيارية؛ لا يوجد مرجع لها في الكود حالياً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single small clear glass cup of strong amber tea with a thin curl of steam, a small spoon resting on the saucer, a simple gold line around the rim.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -447,5 +447,5 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 ## أسئلة وملاحظات لأصحاب الفصول
 1. **c3-l2 (E):** الخلفية بثلاث دكاكين بمظلّات ملوّنة وبضاعة موحية غير مقروءة حتى لا تناقض جدول الاستنتاج. أخبرني لو تريد بضاعة محدّدة لكل دكان.
 2. **c3-l5 (E):** تفاصيل الدكان الستة (خرز، جرس، قماش أحمر، مصباح، بكرة أصفر، كرسي) مقترحة. أخبرني بالفروق الخمسة الفعلية لأعدّل الصورة وفقها.
-3. **c3-l7 (E):** مفتاح الشفرة يستعمل رموزاً نصية (✺ ☾ ✦…)؛ لم أرسمها في الصورة لتبقى مستقلة.
+3. **c3-l7 (E):** مفتاح الشفرة يستعمل رموزاً نصية؛ لم أرسمها في الصورة لتبقى مستقلة (وقرار A: لا رموز إيموجي ملوّنة، أشكال هندسية أو حروف فقط).
 4. **c3-l3 (E):** الأوزان النحاسية على الصينية بلا علامات؛ الأرقام تأتي من الواجهة.

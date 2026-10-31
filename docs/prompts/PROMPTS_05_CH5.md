@@ -6,7 +6,7 @@
 > مصدر الحقيقة: `src/content/chapters/ch5.ts` (A) و`docs/SYMBOLS.md`.
 
 ## طريقة العمل لكل صورة (مازن)
-1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات والأيقونات: `docs/reference/village.jpg`. البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
+1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات: `docs/reference/village.jpg`. **الأيقونات: لا ترفق أي مرجع** (المرجع يجلب مشهد القرية). البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
 2. انسخ كتلة «البرومبت الكامل» كما هي بدون تعديل. لا تحذف سطر الوصف الثابت للشخصية.
 3. افحص الناتج بنقاط «فحص القبول» وقائمة «تجنّب». لو فشلت نقطة، أعد التوليد (أو استعمل البديل المختصر في `GENERATION_ORDER.md`).
 4. حوّل واحفظ بالاسم والمقاس بالضبط: `cwebp -q 80`. البورتريهات والأيقونات تُزال خلفيتها أولاً.
@@ -15,7 +15,7 @@
 **حدود الحجم:** خلفية ≤ 250KB، شاشة عامة ≤ 300KB، بورتريه ≤ 200KB، أيقونة ≤ 40KB.
 
 ## ملاحظات هذه الدفعة
-- **c5-l1 (memory):** أزواج الذاكرة الخمسة: دفتر صفية، قرص الشمس، قطعة المركب، الميزان النحاسي، مفتاح الحجر. لدينا من قبل `sun-disc` و`boat-piece` (الدفعة 1)، وأضفت جديداً: `notebook-safiya` و`brass-scale` و`stone-key`. أزواج `ch5.ts` بلا `icon:` الآن فتظهر نصاً؛ اقتراح لـ A: أضف `icon: "notebook-safiya"` و`"sun-disc"` و`"boat-piece"` و`"brass-scale"` و`"stone-key"`.
+- **c5-l1 (memory):** أزواج الذاكرة الخمسة: دفتر صفية، قرص الشمس، قطعة المركب، الميزان النحاسي، مفتاح الحجر. لدينا من قبل `sun-disc` و`boat-piece` (الدفعة 1)، وأضفت جديداً: `notebook-safiya` و`brass-scale` و`stone-key`. أزواج `ch5.ts` بلا `icon:` الآن فتظهر نصاً؛ A يضيف حقول `icon:` بعد وصول الصور (قرار 31/10): `notebook-safiya` و`sun-disc` و`boat-piece` (موجودتان) و`brass-scale` و`stone-key`.
 - **c5-l4 (matching):** لوحات الأسماء بنقوش خطية مجرّدة عمداً؛ أي رسم دالّ (سمك، نجوم، خبز) يكشف حل الربط.
 - **c5-l2 وc5-l3:** القطع الخمس في الصورتين بمنمنمات ورموز مطابقة لخلايا `ui/map-full` (1: قرية وشمس، 2: جزيرة وموجة، 3: سوق وميزان، 4: أطلال وعين، 5: ضفة وخيط). ولّدهما **بعد** اعتماد `map-full`.
 - **c5-l5:** صندوق بسيط بلا نقش عمداً؛ يتباين مع صندوق صفية المنقوش في الفصل 1.
@@ -113,10 +113,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: رمز الفصل 5 (الخيط) حسب SYMBOLS.md. يُمنح عند c5-l7 ويُستعمل في c5-l5 وc5-l6.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A round sandstone plaque with a simple carved relief of a thread tied in a knot: one smooth thread forming a bold loop with a simple knot at its center and two short loose ends, bold and clean, readable at a small size, gold-copper color, looks chiseled into the stone with soft worn edges. Part of a matching set of five chapter symbols: the same round sandstone plaque shape, same carved relief style, same gold-copper color on a warm sand-colored stone.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -132,10 +132,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: دفتر صفية في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts` (الآن بلا أيقونات فتظهر نصاً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single old hand-bound notebook with a faded olive-green cloth cover worn at the corners, tied shut with a thin cord, slightly thick with pages, no title and no markings.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -151,10 +151,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: الميزان النحاسي في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts`.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single small hand-sized brass balance scale with a central post, a level beam and two small hanging pans, aged warm brass with soft green patina, no markings.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -170,10 +170,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة A
 - الغرض: مفتاح الحجر في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts`.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single old heavy key whose large round bow and thick shaft look carved from weathered gray-ochre stone, with a worn dark iron bit at the end, small cracks and tiny moss in the crevices.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -310,7 +310,7 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 | 13 | rihab-serious | B | [ ] | [ ] | [ ] | |
 
 ## أسئلة وملاحظات لأصحاب الفصول
-1. **ch5.ts (A):** إضافة `icon:` لأزواج c5-l1 (الأسماء في الملاحظات أعلاه).
+1. **ch5.ts (A):** إضافة `icon:` لأزواج c5-l1 بعد وصول الصور (الأسماء في الملاحظات أعلاه).
 2. **c5-l2 (B/A):** علامة خط المجرى على حافة كل قطعة (بقعة حبر زرقاء قصيرة) مواضعها مؤقتة؛ تُضبط من `/preview/coords` بعد وصول الصورة.
 3. **c5-l3 (B/A):** مراكز القطع مأخوذة من ترتيب S نفسه في الخريطة (1 و2 و3 أعلى، 4 و5 أسفل)؛ لو اختلف الترتيب أخبرني.
 4. **c5-l6 (A):** مفتاح الشفرة أيقونات `symbol-c1..c5`؛ لم أرسم رموزاً على الورقة حتى لا تكشف الحل.

@@ -19,9 +19,10 @@ Painterly realistic digital illustration, soft warm natural light with gentle at
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
 ```
 
-### ICON_ANCHOR (كل الأيقونات)
+### ICON_ANCHOR (كل الأيقونات، نسخة 2 بتاريخ 31/10)
+> عُدّل بعد تجربة مازن: أيقونة بمرجع مشهد ترجع بمشهد القرية. الآن لا مرجع للأيقونات، ويُنصّ في الأنكور على خلفية رمادية فقط بلا مشهد.
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 ```
 
 **ملاحظة تقنية من الـ repo (محدّثة):** `puzzles/jigsaw` يقرأ `"/art/ui/map-full.webp#cell=n"` على شبكة **3×2 من خلايا مربعة** (≈512×512 من 1536×1024). ترقيم الخلايا: 1 أعلى اليمين، 2 أعلى الوسط، 3 أعلى اليسار، 4 أسفل اليسار، 5 أسفل الوسط، 6 أسفل اليمين (زخرفية). الفصل n يستعمل `cell=n`، والفصل 5 يركّب الصورة كاملة (12 قطعة). الصيغة القديمة `#strip=n` ملغاة. التفاصيل في `NOTE_MAPFULL_CELLS.md`.
@@ -41,10 +42,12 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 7. أي صورة رُفضت بسبب أسلوبها: أبلّغ A وأعيد كتابة برومبتها.
 8. الحجم الأقصى: خلفية ≤ 250KB، شاشة عامة ≤ 300KB، بورتريه ≤ 200KB، أيقونة ≤ 40KB.
 9. للبورتريهات والأيقونات: أزل الخلفية (remove.bg أو Photopea) قبل التحويل لـ WebP.
+10. **الأيقونات بلا مرجع مشهد (قرار A 31/10):** لا ترفق `village.jpg` ولا أي مشهد مع برومبت أيقونة، فالمرجع يجلب مشهد القرية. الأسلوب يأتي من نص الأنكور. أرفق مرجعاً فقط إن انحرف الأسلوب، وليكن أيقونة معتمدة سبق توليدها لا مشهداً. وإن ظهر مشهد خلف الأيقونة فأعد التوليد.
+11. **الرموز:** ممنوع أي رمز يظهر إيموجي ملوّناً على الهاتف؛ في الصور أيضاً لا نص ولا حروف.
 
 ---
 
-## 3) الجرد الكامل (98 صورة، محدّث 31/10)
+## 3) الجرد الكامل (101 صورة، محدّث 31/10)
 
 **الفئات:** UI = شاشات عامة | BG = خلفية مستوى | CH = بورتريه | EX = تعبير إضافي | IC = أيقونة | PZ = صورة لغز.
 **الطبقة:** A = أولوية قصوى، B = بعدها.
@@ -115,7 +118,7 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 | rihab-neutral | public/art/chars/rihab-neutral.webp | CH | A | 5 |
 | rihab-serious | public/art/chars/rihab-serious.webp | EX | B | 5 |
 
-### 3.4 الأيقونات (43) — كلها 256×256 شفاف، `public/art/items/{id}.webp`
+### 3.4 الأيقونات (46) — كلها 256×256 شفاف، `public/art/items/{id}.webp`
 > **القائمة مؤقتة:** الـ IDs النهائية تأتي من حقل `icon` في ملفات الفصول (C وD وE وA). سأعدّل بعد استلامها.
 
 | الدفعة | الأيقونات |
@@ -123,7 +126,7 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 | 1 (11) | sun-disc, bird-carving, boat-piece, jar-wheat, jar-henna, jar-incense, jar-dates, calendar-page, old-photo, clay-seal, symbol-c1 |
 | 2 (12) | river-stone, star-sign-1, star-sign-2, star-sign-3, star-sign-4, star-sign-5, knot-red, knot-blue, knot-yellow, knot-green, cargo-sack, symbol-c2 |
 | 3 (10) | bead-blue, copper-weight, weaver-shuttle, spice-cumin, spice-cinnamon, spice-clove, spice-pepper, ledger-page, tea-glass, symbol-c3 |
-| 4 (6) | carve-light, carve-wing, carve-channel, carve-anchor, torch, symbol-c4 |
+| 4 (9) | carve-light, carve-wing, carve-channel, carve-anchor, carve-star, carve-reed, carve-smooth (اختياري), torch, symbol-c4 |
 | 5 (4) | symbol-c5, notebook-safiya, brass-scale, stone-key |
 
 الطبقة: A لـ sun-disc وbird-carving وboat-piece وsymbol-c1..c5 (مطلوبة في c4-l5 وc5-l5/l6)، والباقي B (بديلها lucide).
@@ -139,9 +142,9 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 | 1 | PROMPTS_01_CH1.md | 3 UI + 7 BG + صفية وبشير + 4 تعابير نور + 11 أيقونة | 27 |
 | 2 | PROMPTS_02_CH2.md | 7 BG + سيف + 2 تعبير آدم + 12 أيقونة | 22 |
 | 3 | PROMPTS_03_CH3.md | 7 BG + حليمة (2 تعبير) + تعبير يونس + 10 أيقونات | 20 |
-| 4 | PROMPTS_04_CH4.md | 7 BG + الحاج عثمان + تعبير هالة + c4-l2-puzzle + 6 أيقونات | 16 |
+| 4 | PROMPTS_04_CH4.md | 7 BG + الحاج عثمان + تعبير هالة + c4-l2-puzzle + 9 أيقونات | 19 |
 | 5 | PROMPTS_05_CH5.md | 7 BG + رحاب (2 تعبير) + 4 أيقونات | 13 |
-| | | **المجموع** | **98** |
+| | | **المجموع** | **101** |
 
 الترتيب داخل كل دفعة: UI (إن وُجدت) ← الطبقة A (l1, l4, l7) ← l2, l3, l5, l6 ← بورتريهات ← أيقونات. وفي آخر كل ملف جدول تتبّع بـ checkbox.
 
@@ -157,7 +160,7 @@ Single game puzzle icon, painterly realistic digital painting with soft shading,
 6. استثناء الخرائط من الأنكور: موافق.
 7. أسماء الأيقونات مؤقتة: قبل كل دفعة `grep "icon:" src/content/chapters/*.ts` وتحديث الجرد وإبلاغ مازن بالتغيير.
 
-**تعديل لاحق (الدفعة 1):** (أ) `ui/map-full` صار خلايا لا شرائح. (ب) أيقونات `jar-*` تُظهر المحتوى بلا أغطية ملوّنة. (ج) تحديث 31/10: صار المجموع 98 (حُذف `market-scissors` تخميناً بلا مرجع؛ `carving-*` صارت `carve-light/wing/channel/anchor` لتطابق ids عناصر `ch4.ts`؛ أُضيفت `notebook-safiya` و`brass-scale` و`stone-key` لأزواج c5-l1). (د) `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
+**تعديل لاحق (الدفعة 1):** (أ) `ui/map-full` صار خلايا لا شرائح. (ب) أيقونات `jar-*` تُظهر المحتوى بلا أغطية ملوّنة. (ج) تحديث 31/10: صار المجموع 98 (حُذف `market-scissors` تخميناً بلا مرجع؛ `carving-*` صارت `carve-light/wing/channel/anchor` لتطابق ids عناصر `ch4.ts`؛ أُضيفت `notebook-safiya` و`brass-scale` و`stone-key` لأزواج c5-l1). (د) تحديث NEXT4 (31/10): c4-l1 صار بست علامات فأُضيفت `carve-star` و`carve-reed` و`carve-smooth` (المجموع 101)، وأُعيدت كتابة `c4-l2-puzzle` (عين في المركز ومجرى من الأعلى للأسفل بلا ظلال على الحواف)، واعتُمد ICON_ANCHOR نسخة 2 والأيقونات بلا مرجع. (هـ) `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
 
 ---
 

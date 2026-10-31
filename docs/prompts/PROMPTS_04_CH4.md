@@ -1,12 +1,12 @@
 # PROMPTS_04 — الدفعة 4: الفصل الرابع (أطلال النهر)
 
-> الحساب F — مدير الفن. **16 صورة** للفصل 4 (أطلال النهر): 7 خلفيات، صورة لغز `c4-l2-puzzle` (1024×1024)، بورتريهان (الحاج عثمان + تعبير هالة)، 6 أيقونات.
+> الحساب F — مدير الفن. **19 صورة** للفصل 4 (أطلال النهر): 7 خلفيات، صورة لغز `c4-l2-puzzle` (1024×1024)، بورتريهان (الحاج عثمان + تعبير هالة)، 9 أيقونات.
 > الترتيب: خلفيات الطبقة A (`c4-l1` ثم `c4-l4` ثم `c4-l7`) ← الحاج عثمان ← أيقونات A (رمز العين وعلامات النقش الأربع) ← الطبقة B.
 > الإضاءة: حجر بارد مع وهج مشاعل وفوانيس دافئ عند الغسق.
 > مصدر الحقيقة: `src/content/chapters/ch4.ts` (A) و`docs/SYMBOLS.md`.
 
 ## طريقة العمل لكل صورة (مازن)
-1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات والأيقونات: `docs/reference/village.jpg`. البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
+1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات: `docs/reference/village.jpg`. **الأيقونات: لا ترفق أي مرجع** (المرجع يجلب مشهد القرية). البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
 2. انسخ كتلة «البرومبت الكامل» كما هي بدون تعديل. لا تحذف سطر الوصف الثابت للشخصية.
 3. افحص الناتج بنقاط «فحص القبول» وقائمة «تجنّب». لو فشلت نقطة، أعد التوليد (أو استعمل البديل المختصر في `GENERATION_ORDER.md`).
 4. حوّل واحفظ بالاسم والمقاس بالضبط: `cwebp -q 80`. البورتريهات والأيقونات تُزال خلفيتها أولاً.
@@ -16,10 +16,10 @@
 
 ## ملاحظات هذه الدفعة
 - **c4-l4 (route):** المحطات الثماني بمواضعها وحالاتها (5 مشتعلة جافة: 1 و3 و4 و6 و8، و3 مطفأة: 2 و5 و7) من `ch4.ts`. هذا أصعب برومبت في الدفعة، وقد يحتاج عدة محاولات؛ استعمل البديل المختصر في `GENERATION_ORDER.md` إن تعثّر.
-- **c4-l1 (sequence):** النقوش مرتّبة في الصورة من اليمين: ضوء، جناح، مجرى، مرسى، وحجر أملس في الطرف الأيسر، موافقاً لحل `ch4.ts`.
+- **c4-l1 (sequence) محدّث 31/10:** الجدار فيه **ست علامات** كما في `ch4.ts` الجديد: أربع في صف التسلسل من اليمين (ضوء، جناح، مجرى، مرسى) ثم حجر أملس، واثنتان زخرفة أصغر أسفل الجدار (نجمة، قصبة) ليستا من التسلسل.
 - **c4-l5 (codelock):** العين منقوشة على الباب وأربع فتحات فارغة، حسب `SYMBOLS.md`.
-- **أيقونات النقوش:** عناصر c4-l1 في `ch4.ts` بلا `icon:` فتظهر نصاً. اقتراح لـ A: أضف `icon: "carve-light"` و`carve-wing` و`carve-channel` و`carve-anchor`. (غيّرت أسماءها عن الجرد `carving-*` لتطابق ids العناصر.)
-- **c4-l2-puzzle:** المسار `public/art/c4/l2-puzzle.webp` معتمد (CONTRACT §10). مربّعة غير متناظرة لتُقصّ إلى 9 قطع وتُدوَّر.
+- **أيقونات النقوش (قرار A 31/10):** `carve-light` و`carve-wing` و`carve-channel` و`carve-anchor` و`carve-star` و`carve-reed` + `carve-smooth` اختيارية. أُضيفت الثلاث الأخيرة في **آخر** الدفعة (أرقام 17 إلى 19) حتى لا تتغير أرقام الملفات الأخرى. A يضيف حقول `icon:` بعد وصول الصور.
+- **c4-l2-puzzle (محدّث بقرار A 31/10):** لوحة حجرية مربّعة تملأ الصورة بإطار مستقيم الحواف، **عين في المركز** و**مجرى ماء من الأعلى إلى الأسفل**، وبلا ظلال تقطع الحواف لأنها ستُقصّ إلى 9 حجارة. المسار `public/art/c4/l2-puzzle.webp` معتمد (CONTRACT §10).
 - **الشخصيات:** هالة موجودة (neutral)، فتعبيرها يُولَّد مع إرفاق `public/art/chars/hala-neutral.webp`. الحاج عثمان جديد.
 
 ---
@@ -28,24 +28,25 @@
 - الملف: `public/art/c4/l1.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 4 — الطبقة A
-- الغرض: خلفية c4-l1 «تسلسل المرسى» (sequence): جدار حجري بنقوش أربع (ضوء، جناح، مجرى، مرسى) وخطوط ماء. الترتيب في الصورة يوافق الحل: من اليمين إلى اليسار.
+- الغرض: خلفية c4-l1 «تسلسل المرسى» (sequence): جدار حجري بست علامات حسب `ch4.ts` المحدّث: أربع في صف التسلسل (ضوء، جناح، مجرى، مرسى) واثنتان زخرفة أسفل الجدار (نجمة، قصبة) ليستا من التسلسل. الترتيب في الصورة يوافق الحل: من اليمين إلى اليسار.
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: A massive ancient sandstone wall of ruins by the river at late dusk, cool gray-ochre stone with warm violet shadows, a thin ray of low golden light touching the wall from the upper right. Along the wall, in one horizontal row at mid-height, four shallow carved relief signs, each in its own worn rectangular panel, ordered from right to left: first a sunburst of straight rays (light) where the golden ray lands, second a spread wing with feather lines (wing), third a wavy channel line with parallel groove edges (channel), fourth an anchor shape (mooring). Thin carved water lines run along the base of the wall linking the four panels. Beyond the anchor, at the far left end, the wall is smooth blank stone. Dust, small cracks, a hint of green moss at the base, sand on the ground. No people.
-Composition: camera at eye level facing the wall frontally. The four carvings are evenly spaced along a horizontal line at y about 45 percent. A wall top line and the base give a horizon-like division at about 20 percent. The lower third is the sandy ground and the water lines, fairly empty.
+Scene: A massive ancient sandstone wall of ruins by the river at late dusk, cool gray-ochre stone with warm violet shadows, a thin ray of low golden light touching the wall from the upper right. Along the wall, in one horizontal row at mid-height, four shallow carved relief signs, each in its own worn rectangular panel, ordered from right to left: first a sunburst of straight rays (light) where the golden ray lands, second a spread wing with feather lines (wing), third a wavy channel line with parallel groove edges (channel), fourth an anchor shape (mooring). Beyond the anchor, at the far left end of the row, the wall is smooth blank stone. Lower on the wall, near its base and clearly apart from the main row, two smaller purely decorative carvings that are not part of the sequence: an eight-pointed star and a small bundle of reeds. Thin carved water lines run along the base of the wall. Dust, small cracks, a hint of green moss at the base, sand on the ground. No people.
+Composition: camera at eye level facing the wall frontally. The four sequence carvings are evenly spaced along a horizontal line at y about 42 percent. The two decorative carvings are smaller and sit lower at y about 72 percent: the star at x about 34 percent and the reeds at x about 64 percent. A wall top line and the base give a horizon-like division at about 20 percent. The bottom edge is sandy ground, fairly empty.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
-  - أربعة نقوش على صف واحد بالترتيب من اليمين: ضوء x≈78% | جناح x≈58% | مجرى x≈38% | مرسى x≈18% (كلها y≈45%)
-  - أقصى اليسار (x<8%) حجر أملس بلا نقش
-  - خطوط الماء المنقوشة على قاعدة الجدار تصل بين النقوش
-- تجنّب: ترتيب النقوش بغير ترتيب الحل (ضوء ثم جناح ثم مجرى ثم مرسى من اليمين)، نقوش بحروف أو كتابة، أشخاص، ألوان مشبعة، إضاءة نيون
+  - أربعة نقوش التسلسل على صف واحد بالترتيب من اليمين: ضوء x≈78% | جناح x≈58% | مجرى x≈38% | مرسى x≈18% (كلها y≈42%)
+  - أقصى يسار الصف (x<8%) حجر أملس بلا نقش
+  - زخرفتان أصغر أسفل الجدار وخارج الصف: نجمة x≈34%,y≈72% | قصبة x≈64%,y≈72%
+  - ست علامات في المجموع على الجدار (حوار نور يقول «ست علامات»)
+- تجنّب: ترتيب نقوش التسلسل بغير ترتيب الحل (ضوء ثم جناح ثم مجرى ثم مرسى من اليمين)، وضع النجمة أو القصبة داخل صف التسلسل، نقوش بحروف أو كتابة، أشخاص، ألوان مشبعة، إضاءة نيون
 - فحص القبول:
-  1. أربعة نقوش واضحة بالترتيب الصحيح من اليمين لليسار
-  2. شعاع الضوء يلمس أول نقش وحجر أملس عند النهاية
-  3. لا نص ولا أشخاص والثلث السفلي هادئ
+  1. أربعة نقوش واضحة في الصف بالترتيب الصحيح من اليمين لليسار، ثم حجر أملس في الطرف
+  2. نجمة وقصبة صغيرتان منفصلتان أسفل الجدار (المجموع ست علامات)
+  3. لا نص ولا أشخاص وشعاع الضوء يلمس أول نقش
 
 ### 2 — c4-l4
 - الملف: `public/art/c4/l4.webp`
@@ -116,10 +117,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: رمز الفصل 4 (العين) حسب SYMBOLS.md. يُمنح عند c4-l7 ويُستعمل في c4-l5 وc5-l5 وc5-l6 (وهو منقوش أيضاً على باب c4-l5).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A round sandstone plaque with a simple carved relief of an eye: an almond-shaped eye outline with a round iris and pupil and one short curved brow line above, bold and clean, readable at a small size, gold-copper color, looks chiseled into the stone with soft worn edges. Part of a matching set of five chapter symbols: the same round sandstone plaque shape, same carved relief style, same gold-copper color on a warm sand-colored stone.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -135,10 +136,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «الضوء» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a sunburst: a small round center with about twelve straight rays of alternating long and short length, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -154,10 +155,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «الجناح» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a single spread bird wing with five clear curved feather lines, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -173,10 +174,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «المجرى» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a wavy water channel: one wide wavy groove running across with two thin parallel lines along its edges, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -192,10 +193,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة A
 - الغرض: علامة «المرسى» في c4-l1 (sequence). تُستعمل فقط إن أضاف A حقل `icon:` لعناصر المستوى (الآن تظهر نصاً).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A flat square sandstone panel with a shallow carved relief of a ship's anchor with a ring at the top, a shaft, a crossbar and two curved flukes, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -230,23 +231,26 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
 - الملف: `public/art/c4/l2-puzzle.webp`
 - الحجم المطلوب: 1024×1024 (1:1)
 - الدفعة والأولوية: Batch 4 — الطبقة B
-- الغرض: صورة لغز c4-l2 (tiles 3×3): تُقصّ تسع قطع وتُدوَّر. لازم تكون غير متناظرة ليعرف اللاعب اتجاه كل قطعة. المسار معتمد من A (CONTRACT §10).
+- الغرض: صورة لغز c4-l2 (tiles 3×3): تُقصّ تسع حجارة وتُدوَّر. لوحة حجرية مربّعة بإطار مستقيم، عين في المركز ومجرى ماء من الأعلى إلى الأسفل، وبلا ظلال تقطع الحواف (قرار A). المسار معتمد (CONTRACT §10).
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Override for this image only: use a SQUARE 1:1 ratio, 1024x1024, instead of 3:2; this is a flat square carved relief mural seen straight on, ignore the horizon and empty-lower-third rule.
-Scene: A single square carved sandstone relief mural seen straight on, warm gold-ochre stone with shallow carving, lit by a soft light from the upper left so every carved line casts a small shadow toward the lower right (this shadow direction tells which way is up). Inside a narrow plain border: in the upper left a sun disc with straight rays; below and to the right of it a bird in flight facing left with wings spread; across the middle three wavy water lines running from the upper right down to the lower left in a diagonal; at the lower right a moored wooden boat with a small anchor hanging from it. The composition is clearly NOT symmetric: every one of the nine thirds of the picture contains a different distinct part of the carving, no area is empty, and no part looks like another part. Fine hairline cracks and worn edges.
+Override for this image only: use a SQUARE 1:1 ratio, 1024x1024, instead of 3:2; this is a flat, straight-on square stone slab that fills the entire canvas edge to edge (no background, no margin, no perspective), so ignore the horizon and empty-lower-third rule.
+Scene: A single perfectly square slab of weathered gray-ochre sandstone seen straight on, filling the whole image from edge to edge, with a narrow plain flat carved frame border (about 3 percent wide) running perfectly straight along all four sides. The lighting is soft, even and diffuse from the front, with NO cast shadows, no dark gradients and nothing that crosses or darkens the outer edges, because the image will be cut into nine equal square stones. At the exact center, a large bold carved eye: an almond-shaped outline with a round iris and pupil and a short curved brow line above it (the brow line is at the top). A carved water channel passes through the whole slab from top to bottom: a wavy groove with two thin parallel edge lines that enters at the top edge at the center, flows down behind the eye, and leaves at the bottom edge at the center, narrower at the top and a little wider at the bottom. Each of the nine equal thirds of the picture carries different carving so the nine stones can be told apart and turned the right way: top-left corner a sunburst of straight rays, top-right corner a spread wing, bottom-left corner a bundle of reeds, bottom-right corner an eight-pointed star; the left middle third a short vertical row of three small carved dots, the right middle third a short vertical row of two small carved dots; the top-middle and bottom-middle thirds are the water channel and the center third is the eye. Fine hairline cracks and small worn spots in the stone, a warm gold-ochre tint in the carved lines, muted palette. No people.
 Constraints: no text, no letters, no numbers, no people, no faces, no watermark.
 ```
 - مواضع إلزامية:
-  - مركّبة غير متناظرة: شمس أعلى اليسار، طائر يواجه اليسار أسفلها يميناً، ثلاثة خطوط ماء قطرية، ومركب بمرساة أسفل اليمين
-  - كل ثلث من الصورة (3×3) فيه جزء مميّز، وظلال النقش نحو الأسفل-اليمين
-- تجنّب: تناظر أو تكرار نقش بين الأجزاء (يُربك الدوران)، مناطق فارغة كبيرة، حروف أو أرقام، وجوه، إطار سميك يبتلع قطع الأطراف
+  - لوحة مربعة تملأ الصورة من الحافة للحافة بإطار مستقيم الحواف (≈3% عرض) وبلا هامش أو خلفية
+  - عين في المركز تماماً (50,50) وحاجبها للأعلى
+  - مجرى ماء يدخل من منتصف الحافة العليا ويخرج من منتصف الحافة السفلى، أضيق من فوق وأعرض من تحت
+  - زوايا مميزة: شمس أعلى اليسار | جناح أعلى اليمين | قصب أسفل اليسار | نجمة أسفل اليمين؛ ثلاث نقاط يسار الوسط ونقطتان يمينه
+  - إضاءة منتظمة بلا ظلال تعبر الحواف (ستُقصّ إلى 9 حجارة)
+- تجنّب: ظلال أو تدرّج غامق عند الحواف، هامش أو خلفية حول اللوحة أو منظور مائل، تناظر كامل أو تكرار نفس النقش في أكثر من جزء، حروف أو أرقام، وجوه أو أشخاص، إطار سميك أو زخرفي يبتلع حجارة الأطراف
 - فحص القبول:
-  1. الصورة مربعة وغير متناظرة وكل ثلث فيه جزء مميّز
-  2. اتجاه الأعلى والأسفل واضح (شمس أعلى، ماء قطري، مركب أسفل) وظلال النقش ثابتة الاتجاه
-  3. لا نص ولا وجوه وحجمها ≤ 250KB بعد التحويل
+  1. اللوحة مربعة تملأ الصورة بإطار مستقيم الحواف وبلا ظلال عند الحواف
+  2. عين في المركز ومجرى ماء يعبر من الأعلى إلى الأسفل، وكل ثلث فيه نقش مميّز
+  3. لا نص ولا وجوه، وحجمها ≤ 250KB بعد التحويل
 
 ### 12 — c4-l3
 - الملف: `public/art/c4/l3.webp`
@@ -339,10 +343,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 4 — الطبقة B
 - الغرض: مشعل الممر في c4-l4 (اختياري؛ الواجهة ترسم المحطات بنفسها).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single old wooden torch with a rag-wrapped head burning with a warm orange-gold flame and a thin curl of smoke, held upright, the wood dark and worn.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -352,6 +356,63 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
   1. مشعل خشبي قديم بلهب دافئ هادئ
   2. مقروء بالحجم الصغير
   3. خلفية رمادية فاتحة وحواف نظيفة
+
+### 17 — carve-star
+- الملف: `public/art/items/carve-star.webp`
+- الحجم المطلوب: 256×256 شفاف
+- الدفعة والأولوية: Batch 4 — الطبقة A
+- الغرض: علامة «النجمة» في c4-l1: زخرفة أسفل الجدار وعنصر مشتّت في اللغز (ليست من التسلسل). أُضيفت بقرار A.
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- البرومبت الكامل (للصق):
+```
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Object: A flat square sandstone panel with a shallow carved relief of an eight-pointed star: a bold simple star with a small round center, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+```
+- مواضع إلزامية: لا يوجد
+- تجنّب: نجمة بخمس رؤوس سداسية معقّدة، حروف أو أرقام، لوح دائري (هذه الأيقونات مربعة)، تفاصيل دقيقة تضيع بالحجم الصغير
+- فحص القبول:
+  1. نجمة ثمانية رؤوس بسيطة واضحة
+  2. نفس اللوح المربع وعمق النقش في علامات c4-l1
+  3. خلفية رمادية فاتحة بلا أي مشهد وحواف نظيفة
+
+### 18 — carve-reed
+- الملف: `public/art/items/carve-reed.webp`
+- الحجم المطلوب: 256×256 شفاف
+- الدفعة والأولوية: Batch 4 — الطبقة A
+- الغرض: علامة «القصبة» في c4-l1: زخرفة أسفل الجدار وعنصر مشتّت في اللغز (ليست من التسلسل). أُضيفت بقرار A.
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- البرومبت الكامل (للصق):
+```
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Object: A flat square sandstone panel with a shallow carved relief of a bundle of three tall reed stalks with narrow leaves and feathery tops, worn edges and a few hairline cracks, tinted warm gold-copper in the carved lines. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; only the carved sign changes.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+```
+- مواضع إلزامية: لا يوجد
+- تجنّب: قصب كثيف يضيع بالحجم الصغير، حروف أو أرقام، لوح دائري، نبات مختلف (نخلة أو زهرة)
+- فحص القبول:
+  1. حزمة من ثلاث قصبات واضحة ومميّزة عن النجمة والجناح
+  2. نفس اللوح المربع وعمق النقش
+  3. خلفية رمادية فاتحة بلا أي مشهد وحواف نظيفة
+
+### 19 — carve-smooth
+- الملف: `public/art/items/carve-smooth.webp`
+- الحجم المطلوب: 256×256 شفاف
+- الدفعة والأولوية: Batch 4 — الطبقة B
+- الغرض: الحجر الأملس في c4-l1 بعد المرسى (اختياري). A: «carve-smooth (اختياري)».
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
+- البرومبت الكامل (للصق):
+```
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
+Object: A flat square sandstone panel of completely smooth, uncarved stone with only gentle weathering, a few hairline cracks and a soft warm patina, no carving or sign of any kind. Part of a set of four carved sign panels with an identical flat square sandstone panel, same carved relief depth and same gold-copper tint; this one has no carving at all.
+Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
+```
+- مواضع إلزامية: لا يوجد
+- تجنّب: أي نقش أو علامة على اللوح، حروف أو أرقام، لوح دائري
+- فحص القبول:
+  1. لوح مربع أملس بلا أي نقش
+  2. نفس الحجر واللون والحواف في علامات c4-l1
+  3. خلفية رمادية فاتحة بلا أي مشهد وحواف نظيفة
 
 ---
 
@@ -374,10 +435,13 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 | 14 | c4-l6 | B | [ ] | [ ] | [ ] | |
 | 15 | hala-serious | B | [ ] | [ ] | [ ] | |
 | 16 | torch | B | [ ] | [ ] | [ ] | |
+| 17 | carve-star | A | [ ] | [ ] | [ ] | |
+| 18 | carve-reed | A | [ ] | [ ] | [ ] | |
+| 19 | carve-smooth | B | [ ] | [ ] | [ ] | |
 
 ## أسئلة وملاحظات لأصحاب الفصول
 1. **c4-l4 (A):** تأكيد تفسيري: المحطات منصّات حجرية مربعة بمشاعل قائمة في قاعة مرئية من زاوية عالية (لا ممر بمنظور مباشر)، لأن الإحداثيات تتبدّل يميناً ويساراً بعرض واسع. هل هذا مقصودك؟
 2. **c4-l1 (A):** الحجر الأملس في الطرف الأيسر بعد المرسى؛ يوافق دليل هالة «بعده حجر أملس».
 3. **c4-l3 (A):** الرموز الثمانية على العمود هندسية مجرّدة (دائرة، مثلث، موجة، صليب، معيّن، مربع، هلال، حلقة نقطة)؛ لو تريد نقوش محدّدة أرسلها.
 4. **c4-l6 (A):** أربع مفاتيح وأربع فتحات مخازن. لو عدد المخازن غير ذلك أخبرني.
-5. **أيقونات `carve-*`:** تحتاج `icon:` في `ch4.ts` (انظر الملاحظات أعلاه).
+5. **أيقونات `carve-*`:** تنتظر إضافة `icon:` في `ch4.ts` بعد وصول الصور (قرار A).

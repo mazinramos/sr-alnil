@@ -6,7 +6,7 @@
 > مصدر الحقيقة: `src/content/chapters/ch2.ts` (أنا قرأته في 31/10) و`docs/LEVELS.md`.
 
 ## طريقة العمل لكل صورة (مازن)
-1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات والأيقونات: `docs/reference/village.jpg`. البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
+1. ارفق المرجع المكتوب في «المرجع المرفق». الخلفيات والشاشات: `docs/reference/village.jpg`. **الأيقونات: لا ترفق أي مرجع** (المرجع يجلب مشهد القرية). البورتريهات: `docs/reference/nour.png`، وللشخصيات الموجودة (آدم ويونس وهالة) ارفق أيضاً صورتها neutral من `public/art/chars/` ليثبت الوجه.
 2. انسخ كتلة «البرومبت الكامل» كما هي بدون تعديل. لا تحذف سطر الوصف الثابت للشخصية.
 3. افحص الناتج بنقاط «فحص القبول» وقائمة «تجنّب». لو فشلت نقطة، أعد التوليد (أو استعمل البديل المختصر في `GENERATION_ORDER.md`).
 4. حوّل واحفظ بالاسم والمقاس بالضبط: `cwebp -q 80`. البورتريهات والأيقونات تُزال خلفيتها أولاً.
@@ -112,10 +112,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة A
 - الغرض: رمز الفصل 2 (الموجة) حسب SYMBOLS.md. يُمنح عند c2-l7 ويُستعمل في c4-l5 وc5-l5 وc5-l6.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A round sandstone plaque with a simple carved relief of a wave: three parallel wavy water lines, bold and clean, readable at a small size, gold-copper color, looks chiseled into the stone with soft worn edges. Part of a matching set of five chapter symbols: the same round sandstone plaque shape, same carved relief style, same gold-copper color on a warm sand-colored stone.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -131,10 +131,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة A
 - الغرض: نجمة «السلّة» (رقم 1) في c2-l4 (sequence). 1 من 5 علامات نجوم تُرتَّب حسب أغنية آدم.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small round dark Nile-blue indigo clay disc with a thin warm-gold rim, on it a constellation drawn as about seven small glowing gold stars joined by thin gold lines forming the simple outline of a round woven basket with a curved handle. The shape must be bold and instantly recognizable at a small size, the only shape on the disc. Part of a set of five star signs with identical disc, rim and star style; only the shape changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -150,10 +150,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة A
 - الغرض: نجمة «القصب» (رقم 2) في c2-l4 (sequence). 2 من 5 علامات نجوم تُرتَّب حسب أغنية آدم.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small round dark Nile-blue indigo clay disc with a thin warm-gold rim, on it a constellation drawn as about seven small glowing gold stars joined by thin gold lines forming the simple outline of a bundle of three tall reed stalks with leaves. The shape must be bold and instantly recognizable at a small size, the only shape on the disc. Part of a set of five star signs with identical disc, rim and star style; only the shape changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -169,10 +169,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة A
 - الغرض: نجمة «الطائر» (رقم 3) في c2-l4 (sequence). 3 من 5 علامات نجوم تُرتَّب حسب أغنية آدم.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small round dark Nile-blue indigo clay disc with a thin warm-gold rim, on it a constellation drawn as about seven small glowing gold stars joined by thin gold lines forming the simple outline of a bird in flight with wings spread. The shape must be bold and instantly recognizable at a small size, the only shape on the disc. Part of a set of five star signs with identical disc, rim and star style; only the shape changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -188,10 +188,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة A
 - الغرض: نجمة «الشراع» (رقم 4) في c2-l4 (sequence). 4 من 5 علامات نجوم تُرتَّب حسب أغنية آدم.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small round dark Nile-blue indigo clay disc with a thin warm-gold rim, on it a constellation drawn as about seven small glowing gold stars joined by thin gold lines forming the simple outline of a triangular lateen sail on a mast. The shape must be bold and instantly recognizable at a small size, the only shape on the disc. Part of a set of five star signs with identical disc, rim and star style; only the shape changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -207,10 +207,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة A
 - الغرض: نجمة «المرسى» (رقم 5) في c2-l4 (sequence). 5 من 5 علامات نجوم تُرتَّب حسب أغنية آدم.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A small round dark Nile-blue indigo clay disc with a thin warm-gold rim, on it a constellation drawn as about seven small glowing gold stars joined by thin gold lines forming the simple outline of a ship anchor with a ring and curved flukes. The shape must be bold and instantly recognizable at a small size, the only shape on the disc. Part of a set of five star signs with identical disc, rim and star style; only the shape changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -349,10 +349,10 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة B
 - الغرض: عقدة صيّاد الأحمر في c2-l6 (cipher): أحد 4 عقد ملوّنة في مفتاح الشفرة.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A short length of thick natural-fiber cord tied into one bold fisherman's knot, the cord dyed terracotta red, frayed ends, slightly worn, shown large and simple so the knot shape and its color read instantly. Part of a set of four knots with identical knot shape and cord thickness; only the color changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -368,10 +368,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة B
 - الغرض: عقدة صيّاد الأزرق في c2-l6 (cipher): أحد 4 عقد ملوّنة في مفتاح الشفرة.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A short length of thick natural-fiber cord tied into one bold fisherman's knot, the cord dyed calm Nile blue, frayed ends, slightly worn, shown large and simple so the knot shape and its color read instantly. Part of a set of four knots with identical knot shape and cord thickness; only the color changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -387,10 +387,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة B
 - الغرض: عقدة صيّاد الأصفر في c2-l6 (cipher): أحد 4 عقد ملوّنة في مفتاح الشفرة.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A short length of thick natural-fiber cord tied into one bold fisherman's knot, the cord dyed mustard yellow, frayed ends, slightly worn, shown large and simple so the knot shape and its color read instantly. Part of a set of four knots with identical knot shape and cord thickness; only the color changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -406,10 +406,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة B
 - الغرض: عقدة صيّاد الأخضر في c2-l6 (cipher): أحد 4 عقد ملوّنة في مفتاح الشفرة.
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A short length of thick natural-fiber cord tied into one bold fisherman's knot, the cord dyed dusty palm green, frayed ends, slightly worn, shown large and simple so the knot shape and its color read instantly. Part of a set of four knots with identical knot shape and cord thickness; only the color changes.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -425,10 +425,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة B
 - الغرض: أيقونة حجر آمن في c2-l1 وفي الحقيبة (اختيارية؛ الواجهة ترسم العقد بنفسها).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A single smooth dark river stone, rounded and slightly flattened, wet with a soft sheen and a few drops of water, a hint of moss at the base.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
@@ -444,10 +444,10 @@ Constraints: no text, no letters, no numbers, no watermark, plain flat light-gra
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 2 — الطبقة B
 - الغرض: كيس حمولة في c2-l3 (balance) (اختيارية؛ يُحدَّد عند كتابة المستوى).
-- المرجع المرفق: `docs/reference/village.jpg`
+- المرجع المرفق: لا شيء (أيقونة: لا ترفق أي صورة مرجع، حتى لا يرجع مشهد القرية)
 - البرومبت الكامل (للصق):
 ```
-Single game puzzle icon, painterly realistic digital painting with soft shading, same art style, palette and lighting quality as the reference image, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
+Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. The background must be plain flat light-gray only, with nothing else behind the object: no scene, room, wall, floor, mat or sky. The object floats alone on the gray, centered, with clean edges. Square 1:1 ratio, 1024x1024.
 Object: A plump burlap sack of grain tied at the neck with natural cord, sitting upright, slightly creased, tiny loose grains at its base, no printing or marks.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 ```
