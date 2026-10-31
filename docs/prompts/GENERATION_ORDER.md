@@ -3,6 +3,7 @@
 > **تحديث 31/10 (NEXT4):** الفصل الأول وُلّد (ما عدا ما يظهر في قائمة «المنجز» أدناه)، فالأولوية الآن للفصول 2 إلى 5. الإجمالي المخطّط **101 صورة**: منجز 27، متبقٍ 74. القائمة تُحسب من الملفات الموجودة فعلاً في `public/art/`.
 > **الأولوية حسب A:** (1) خلفيات الألغاز الأعلى تأثيراً في الفصول 2 إلى 5، (2) بورتريهات الشخصيات الجديدة، (3) الأيقونات، ثم باقي الخلفيات والتعابير.
 > كل صف يشير للملف الجاهز لك (ملف لكل صورة في المجلد `docs/prompts/chN/`).
+> **الحالة الحيّة لكل صورة في `STATUS.md`** (يُولَّد بـ `python3 docs/prompts/make_status.py`). هذا الملف ترتيب مقترح فقط.
 
 ## قبل أن تبدأ
 1. **الخلفيات والشاشات:** محادثة جيمناي جديدة، ارفق `00_RULES_FOR_GEMINI.md` و`_references/village.jpg`. **البورتريهات:** محادثة أخرى بـ `00_RULES_FOR_GEMINI.md` و`_references/nour.png` (وللتعابير الموجودة أرفق صورة الشخصية neutral).
@@ -17,20 +18,20 @@
 | # | ID | يُحفظ في | ملف البرومبت | الطبقة |
 |---|---|---|---|---|
 | 1 | `c2-l1` | `public/art/c2/l1.webp` | `ch2/01_c2-l1.md` | A |
-| 2 | `c4-l4` | `public/art/c4/l4.webp` | `ch4/02_c4-l4.md` | A |
-| 3 | `c4-l2-puzzle` | `public/art/c4/l2-puzzle.webp` | `ch4/11_c4-l2-puzzle.md` | B |
-| 4 | `c5-l2` | `public/art/c5/l2.webp` | `ch5/09_c5-l2.md` | B |
-| 5 | `c5-l3` | `public/art/c5/l3.webp` | `ch5/10_c5-l3.md` | B |
-| 6 | `c2-l4` | `public/art/c2/l4.webp` | `ch2/02_c2-l4.md` | A |
-| 7 | `c2-l7` | `public/art/c2/l7.webp` | `ch2/03_c2-l7.md` | A |
-| 8 | `c3-l1` | `public/art/c3/l1.webp` | `ch3/01_c3-l1.md` | A |
-| 9 | `c3-l4` | `public/art/c3/l4.webp` | `ch3/02_c3-l4.md` | A |
-| 10 | `c3-l7` | `public/art/c3/l7.webp` | `ch3/03_c3-l7.md` | A |
-| 11 | `c4-l1` | `public/art/c4/l1.webp` | `ch4/01_c4-l1.md` | A |
-| 12 | `c4-l7` | `public/art/c4/l7.webp` | `ch4/03_c4-l7.md` | A |
-| 13 | `c5-l1` | `public/art/c5/l1.webp` | `ch5/01_c5-l1.md` | A |
-| 14 | `c5-l4` | `public/art/c5/l4.webp` | `ch5/02_c5-l4.md` | A |
-| 15 | `c5-l7` | `public/art/c5/l7.webp` | `ch5/03_c5-l7.md` | A |
+| 2 | `c3-l1` | `public/art/c3/l1.webp` | `ch3/01_c3-l1.md` | A |
+| 3 | `c4-l1` | `public/art/c4/l1.webp` | `ch4/01_c4-l1.md` | A |
+| 4 | `c5-l7` | `public/art/c5/l7.webp` | `ch5/03_c5-l7.md` | A |
+| 5 | `c4-l4` | `public/art/c4/l4.webp` | `ch4/02_c4-l4.md` | A |
+| 6 | `c4-l2-puzzle` | `public/art/c4/l2-puzzle.webp` | `ch4/11_c4-l2-puzzle.md` | B |
+| 7 | `c5-l2` | `public/art/c5/l2.webp` | `ch5/09_c5-l2.md` | B |
+| 8 | `c5-l3` | `public/art/c5/l3.webp` | `ch5/10_c5-l3.md` | B |
+| 9 | `c2-l4` | `public/art/c2/l4.webp` | `ch2/02_c2-l4.md` | A |
+| 10 | `c2-l7` | `public/art/c2/l7.webp` | `ch2/03_c2-l7.md` | A |
+| 11 | `c3-l4` | `public/art/c3/l4.webp` | `ch3/02_c3-l4.md` | A |
+| 12 | `c3-l7` | `public/art/c3/l7.webp` | `ch3/03_c3-l7.md` | A |
+| 13 | `c4-l7` | `public/art/c4/l7.webp` | `ch4/03_c4-l7.md` | A |
+| 14 | `c5-l1` | `public/art/c5/l1.webp` | `ch5/01_c5-l1.md` | A |
+| 15 | `c5-l4` | `public/art/c5/l4.webp` | `ch5/02_c5-l4.md` | A |
 | 16 | `saif-neutral` | `public/art/chars/saif-neutral.webp` | `ch2/04_saif-neutral.md` | A |
 | 17 | `halima-neutral` | `public/art/chars/halima-neutral.webp` | `ch3/04_halima-neutral.md` | A |
 | 18 | `othman-neutral` | `public/art/chars/othman-neutral.webp` | `ch4/04_othman-neutral.md` | A |
@@ -53,8 +54,9 @@
 | 35 | `spice-pepper` | `public/art/items/spice-pepper.webp` | `ch3/12_spice-pepper.md` | A |
 
 **لماذا هذا الترتيب؟**
+- **c2-l1 وc3-l1 وc4-l1 وc5-l7 (أول أربع):** صور **مؤقتة** من النسخة الأولى ما زالت في الـ repo (`PLACEHOLDERS.md`)، وإحداثيات ألغازها تُراجَع بعد وصول الصور الفعلية، فاستبدالها أولاً. تُحفظ بنفس الأسماء.
 - **c2-l1 وc4-l4:** لغزا route يعتمدان على مواضع محدّدة (الأحجار الآمنة، المشاعل المضاءة) ويحتاج D وA إحداثيات منهما. **c4-l2-puzzle** هي الصورة التي يُركَّب منها لغز c4-l2 نفسه. **c5-l2 وc5-l3** يعتمدان على قطع الخريطة (ولّدهما بعد اعتماد `map-full` وهو معتمد).
-- **خلفيات A الباقية:** تكفي مع البورتريهات لتسليم قابل للعب.
+- **خلفيات A الباقية** (c2-l4 وc2-l7 وc3-l4 وc3-l7 وc4-l7 وc5-l1 وc5-l4): تكفي مع البورتريهات لتسليم قابل للعب.
 - **البورتريهات الجديدة:** سيف وحليمة والحاج عثمان ورحاب (بشير وصفية منجزان).
 - **الأيقونات:** رموز الفصول، ونجوم آدم، وأغراض c3-l1، والتوابل، وعلامات الجدار الست في c4-l1، وأغراض ذاكرة c5-l1. ما لم يصل منها يظهر نصاً مؤقتاً (`ItemIcon` يعرض `label`).
 

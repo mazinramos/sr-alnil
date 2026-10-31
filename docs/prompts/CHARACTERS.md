@@ -8,6 +8,21 @@
 2. الصق **CHAR_ANCHOR** ثم سطر `Subject:` (الوصف الثابت أدناه) ثم سطر `Expression:` ثم `Constraints:`. هذا بالضبط ما في برومبتات الدفعات.
 3. للشخصيات الموجودة (nour, adam, yunus, hala) أضف الجملة: *KEEP THE EXACT SAME FACE, hair, clothing and framing as the attached portrait of this character; only the facial expression and a small head tilt change.*
 
+## إن اختلف الوجه بين تعبيرين
+ثبات تعابير الشخصيات الجديدة **لم يُختبر بعد**، وجيمناي يحرّف الوجه أحياناً. قارن كل تعبير جديد بصورة الشخصية neutral المعتمدة. إن اختلف الوجه (الشكل، العينان، لون البشرة، الشعر أو الغطاء، الملابس) فقل لجيمناي إحدى الجملتين، **ومعها صورة neutral المعتمدة مرفقة في الرسالة نفسها**:
+
+**1) إعادة توليد (الأولى دائماً):**
+```
+Regenerate this image. It must be exactly the same person as in the attached approved portrait: the same face shape, eyes, nose, mouth, skin tone, hair, head covering and clothing, with the same framing and pose. Only the facial expression changes, to: <التعبير>.
+```
+**2) إن فشلت الأولى مرة، عدّل الصورة بدل توليد جديدة:**
+```
+Edit the attached approved portrait instead of creating a new one. Keep everything identical (face, hair, head covering, clothing, framing, plain light-gray background) and change ONLY the facial expression to: <التعبير>.
+```
+- ولّد كل تعابير الشخصية في **المحادثة نفسها** التي ولّدت فيها neutral.
+- إن فشل التعبير **مرتين**: اتركه وأخبر A. اللعبة تعمل بدونه، إذ تعرض الواجهة تعبيراً مفقوداً بصورة neutral (ثم بحرف الاسم الأول إن غابت neutral).
+- **لا تغيّر وجه neutral المعتمد أبداً** لتوافق تعبيراً جديداً. التعبير هو الذي يُعاد.
+
 ## CHAR_ANCHOR
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
