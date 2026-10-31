@@ -67,11 +67,11 @@ export default function LevelRunner({ level }: { level: Level }) {
         <div className="stage-image" style={imgStyle} />
         <div className="stage-vignette" />
         <header className="stage-topbar">
-          <button className="glass-button" onClick={() => navigate(`/chapter/${level.chapter}`)}><ChevronRight size={17} /> <span>خريطة الفصل</span></button>
+          <button className="glass-button" aria-label="العودة إلى خريطة الفصل" onClick={() => navigate(`/chapter/${level.chapter}`)}><ChevronRight size={17} /> <span>خريطة الفصل</span></button>
           <div className="chapter-indicator"><span>الفصل {pad2(level.chapter)}</span><i />المستوى {level.index} من 7</div>
           <div className="stage-tools">
-            <button className="glass-button" onClick={() => setOverlay("notebook")}><BookOpen size={17} /><span>الدفتر</span></button>
-            <button className="glass-button" onClick={() => setOverlay("inventory")}><Compass size={17} /><span>الحقيبة</span></button>
+            <button className="glass-button" aria-label="فتح الدفتر" onClick={() => setOverlay("notebook")}><BookOpen size={17} /><span>الدفتر</span></button>
+            <button className="glass-button" aria-label="فتح الحقيبة" onClick={() => setOverlay("inventory")}><Compass size={17} /><span>الحقيبة</span></button>
           </div>
         </header>
 

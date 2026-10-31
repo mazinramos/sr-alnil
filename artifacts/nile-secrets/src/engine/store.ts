@@ -1,7 +1,10 @@
 import { useSyncExternalStore } from "react";
 import { getOrderedLevelIds } from "./content";
 import { chapterLevelIds, isChapterUnlockedIn, isLevelUnlockedIn, unlockedIn } from "./unlock";
-import { STORAGE_KEY_V1, V1_DONE_KEY, v1CompletedFromRaw } from "./migrate";
+import { v1CompletedFromRaw } from "./migrate";
+import { STORAGE_KEY_V2, defaultProgress, getBrowserStorage, loadProgress, markV1Done, saveProgress } from "./storage";
+
+export { STORAGE_KEY_V2, defaultProgress };
 
 /** CONTRACT §4 */
 export type LevelResult = { stars: 1 | 2 | 3; hints: number; attempts: number };
@@ -13,7 +16,6 @@ export type ProgressV2 = {
   settings: { sound: boolean; textScale: 1 | 1.15 | 1.3 };
 };
 
-export const STORAGE_KEY_V2 = "nile-secrets-progress-v2";
 export const CHAPTERS = 5;
 export const LEVELS_PER_CHAPTER = 7;
 
@@ -27,16 +29,6 @@ export const parseLevelId = (id: string) => {
   const m = /^c(\d+)-l(\d+)$/.exec(id);
   return m ? { chapter: Number(m[1]), index: Number(m[2]) } : null;
 };
-
-export function defaultProgress(): ProgressV2 {
-  return {
-    version: 2,
-    completed: {},
-    discoveredClues: [],
-    lastLevel: "c1-l1",
-    settings: { sound: true, textScale: 1 },
-  };
-}
 
 /* ---------- نجوم (CONTRACT §4) ---------- */
 /** 3 = بدون تلميح وأقل من محاولتين خاطئتين. 2 = تلميح واحد على الأكثر وحتى 3 أخطاء. 1 = غير ذلك. */
@@ -67,52 +59,29 @@ export function migrateV1(raw: string | null): ProgressV2 {
   return { ...defaultProgress(), completed: v1CompletedFromRaw(raw) };
 }
 
-/* ---------- تخزين محلي بحذر ---------- */
+/* ---------- تخزين محلي بحذر (المنطق في storage.ts ومُختبَر) ---------- */
 let storageOk = true;
+const okListeners = new Set<() => void>();
+function setStorageOk(v: boolean) {
+  if (storageOk === v) return;
+  storageOk = v;
+  okListeners.forEach((l) => l());
+}
 export const isStorageOk = () => storageOk;
+export const useStorageOk = () =>
+  useSyncExternalStore((l) => (okListeners.add(l), () => okListeners.delete(l)), isStorageOk);
 
-function isValid(x: unknown): x is ProgressV2 {
-  const p = x as ProgressV2;
-  return !!p && p.version === 2 && typeof p.completed === "object" && Array.isArray(p.discoveredClues) && !!p.settings;
-}
-
-function read(): ProgressV2 {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY_V2);
-    if (!raw) {
-      // ترحيل V1 مرة واحدة فقط: بعد الترحيل أو «بدء من جديد» يُوضع V1_DONE_KEY فلا يُعاد الترحيل.
-      if (localStorage.getItem(V1_DONE_KEY)) return defaultProgress();
-      const migrated = migrateV1(localStorage.getItem(STORAGE_KEY_V1));
-      try { localStorage.setItem(V1_DONE_KEY, "1"); } catch { storageOk = false; }
-      if (Object.keys(migrated.completed).length) {
-        migrated.lastLevel = Object.keys(migrated.completed)[0];
-        try { localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(migrated)); } catch { storageOk = false; }
-      }
-      return migrated;
-    }
-    const parsed = JSON.parse(raw);
-    return isValid(parsed) ? { ...defaultProgress(), ...parsed } : defaultProgress();
-  } catch {
-    storageOk = false; // وضع خاص أو تخزين معطّل
-    return defaultProgress();
-  }
-}
-
-function write(p: ProgressV2) {
-  try {
-    localStorage.setItem(STORAGE_KEY_V2, JSON.stringify(p));
-  } catch {
-    storageOk = false;
-  }
-}
+const storage = getBrowserStorage();
+const loaded = loadProgress(storage);
+storageOk = loaded.ok;
 
 /* ---------- المخزن ---------- */
-let state: ProgressV2 = read();
+let state: ProgressV2 = loaded.progress;
 const listeners = new Set<() => void>();
 
 function set(next: ProgressV2) {
   state = next;
-  write(next);
+  setStorageOk(saveProgress(storage, next)); // فشل الحفظ (ممتلئ/غير متاح): نكمل في الذاكرة ونُظهر التنبيه
   listeners.forEach((l) => l());
 }
 
@@ -147,6 +116,6 @@ export function updateSettings(patch: Partial<ProgressV2["settings"]>) {
 
 /** «بدء من جديد»: يمسح V2 ويمنع إعادة ترحيل V1 تلقائياً (مفتاح V1 نفسه لا يُمسح). */
 export function resetProgress() {
-  try { localStorage.setItem(V1_DONE_KEY, "1"); } catch { storageOk = false; }
+  markV1Done(storage);
   set(defaultProgress());
 }

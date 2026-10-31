@@ -11,6 +11,7 @@ import TitleScreen from "./engine/TitleScreen";
 import EndingScreen from "./engine/EndingScreen";
 import RewardScreen from "./engine/RewardScreen";
 import ErrorBoundary from "./engine/ErrorBoundary";
+import StorageNotice from "./engine/StorageNotice";
 import { installClickSound } from "./engine/audio";
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
   return (
     <ErrorBoundary variant="full" resetKey={route.path.join("/")}>
       <Routes />
+      <StorageNotice />
     </ErrorBoundary>
   );
 }

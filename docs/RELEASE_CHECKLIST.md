@@ -16,6 +16,15 @@ npm ci && npm run check && npm run test:content && npm run test:e2e
 - [ ] تحذيرات `test:content` معروفة ومقبولة من A (ليست أخطاء)
 - [ ] `npm run report:assets` ثم افتحي `docs/MISSING_ASSETS.md`: لا ملف أولوية A ناقص (أو أُبلغ A بالنواقص)
 
+### بعد كل دفعة صور جديدة (يشغّلها مازن أو حساب B)
+```
+npm run thumbs && npm run report:assets && npm run test:content
+```
+- `thumbs` يولّد مصغّرات خفيفة لخلفيات المستويات في `public/art/thumbs/` (تُستعمل في شاشة عقد الفصل لتخفيف التحميل على الشبكات البطيئة؛ غيابها لا يكسر شيئاً).
+- `report:assets` يحدّث `docs/MISSING_ASSETS.md`: راجعي ما بقي ناقصاً (الأولوية A أولاً).
+- `test:content` يتأكد أن المحتوى سليم.
+- ثم اعملي commit للصور والمصغّرات و`MISSING_ASSETS.md` معاً.
+
 ## 2) الرابط (Vercel، انظري `docs/DEPLOY.md`)
 - [ ] آخر commit على `main` منشور، وحالة النشر خضراء
 - [ ] الرابط الرئيسي يفتح على **هاتفين مختلفين** (أندرويد وآيفون إن أمكن)

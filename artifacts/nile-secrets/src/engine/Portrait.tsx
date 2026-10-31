@@ -25,6 +25,8 @@ export default function Portrait({ id, mood = "neutral", size = 72 }: { id: stri
       width={size}
       height={size}
       draggable={false}
+      loading="lazy"
+      decoding="async"
       className="shrink-0 object-contain"
       style={{ width: size, height: size }}
       onError={() => setStage((s) => (s === 0 && mood !== "neutral" ? 1 : 2))}

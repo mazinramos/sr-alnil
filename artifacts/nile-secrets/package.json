@@ -15,7 +15,8 @@
     "test": "npm run test:unlock && npm run test:migrate && npm run test:content",
     "optimize-images": "node scripts/optimize-images.mjs",
     "test:content": "node --experimental-strip-types scripts/check-content.mjs && node --experimental-strip-types scripts/check-content-selftest.mjs",
-    "report:assets": "node --experimental-strip-types scripts/report-missing-assets.mjs"
+    "report:assets": "node --experimental-strip-types scripts/report-missing-assets.mjs",
+    "thumbs": "node scripts/make-thumbs.mjs"
   },
   "dependencies": {
     "framer-motion": "^14.7.1",

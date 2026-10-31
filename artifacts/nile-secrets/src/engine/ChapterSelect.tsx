@@ -2,11 +2,11 @@ import { useState } from "react";
 import { BookOpen, Check, ChevronLeft, Compass, LockKeyhole, RotateCcw, Star } from "lucide-react";
 import { getChapter, getOrderedLevelIds } from "./content";
 import { navigate } from "./router";
-import { ALL_LEVEL_IDS, chapterStars, isChapterUnlocked, isStorageOk, resetProgress, useProgress } from "./store";
+import { ALL_LEVEL_IDS, chapterStars, isChapterUnlocked, resetProgress, useProgress } from "./store";
 import { chapterLevelIds } from "./unlock";
 import { ConfirmDialog, Drawer } from "./Drawers";
 import { SettingsButton, SettingsDialog } from "./SettingsDialog";
-import { CHAPTER_FALLBACK, pad2, STOP_ART } from "./legacyArt";
+import { CHAPTER_FALLBACK, pad2, STOP_ART, thumbOf, useLazyArt } from "./legacyArt";
 
 /** مواضع المحطات الخمس كما في خريطة ريبلت الأصلية. */
 const SPOTS = [
@@ -54,7 +54,6 @@ export default function ChapterSelect() {
             <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="فتح الحقيبة"><Compass size={19} /><span>الحقيبة</span></button>
           </div>
         </header>
-        {!isStorageOk() && <div className="storage-warning" role="alert">تعذّر حفظ التقدّم على هذا المتصفح، وقد يضيع عند الإغلاق.</div>}
 
         <div className="map-layout">
           <div className="map-intro">
@@ -87,10 +86,10 @@ export default function ChapterSelect() {
                 onClick={() => navigate(`/chapter/${s.n}`)}
                 aria-label={`${s.title}${s.complete ? "، مكتملة" : s.soon ? "، قريباً" : s.unlocked ? "، متاحة" : "، مقفلة"}`}
               >
-                <span className="stop-thumb" style={{ backgroundImage: `url(${STOP_ART[i]})` }}>
+                <StopThumb art={STOP_ART[i]}>
                   {!s.unlocked && <LockKeyhole size={16} />}
                   {s.complete && <span className="stop-check"><Check size={13} /></span>}
-                </span>
+                </StopThumb>
                 <span className="stop-copy">
                   <small>الفصل {pad2(s.n)}{s.ids.length > 0 && ` · ${s.done}/${s.ids.length}`}{s.stars > 0 && <> · <Star size={11} fill="currentColor" aria-hidden style={{ verticalAlign: "-1px" }} />{s.stars}</>}</small>
                   <b>{s.title}</b>
@@ -113,4 +112,10 @@ export default function ChapterSelect() {
       </section>
     </main>
   );
+}
+
+/** صورة المحطة المصغّرة: لا تُحمَّل حتى تقترب من الشاشة. */
+function StopThumb({ art, children }: { art: string; children: React.ReactNode }) {
+  const [ref, bg] = useLazyArt<HTMLSpanElement>(thumbOf(art), art);
+  return <span ref={ref} className="stop-thumb" style={{ backgroundImage: bg }}>{children}</span>;
 }

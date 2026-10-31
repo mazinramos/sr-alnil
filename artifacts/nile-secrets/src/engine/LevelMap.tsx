@@ -6,7 +6,7 @@ import { isChapterUnlocked, isLevelUnlocked, useProgress } from "./store";
 import { chapterLevelIds } from "./unlock";
 import { SettingsButton, SettingsDialog } from "./SettingsDialog";
 import { Drawer } from "./Drawers";
-import { pad2, STOP_ART, useArt } from "./legacyArt";
+import { pad2, STOP_ART, thumbOf, useLazyArt } from "./legacyArt";
 
 /** مستويات الفصل على مسار النهر بنفس لغة تصميم ريبلت. المستوى 7 (boss) أكبر وبعلم. */
 export default function LevelMap({ chapter }: { chapter: number }) {
@@ -112,6 +112,6 @@ export default function LevelMap({ chapter }: { chapter: number }) {
 
 /** صورة مصغّرة للمستوى: تُحمَّل خلفية المستوى، والبديل القديم لو غابت. */
 function Thumb({ src, fallback, children }: { src: string; fallback: string; children: React.ReactNode }) {
-  const bg = useArt(src, fallback);
-  return <span className="lv-thumb" style={{ backgroundImage: bg }}>{children}</span>;
+  const [ref, bg] = useLazyArt<HTMLSpanElement>(thumbOf(src), src, fallback);
+  return <span ref={ref} className="lv-thumb" style={{ backgroundImage: bg }}>{children}</span>;
 }
