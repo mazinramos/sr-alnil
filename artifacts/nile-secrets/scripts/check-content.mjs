@@ -17,6 +17,26 @@ const ids = (arr) => (Array.isArray(arr) ? arr.map((x) => x?.id) : []);
 const dupes = (arr) => arr.filter((x, i) => arr.indexOf(x) !== i);
 const isArr = Array.isArray;
 
+// الشخصيات المعتمدة (المصدر الوحيد: src/engine/characters.ts)
+const { CHARACTERS } = await import(pathToFileURL(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../src/engine/characters.ts")).href);
+const CHAR_IDS = new Set(Object.keys(CHARACTERS));
+const CHAR_NAMES = new Set(Object.values(CHARACTERS).map((c) => c.name));
+
+// إيموجي ملوّن ممنوع (قرار A): نرفض Extended_Pictographic وعلامة التحويل لإيموجي (FE0F/20E3)، ونسمح بالأشكال الهندسية.
+const GEOMETRIC_OK = /[▲△▼▽◆◇■□●○◐◑◒◓◯]/gu;
+// + رموز قرّر A منعها صراحةً (بعضها ليس Extended_Pictographic لكنه يظهر ملوّناً/غير متسق على بعض الهواتف)
+const EMOJI = /[\p{Extended_Pictographic}\uFE0F\u20E3★☆✦✧✪✯♠♣♥♦♒⚘⚓]/u;
+function emojiIn(str) {
+  const clean = str.replace(GEOMETRIC_OK, "");
+  const m = clean.match(EMOJI);
+  return m ? m[0] : null;
+}
+function walkStrings(node, pathStr, visit) {
+  if (typeof node === "string") return visit(node, pathStr);
+  if (Array.isArray(node)) return node.forEach((n, i) => walkStrings(n, `${pathStr}[${i}]`, visit));
+  if (node && typeof node === "object") for (const [k, v] of Object.entries(node)) walkStrings(v, pathStr ? `${pathStr}.${k}` : k, visit);
+}
+
 /** مستويات معلَّمة بتعليق  // allow-low-permutations  فوق كائن المستوى (استثناء مكتوب). */
 let currentSource = "";
 function allowLow(levelId) {
@@ -171,6 +191,8 @@ function checkPuzzle(L, p) {
 
 const files = (await readdir(DIR)).filter((f) => /^ch\d+\.ts$/.test(f)).sort();
 const seenLevels = new Set();
+const seenPieces = new Map();
+const chapterIds = [];
 const seenClues = new Map();
 const summary = [];
 
@@ -182,6 +204,15 @@ for (const f of files) {
   if (!ch || !isArr(ch.levels)) { err(f, "لا يوجد export default بفصل صالح"); continue; }
   if (ch.id !== fileNo) err(f, `id الفصل ${ch.id} لا يطابق اسم الملف`);
   if (!ch.mapPiece?.id || !ch.mapPiece?.label) err(f, "mapPiece ناقصة");
+  else {
+    if (seenPieces.has(ch.mapPiece.id)) err(f, `mapPiece.id «${ch.mapPiece.id}» مكرر مع ${seenPieces.get(ch.mapPiece.id)}`);
+    seenPieces.set(ch.mapPiece.id, f);
+  }
+  chapterIds.push(ch.id);
+  walkStrings({ title: ch.title, location: ch.location, summary: ch.summary, mapPiece: ch.mapPiece }, "", (str, at) => {
+    const e = emojiIn(str);
+    if (e) err(f, `إيموجي «${e}» في ${at}`);
+  });
   if (ch.levels.length > 7) err(f, `أكثر من 7 مستويات (${ch.levels.length})`);
   summary.push(`${f}: ${ch.levels.length} مستوى (${ch.levels.map((l) => l.index).join(",")})`);
 
@@ -196,6 +227,14 @@ for (const f of files) {
     if (!(L.difficulty >= 1 && L.difficulty <= 5)) err(id, "difficulty خارج 1–5");
     if (!L.background?.startsWith("/art/")) err(id, `background غير صالح «${L.background}»`);
     if (!L.character) err(id, "character فارغ");
+    else if (!CHAR_IDS.has(L.character)) err(id, `character «${L.character}» غير موجود في CHARACTERS`);
+    for (const d of L.dialogue ?? []) {
+      if (d.speaker && !CHAR_NAMES.has(d.speaker) && !CHAR_IDS.has(d.speaker)) err(id, `speaker «${d.speaker}» غير موجود في CHARACTERS`);
+    }
+    walkStrings(L, "", (str, at) => {
+      const e = emojiIn(str);
+      if (e) err(id, `إيموجي «${e}» (U+${e.codePointAt(0).toString(16).toUpperCase()}) في ${at}`);
+    });
     if (!L.objective) err(id, "objective فارغ");
     if (!L.successText) err(id, "successText فارغ");
 
@@ -222,6 +261,12 @@ for (const f of files) {
 }
 
 if (!files.length) err("chapters", "لا توجد ملفات ch*.ts");
+{
+  const sorted = [...chapterIds].sort((a, b) => a - b);
+  sorted.forEach((n, i) => {
+    if (n !== i + 1) err("chapters", `تتابع الفصول غير متصل: المتوقع ${i + 1} لكن وجدت ${n} (فصول: ${sorted.join(",")})`);
+  });
+}
 console.log(summary.join("\n"));
 console.log(`مستويات: ${seenLevels.size} | أدلة: ${seenClues.size}`);
 if (warns.length) console.log("\nتحذيرات:\n" + warns.join("\n"));

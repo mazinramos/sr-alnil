@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
-import { BookOpen, ChevronRight, Compass, Eye, HelpCircle, Sparkles } from "lucide-react";
+import { BookOpen, ChevronRight, Compass, Eye, HelpCircle, Sparkles, Star } from "lucide-react";
 import type { Level } from "../content/types";
 import { getPuzzleComponent } from "./registry";
 import { completeLevel, discoverClues, setLastLevel } from "./store";
@@ -10,7 +10,7 @@ import { CHARACTERS, getCharacter } from "./characters";
 import { Drawer } from "./Drawers";
 import { playError, playSuccess } from "./audio";
 import ErrorBoundary from "./ErrorBoundary";
-import { PUZZLE_NAMES, pad2, STOP_ART, useArt } from "./legacyArt";
+import { PUZZLE_NAMES, pad2, STOP_ART, useArtUrl } from "./legacyArt";
 
 type Phase = "play" | "done";
 
@@ -33,7 +33,9 @@ export default function LevelRunner({ level }: { level: Level }) {
   const Puzzle = useMemo(() => getPuzzleComponent(level.puzzle.type), [level.puzzle.type]);
   const ch = getChapter(level.chapter);
   const f = level.focal;
-  const levelArt = useArt(level.background, STOP_ART[level.chapter - 1]);
+  // لو صورة المستوى لم تصل بعد: البديل القديم، فلا يظهر <img> مكسور داخل الألغاز التي تعرض الخلفية (route وhotspot وjigsaw).
+  const artUrl = useArtUrl(level.background, STOP_ART[level.chapter - 1]);
+  const levelArt = `url(${artUrl})`;
   const imgStyle: React.CSSProperties = {
     backgroundImage: levelArt,
     backgroundSize: f?.zoom ? `${f.zoom * 100}%, cover` : "cover",
@@ -108,7 +110,7 @@ export default function LevelRunner({ level }: { level: Level }) {
                 <div className="puzzle-host">
                   <ErrorBoundary resetKey={level.id}>
                     <Suspense fallback={<p style={{ textAlign: "center", padding: 16 }}>…</p>}>
-                      <Puzzle config={level.puzzle} background={level.background} hintLevel={hints} onResult={onResult} />
+                      <Puzzle config={level.puzzle} background={artUrl} hintLevel={hints} onResult={onResult} />
                     </Suspense>
                   </ErrorBoundary>
                 </div>
@@ -127,7 +129,7 @@ export default function LevelRunner({ level }: { level: Level }) {
               </>
             ) : (
               <div className="result-card">
-                <p className="result-stars" aria-label={`${stars} من 3 نجوم`}>{"★".repeat(stars)}{"☆".repeat(3 - stars)}</p>
+                <p className="result-stars" aria-label={`${stars} من 3 نجوم`}>{[1, 2, 3].map((n) => <Star key={n} size={30} fill={n <= stars ? "currentColor" : "none"} strokeWidth={1.6} style={{ margin: "0 2px", opacity: n <= stars ? 1 : 0.35 }} aria-hidden />)}</p>
                 <p>{level.successText}</p>
                 <div className="result-actions">
                   <button className="button button-quiet" onClick={() => navigate(`/chapter/${level.chapter}`)}>خريطة الفصل</button>

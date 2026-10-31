@@ -15,7 +15,7 @@ export const pad2 = (n: number) => String(n).padStart(2, "0");
 
 /** صورة أساسية مع بديل: يُطلب الأساسي وحده، والبديل (legacy) لا يُحمَّل إلا لو فشل الأساسي.
  *  يُرجع قيمة background-image جاهزة. (بدلاً من layered التي تحمّل الصورتين دائماً.) */
-export function useArt(primary: string, fallback?: string): string {
+export function useArtUrl(primary: string, fallback?: string): string {
   const [failed, setFailed] = useState(false);
   useEffect(() => {
     setFailed(false);
@@ -26,5 +26,8 @@ export function useArt(primary: string, fallback?: string): string {
     img.src = primary;
     return () => { off = true; img.onerror = null; };
   }, [primary, fallback]);
-  return `url(${failed && fallback ? fallback : primary})`;
+  return failed && fallback ? fallback : primary;
 }
+
+/** نفس الفكرة لكن بقيمة CSS جاهزة لـ background-image. */
+export const useArt = (primary: string, fallback?: string): string => `url(${useArtUrl(primary, fallback)})`;

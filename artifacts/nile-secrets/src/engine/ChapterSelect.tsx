@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BookOpen, Check, ChevronLeft, Compass, LockKeyhole, RotateCcw } from "lucide-react";
+import { BookOpen, Check, ChevronLeft, Compass, LockKeyhole, RotateCcw, Star } from "lucide-react";
 import { getChapter, getOrderedLevelIds } from "./content";
 import { navigate } from "./router";
 import { ALL_LEVEL_IDS, chapterStars, isChapterUnlocked, isStorageOk, resetProgress, useProgress } from "./store";
@@ -92,7 +92,7 @@ export default function ChapterSelect() {
                   {s.complete && <span className="stop-check"><Check size={13} /></span>}
                 </span>
                 <span className="stop-copy">
-                  <small>الفصل {pad2(s.n)}{s.ids.length > 0 && ` · ${s.done}/${s.ids.length}`}{s.stars > 0 && ` · ★${s.stars}`}</small>
+                  <small>الفصل {pad2(s.n)}{s.ids.length > 0 && ` · ${s.done}/${s.ids.length}`}{s.stars > 0 && <> · <Star size={11} fill="currentColor" aria-hidden style={{ verticalAlign: "-1px" }} />{s.stars}</>}</small>
                   <b>{s.title}</b>
                   <em>{s.soon ? "قريباً" : s.location}</em>
                 </span>

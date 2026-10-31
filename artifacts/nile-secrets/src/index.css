@@ -44,3 +44,6 @@ button { font-family: inherit; min-height: 44px; min-width: 44px; }
 /* حجم النص: يُطبَّق على مناطق النص فقط (التصميم بالبكسل فلا يكفي font-size للجذر). اللغز نفسه لا يتأثر كي لا تنحرف الإحداثيات. */
 html[data-text-scale="1.15"] :is(.stage-narrative, .drawer-scroll, .result-card, .hint-note, .wrong-note, .rw-card) { zoom: 1.15; }
 html[data-text-scale="1.3"] :is(.stage-narrative, .drawer-scroll, .result-card, .hint-note, .wrong-note, .rw-card) { zoom: 1.3; }
+
+/* الشريط السفلي (محاولات/حفظ) ثابت على الشاشات الكبيرة: نترك له مساحة كي لا يغطي آخر بطاقة دليل عند التمرير. */
+.stage-screen .stage-body { padding-bottom: 64px; }
