@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "test:unlock": "node --experimental-strip-types scripts/check-unlock.mjs",
     "test:migrate": "node --experimental-strip-types scripts/check-migrate.mjs",
+    "test:e2e": "node scripts/e2e-playthrough.mjs",
     "test": "npm run test:unlock && npm run test:migrate && npm run test:content",
     "optimize-images": "node scripts/optimize-images.mjs",
     "test:content": "node --experimental-strip-types scripts/check-content.mjs && node --experimental-strip-types scripts/check-content-selftest.mjs",
