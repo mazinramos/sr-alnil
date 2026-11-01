@@ -2,9 +2,9 @@
 
 > مولَّد آلياً بـ `python3 docs/prompts/make_status.py` (آخر تحديث 2026-11-01). لا تعدّله يدوياً. الحالة: **موجودة** (صورة فعلية) | **مؤقتة** (صورة من النسخة الأولى تُستبدل بنفس الاسم) | **ناقصة** (لا ملف؛ تسقط الواجهة لبديل). الطبقة A لازمة للتسليم.
 
-**المخطّط 100 صورة:** موجودة 66، مؤقتة 2، ناقصة 32.
-**الطبقة A:** موجودة 42 من 59، مؤقتة 2، ناقصة 15.
-**الطبقة B:** موجودة 24 من 41، مؤقتة 0، ناقصة 17.
+**المخطّط 100 صورة:** موجودة 88، مؤقتة 1، ناقصة 11.
+**الطبقة A:** موجودة 52 من 59، مؤقتة 1، ناقصة 6.
+**الطبقة B:** موجودة 36 من 41، مؤقتة 0، ناقصة 5.
 
 ## دفعة الفصل 1 (27)
 
@@ -42,28 +42,28 @@
 
 | # | ID | النوع | الملف | الحالة | الطبقة | يعتمد عليه لغز؟ |
 |---|---|---|---|---|---|---|
-| 01 | `c2-l1` | خلفية | `c2/l1.webp` | مؤقتة | A | نعم: route |
-| 02 | `c2-l4` | خلفية | `c2/l4.webp` | ناقصة | A | - |
-| 03 | `c2-l7` | خلفية | `c2/l7.webp` | ناقصة | A | - |
-| 04 | `saif-neutral` | بورتريه | `chars/saif-neutral.webp` | ناقصة | A | - |
-| 05 | `symbol-c2` | أيقونة | `items/symbol-c2.webp` | ناقصة | A | - |
-| 06 | `star-sign-1` | أيقونة | `items/star-sign-1.webp` | ناقصة | A | - |
-| 07 | `star-sign-2` | أيقونة | `items/star-sign-2.webp` | ناقصة | A | - |
-| 08 | `star-sign-3` | أيقونة | `items/star-sign-3.webp` | ناقصة | A | - |
-| 09 | `star-sign-4` | أيقونة | `items/star-sign-4.webp` | ناقصة | A | - |
-| 10 | `star-sign-5` | أيقونة | `items/star-sign-5.webp` | ناقصة | A | - |
-| 11 | `c2-l2` | خلفية | `c2/l2.webp` | ناقصة | B | نعم: hotspot |
-| 12 | `c2-l3` | خلفية | `c2/l3.webp` | ناقصة | B | - |
-| 13 | `c2-l5` | خلفية | `c2/l5.webp` | ناقصة | B | - |
-| 14 | `c2-l6` | خلفية | `c2/l6.webp` | ناقصة | B | - |
-| 15 | `adam-smiling` | بورتريه | `chars/adam-smiling.webp` | ناقصة | B | - |
-| 16 | `adam-serious` | بورتريه | `chars/adam-serious.webp` | ناقصة | B | - |
-| 17 | `knot-red` | أيقونة | `items/knot-red.webp` | ناقصة | B | - |
-| 18 | `knot-blue` | أيقونة | `items/knot-blue.webp` | ناقصة | B | - |
-| 19 | `knot-yellow` | أيقونة | `items/knot-yellow.webp` | ناقصة | B | - |
-| 20 | `knot-green` | أيقونة | `items/knot-green.webp` | ناقصة | B | - |
-| 21 | `river-stone` | أيقونة | `items/river-stone.webp` | ناقصة | B | - |
-| 22 | `cargo-sack` | أيقونة | `items/cargo-sack.webp` | ناقصة | B | - |
+| 01 | `c2-l1` | خلفية | `c2/l1.webp` | موجودة | A | نعم: route |
+| 02 | `c2-l4` | خلفية | `c2/l4.webp` | موجودة | A | - |
+| 03 | `c2-l7` | خلفية | `c2/l7.webp` | موجودة | A | - |
+| 04 | `saif-neutral` | بورتريه | `chars/saif-neutral.webp` | موجودة | A | - |
+| 05 | `symbol-c2` | أيقونة | `items/symbol-c2.webp` | موجودة | A | - |
+| 06 | `star-sign-1` | أيقونة | `items/star-sign-1.webp` | موجودة | A | - |
+| 07 | `star-sign-2` | أيقونة | `items/star-sign-2.webp` | موجودة | A | - |
+| 08 | `star-sign-3` | أيقونة | `items/star-sign-3.webp` | موجودة | A | - |
+| 09 | `star-sign-4` | أيقونة | `items/star-sign-4.webp` | موجودة | A | - |
+| 10 | `star-sign-5` | أيقونة | `items/star-sign-5.webp` | موجودة | A | - |
+| 11 | `c2-l2` | خلفية | `c2/l2.webp` | موجودة | B | نعم: hotspot |
+| 12 | `c2-l3` | خلفية | `c2/l3.webp` | موجودة | B | - |
+| 13 | `c2-l5` | خلفية | `c2/l5.webp` | موجودة | B | - |
+| 14 | `c2-l6` | خلفية | `c2/l6.webp` | موجودة | B | - |
+| 15 | `adam-smiling` | بورتريه | `chars/adam-smiling.webp` | موجودة | B | - |
+| 16 | `adam-serious` | بورتريه | `chars/adam-serious.webp` | موجودة | B | - |
+| 17 | `knot-red` | أيقونة | `items/knot-red.webp` | موجودة | B | - |
+| 18 | `knot-blue` | أيقونة | `items/knot-blue.webp` | موجودة | B | - |
+| 19 | `knot-yellow` | أيقونة | `items/knot-yellow.webp` | موجودة | B | - |
+| 20 | `knot-green` | أيقونة | `items/knot-green.webp` | موجودة | B | - |
+| 21 | `river-stone` | أيقونة | `items/river-stone.webp` | موجودة | B | - |
+| 22 | `cargo-sack` | أيقونة | `items/cargo-sack.webp` | موجودة | B | - |
 
 ## دفعة الفصل 3 (20)
 
@@ -137,16 +137,16 @@
 
 | الأولوية | ID | نوع اللغز | الحالة | الطبقة |
 |---|---|---|---|---|
-| 1 | `c2-l1` | route | مؤقتة | A |
+| 1 | `c2-l1` | route | موجودة | A |
 | 2 | `c4-l4` | route | موجودة | A |
 | 3 | `c4-l2-puzzle` | tiles | موجودة | A |
 | 4 | `c3-l5` | hotspot | موجودة | B |
-| 5 | `c2-l2` | hotspot | ناقصة | B |
+| 5 | `c2-l2` | hotspot | موجودة | B |
 | 6 | `c5-l2` | hotspot | ناقصة | B |
 | 7 | `c5-l3` | route | ناقصة | B |
 
 ## المتبقي (غير موجودة) حسب الأولوية
 
-**الطبقة A (17):** `c2-l1` (مؤقتة), `c2-l4`, `c2-l7`, `saif-neutral`, `symbol-c2`, `star-sign-1`, `star-sign-2`, `star-sign-3`, `star-sign-4`, `star-sign-5`, `c5-l1`, `c5-l4`, `c5-l7` (مؤقتة), `rihab-neutral`, `symbol-c5`, `notebook-safiya`, `brass-scale`
+**الطبقة A (7):** `c5-l1`, `c5-l4`, `c5-l7` (مؤقتة), `rihab-neutral`, `symbol-c5`, `notebook-safiya`, `brass-scale`
 
-**الطبقة B (17):** `c2-l2`, `c2-l3`, `c2-l5`, `c2-l6`, `adam-smiling`, `adam-serious`, `knot-red`, `knot-blue`, `knot-yellow`, `knot-green`, `river-stone`, `cargo-sack`, `c5-l2`, `c5-l3`, `c5-l5`, `c5-l6`, `rihab-serious`
+**الطبقة B (5):** `c5-l2`, `c5-l3`, `c5-l5`, `c5-l6`, `rihab-serious`
