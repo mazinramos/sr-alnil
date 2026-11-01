@@ -142,7 +142,7 @@ export default function RoutePuzzle({ config, background, onResult }: PuzzleProp
           <span
             key={`l-${n.id}`}
             className="pointer-events-none absolute -translate-x-1/2 rounded bg-black/60 px-1.5 text-[11px] leading-5 text-[var(--papyrus)]"
-            style={{ left: `${n.x}%`, top: `calc(${n.y}% + 26px)` }}
+            style={n.y > 80 ? { left: `${n.x}%`, top: `calc(${n.y}% - 26px)`, transform: "translate(-50%, -100%)" } : { left: `${n.x}%`, top: `calc(${n.y}% + 26px)` }}
           >
             {n.label}
           </span>
