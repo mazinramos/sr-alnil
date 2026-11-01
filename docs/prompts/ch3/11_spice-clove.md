@@ -7,12 +7,12 @@
 - الملف: `public/art/items/spice-clove.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
-- الغرض: بطاقة القرنفل في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
+- الغرض: بطاقة القرنفل في c3-l4 (memory). البطاقة اسم وأيقونة فقط، فلازم تُقرأ كل أيقونة كبهارها الصحيح بوضوح وتتميّز عن الثلاث الأخريات (مراجعة E 31/10).
 - المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A small plain round terracotta saucer holding a small heap of dark maroon-brown cloves, the little nail-shaped buds with round heads, the dominant color of the spice clearly deep maroon-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
+Object: A small plain round terracotta saucer holding a small heap of dark maroon-brown cloves, the little nail-shaped buds with round heads, the dominant color of the spice clearly deep maroon-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change. Each of the four spice icons (cumin seeds, cinnamon sticks, whole cloves, black peppercorns) must read as its named spice at 48 pixels, with a clearly different silhouette and a clearly different color from the other three.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```

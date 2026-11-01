@@ -135,7 +135,7 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 ### 3.5 صورة لغز خاصة (1)
 | ID | الملف المقترح | المقاس | الفئة | الطبقة | الدفعة |
 |---|---|---|---|---|---|
-| c4-l2-puzzle | public/art/c4/l2-puzzle.webp | 1024×1024 | PZ | B | 4 |
+| c4-l2-puzzle | public/art/c4/l2-puzzle.webp | 1024×1024 | PZ | A (ضرورية لتشغيل المستوى، قرار A 31/10) | 4 |
 
 ### 3.6 توزيع الدفعات
 | الدفعة | الملف | المحتوى | العدد |

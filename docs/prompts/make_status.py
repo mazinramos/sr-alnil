@@ -4,7 +4,7 @@
 - المصدر: ملفات الصور الفردية docs/prompts/ch1..ch5/NN_id.md (سطر «الملف» وسطر «الطبقة»).
 - «ناقصة»: الملف غير موجود في public/art. «مؤقتة»: موجود لكنه نفس صورة النسخة الأولى المسجّلة في PLACEHOLDERS.md
   (تُقارَن بأول نسخة أضيفت للملف في git، فإذا استُبدلت بصورة فعلية تصير «موجودة» تلقائياً بلا تعديل يدوي).
-- طبقة صورة اللغز c4-l2-puzzle تُحسب A (كما في make_readme.py)."""
+- الطبقة تُقرأ من ملف الصورة الفردي (c4-l2-puzzle صارت A في الملف نفسه، فلا استثناء هنا ولا في make_readme.py)."""
 import re, glob, os, subprocess, sys
 from datetime import date
 
@@ -34,6 +34,11 @@ def is_placeholder(rel):
     if first.returncode != 0: return True
     return open(path, "rb").read() == first.stdout
 
+# صور تعتمد عليها ألغاز (إحداثيات أو تركيب): تُولَّد أولاً ويُتحقَّق منها قبل غيرها
+DEPENDS = {"c2-l1": "route", "c4-l4": "route", "c5-l3": "route",
+           "c2-l2": "hotspot", "c3-l5": "hotspot", "c5-l2": "hotspot", "c1-l1": "hotspot",
+           "c4-l2-puzzle": "tiles"}
+PRIORITY = ["c2-l1", "c4-l4", "c4-l2-puzzle", "c3-l5", "c2-l2", "c5-l2", "c5-l3"]
 rows, seen = [], set()
 for f in sorted(glob.glob(os.path.join(ROOT, "docs", "prompts", "ch[1-5]", "[0-9][0-9]_*.md"))):
     base = os.path.basename(f)
@@ -48,12 +53,11 @@ for f in sorted(glob.glob(os.path.join(ROOT, "docs", "prompts", "ch[1-5]", "[0-9
     ch = int(os.path.basename(os.path.dirname(f))[2:])
     lay = re.search(r"الطبقة (\w)", txt)
     layer = lay.group(1) if lay else "B"
-    if iid.endswith("-puzzle"): layer = "A"
     if not os.path.exists(os.path.join(ART, dest)): status = "ناقصة"
     elif is_placeholder(dest): status = "مؤقتة"
     else: status = "موجودة"
     kind = "شاشة" if dest.startswith("ui/") else "بورتريه" if dest.startswith("chars/") else "أيقونة" if dest.startswith("items/") else "خلفية"
-    rows.append(dict(ch=ch, n=int(num), id=iid, dest=dest, status=status, layer=layer, kind=kind))
+    rows.append(dict(ch=ch, n=int(num), id=iid, dest=dest, status=status, layer=layer, kind=kind, dep=DEPENDS.get(iid, "")))
 
 order = {"ناقصة": 0, "مؤقتة": 1, "موجودة": 2}
 tot = len(rows)
@@ -65,10 +69,18 @@ L = ["# STATUS — حالة صور اللعبة", "",
      f"**الطبقة B:** موجودة {cnt(status='موجودة', layer='B')} من {cnt(layer='B')}، مؤقتة {cnt(status='مؤقتة', layer='B')}، ناقصة {cnt(status='ناقصة', layer='B')}.", ""]
 for ch in range(1, 6):
     rs = [r for r in rows if r["ch"] == ch]
-    L += [f"## دفعة الفصل {ch} ({len(rs)})", "", "| # | ID | النوع | الملف | الحالة | الطبقة |", "|---|---|---|---|---|---|"]
+    L += [f"## دفعة الفصل {ch} ({len(rs)})", "", "| # | ID | النوع | الملف | الحالة | الطبقة | يعتمد عليه لغز؟ |", "|---|---|---|---|---|---|---|"]
     for r in sorted(rs, key=lambda r: r["n"]):
-        L.append(f"| {r['n']:02d} | `{r['id']}` | {r['kind']} | `{r['dest']}` | {r['status']} | {r['layer']} |")
+        L.append(f"| {r['n']:02d} | `{r['id']}` | {r['kind']} | `{r['dest']}` | {r['status']} | {r['layer']} | {('نعم: ' + r['dep']) if r['dep'] else '-'} |")
     L.append("")
+byid = {r["id"]: r for r in rows}
+L += ["## صور الألغاز: تُولَّد أولاً ويُتحقَّق منها قبل غيرها", "",
+      "> إحداثيات الألغاز (`/preview/coords`) وتركيبها تعتمد على الصورة الفعلية. بعد وصول كل صورة يتحقق صاحب الفصل من اللغز قبل الاستمرار.", "",
+      "| الأولوية | ID | نوع اللغز | الحالة | الطبقة |", "|---|---|---|---|---|"]
+for k, i in enumerate(PRIORITY, 1):
+    r = byid.get(i)
+    if r: L.append(f"| {k} | `{i}` | {r['dep']} | {r['status']} | {r['layer']} |")
+L.append("")
 L += ["## المتبقي (غير موجودة) حسب الأولوية", ""]
 rest = [r for r in rows if r["status"] != "موجودة"]
 for lay in ("A", "B"):

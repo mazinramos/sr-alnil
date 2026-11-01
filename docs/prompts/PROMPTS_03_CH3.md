@@ -15,7 +15,9 @@
 **حدود الحجم:** خلفية ≤ 250KB، شاشة عامة ≤ 300KB، بورتريه ≤ 200KB، أيقونة ≤ 40KB.
 
 ## ملاحظات هذه الدفعة
-- **c3-l4 (memory):** الحل بالألوان، فالصورة تعرض ثمانية أكياس في أربعة أزواج متجاورة بألوان متميّزة (أوكر، قرفة، عنّابي، فحمي). ألوان أيقونات التوابل الأربع لازم تطابقها.
+- **c3-l4 (memory) محدّث بمراجعة E 31/10:** بطاقات الذاكرة تعرض اسماً وأيقونة فقط، فـ**ألوان الأكياس ديكور** ولا يعتمد عليها اللغز. المهم أن تُقرأ أيقونات التوابل الأربع كل واحدة كبهارها بوضوح عند 48 بكسل، وتتميّز عن الثلاث الأخريات بالشكل واللون.
+- **c3-l5 (hotspot) أُعيدت كتابتها بمراجعة E:** كان البرومبت يرسم تفاصيل غير التي يطلبها اللغز. الآن ستة تفاصيل معزولة بمواضع محدّدة (متباعدة ≥12% من العرض)، خمسة منها أهداف اللغز وطاقة القماش ثابتة. **لا تولّدها بالنسخة القديمة.**
+- **c3-l3 وc3-l1 وc4-l3 وc4-l6:** جمل توضيحية من E (سبعة أوزان نحاس مدوّرة بلا علامات؛ نحاس الحدّاد برتقالي لا رمادي والخرز أزرق؛ ترتيب الدوائر نصف الممتلئة؛ كوّات المخازن بلا رسوم).
 - **أسماء الأيقونات:** مأخوذة من `grep "icon:"` في `ch3.ts`: `bead-blue`, `copper-weight`, `weaver-shuttle`, `spice-cumin`, `spice-cinnamon`, `spice-clove`, `spice-pepper`. لا تغيير عن الجرد.
 - **اختيارية:** `ledger-page` و`tea-glass` ليس لهما مرجع في الكود حالياً؛ ولّدهما آخراً. (حذفت `market-scissors` من الجرد لأنه تخمين بلا مرجع.)
 - **الشخصيات:** يونس موجود (neutral)، فتعبيره يُولَّد مع إرفاق `public/art/chars/yunus-neutral.webp`. حليمة جديدة.
@@ -31,7 +33,7 @@
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: A covered market alley in a Sudanese river town in warm filtered light. The roof is woven palm mats and patchwork cloth awnings with thin stripes of golden sun falling through the gaps onto the dusty ground. Muted dyed fabrics hang from ropes overhead in indigo, ochre and terracotta. Three quiet hints of three trades, none of them dominating: on the left a weaver's wooden loom with half-woven cloth standing at a shop entrance; on the right the open front of a blacksmith's small forge with a faintly glowing ember, an anvil and a few copper pieces hanging on the wall; at the far end of the alley bundles, saddlebags and rope-tied packs stacked as if just arrived with a caravan, with a string of blue beads hanging from one pack. No people.
+Scene: A covered market alley in a Sudanese river town in warm filtered light. The roof is woven palm mats and patchwork cloth awnings with thin stripes of golden sun falling through the gaps onto the dusty ground. Muted dyed fabrics hang from ropes overhead in indigo, ochre and terracotta. Three quiet hints of three trades, none of them dominating: on the left a weaver's wooden loom with half-woven cloth standing at a shop entrance; on the right the open front of a blacksmith's small forge with a faintly glowing ember, an anvil and a few copper pieces hanging on the wall; at the far end of the alley bundles, saddlebags and rope-tied packs stacked as if just arrived with a caravan, with a string of blue beads hanging from one pack. The pieces hanging on the forge wall must be clearly copper-colored, warm orange-brown and not iron gray, and the beads on the caravan pack must be clearly blue. No people.
 Composition: one-point perspective, the vanishing point near the center at about x 50 percent, y 47 percent. The loom at the left around x 18 percent, the forge at the right around x 82 percent, the caravan bundles at the far end around x 50 percent. The lower third is the empty dusty street.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
@@ -48,7 +50,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
 - الملف: `public/art/c3/l4.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 3 — الطبقة A
-- الغرض: خلفية c3-l4 «روائح السوق» (memory): أكياس توابل ملوّنة، لكل لون كيسان متجاوران (حسب دلائل `ch3.ts`).
+- الغرض: خلفية c3-l4 «روائح السوق» (memory): أكياس توابل ملوّنة. **ألوان الأكياس ديكور فقط ولا يعتمد عليها اللغز** (بطاقات الذاكرة تعرض اسماً وأيقونة فقط).
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
@@ -59,7 +61,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
 ```
 - مواضع إلزامية:
   - أربعة أزواج متجاورة من اليسار: أوكر ذهبي (كمّون) | قرفة أحمر-بنّي | عنّابي غامق (قرنفل) | فحمي رمادي بنقط خضراء (فلفل)
-  - كل زوج كيسان متطابقان لوناً بجانب بعضهما
+  - كل زوج كيسان متطابقان لوناً بجانب بعضهما (ديكور)
 - تجنّب: أكياس بألوان متقاربة (القرفة والقرنفل يجب أن يتميّزا)، ملصقات أو كتابة، أشخاص، ألوان توابل نيون، أكثر أو أقل من 8 أكياس
 - فحص القبول:
   1. ثمانية أكياس في أربعة أزواج متجاورة بأربعة ألوان واضحة
@@ -190,12 +192,12 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 - الملف: `public/art/items/spice-cumin.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
-- الغرض: بطاقة الكمّون في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
+- الغرض: بطاقة الكمّون في c3-l4 (memory). البطاقة اسم وأيقونة فقط، فلازم تُقرأ كل أيقونة كبهارها الصحيح بوضوح وتتميّز عن الثلاث الأخريات (مراجعة E 31/10).
 - المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A small plain round terracotta saucer holding a soft heap of small golden ochre cumin seeds, the dominant color of the spice clearly golden ochre. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
+Object: A small plain round terracotta saucer holding a soft heap of small golden ochre cumin seeds, the dominant color of the spice clearly golden ochre. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change. Each of the four spice icons (cumin seeds, cinnamon sticks, whole cloves, black peppercorns) must read as its named spice at 48 pixels, with a clearly different silhouette and a clearly different color from the other three.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
@@ -210,12 +212,12 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 - الملف: `public/art/items/spice-cinnamon.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
-- الغرض: بطاقة القرفة في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
+- الغرض: بطاقة القرفة في c3-l4 (memory). البطاقة اسم وأيقونة فقط، فلازم تُقرأ كل أيقونة كبهارها الصحيح بوضوح وتتميّز عن الثلاث الأخريات (مراجعة E 31/10).
 - المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A small plain round terracotta saucer holding a small bundle of rolled cinnamon sticks in warm red-brown tied with a thin cord, the dominant color of the spice clearly warm cinnamon red-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
+Object: A small plain round terracotta saucer holding a small bundle of rolled cinnamon sticks in warm red-brown tied with a thin cord, the dominant color of the spice clearly warm cinnamon red-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change. Each of the four spice icons (cumin seeds, cinnamon sticks, whole cloves, black peppercorns) must read as its named spice at 48 pixels, with a clearly different silhouette and a clearly different color from the other three.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
@@ -230,12 +232,12 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 - الملف: `public/art/items/spice-clove.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
-- الغرض: بطاقة القرنفل في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
+- الغرض: بطاقة القرنفل في c3-l4 (memory). البطاقة اسم وأيقونة فقط، فلازم تُقرأ كل أيقونة كبهارها الصحيح بوضوح وتتميّز عن الثلاث الأخريات (مراجعة E 31/10).
 - المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A small plain round terracotta saucer holding a small heap of dark maroon-brown cloves, the little nail-shaped buds with round heads, the dominant color of the spice clearly deep maroon-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
+Object: A small plain round terracotta saucer holding a small heap of dark maroon-brown cloves, the little nail-shaped buds with round heads, the dominant color of the spice clearly deep maroon-brown. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change. Each of the four spice icons (cumin seeds, cinnamon sticks, whole cloves, black peppercorns) must read as its named spice at 48 pixels, with a clearly different silhouette and a clearly different color from the other three.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
@@ -250,12 +252,12 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 - الملف: `public/art/items/spice-pepper.webp`
 - الحجم المطلوب: 256×256 شفاف
 - الدفعة والأولوية: Batch 3 — الطبقة A
-- الغرض: بطاقة الفلفل في c3-l4 (memory). الحل بالألوان، فلون كل بهار لازم يتميّز.
+- الغرض: بطاقة الفلفل في c3-l4 (memory). البطاقة اسم وأيقونة فقط، فلازم تُقرأ كل أيقونة كبهارها الصحيح بوضوح وتتميّز عن الثلاث الأخريات (مراجعة E 31/10).
 - المرجع المرفق: لا شيء (لا ترفق أي صورة)
 - البرومبت الكامل (للصق):
 ```
 Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A small plain round terracotta saucer holding a small heap of round charcoal-gray black peppercorns with a few green ones, the dominant color of the spice clearly charcoal gray with a few green flecks. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change.
+Object: A small plain round terracotta saucer holding a small heap of round charcoal-gray black peppercorns with a few green ones, the dominant color of the spice clearly charcoal gray with a few green flecks. Part of a set of four spice icons with an identical saucer and view; only the spice and its color change. Each of the four spice icons (cumin seeds, cinnamon sticks, whole cloves, black peppercorns) must read as its named spice at 48 pixels, with a clearly different silhouette and a clearly different color from the other three.
 Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
 Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
 ```
@@ -296,7 +298,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: A large aged copper balance scale standing on a thick wooden table in a quiet corner of the market, warm light from the side. The scale has a central post, a level beam and two hanging pans on chains, held almost level, one pan empty and the other holding a small bare cloth. Beside it a small wooden tray with several round copper weights of different sizes without any markings. The market is a soft blurred background of awnings and hanging cloths. No people, no writing.
+Scene: A large aged copper balance scale standing on a thick wooden table in a quiet corner of the market, warm light from the side. The scale has a central post, a level beam and two hanging pans on chains, held almost level, one pan empty and the other holding a small bare cloth. Beside it a small wooden tray. The tray beside the scale holds exactly seven round copper weights in clearly different sizes, with no markings at all. The market is a soft blurred background of awnings and hanging cloths. No people, no writing.
 Composition: camera at table height, slightly angled. The scale is at the center, around x 50 percent, y 50 percent. The blurred market gives a horizon-like division at about 35 percent. The lower third is the empty tabletop and its edge.
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
@@ -311,22 +313,25 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
 - الملف: `public/art/c3/l5.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 3 — الطبقة B
-- الغرض: خلفية c3-l5 «الدكان الناقص» (hotspot): دكان نسّاج بنول عند المدخل. فيه تفاصيل صغيرة متميّزة ليجد اللاعب فروقاً بينها وبين صفحة الدفتر.
+- الغرض: خلفية c3-l5 «الدكان الناقص» (hotspot): دكان نسّاج بنول عند المدخل. **اللغز يعتمد على هذه الصورة**: خمسة فروق عن صفحة الدفتر تُوجَد في خمسة مواضع محدّدة، وطاقة القماش ليست فرقاً (مراجعة E 31/10).
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
 Painterly realistic digital illustration, soft warm natural light with gentle atmospheric haze, Sudanese Nile riverside setting, mud-brick, woven reed mats, clay pots, aged wood and hand-woven cloth. Muted palette only: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Low saturation, no neon, no harsh contrast. Cinematic composition with a clearly visible horizon and a relatively empty lower third. Same art style, palette and lighting quality as the reference image. No text, no letters, no numbers, no people, no watermark. Landscape 3:2 ratio, 1536x1024.
-Scene: The front of a weaver's shop in warm late-afternoon light, the entrance open. A traditional wooden loom with stretched cream warp threads and a half-woven striped cloth stands at the entrance. The shop is rich with small distinct details spread across it, each easy to spot on its own: a string of blue beads hanging on the left doorpost; a small brass bell hanging above the door; a bolt of folded red-brown cloth on the top shelf; a small clay oil lamp on a ledge; a spool of yellow thread resting on the loom; a wooden stool with a folded cloth beside the door. Shelves with neatly folded muted cloth, a few spools of thread. No people, no writing.
-Composition: camera at eye level facing the shop front. The six small details are spread widely across the frame and well separated. A doorframe line gives a horizon-like division at about 30 percent. The lower third is the empty doorstep and ground.
+Scene: The front of a weaver's shop in warm late-afternoon light, the entrance open. A traditional wooden loom with stretched plain cream warp threads and a half-woven striped cloth stands at the entrance. Shelves with neatly folded muted cloth, a few plain cream spools of thread. Place exactly these six small details, each isolated with open space around it and at least 12 percent of the image width away from the next one, each about 5 to 7 percent of the image width: a string of blue beads on the left doorpost at (12,38); a brass bell above the door at (45,14); a folded red-brown cloth bolt on the top shelf at (72,25); a small clay oil lamp on the ledge at (86,48); one yellow thread spool resting on the loom at (30,62); a wooden stool with a folded cloth beside the door at (60,70). All the other threads on the loom are plain cream, and no other bell, lamp, bead string, spool or stool appears anywhere in the shop. No people, no writing.
+Composition: camera at eye level facing the shop front. The six details are spread widely across the frame at the percent positions given above (width, height), each one clearly separated from the others. A doorframe line gives a horizon-like division at about 30 percent. The lower third is the empty doorstep and ground, apart from the stool at (60,70).
 Constraints: no text, no letters, no numbers, no people, no watermark; no readable writing on any object.
 ```
 - مواضع إلزامية:
-  - تفاصيل صغيرة متباعدة (مواضع مؤقتة، يضبطها E): خرز أزرق x≈12,y≈38 | جرس نحاسي x≈45,y≈14 | قماش أحمر على الرف x≈72,y≈25 | مصباح طيني x≈86,y≈48 | بكرة خيط أصفر x≈30,y≈62 | كرسي بقماش x≈60,y≈70
-- تجنّب: تفاصيل ملتصقة أو مخفية، كتابة على الدكان، أشخاص، ألوان ساطعة
+  - ستة تفاصيل صغيرة معزولة، كل واحد ≈5 إلى 7% من العرض ويبعد ≥12% من العرض عن الذي يليه (مواضع من نسبة العرض والارتفاع): خرز أزرق على عمود الباب الأيسر (12,38) | جرس نحاسي فوق الباب (45,14) | لفّة قماش أحمر-بنّي على الرف العلوي (72,25) | مصباح طيني صغير على الحافة (86,48) | بكرة خيط أصفر واحدة على النول (30,62) | مقعد خشب بقماش مطوي بجانب الباب (60,70)
+  - الأهداف الخمسة في اللغز: الخرز والجرس والمصباح والبكرة والمقعد. **لفّة القماش (72,25) ليست هدفاً** وتبقى كما هي
+  - باقي خيوط النول كريمية عادية، ولا يظهر في الدكان أي جرس أو مصباح أو خرز أو بكرة أو مقعد آخر
+  - الإحداثيات مؤقتة وتُضبط بـ `/preview/coords?img=/art/c3/l5.webp` بعد وصول الصورة
+- تجنّب: تفاصيل إضافية من نفس الأنواع (جرس ثانٍ، مصباح ثانٍ، بكرة أخرى…) تُربك الفروق، تفاصيل متلاصقة أو أقرب من 12% من العرض، خيوط نول ملوّنة (كلها كريمية إلا البكرة الصفراء الواحدة)، كتابة على الدكان، أشخاص
 - فحص القبول:
-  1. نول عند المدخل وست تفاصيل صغيرة واضحة متباعدة
-  2. ألوان أقمشة هادئة وضوء العصر دافئ
-  3. لا نص ولا أشخاص
+  1. ستة تفاصيل مميّزة بالمواضع المذكورة (خرز أزرق، جرس، قماش أحمر-بنّي، مصباح طيني، بكرة صفراء، مقعد) ومتباعدة ≥12%
+  2. لا تفصيل مكرر في الدكان وخيوط النول الأخرى كريمية
+  3. ألوان هادئة وضوء العصر دافئ، بلا نص ولا أشخاص
 
 ### 16 — c3-l6
 - الملف: `public/art/c3/l6.webp`
@@ -456,6 +461,6 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 
 ## أسئلة وملاحظات لأصحاب الفصول
 1. **c3-l2 (E):** الخلفية بثلاث دكاكين بمظلّات ملوّنة وبضاعة موحية غير مقروءة حتى لا تناقض جدول الاستنتاج. أخبرني لو تريد بضاعة محدّدة لكل دكان.
-2. **c3-l5 (E):** تفاصيل الدكان الستة (خرز، جرس، قماش أحمر، مصباح، بكرة أصفر، كرسي) مقترحة. أخبرني بالفروق الخمسة الفعلية لأعدّل الصورة وفقها.
+2. **c3-l5 (E):** طُبّقت مراجعتك. الأهداف الخمسة: الخرز (12,38) والجرس (45,14) والمصباح (86,48) والبكرة (30,62) والمقعد (60,70)، وطاقة القماش (72,25) ثابتة. تُضبط الإحداثيات بـ `/preview/coords` بعد وصول الصورة.
 3. **c3-l7 (E):** مفتاح الشفرة يستعمل رموزاً نصية؛ لم أرسمها في الصورة لتبقى مستقلة (وقرار A: لا رموز إيموجي ملوّنة، أشكال هندسية أو حروف فقط).
 4. **c3-l3 (E):** الأوزان النحاسية على الصينية بلا علامات؛ الأرقام تأتي من الواجهة.

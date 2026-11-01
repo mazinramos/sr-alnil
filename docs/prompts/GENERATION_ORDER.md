@@ -18,43 +18,44 @@
 | # | ID | يُحفظ في | ملف البرومبت | الطبقة |
 |---|---|---|---|---|
 | 1 | `c2-l1` | `public/art/c2/l1.webp` | `ch2/01_c2-l1.md` | A |
-| 2 | `c3-l1` | `public/art/c3/l1.webp` | `ch3/01_c3-l1.md` | A |
-| 3 | `c4-l1` | `public/art/c4/l1.webp` | `ch4/01_c4-l1.md` | A |
-| 4 | `c5-l7` | `public/art/c5/l7.webp` | `ch5/03_c5-l7.md` | A |
-| 5 | `c4-l4` | `public/art/c4/l4.webp` | `ch4/02_c4-l4.md` | A |
-| 6 | `c4-l2-puzzle` | `public/art/c4/l2-puzzle.webp` | `ch4/11_c4-l2-puzzle.md` | B |
-| 7 | `c5-l2` | `public/art/c5/l2.webp` | `ch5/09_c5-l2.md` | B |
-| 8 | `c5-l3` | `public/art/c5/l3.webp` | `ch5/10_c5-l3.md` | B |
-| 9 | `c2-l4` | `public/art/c2/l4.webp` | `ch2/02_c2-l4.md` | A |
-| 10 | `c2-l7` | `public/art/c2/l7.webp` | `ch2/03_c2-l7.md` | A |
-| 11 | `c3-l4` | `public/art/c3/l4.webp` | `ch3/02_c3-l4.md` | A |
-| 12 | `c3-l7` | `public/art/c3/l7.webp` | `ch3/03_c3-l7.md` | A |
-| 13 | `c4-l7` | `public/art/c4/l7.webp` | `ch4/03_c4-l7.md` | A |
-| 14 | `c5-l1` | `public/art/c5/l1.webp` | `ch5/01_c5-l1.md` | A |
-| 15 | `c5-l4` | `public/art/c5/l4.webp` | `ch5/02_c5-l4.md` | A |
-| 16 | `saif-neutral` | `public/art/chars/saif-neutral.webp` | `ch2/04_saif-neutral.md` | A |
-| 17 | `halima-neutral` | `public/art/chars/halima-neutral.webp` | `ch3/04_halima-neutral.md` | A |
-| 18 | `othman-neutral` | `public/art/chars/othman-neutral.webp` | `ch4/04_othman-neutral.md` | A |
-| 19 | `rihab-neutral` | `public/art/chars/rihab-neutral.webp` | `ch5/04_rihab-neutral.md` | A |
-| 20 | `symbol-c2` | `public/art/items/symbol-c2.webp` | `ch2/05_symbol-c2.md` | A |
-| 21 | `symbol-c3` | `public/art/items/symbol-c3.webp` | `ch3/05_symbol-c3.md` | A |
-| 22 | `symbol-c4` | `public/art/items/symbol-c4.webp` | `ch4/05_symbol-c4.md` | A |
-| 23 | `symbol-c5` | `public/art/items/symbol-c5.webp` | `ch5/05_symbol-c5.md` | A |
-| 24 | `star-sign-1` | `public/art/items/star-sign-1.webp` | `ch2/06_star-sign-1.md` | A |
-| 25 | `star-sign-2` | `public/art/items/star-sign-2.webp` | `ch2/07_star-sign-2.md` | A |
-| 26 | `star-sign-3` | `public/art/items/star-sign-3.webp` | `ch2/08_star-sign-3.md` | A |
-| 27 | `star-sign-4` | `public/art/items/star-sign-4.webp` | `ch2/09_star-sign-4.md` | A |
-| 28 | `star-sign-5` | `public/art/items/star-sign-5.webp` | `ch2/10_star-sign-5.md` | A |
-| 29 | `bead-blue` | `public/art/items/bead-blue.webp` | `ch3/06_bead-blue.md` | A |
-| 30 | `copper-weight` | `public/art/items/copper-weight.webp` | `ch3/07_copper-weight.md` | A |
-| 31 | `weaver-shuttle` | `public/art/items/weaver-shuttle.webp` | `ch3/08_weaver-shuttle.md` | A |
-| 32 | `spice-cumin` | `public/art/items/spice-cumin.webp` | `ch3/09_spice-cumin.md` | A |
-| 33 | `spice-cinnamon` | `public/art/items/spice-cinnamon.webp` | `ch3/10_spice-cinnamon.md` | A |
-| 34 | `spice-clove` | `public/art/items/spice-clove.webp` | `ch3/11_spice-clove.md` | A |
-| 35 | `spice-pepper` | `public/art/items/spice-pepper.webp` | `ch3/12_spice-pepper.md` | A |
+| 2 | `c4-l4` | `public/art/c4/l4.webp` | `ch4/02_c4-l4.md` | A |
+| 3 | `c4-l2-puzzle` | `public/art/c4/l2-puzzle.webp` | `ch4/11_c4-l2-puzzle.md` | A |
+| 4 | `c3-l5` | `public/art/c3/l5.webp` | `ch3/15_c3-l5.md` | B |
+| 5 | `c2-l2` | `public/art/c2/l2.webp` | `ch2/11_c2-l2.md` | B |
+| 6 | `c5-l2` | `public/art/c5/l2.webp` | `ch5/09_c5-l2.md` | B |
+| 7 | `c5-l3` | `public/art/c5/l3.webp` | `ch5/10_c5-l3.md` | B |
+| 8 | `c3-l1` | `public/art/c3/l1.webp` | `ch3/01_c3-l1.md` | A |
+| 9 | `c4-l1` | `public/art/c4/l1.webp` | `ch4/01_c4-l1.md` | A |
+| 10 | `c5-l7` | `public/art/c5/l7.webp` | `ch5/03_c5-l7.md` | A |
+| 11 | `c2-l4` | `public/art/c2/l4.webp` | `ch2/02_c2-l4.md` | A |
+| 12 | `c2-l7` | `public/art/c2/l7.webp` | `ch2/03_c2-l7.md` | A |
+| 13 | `c3-l4` | `public/art/c3/l4.webp` | `ch3/02_c3-l4.md` | A |
+| 14 | `c3-l7` | `public/art/c3/l7.webp` | `ch3/03_c3-l7.md` | A |
+| 15 | `c4-l7` | `public/art/c4/l7.webp` | `ch4/03_c4-l7.md` | A |
+| 16 | `c5-l1` | `public/art/c5/l1.webp` | `ch5/01_c5-l1.md` | A |
+| 17 | `c5-l4` | `public/art/c5/l4.webp` | `ch5/02_c5-l4.md` | A |
+| 18 | `saif-neutral` | `public/art/chars/saif-neutral.webp` | `ch2/04_saif-neutral.md` | A |
+| 19 | `halima-neutral` | `public/art/chars/halima-neutral.webp` | `ch3/04_halima-neutral.md` | A |
+| 20 | `othman-neutral` | `public/art/chars/othman-neutral.webp` | `ch4/04_othman-neutral.md` | A |
+| 21 | `rihab-neutral` | `public/art/chars/rihab-neutral.webp` | `ch5/04_rihab-neutral.md` | A |
+| 22 | `symbol-c2` | `public/art/items/symbol-c2.webp` | `ch2/05_symbol-c2.md` | A |
+| 23 | `symbol-c3` | `public/art/items/symbol-c3.webp` | `ch3/05_symbol-c3.md` | A |
+| 24 | `symbol-c4` | `public/art/items/symbol-c4.webp` | `ch4/05_symbol-c4.md` | A |
+| 25 | `symbol-c5` | `public/art/items/symbol-c5.webp` | `ch5/05_symbol-c5.md` | A |
+| 26 | `star-sign-1` | `public/art/items/star-sign-1.webp` | `ch2/06_star-sign-1.md` | A |
+| 27 | `star-sign-2` | `public/art/items/star-sign-2.webp` | `ch2/07_star-sign-2.md` | A |
+| 28 | `star-sign-3` | `public/art/items/star-sign-3.webp` | `ch2/08_star-sign-3.md` | A |
+| 29 | `star-sign-4` | `public/art/items/star-sign-4.webp` | `ch2/09_star-sign-4.md` | A |
+| 30 | `star-sign-5` | `public/art/items/star-sign-5.webp` | `ch2/10_star-sign-5.md` | A |
+| 31 | `bead-blue` | `public/art/items/bead-blue.webp` | `ch3/06_bead-blue.md` | A |
+| 32 | `copper-weight` | `public/art/items/copper-weight.webp` | `ch3/07_copper-weight.md` | A |
+| 33 | `weaver-shuttle` | `public/art/items/weaver-shuttle.webp` | `ch3/08_weaver-shuttle.md` | A |
+| 34 | `spice-cumin` | `public/art/items/spice-cumin.webp` | `ch3/09_spice-cumin.md` | A |
+| 35 | `spice-cinnamon` | `public/art/items/spice-cinnamon.webp` | `ch3/10_spice-cinnamon.md` | A |
 
 **لماذا هذا الترتيب؟**
-- **c2-l1 وc3-l1 وc4-l1 وc5-l7 (أول أربع):** صور **مؤقتة** من النسخة الأولى ما زالت في الـ repo (`PLACEHOLDERS.md`)، وإحداثيات ألغازها تُراجَع بعد وصول الصور الفعلية، فاستبدالها أولاً. تُحفظ بنفس الأسماء.
+- **صور الألغاز المعتمدة عليها أولاً (1 إلى 7):** `c2-l1` (route) و`c4-l4` (route) و`c4-l2-puzzle` (tiles، ضرورية لتشغيل المستوى) و`c3-l5` (hotspot، البرومبت محدّث بمراجعة E) و`c2-l2` (hotspot) و`c5-l2` (hotspot) و`c5-l3` (route). ولّدها وتحقّق منها **قبل غيرها**، فإحداثيات ألغازها تُضبط من الصورة الفعلية.
+- **c2-l1 وc3-l1 وc4-l1 وc5-l7:** صور **مؤقتة** من النسخة الأولى ما زالت في الـ repo (`PLACEHOLDERS.md`)؛ تُستبدل بنفس الأسماء (c2-l1 ضمن أول سبع، والثلاث الباقية في 8 إلى 10).
 - **c2-l1 وc4-l4:** لغزا route يعتمدان على مواضع محدّدة (الأحجار الآمنة، المشاعل المضاءة) ويحتاج D وA إحداثيات منهما. **c4-l2-puzzle** هي الصورة التي يُركَّب منها لغز c4-l2 نفسه. **c5-l2 وc5-l3** يعتمدان على قطع الخريطة (ولّدهما بعد اعتماد `map-full` وهو معتمد).
 - **خلفيات A الباقية** (c2-l4 وc2-l7 وc3-l4 وc3-l7 وc4-l7 وc5-l1 وc5-l4): تكفي مع البورتريهات لتسليم قابل للعب.
 - **البورتريهات الجديدة:** سيف وحليمة والحاج عثمان ورحاب (بشير وصفية منجزان).
@@ -63,22 +64,22 @@
 ## المتبقي بعدها (39)
 | # | ID | يُحفظ في | ملف البرومبت | الطبقة |
 |---|---|---|---|---|
-| 36 | `carve-light` | `public/art/items/carve-light.webp` | `ch4/06_carve-light.md` | A |
-| 37 | `carve-wing` | `public/art/items/carve-wing.webp` | `ch4/07_carve-wing.md` | A |
-| 38 | `carve-channel` | `public/art/items/carve-channel.webp` | `ch4/08_carve-channel.md` | A |
-| 39 | `carve-anchor` | `public/art/items/carve-anchor.webp` | `ch4/09_carve-anchor.md` | A |
-| 40 | `carve-star` | `public/art/items/carve-star.webp` | `ch4/17_carve-star.md` | A |
-| 41 | `carve-reed` | `public/art/items/carve-reed.webp` | `ch4/18_carve-reed.md` | A |
-| 42 | `notebook-safiya` | `public/art/items/notebook-safiya.webp` | `ch5/06_notebook-safiya.md` | A |
-| 43 | `brass-scale` | `public/art/items/brass-scale.webp` | `ch5/07_brass-scale.md` | A |
-| 44 | `stone-key` | `public/art/items/stone-key.webp` | `ch5/08_stone-key.md` | A |
-| 45 | `c2-l2` | `public/art/c2/l2.webp` | `ch2/11_c2-l2.md` | B |
-| 46 | `c2-l3` | `public/art/c2/l3.webp` | `ch2/12_c2-l3.md` | B |
-| 47 | `c2-l5` | `public/art/c2/l5.webp` | `ch2/13_c2-l5.md` | B |
-| 48 | `c2-l6` | `public/art/c2/l6.webp` | `ch2/14_c2-l6.md` | B |
-| 49 | `c3-l2` | `public/art/c3/l2.webp` | `ch3/13_c3-l2.md` | B |
-| 50 | `c3-l3` | `public/art/c3/l3.webp` | `ch3/14_c3-l3.md` | B |
-| 51 | `c3-l5` | `public/art/c3/l5.webp` | `ch3/15_c3-l5.md` | B |
+| 36 | `spice-clove` | `public/art/items/spice-clove.webp` | `ch3/11_spice-clove.md` | A |
+| 37 | `spice-pepper` | `public/art/items/spice-pepper.webp` | `ch3/12_spice-pepper.md` | A |
+| 38 | `carve-light` | `public/art/items/carve-light.webp` | `ch4/06_carve-light.md` | A |
+| 39 | `carve-wing` | `public/art/items/carve-wing.webp` | `ch4/07_carve-wing.md` | A |
+| 40 | `carve-channel` | `public/art/items/carve-channel.webp` | `ch4/08_carve-channel.md` | A |
+| 41 | `carve-anchor` | `public/art/items/carve-anchor.webp` | `ch4/09_carve-anchor.md` | A |
+| 42 | `carve-star` | `public/art/items/carve-star.webp` | `ch4/17_carve-star.md` | A |
+| 43 | `carve-reed` | `public/art/items/carve-reed.webp` | `ch4/18_carve-reed.md` | A |
+| 44 | `notebook-safiya` | `public/art/items/notebook-safiya.webp` | `ch5/06_notebook-safiya.md` | A |
+| 45 | `brass-scale` | `public/art/items/brass-scale.webp` | `ch5/07_brass-scale.md` | A |
+| 46 | `stone-key` | `public/art/items/stone-key.webp` | `ch5/08_stone-key.md` | A |
+| 47 | `c2-l3` | `public/art/c2/l3.webp` | `ch2/12_c2-l3.md` | B |
+| 48 | `c2-l5` | `public/art/c2/l5.webp` | `ch2/13_c2-l5.md` | B |
+| 49 | `c2-l6` | `public/art/c2/l6.webp` | `ch2/14_c2-l6.md` | B |
+| 50 | `c3-l2` | `public/art/c3/l2.webp` | `ch3/13_c3-l2.md` | B |
+| 51 | `c3-l3` | `public/art/c3/l3.webp` | `ch3/14_c3-l3.md` | B |
 | 52 | `c3-l6` | `public/art/c3/l6.webp` | `ch3/16_c3-l6.md` | B |
 | 53 | `c4-l2` | `public/art/c4/l2.webp` | `ch4/10_c4-l2.md` | B |
 | 54 | `c4-l3` | `public/art/c4/l3.webp` | `ch4/12_c4-l3.md` | B |
