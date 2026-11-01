@@ -1,0 +1,160 @@
+{
+  "title": "سر النيل — مقدمة",
+  "duration": 63,
+  "scenes": [
+    {
+      "id": "S01",
+      "image": "01_dawn_village.jpg",
+      "start": 0,
+      "end": 6,
+      "speaker": "safiya",
+      "speakerName": "صفية",
+      "audio": "vo_01_safiya.mp3",
+      "text": "يا نور... لو الدفتر دا وصل ليك، يعني أنا سافرت ولسه ما لحقت أحكي ليك.",
+      "clip": "clip_01.mp4"
+    },
+    {
+      "id": "S02",
+      "image": "02b_safiya_voice.jpg",
+      "start": 6,
+      "end": 13,
+      "speaker": "safiya",
+      "speakerName": "صفية",
+      "audio": "vo_02_safiya.mp3",
+      "text": "كل حاجة مهمة كتبتها هنا. وخبّيت ليك سر على ضفة النيل.",
+      "clip": "clip_02.mp4"
+    },
+    {
+      "id": "S03",
+      "image": "03_nour_in_room.jpg",
+      "start": 13,
+      "end": 18,
+      "speaker": "nour",
+      "speakerName": "نور",
+      "audio": "vo_03_nour.mp3",
+      "text": "حبوبتي ما كانت بتخبّي حاجة من غير سبب.",
+      "clip": "clip_03.mp4"
+    },
+    {
+      "id": "S04",
+      "image": "04_chest_signs.jpg",
+      "start": 18,
+      "end": 24,
+      "speaker": "safiya",
+      "speakerName": "صفية",
+      "audio": "vo_04_safiya.mp3",
+      "text": "تلاتة علامات: الشمس، والطيّر، والمركب. دوّري عليهم.",
+      "clip": "clip_04.mp4"
+    },
+    {
+      "id": "S05",
+      "image": "05_map_pieces.jpg",
+      "start": 24,
+      "end": 31,
+      "speaker": "safiya",
+      "speakerName": "صفية",
+      "audio": "vo_05_safiya.mp3",
+      "text": "والعلامات بتودّيك لخريطة... متقطّعة في خمس حتّات.",
+      "clip": "clip_05.mp4"
+    },
+    {
+      "id": "S06a",
+      "image": "06a_bashir.jpg",
+      "start": 31,
+      "end": 34,
+      "speaker": "bashir",
+      "speakerName": "بشير",
+      "audio": "vo_06a_bashir.mp3",
+      "text": "الحبوبة كانت بتخبّي الحاجة في المكان البشبهها.",
+      "clip": null
+    },
+    {
+      "id": "S06b",
+      "image": "06b_yunus.jpg",
+      "start": 34,
+      "end": 37,
+      "speaker": "yunus",
+      "speakerName": "يونس",
+      "audio": "vo_06b_yunus.mp3",
+      "text": "الأغراض بتتكلّم يا بتي... بس بدفتر السوق.",
+      "clip": null
+    },
+    {
+      "id": "S06c",
+      "image": "06c_halima.jpg",
+      "start": 37,
+      "end": 40,
+      "speaker": "halima",
+      "speakerName": "حليمة",
+      "audio": "vo_06c_halima.mp3",
+      "text": "اقعدي اشربي الشاي الأول يا بتي.",
+      "clip": null
+    },
+    {
+      "id": "S06d",
+      "image": "06d_adam.jpg",
+      "start": 40,
+      "end": 43,
+      "speaker": "adam",
+      "speakerName": "آدم",
+      "audio": "vo_06d_adam.mp3",
+      "text": "النجوم ما بتكضّب، بس لازم تعرفي تقريها.",
+      "clip": null
+    },
+    {
+      "id": "S06e",
+      "image": "06e_hala.jpg",
+      "start": 43,
+      "end": 46,
+      "speaker": "hala",
+      "speakerName": "هالة",
+      "audio": "vo_06e_hala.mp3",
+      "text": "الحيط دا أقدم من كل الحارسات.",
+      "clip": null
+    },
+    {
+      "id": "S06f",
+      "image": "06f_othman.jpg",
+      "start": 46,
+      "end": 49,
+      "speaker": "othman",
+      "speakerName": "الحاج عثمان",
+      "audio": "vo_06f_othman.mp3",
+      "text": "الحجر بيحكي زي الناس.",
+      "clip": null
+    },
+    {
+      "id": "S06g",
+      "image": "06g_rihab.jpg",
+      "start": 49,
+      "end": 52,
+      "speaker": "rihab",
+      "speakerName": "رحاب",
+      "audio": "vo_06g_rihab.mp3",
+      "text": "الزول البيحفظ المكان بيحفظ الحكاية.",
+      "clip": null
+    },
+    {
+      "id": "S07",
+      "image": "07_nour_determined.jpg",
+      "start": 52,
+      "end": 57,
+      "speaker": "nour",
+      "speakerName": "نور",
+      "audio": "vo_07_nour.mp3",
+      "text": "حأفتح الحكاية... حتّة حتّة.",
+      "clip": "clip_07.mp4"
+    },
+    {
+      "id": "S08",
+      "image": "08_title_river.jpg",
+      "start": 57,
+      "end": 63,
+      "speaker": "safiya",
+      "speakerName": "صفية",
+      "audio": "vo_08_safiya.mp3",
+      "text": "والسر دا... ليك يا نور.",
+      "clip": "clip_08.mp4"
+    }
+  ]
+}
