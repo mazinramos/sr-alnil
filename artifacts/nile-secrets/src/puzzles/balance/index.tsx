@@ -20,7 +20,7 @@ export default function BalancePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
     if (done) return;
     setMsg("");
     if (placed.includes(id)) return setPlaced((p) => p.filter((x) => x !== id));
-    if (maxItems && placed.length >= maxItems) return setMsg(`الحد الأقصى ${maxItems} قطع. أزيلي قطعة أولاً.`);
+    if (maxItems && placed.length >= maxItems) return setMsg(`الحد الأقصى ${maxItems} قطع. شيلي قطعة الأول.`);
     setPlaced((p) => [...p, id]);
   }
 
@@ -69,7 +69,7 @@ export default function BalancePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
       </svg>
 
       <p className="text-center text-sm" aria-live="polite">
-        {match ? "الكفتان متطابقتان." : over ? `تجاوزتِ الهدف بمقدار ${sum - target}.` : sum === 0 ? "اضغطي على القطع لوضعها على الكفة." : `ينقص ${target - sum}.`}
+        {match ? "الكفتين متطابقتين." : over ? `عدّيتي الهدف بـ ${sum - target}.` : sum === 0 ? "اضغطي على القطع عشان تحطيها في الكفة." : `ناقص ${target - sum}.`}
         {maxItems ? ` (القطع: ${placed.length} / ${maxItems})` : ""}
       </p>
       {msg && <p role="alert" className="text-center text-sm text-[var(--ember)]">{msg}</p>}

@@ -151,7 +151,7 @@ export default function RoutePuzzle({ config, background, onResult }: PuzzleProp
 
       <div className="flex items-center justify-between gap-3">
         <p className="text-sm">
-          المختار: <b>{picks.length}</b> / {pick}
+          اخترتي: <b>{picks.length}</b> / {pick}
         </p>
         <button
           type="button"
@@ -165,7 +165,7 @@ export default function RoutePuzzle({ config, background, onResult }: PuzzleProp
 
       <section className="rounded-lg bg-black/40 p-3 text-sm" aria-live="polite">
         <p className="mb-2 text-xs opacity-70">
-          اضغطي على نقطة لاختيارها بالترتيب، واضغطي مرة ثانية لإلغائها (ومعها ما بعدها). اضغطي مطوّلاً لقراءة الملاحظة.
+          اضغطي على نقطة عشان تختاريها بالترتيب، واضغطي تاني عشان تلغيها (وكل البعدها كمان). اضغطي ضغطة طويلة عشان تقري الملاحظة.
         </p>
         {focusNode?.detail && (
           <p className="mb-2 rounded bg-[var(--papyrus)] p-2 font-bold text-[var(--ink)]">

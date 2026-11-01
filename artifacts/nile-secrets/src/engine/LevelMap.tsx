@@ -22,8 +22,8 @@ export default function LevelMap({ chapter }: { chapter: number }) {
       <main className="game-shell" dir="rtl">
         <section className="map-screen" style={{ placeItems: "center", display: "grid", textAlign: "center", padding: 24 }}>
           <div>
-            <p>{!ch || ids.length === 0 ? "هذا الفصل قريباً." : "أكملي الفصل السابق أولاً."}</p>
-            <button className="button button-light" style={{ marginTop: 14 }} onClick={() => navigate("/map")}>العودة إلى الخريطة</button>
+            <p>{!ch || ids.length === 0 ? "الفصل دا حيجي قريب." : "خلّصي الفصل القبلو الأول."}</p>
+            <button className="button button-light" style={{ marginTop: 14 }} onClick={() => navigate("/map")}>ارجعي للخريطة</button>
           </div>
         </section>
       </main>
@@ -46,14 +46,14 @@ export default function LevelMap({ chapter }: { chapter: number }) {
     <main className="game-shell" dir="rtl">
       <section className="map-screen">
         <header className="app-header">
-          <button className="brand-button" onClick={() => navigate("/map")} aria-label="العودة إلى خريطة الرحلة">
+          <button className="brand-button" onClick={() => navigate("/map")} aria-label="ارجعي لخريطة الرحلة">
             <span className="brand-mark">ن</span><span className="brand-copy"><b>خريطة الرحلة</b><small>الفصل {pad2(chapter)}</small></span>
           </button>
           <div className="header-progress"><span>{ch.title}</span><div className="progress-track"><i style={{ width: `${(doneCount / n) * 100}%` }} /></div><b>{pad2(doneCount)} / {pad2(n)}</b></div>
           <div className="header-tools">
             <SettingsButton onClick={() => setSettings(true)} />
-            <button className="icon-button" onClick={() => setOverlay("notebook")} aria-label="فتح دفتر الملاحظات"><BookOpen size={19} /><span>الدفتر</span></button>
-            <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="فتح الحقيبة"><Compass size={19} /><span>الحقيبة</span></button>
+            <button className="icon-button" onClick={() => setOverlay("notebook")} aria-label="افتحي دفتر حبوبة صفية"><BookOpen size={19} /><span>الدفتر</span></button>
+            <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="افتحي الشنطة"><Compass size={19} /><span>الشنطة</span></button>
           </div>
         </header>
 
@@ -63,10 +63,10 @@ export default function LevelMap({ chapter }: { chapter: number }) {
             <h1>{ch.title}</h1>
             {ch.summary && <p>{ch.summary}</p>}
             <div className="map-stat-row">
-              <div><b>{pad2(doneCount)}</b><span>مستويات مكتملة</span></div>
-              <div><b>{pad2(n - doneCount)}</b><span>متبقية</span></div>
+              <div><b>{pad2(doneCount)}</b><span>مستويات خلصت</span></div>
+              <div><b>{pad2(n - doneCount)}</b><span>فاضلة</span></div>
             </div>
-            <div className="route-key"><span className="key-dot complete" /> أُنجز <span className="key-dot current" /> متاح <span className="key-dot locked" /> لاحقاً</div>
+            <div className="route-key"><span className="key-dot complete" /> خلص <span className="key-dot current" /> مفتوح <span className="key-dot locked" /> بعدين</div>
           </div>
 
           <div className="route-board lv-board" style={{ minHeight: Math.max(440, n * 96) }} aria-label="مستويات الفصل">
@@ -83,7 +83,7 @@ export default function LevelMap({ chapter }: { chapter: number }) {
                   className={`lv-node ${l.isBoss ? "boss" : ""} ${done ? "is-done" : ""} ${open ? "" : "is-locked"}`}
                   style={{ left: `${pts[i].x}%`, top: `${pts[i].y}%` }}
                   disabled={!open}
-                  aria-label={`${l.title}${done ? ` — ${done.stars} من 3 نجوم` : open ? "" : " — مقفل"}`}
+                  aria-label={`${l.title}${done ? ` — ${done.stars} من 3 نجوم` : open ? "" : " — مقفول"}`}
                   onClick={() => navigate(`/level/${l.id}`)}
                 >
                   <Thumb src={l.background} fallback={art}>

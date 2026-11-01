@@ -10,8 +10,8 @@ export default function StorageNotice() {
   if (ok || dismissed) return null;
   return (
     <div className="storage-notice" role="status">
-      <span>التقدّم لن يُحفظ في هذا الوضع</span>
-      <button onClick={() => setDismissed(true)} aria-label="إغلاق التنبيه"><X size={16} aria-hidden /></button>
+      <span>التقدّم ما حيتحفظ في الوضع دا</span>
+      <button onClick={() => setDismissed(true)} aria-label="اقفلي التنبيه"><X size={16} aria-hidden /></button>
     </div>
   );
 }

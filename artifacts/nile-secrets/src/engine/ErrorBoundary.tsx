@@ -34,9 +34,9 @@ export default class ErrorBoundary extends Component<Props, State> {
     };
     const box = (
       <div role="alert" style={{ textAlign: "center", padding: this.props.variant === "full" ? 28 : 18, color: "inherit" }}>
-        <p style={{ margin: "0 0 6px", fontWeight: 700 }}>حدث خلل بسيط في هذه الشاشة.</p>
-        <p style={{ margin: "0 0 14px", fontSize: 13, opacity: 0.8 }}>تقدّمك محفوظ. يمكنك العودة إلى الخريطة والمحاولة مرة أخرى.</p>
-        <button className="button button-light" onClick={back}>العودة للخريطة</button>
+        <p style={{ margin: "0 0 6px", fontWeight: 700 }}>حصل خلل بسيط في الشاشة دي.</p>
+        <p style={{ margin: "0 0 14px", fontSize: 13, opacity: 0.8 }}>تقدّمك محفوظ. ارجعي للخريطة وجرّبي تاني.</p>
+        <button className="button button-light" onClick={back}>ارجعي للخريطة</button>
       </div>
     );
     return this.props.variant === "full" ? (

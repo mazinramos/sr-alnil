@@ -18,16 +18,16 @@ function Missing({ onResult, config }: PuzzleProps<PuzzleConfig>) {
   if (!import.meta.env.DEV) {
     return (
       <div className="rounded-xl border border-dashed border-[var(--ember)] p-5 text-center">
-        <p className="font-bold">هذا اللغز غير متاح حالياً.</p>
+        <p className="font-bold">اللغز دا ما متاح هسّه.</p>
       </div>
     );
   }
   return (
     <div className="rounded-xl border border-dashed border-[var(--ember)] p-5 text-center">
-      <p className="mb-1 font-bold">هذا اللغز قيد التطوير</p>
+      <p className="mb-1 font-bold">اللغز دا لسه تحت التطوير</p>
       <p className="mb-3 text-sm opacity-80">النوع: {config.type}</p>
       <button className="rounded-lg bg-[var(--ember)] px-4 font-bold text-[var(--ink)]" onClick={() => onResult(true)}>
-        تخطّي (للتطوير فقط)
+        تخطّي (للتطوير بس)
       </button>
     </div>
   );

@@ -137,7 +137,7 @@ export default function HotspotPuzzle({ config, background, hintLevel, onResult 
           animation: shake ? "hs-shake .28s ease-in-out" : undefined,
         }}
         role="group"
-        aria-label="ابحثي في الصورة عن العناصر المطلوبة"
+        aria-label="دوّري في الصورة على الحاجات المطلوبة"
       >
         {imgOk && (
           <img
@@ -191,10 +191,10 @@ export default function HotspotPuzzle({ config, background, hintLevel, onResult 
 
       <p className="mt-2 min-h-[1.5rem] text-sm opacity-80" aria-live="polite">
         {done
-          ? "أحسنتِ! وجدتِ كل ما هو مطلوب."
+          ? "برافو عليك! لقيتي كل الحاجات المطلوبة."
           : misses > 0
-            ? "ليس هنا… تمعّني في الصورة جيداً."
-            : "المسي الأماكن التي تظنين أن شيئاً مخبّأً فيها."}
+            ? "ما هنا… ركّزي في الصورة كويس."
+            : "المسي الأماكن البتظني إنو في حاجة مخبّية فيها."}
       </p>
     </div>
   );

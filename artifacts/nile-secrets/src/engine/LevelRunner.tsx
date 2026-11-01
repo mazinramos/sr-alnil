@@ -67,11 +67,11 @@ export default function LevelRunner({ level }: { level: Level }) {
         <div className="stage-image" style={imgStyle} />
         <div className="stage-vignette" />
         <header className="stage-topbar">
-          <button className="glass-button" aria-label="العودة إلى خريطة الفصل" onClick={() => navigate(`/chapter/${level.chapter}`)}><ChevronRight size={17} /> <span>خريطة الفصل</span></button>
+          <button className="glass-button" aria-label="ارجعي لخريطة الفصل" onClick={() => navigate(`/chapter/${level.chapter}`)}><ChevronRight size={17} /> <span>خريطة الفصل</span></button>
           <div className="chapter-indicator"><span>الفصل {pad2(level.chapter)}</span><i />المستوى {level.index} من 7</div>
           <div className="stage-tools">
-            <button className="glass-button" aria-label="فتح الدفتر" onClick={() => setOverlay("notebook")}><BookOpen size={17} /><span>الدفتر</span></button>
-            <button className="glass-button" aria-label="فتح الحقيبة" onClick={() => setOverlay("inventory")}><Compass size={17} /><span>الحقيبة</span></button>
+            <button className="glass-button" aria-label="افتحي دفتر حبوبة صفية" onClick={() => setOverlay("notebook")}><BookOpen size={17} /><span>الدفتر</span></button>
+            <button className="glass-button" aria-label="افتحي الشنطة" onClick={() => setOverlay("inventory")}><Compass size={17} /><span>الشنطة</span></button>
           </div>
         </header>
 
@@ -85,9 +85,9 @@ export default function LevelRunner({ level }: { level: Level }) {
                 <div className="quote-text"><b>{d.speaker}<small>{getCharacter(d.who)?.role}</small></b><p>«{d.text}»</p></div>
               </div>
             ))}
-            <div className="objective"><span className="objective-icon"><Eye size={17} /></span><div><small>ما ينبغي فعله</small><p>{level.objective}</p></div></div>
+            <div className="objective"><span className="objective-icon"><Eye size={17} /></span><div><small>المطلوب منّك</small><p>{level.objective}</p></div></div>
             <div className="clue-area">
-              <div className="clue-heading"><span>ما تلاحظينه</span><small>{level.clues.length} / {level.clues.length}</small></div>
+              <div className="clue-heading"><span>الحاجات البتلاحظيها</span><small>{level.clues.length} / {level.clues.length}</small></div>
               <div className="clue-list">
                 {level.clues.map((c, idx) => (
                   <div key={c.id} className="clue-card found static">
@@ -101,7 +101,7 @@ export default function LevelRunner({ level }: { level: Level }) {
 
           <section className="puzzle-panel is-engine" aria-label={level.title}>
             <div className="puzzle-top">
-              <div><span className="puzzle-label">ملفّ الاستدلال</span><h2>{PUZZLE_NAMES[level.puzzle.type] ?? "لغز"}</h2></div>
+              <div><span className="puzzle-label">ملف اللغز</span><h2>{PUZZLE_NAMES[level.puzzle.type] ?? "لغز"}</h2></div>
               <span className="puzzle-number">{pad2(level.index)}<i>/07</i></span>
             </div>
 
@@ -114,7 +114,7 @@ export default function LevelRunner({ level }: { level: Level }) {
                     </Suspense>
                   </ErrorBoundary>
                 </div>
-                {wrong && <p role="alert" className="wrong-note">ليست الإجابة الصحيحة بعد. راجعي الدلائل وجرّبي مرة أخرى.</p>}
+                {wrong && <p role="alert" className="wrong-note">لسه ما صاح. راجعي الدلائل وجرّبي تاني.</p>}
                 {hints > 0 && <div className="hint-note" role="status"><Sparkles size={16} /><span>{level.hints[hints - 1]}</span></div>}
                 <div className="puzzle-bottom">
                   <button
@@ -122,9 +122,9 @@ export default function LevelRunner({ level }: { level: Level }) {
                     disabled={hints >= 3}
                     onClick={() => { setWrong(false); setHints((h) => (h < 3 ? ((h + 1) as 1 | 2 | 3) : h)); }}
                   >
-                    <HelpCircle size={16} /> {hints >= 3 ? "لا مزيد من التلميحات" : `تلميح اختياري (${hints}/3)`}
+                    <HelpCircle size={16} /> {hints >= 3 ? "ما في تلميحات تاني" : `تلميح (${hints}/3)`}
                   </button>
-                  <span>لا يوجد مؤقّت</span>
+                  <span>ما في مؤقّت</span>
                 </div>
               </>
             ) : (
@@ -137,13 +137,13 @@ export default function LevelRunner({ level }: { level: Level }) {
                     ? <button className="button button-light" onClick={() => navigate(`/reward/${level.chapter}`)}>قطعة الخريطة</button>
                     : isFinal
                       ? <button className="button button-light" onClick={() => navigate("/ending")}>الخاتمة</button>
-                      : <button className="button button-light" onClick={() => navigate(`/level/${next}`)}>المستوى التالي</button>}
+                      : <button className="button button-light" onClick={() => navigate(`/level/${next}`)}>المستوى الجاي</button>}
                   </div>
               </div>
             )}
           </section>
         </div>
-        <div className="stage-footnote"><span>محاولات: {attempts}</span><span><i /> تقدمك محفوظ تلقائياً</span></div>
+        <div className="stage-footnote"><span>محاولات: {attempts}</span><span><i /> تقدّمك بيتحفظ براهو</span></div>
         {overlay && <Drawer mode={overlay} close={() => setOverlay(null)} />}
       </section>
     </main>

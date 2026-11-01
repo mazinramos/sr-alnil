@@ -21,8 +21,8 @@ export default function RewardScreen({ chapter }: { chapter: number }) {
       <main className="game-shell" dir="rtl">
         <section className="rw-screen">
           <div className="rw-card">
-            <p>أكملي مستوى الفصل الأخير أولاً لتنالي القطعة.</p>
-            <button className="button button-light" onClick={() => navigate("/map")}>العودة إلى الخريطة</button>
+            <p>خلّصي آخر مستوى في الفصل الأول عشان تاخدي القطعة.</p>
+            <button className="button button-light" onClick={() => navigate("/map")}>ارجعي للخريطة</button>
           </div>
         </section>
       </main>
@@ -40,15 +40,15 @@ export default function RewardScreen({ chapter }: { chapter: number }) {
           {step === 0 ? (
             <>
               <MapPiece cell={chapter} full={final} label={pieceLabel} />
-              <p className="rw-text">{final ? "اجتمعت القطع الخمس، وظهر الطريق إلى الضفة الهادئة." : "قطعة جديدة من الخريطة الممزقة صارت معك."}</p>
-              <button className="button button-light" onClick={() => { playSuccess(); setStep(1); }}>التالي</button>
+              <p className="rw-text">{final ? "القطع الخمس اتجمعت، والطريق للضفة الهادئة بان." : "قطعة جديدة من الخريطة الممزّقة بقت معاك."}</p>
+              <button className="button button-light" onClick={() => { playSuccess(); setStep(1); }}>الجاي</button>
             </>
           ) : (
             <>
               <div className="rw-symbol"><ItemIcon item={{ label: sym.name, icon: sym.id }} size={132} /></div>
               <h2 className="rw-title">{sym.name}</h2>
-              <p className="rw-text">{sym.meaning}<br />أُضيف الرمز إلى حقيبتك.</p>
-              <button className="button button-light" onClick={leave}>{final ? "الخاتمة" : "العودة إلى الخريطة"}</button>
+              <p className="rw-text">{sym.meaning}<br />الرمز اتضاف لشنطتك.</p>
+              <button className="button button-light" onClick={leave}>{final ? "الخاتمة" : "ارجعي للخريطة"}</button>
             </>
           )}
         </div>

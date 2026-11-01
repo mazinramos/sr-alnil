@@ -79,10 +79,10 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
 
   const confirm = () => {
     if (done) return;
-    if (symbols.some((s) => !vals[s])) { setMsg("أكملي كل الخانات قبل التأكيد."); return; }
+    if (symbols.some((s) => !vals[s])) { setMsg("كمّلي كل الخانات قبل التأكيد."); return; }
     const ok = cipherText.every((t, i) => isSep(t) || norm(vals[t]) === norm(answer[i]));
     if (ok) { setDone(true); setMsg(""); onResult(true); }
-    else { setMsg("ليست هذه الكلمة بعد. راجعي المفتاح ورمزاً رمزاً."); onResult(false); }
+    else { setMsg("دي ما الكلمة لسه. راجعي المفتاح ورمز رمز."); onResult(false); }
   };
 
   return (
@@ -132,7 +132,7 @@ export default function Cipher({ config, hintLevel, onResult }: PuzzleProps<Cfg>
       </div>
 
       <p className="min-h-6 text-center text-sm" role="status" aria-live="polite" style={{ color: "var(--ember)" }}>
-        {done ? "فُكّت الشفرة." : msg}
+        {done ? "الشفرة اتفكّت." : msg}
       </p>
 
       {/* لوحة الحروف */}

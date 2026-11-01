@@ -27,24 +27,24 @@ export function Drawer({ mode, close }: { mode: "notebook" | "inventory"; close:
       <section className="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
         <header className="drawer-header">
           <div className="drawer-icon">{notebook ? <BookOpen size={20} /> : <Compass size={20} />}</div>
-          <div><span>{notebook ? "الملاحظات" : "المقتنيات"}</span><h2 id="drawer-title">{notebook ? "دفتر نور" : "حقيبة الرحلة"}</h2></div>
-          <button className="icon-button drawer-close" onClick={close} aria-label="إغلاق"><X size={20} /></button>
+          <div><span>{notebook ? "الملاحظات" : "الحاجات الجمعتيها"}</span><h2 id="drawer-title">{notebook ? "دفتر حبوبة صفية" : "شنطة الرحلة"}</h2></div>
+          <button className="icon-button drawer-close" onClick={close} aria-label="اقفلي"><X size={20} /></button>
         </header>
         <div className="drawer-scroll">
           {notebook ? (
             <>
-              <p className="drawer-lede">ما التقطته نور على الطريق. بعض العلامات لا تظهر إلا حين تقتربين منها.</p>
+              <p className="drawer-lede">الحاجات البلقتها نور في الطريق. في علامات ما بتظهر إلا لمن تقربي منها.</p>
               {clues.length ? clues.map((c) => (
                 <article className="note-entry" key={c.id}><span>{c.stageTitle} <i>·</i> {c.source}</span><h3>{c.title}</h3><p>{c.text}</p></article>
-              )) : <div className="empty-notebook"><BookOpen size={25} /><b>الصفحات الأولى فارغة</b><span>ابدئي أول مستوى لتُسجَّل الدلائل هنا.</span></div>}
+              )) : <div className="empty-notebook"><BookOpen size={25} /><b>الصفحات الأولى فاضية</b><span>ابدئي أول مستوى والدلائل حتتسجّل هنا.</span></div>}
             </>
           ) : (
             <>
-              <p className="drawer-lede">قطع صغيرة من حكاية أكبر، تجمعها نور في حقيبتها.</p>
+              <p className="drawer-lede">قطع صغيرة من حكاية أكبر، نور بتجمعها في شنطتها.</p>
               <div className="inventory-grid">
                 {rewards.length ? rewards.map((r) => (
                   <div className="inventory-item" key={r.n}><span className="relic-shape">{["◒", "⌁", "▤", "▱", "◇"][r.n - 1] ?? "◇"}</span><b>{r.label}</b><small>الفصل {pad2(r.n)}</small></div>
-                )) : <div className="empty-notebook"><Compass size={25} /><b>الحقيبة خفيفة</b><span>تُضاف قطعة الخريطة عند إنهاء آخر مستوى في كل فصل.</span></div>}
+                )) : <div className="empty-notebook"><Compass size={25} /><b>الشنطة خفيفة</b><span>قطعة الخريطة بتتضاف لمن تخلّصي آخر مستوى في كل فصل.</span></div>}
               </div>
               {symbols.length > 0 && (
                 <div className="inventory-grid" style={{ marginTop: 14 }}>
@@ -56,11 +56,11 @@ export function Drawer({ mode, close }: { mode: "notebook" | "inventory"; close:
                   ))}
                 </div>
               )}
-              <div className="inventory-count"><span>ما جُمع</span><b>{pad2(rewards.length)} / 05</b></div>
+              <div className="inventory-count"><span>الجمعتيهو</span><b>{pad2(rewards.length)} / 05</b></div>
             </>
           )}
         </div>
-        <footer className="drawer-footer"><span>سرّ النيل</span><button className="subtle-button" onClick={close}>متابعة الرحلة <ChevronLeft size={14} /></button></footer>
+        <footer className="drawer-footer"><span>سرّ النيل</span><button className="subtle-button" onClick={close}>كمّلي الرحلة <ChevronLeft size={14} /></button></footer>
       </section>
     </div>
   );
@@ -71,11 +71,11 @@ export function ConfirmDialog({ onCancel, onConfirm }: { onCancel: () => void; o
     <div className="overlay-backdrop confirm-backdrop" role="presentation" onMouseDown={(e) => { if (e.target === e.currentTarget) onCancel(); }}>
       <section className="confirm-dialog" role="alertdialog" aria-modal="true" aria-labelledby="confirm-title">
         <div className="confirm-mark"><RotateCcw size={20} /></div>
-        <h2 id="confirm-title">بدء حكاية جديدة؟</h2>
-        <p>سيُمحى التقدّم المحفوظ لهذه الرحلة من هذا المتصفح. هل تريدين المتابعة؟</p>
+        <h2 id="confirm-title">تبدئي حكاية جديدة؟</h2>
+        <p>التقدّم المحفوظ للرحلة دي حيتمسح من المتصفح دا. عايزة تكمّلي؟</p>
         <div className="confirm-actions">
-          <button className="button button-light" onClick={onConfirm}>بدء من جديد</button>
-          <button className="button button-quiet" onClick={onCancel}>إلغاء</button>
+          <button className="button button-light" onClick={onConfirm}>ابدئي من الأول</button>
+          <button className="button button-quiet" onClick={onCancel}>رجوع</button>
         </div>
       </section>
     </div>

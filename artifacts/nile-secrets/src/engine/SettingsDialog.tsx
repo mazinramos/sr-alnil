@@ -10,7 +10,7 @@ const SCALES = [
 /** زر الإعدادات (يوضع في هيدر الخريطة وعقد الفصل). */
 export function SettingsButton({ onClick }: { onClick: () => void }) {
   return (
-    <button className="icon-button" onClick={onClick} aria-label="فتح الإعدادات"><Settings size={19} /><span>الإعدادات</span></button>
+    <button className="icon-button" onClick={onClick} aria-label="افتحي الإعدادات"><Settings size={19} /><span>الإعدادات</span></button>
   );
 }
 
@@ -26,11 +26,11 @@ export function SettingsDialog({ close }: { close: () => void }) {
         <p style={{ marginBottom: 6 }}>الصوت</p>
         <button className="button button-quiet" style={{ width: "100%" }} aria-pressed={settings.sound} onClick={() => updateSettings({ sound: !settings.sound })}>
           {settings.sound ? <Volume2 size={17} /> : <VolumeX size={17} />}
-          {settings.sound ? "الصوت مفعّل" : "الصوت مكتوم"}
+          {settings.sound ? "الصوت شغّال" : "الصوت مقفول"}
         </button>
 
-        <p style={{ margin: "16px 0 6px" }}>حجم النص (في الحوار والدلائل والدفتر)</p>
-        <div className="confirm-actions" style={{ marginTop: 0 }} role="group" aria-label="حجم النص">
+        <p style={{ margin: "16px 0 6px" }}>حجم الكتابة (في الحوار والدلائل والدفتر)</p>
+        <div className="confirm-actions" style={{ marginTop: 0 }} role="group" aria-label="حجم الكتابة">
           {SCALES.map((s) => (
             <button
               key={s.v}
@@ -44,7 +44,7 @@ export function SettingsDialog({ close }: { close: () => void }) {
         </div>
 
         <div className="confirm-actions">
-          <button className="button button-light" style={{ width: "100%" }} onClick={close}>تم</button>
+          <button className="button button-light" style={{ width: "100%" }} onClick={close}>تمام</button>
         </div>
       </section>
     </div>

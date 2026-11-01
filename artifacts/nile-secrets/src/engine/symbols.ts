@@ -4,9 +4,9 @@ import type { ProgressV2 } from "./store";
 export interface Symbol { chapter: number; id: string; name: string; meaning: string }
 
 export const SYMBOLS: Symbol[] = [
-  { chapter: 1, id: "symbol-c1", name: "الشمس",  meaning: "البداية: الضوء الذي يكشف الطريق." },
-  { chapter: 2, id: "symbol-c2", name: "الموجة", meaning: "العبور: قراءة حركة الماء." },
-  { chapter: 3, id: "symbol-c3", name: "الميزان", meaning: "العدل والحساب: ما يحفظه دفتر التاجر." },
+  { chapter: 1, id: "symbol-c1", name: "الشمس",  meaning: "البداية: الضو البكشف الطريق." },
+  { chapter: 2, id: "symbol-c2", name: "الموجة", meaning: "العبور: قراية حركة الموية." },
+  { chapter: 3, id: "symbol-c3", name: "الميزان", meaning: "العدل والحساب: الحاجة البيحفظها دفتر التاجر." },
   { chapter: 4, id: "symbol-c4", name: "العين",  meaning: "الحراسة والمراقبة: حافظة السجلات." },
   { chapter: 5, id: "symbol-c5", name: "الخيط",  meaning: "الرابط بين الحكايات والناس." },
 ];

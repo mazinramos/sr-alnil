@@ -52,15 +52,15 @@ function Routes() {
   if (section === "chapter" && depth === 2 && chapterNo) return <LevelMap chapter={chapterNo} />;
   if (section === "level" && depth === 2 && /^c\d+-l\d+$/.test(arg)) {
     const level = getLevel(arg);
-    if (!level) return <Quiet text="هذا المستوى قريباً." />;
-    if (!isLevelUnlocked(progress, arg)) return <Quiet text="أكملي المستوى السابق أولاً." />;
+    if (!level) return <Quiet text="المستوى دا حيجي قريب." />;
+    if (!isLevelUnlocked(progress, arg)) return <Quiet text="خلّصي المستوى القبلو الأول." />;
     return <LevelRunner level={level} />;
   }
   if (section === "reward" && depth === 2 && chapterNo) return <RewardScreen chapter={chapterNo} />;
   if (section === "map" && depth === 1) return <ChapterSelect />;
   if (section === "ending" && depth === 1) return <EndingScreen />;
   if (depth === 0) return <TitleScreen />;
-  return <Quiet title="لم نجد هذه الصفحة" text="قد يكون الرابط قديماً أو غير مكتمل." />;
+  return <Quiet title="الصفحة دي ما لقيناها" text="ممكن الرابط قديم أو ناقص." />;
 }
 
 /** النسخة المنشورة لا تحوي أدوات المطوّر: نعود إلى البداية. */
@@ -77,7 +77,7 @@ function Quiet({ title, text }: { title?: string; text: string }) {
         <div className="rw-card" role="status">
           {title && <h1 className="rw-title">{title}</h1>}
           <p className="rw-text">{text}</p>
-          <button className="button button-light" onClick={() => navigate("/map")}>العودة للخريطة</button>
+          <button className="button button-light" onClick={() => navigate("/map")}>ارجعي للخريطة</button>
         </div>
       </section>
     </main>

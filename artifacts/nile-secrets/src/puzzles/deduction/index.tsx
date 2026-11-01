@@ -28,16 +28,16 @@ export default function Deduction({ config, onResult }: PuzzleProps<Cfg>) {
   const confirm = () => {
     if (done) return;
     if (rows.some((r) => rowConflict(r.id)) || cols.some((c) => colConflict(c.id))) {
-      setMsg("في كل صف وكل عمود علامة صح واحدة فقط. راجعي العلامات المكرّرة.");
+      setMsg("في كل صف وكل عمود علامة صاح واحدة بس. راجعي العلامات المتكررة.");
       return;
     }
     if (ticks.length < rows.length) {
-      setMsg("ما زال هناك صفوف بلا علامة صح. استعيني بالأدلة أعلاه.");
+      setMsg("لسه في صفوف ما فيها علامة صاح. استعيني بالدلائل البفوق.");
       return;
     }
     const ok = rows.every((r) => marks[key(r.id, solution[r.id])] === 2);
     if (ok) { setDone(true); setMsg(""); onResult(true); }
-    else { setMsg("في الجدول علامة لا تتفق مع الأدلة. اقرئي الأدلة مرة أخرى."); onResult(false); }
+    else { setMsg("في الجدول علامة ما بتتفق مع الدلائل. اقري الدلائل تاني."); onResult(false); }
   };
 
   const glyph = (v: Mark) =>
@@ -50,7 +50,7 @@ export default function Deduction({ config, onResult }: PuzzleProps<Cfg>) {
   return (
     <div dir="rtl" className="mx-auto w-full max-w-xl">
       <p className="mb-2 text-center text-sm opacity-80">
-        اضغطي الخانة: مرة لعلامة الخطأ (غير ممكن)، مرتين لعلامة الصح (مؤكّد)، ثلاثاً للمسح.
+        اضغطي على الخانة: مرة لعلامة الغلط (ما ممكن)، مرتين لعلامة الصاح (أكيد)، تلات مرات عشان تمسحي.
       </p>
 
       <div className="overflow-x-auto">
@@ -79,7 +79,7 @@ export default function Deduction({ config, onResult }: PuzzleProps<Cfg>) {
                         type="button"
                         onClick={() => cycle(r.id, c.id)}
                         disabled={done}
-                        aria-label={`${r.label} و${c.label}: ${v === 2 ? "مؤكّد" : v === 1 ? "غير ممكن" : "فارغ"}`}
+                        aria-label={`${r.label} و${c.label}: ${v === 2 ? "أكيد" : v === 1 ? "ما ممكن" : "فاضي"}`}
                         className="grid h-12 w-full min-w-[48px] place-items-center rounded-lg text-xl font-bold"
                         style={{
                           background: v === 2 ? "rgba(216,146,58,.35)" : "rgba(239,227,200,.12)",
@@ -100,7 +100,7 @@ export default function Deduction({ config, onResult }: PuzzleProps<Cfg>) {
       </div>
 
       <p className="mt-2 min-h-6 text-center text-sm" role="status" aria-live="polite" style={{ color: "var(--ember)" }}>
-        {done ? "اتّسق الجدول مع الأدلة." : msg}
+        {done ? "الجدول اتسق مع الدلائل." : msg}
       </p>
 
       <div className="mt-2 flex justify-center gap-2">

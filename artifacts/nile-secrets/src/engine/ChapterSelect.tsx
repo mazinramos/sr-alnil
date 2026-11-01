@@ -30,7 +30,7 @@ export default function ChapterSelect() {
     return {
       n, ch, ids, done,
       title: ch?.title ?? CHAPTER_FALLBACK[n - 1],
-      location: ch?.location ?? "قريباً",
+      location: ch?.location ?? "قريب",
       soon: ids.length === 0,
       unlocked: isChapterUnlocked(p, n, order),
       complete: ids.length > 0 && done === ids.length,
@@ -44,30 +44,30 @@ export default function ChapterSelect() {
     <main className="game-shell" dir="rtl">
       <section className="map-screen">
         <header className="app-header">
-          <button className="brand-button" onClick={() => navigate("/")} aria-label="العودة إلى البداية">
+          <button className="brand-button" onClick={() => navigate("/")} aria-label="ارجعي للبداية">
             <span className="brand-mark">ن</span><span className="brand-copy"><b>سرّ النيل</b><small>حكاية من الضفاف</small></span>
           </button>
           <div className="header-progress"><span>مسار الرحلة</span><div className="progress-track"><i style={{ width: `${(doneLevels / ALL_LEVEL_IDS.length) * 100}%` }} /></div><b>{pad2(doneLevels)} / {ALL_LEVEL_IDS.length}</b></div>
           <div className="header-tools">
             <SettingsButton onClick={() => setSettings(true)} />
-            <button className="icon-button" onClick={() => setOverlay("notebook")} aria-label="فتح دفتر الملاحظات"><BookOpen size={19} /><span>الدفتر</span>{p.discoveredClues.length > 0 && <i className="tool-count">{p.discoveredClues.length}</i>}</button>
-            <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="فتح الحقيبة"><Compass size={19} /><span>الحقيبة</span></button>
+            <button className="icon-button" onClick={() => setOverlay("notebook")} aria-label="افتحي دفتر حبوبة صفية"><BookOpen size={19} /><span>الدفتر</span>{p.discoveredClues.length > 0 && <i className="tool-count">{p.discoveredClues.length}</i>}</button>
+            <button className="icon-button" onClick={() => setOverlay("inventory")} aria-label="افتحي الشنطة"><Compass size={19} /><span>الشنطة</span></button>
           </div>
         </header>
 
         <div className="map-layout">
           <div className="map-intro">
             <div className="eyebrow dark-eyebrow"><span /> سجل الرحلة <span /></div>
-            <h1>على أثر <em>الماء</em></h1>
-            <p>من غرفة صفية إلى الضفة التي هدأ عندها النهر. اختاري محطتك التالية، أو عودي إلى الأماكن التي تركتِ فيها علامة.</p>
+            <h1>على أثر <em>الموية</em></h1>
+            <p>من أوضة حبوبة صفية للضفة البيهدا عندها النهر. اختاري محطتك الجاية، أو ارجعي للأماكن البتركتي فيها علامة.</p>
             <div className="map-stat-row">
-              <div><b>{pad2(chaptersDone)}</b><span>محطات مكتملة</span></div>
-              <div><b>{pad2(p.discoveredClues.length)}</b><span>دلائل مكتشفة</span></div>
+              <div><b>{pad2(chaptersDone)}</b><span>محطات خلصت</span></div>
+              <div><b>{pad2(p.discoveredClues.length)}</b><span>دلائل لقيتيها</span></div>
             </div>
-            <div className="route-key"><span className="key-dot complete" /> أُنجزت <span className="key-dot current" /> متاحة <span className="key-dot locked" /> لاحقاً</div>
+            <div className="route-key"><span className="key-dot complete" /> خلصت <span className="key-dot current" /> مفتوحة <span className="key-dot locked" /> بعدين</div>
             {resume && (
               <button className="button button-light" style={{ marginTop: 22 }} onClick={() => navigate(`/level/${resume}`)}>
-                <span>{doneLevels ? "تابعي الرحلة" : "ابدئي الرحلة"}</span><ChevronLeft size={18} />
+                <span>{doneLevels ? "كمّلي الرحلة" : "ابدئي الرحلة"}</span><ChevronLeft size={18} />
               </button>
             )}
           </div>
@@ -84,7 +84,7 @@ export default function ChapterSelect() {
                 style={{ top: SPOTS[i].top, ['--r' as string]: SPOTS[i].r } as React.CSSProperties}
                 disabled={!s.unlocked}
                 onClick={() => navigate(`/chapter/${s.n}`)}
-                aria-label={`${s.title}${s.complete ? "، مكتملة" : s.soon ? "، قريباً" : s.unlocked ? "، متاحة" : "، مقفلة"}`}
+                aria-label={`${s.title}${s.complete ? "، خلصت" : s.soon ? "، قريب" : s.unlocked ? "، مفتوحة" : "، مقفولة"}`}
               >
                 <StopThumb art={STOP_ART[i]}>
                   {!s.unlocked && <LockKeyhole size={16} />}
@@ -93,7 +93,7 @@ export default function ChapterSelect() {
                 <span className="stop-copy">
                   <small>الفصل {pad2(s.n)}{s.ids.length > 0 && ` · ${s.done}/${s.ids.length}`}{s.stars > 0 && <> · <Star size={11} fill="currentColor" aria-hidden style={{ verticalAlign: "-1px" }} />{s.stars}</>}</small>
                   <b>{s.title}</b>
-                  <em>{s.soon ? "قريباً" : s.location}</em>
+                  <em>{s.soon ? "قريب" : s.location}</em>
                 </span>
                 <span className="stop-arrow">{s.unlocked ? <ChevronLeft size={15} /> : <LockKeyhole size={14} />}</span>
               </button>
@@ -104,7 +104,7 @@ export default function ChapterSelect() {
         </div>
         <footer className="map-footer">
           <span>سرّ النيل <i>—</i> حكاية عن الذاكرة المشتركة</span>
-          <button className="subtle-button" onClick={() => setConfirm(true)}><RotateCcw size={14} /> إعادة الحكاية</button>
+          <button className="subtle-button" onClick={() => setConfirm(true)}><RotateCcw size={14} /> ابدئي الحكاية من الأول</button>
         </footer>
         {overlay && <Drawer mode={overlay} close={() => setOverlay(null)} />}
         {settings && <SettingsDialog close={() => setSettings(false)} />}

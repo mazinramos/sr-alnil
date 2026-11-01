@@ -197,7 +197,7 @@ export default function TilesPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
       </div>
 
       <p className="text-center text-xs opacity-70">
-        {tool === "swap" ? "اضغطي قطعة ثم قطعة أخرى لتبديل مكانيهما." : "اضغطي على القطعة لتدويرها ٩٠°."}
+        {tool === "swap" ? "اضغطي على قطعة وبعدين قطعة تانية عشان يبدّلوا مكانهم." : "اضغطي على القطعة عشان تدوّريها ٩٠°."}
       </p>
 
       <button

@@ -72,7 +72,7 @@ export default function MemoryPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
   return (
     <div className="flex flex-col gap-3">
       <p className="text-center text-sm" aria-live="polite">
-        الأزواج: <b>{matched.size}</b> / {pairs.length} — محاولات غير موفقة: <b>{fails}</b> / {MAX_FAILS}
+        الأزواج: <b>{matched.size}</b> / {pairs.length} — محاولات غلط: <b>{fails}</b> / {MAX_FAILS}
       </p>
       <div dir="ltr" className="grid gap-2" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
         {deck.map((c, i) => {

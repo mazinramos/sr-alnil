@@ -148,11 +148,11 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
     const w = wrong + 1;
     if (w >= WRONG_LIMIT) {
       setWrong(0);
-      setMsg("بعض القطع ما زالت في غير مكانها. تأمّلي حواف الصورة وألوانها.");
+      setMsg("في قطع لسه ما في مكانها. ركّزي في حواف الصورة وألوانها.");
       onResult(false);
     } else {
       setWrong(w);
-      setMsg("هذه القطعة لا تلتقي مع جاراتها هنا.");
+      setMsg("القطعة دي ما بتلتقي مع جاراتها هنا.");
     }
   }, [done, slots, wrong, onResult]);
 
@@ -212,7 +212,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
   return (
     <div dir="rtl" className="mx-auto w-full max-w-xl select-none" style={{ touchAction: "pan-y" }}>
       <p className="mb-2 text-center text-sm opacity-80">
-        اسحبي كل قطعة إلى مكانها، أو اضغطي قطعة ثم اضغطي الخانة.
+        اسحبي كل قطعة لمكانها، أو اضغطي على قطعة وبعدين اضغطي على الخانة.
       </p>
 
       <div className="mb-2 flex items-center justify-center gap-2">
@@ -222,7 +222,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
           onClick={() => setPeek((p) => !p)}
           aria-pressed={peek}
         >
-          {peek ? "إخفاء الصورة" : "أرِني الصورة"}
+          {peek ? "اخفي الصورة" : "وريني الصورة"}
         </button>
       </div>
 
@@ -276,7 +276,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
       </div>
 
       <p className="mt-2 min-h-6 text-center text-sm" role="status" aria-live="polite" style={{ color: "var(--ember)" }}>
-        {done ? "اكتملت القطعة." : msg}
+        {done ? "القطعة اكتملت." : msg}
       </p>
 
       {/* الصينية */}
@@ -285,7 +285,7 @@ export default function Jigsaw({ config, onResult }: PuzzleProps<Cfg>) {
           data-tray
           className="mx-auto mt-2 flex min-h-[72px] flex-wrap items-center justify-center gap-2 rounded-xl border border-dashed border-[var(--papyrus)]/30 p-2"
         >
-          {tray.length === 0 && <span className="text-sm opacity-60">الصينية فارغة</span>}
+          {tray.length === 0 && <span className="text-sm opacity-60">الصينية فاضية</span>}
           {tray.map((id) => {
             const w = Math.max(44, Math.min(pw, 64));
             const h = Math.max(44, w * (ph / pw));

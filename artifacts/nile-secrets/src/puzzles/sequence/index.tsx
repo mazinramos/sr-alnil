@@ -116,7 +116,7 @@ export default function SequencePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
                 setDragId(id);
                 e.dataTransfer.setData("text/plain", id);
               }}
-              aria-label={item ? `الخانة ${idx + 1}: ${item.label}، اضغطي للإعادة` : `الخانة ${idx + 1} فارغة`}
+              aria-label={item ? `الخانة ${idx + 1}: ${item.label}، اضغطي عشان ترجّعيها` : `الخانة ${idx + 1} فاضية`}
               className="relative flex min-h-[72px] min-w-[72px] flex-1 basis-[72px] items-center justify-center rounded-xl border-2 px-2 py-2 transition-colors"
               style={{
                 maxWidth: 140,
@@ -137,7 +137,7 @@ export default function SequencePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
       {/* الصينية */}
       <div className="mb-4 flex min-h-[72px] flex-wrap justify-center gap-2 rounded-xl bg-black/30 p-3">
         {tray.length === 0 && (
-          <span className="self-center text-sm opacity-60">كل البطاقات في أماكنها</span>
+          <span className="self-center text-sm opacity-60">كل البطاقات في مكانها</span>
         )}
         {tray.map((item) => (
           <button
@@ -169,10 +169,10 @@ export default function SequencePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
           تأكيد
         </button>
         <p className="min-h-[1.5rem] text-sm" aria-live="polite">
-          {status === "right" && "الترتيب صحيح!"}
-          {status === "wrong" && "الترتيب ليس صحيحاً بعد، راجعي الدلائل وجرّبي ترتيباً آخر."}
-          {status === "idle" && !full && "اضغطي على بطاقة لتوضع في أول خانة فارغة، وعلى خانة لإعادتها."}
-          {status === "idle" && full && "اضغطي «تأكيد» حين تطمئنين إلى ترتيبك."}
+          {status === "right" && "الترتيب صاح!"}
+          {status === "wrong" && "الترتيب لسه ما صاح، راجعي الدلائل وجرّبي ترتيب تاني."}
+          {status === "idle" && !full && "اضغطي على بطاقة تنزل في أول خانة فاضية، واضغطي على الخانة عشان ترجّعيها."}
+          {status === "idle" && full && "اضغطي «تأكيد» لمن تتأكدي من ترتيبك."}
         </p>
       </div>
     </div>

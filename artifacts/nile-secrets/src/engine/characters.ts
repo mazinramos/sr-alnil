@@ -6,9 +6,9 @@ export type CharacterId =
 export interface Character { id: CharacterId; name: string; role: string }
 
 export const CHARACTERS: Record<CharacterId, Character> = {
-  nour:   { id: "nour",   name: "نور",         role: "حفيدة صفية" },
-  safiya: { id: "safiya", name: "صفية",        role: "الجدة" },
-  bashir: { id: "bashir", name: "بشير",        role: "جار الجدة، حافظ الحكايات" },
+  nour:   { id: "nour",   name: "نور",         role: "حفيدة حبوبة صفية" },
+  safiya: { id: "safiya", name: "صفية",        role: "حبوبة نور" },
+  bashir: { id: "bashir", name: "بشير",        role: "جار حبوبة صفية، حافظ الحكايات" },
   adam:   { id: "adam",   name: "آدم",         role: "الملاّح" },
   saif:   { id: "saif",   name: "سيف",         role: "ابن آدم الصغير" },
   yunus:  { id: "yunus",  name: "يونس",        role: "التاجر" },

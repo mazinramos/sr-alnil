@@ -39,7 +39,7 @@ export default function ChoicePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
       `}</style>
 
       <p className="mb-1 text-base font-bold leading-relaxed">{question}</p>
-      {multi && <p className="mb-3 text-sm opacity-75">يمكنك اختيار أكثر من إجابة.</p>}
+      {multi && <p className="mb-3 text-sm opacity-75">تقدري تختاري أكتر من إجابة.</p>}
       {!multi && <div className="mb-3" />}
 
       <div
@@ -101,8 +101,8 @@ export default function ChoicePuzzle({ config, onResult }: PuzzleProps<Cfg>) {
           تأكيد
         </button>
         <p className="min-h-[1.5rem] text-sm" aria-live="polite">
-          {status === "right" && "إجابة صحيحة!"}
-          {status === "wrong" && (multi ? "اختيارك ليس مطابقاً تماماً لما يقوله الدليل. أعيدي القراءة." : "ليست هذه الإجابة، أعيدي قراءة الدلائل.")}
+          {status === "right" && "إجابة صاح!"}
+          {status === "wrong" && (multi ? "اختيارك ما مطابق تمام للدليل. اقري تاني." : "الإجابة دي ما صاح، اقري الدلائل تاني.")}
         </p>
       </div>
     </div>

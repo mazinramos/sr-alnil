@@ -6,9 +6,9 @@ export const STOP_ART = ["village", "island", "market", "archive", "cove"].map((
 export const layered = (...urls: (string | undefined)[]) => urls.filter(Boolean).map((u) => `url(${u})`).join(", ");
 
 export const PUZZLE_NAMES: Record<string, string> = {
-  sequence: "ترتيب الرموز", hotspot: "بحث في المشهد", matching: "ربط ومطابقة", codelock: "قفل الرموز",
-  choice: "اختيار", route: "رسم المسار", balance: "الميزان", tiles: "تدوير القطع", memory: "ذاكرة الأزواج",
-  cipher: "فكّ الشفرة", deduction: "جدول الاستنتاج", jigsaw: "تركيب القطعة",
+  sequence: "رتّبي الرموز", hotspot: "دوّري في المشهد", matching: "وصّلي الأزواج", codelock: "قفل الرموز",
+  choice: "اختاري الإجابة الصاح", route: "ارسمي الطريق", balance: "الميزان", tiles: "دوّري القطع", memory: "لعبة الأزواج",
+  cipher: "فكّي الشفرة", deduction: "جدول الاستنتاج", jigsaw: "ركّبي القطعة",
 };
 export const CHAPTER_FALLBACK = ["القرية القديمة", "جزيرة الأسرار", "سوق الحكايات", "أطلال النهر", "الضفة الهادئة"];
 export const pad2 = (n: number) => String(n).padStart(2, "0");

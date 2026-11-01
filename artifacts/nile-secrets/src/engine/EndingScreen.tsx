@@ -18,18 +18,18 @@ export default function EndingScreen() {
         <div className="ending-shade" />
         <header className="ending-top">
           <span className="brand-mark">ن</span><span>سرّ النيل <i>—</i> الخاتمة</span>
-          <button className="glass-button" onClick={() => navigate("/map")}><ArrowLeft size={16} /> العودة إلى المحطات</button>
+          <button className="glass-button" onClick={() => navigate("/map")}><ArrowLeft size={16} /> ارجعي للمحطات</button>
         </header>
         <div className="ending-copy">
           <div className="eyebrow"><span /> الضفة الهادئة <span /></div>
-          <h1>ما بقي<br /><em>للجميع</em></h1>
-          <p>لم تكن الحافظة تخفي ذهباً. في داخلها سجلّ صفية: أسماء عائلات، رسائل قصيرة، وحكايات عن البيوت التي وقفت هنا قبل أن يتغيّر مجرى الماء.</p>
-          <blockquote>«الذاكرة لا تخصّ من كتبها وحده. احفظوها لبعضكم.»<cite>— من دفتر صفية</cite></blockquote>
+          <h1>الباقي<br /><em>للكل</em></h1>
+          <p>الحافظة ما كانت مخبّية دهب. جواها سجل حبوبة صفية: أسماء عيلات، رسايل قصيرة، وحكايات عن البيوت الكانت واقفة هنا قبل ما مجرى الموية يتغيّر.</p>
+          <blockquote>«الذاكرة ما بتخص الكتبها براهو. احفظوها لبعض.»<cite>— من دفتر حبوبة صفية</cite></blockquote>
           <div className="ending-actions">
-            <button className="button button-light" onClick={() => setOverlay(true)}><ScrollText size={17} /> قراءة الدلائل التي جمعتها</button>
-            <button className="text-button" onClick={() => setConfirm(true)}>العودة إلى البداية</button>
+            <button className="button button-light" onClick={() => setOverlay(true)}><ScrollText size={17} /> اقري الدلائل الجمعتيها</button>
+            <button className="text-button" onClick={() => setConfirm(true)}>ارجعي للبداية</button>
           </div>
-          <div className="ending-credit">خمس محطات <i /> {p.discoveredClues.length} دلائل <i /> سجلٌّ محفوظ</div>
+          <div className="ending-credit">خمس محطات <i /> {p.discoveredClues.length} دلائل <i /> سجل محفوظ</div>
         </div>
         <div className="ending-portrait"><Portrait id="nour" size={320} /></div>
         {overlay && <Drawer mode="notebook" close={() => setOverlay(false)} />}

@@ -101,7 +101,7 @@ export default function CodelockPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
               type="button"
               disabled={locked}
               onClick={() => clearSlot(idx)}
-              aria-label={item ? `الخانة ${idx + 1}: ${item.label}، اضغطي للمسح` : `الخانة ${idx + 1} فارغة`}
+              aria-label={item ? `الخانة ${idx + 1}: ${item.label}، اضغطي عشان تمسحيها` : `الخانة ${idx + 1} فاضية`}
               className="flex min-h-[64px] min-w-[56px] flex-1 items-center justify-center rounded-xl border-2 px-1"
               style={{
                 maxWidth: 96,
@@ -152,9 +152,9 @@ export default function CodelockPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
         </button>
         <p className="min-h-[1.5rem] text-sm" aria-live="polite">
           {status === "right" && "انفتح القفل!"}
-          {status === "wrong" && "القفل لم ينفتح، الرموز أو ترتيبها غير صحيح. راجعي الدلائل."}
-          {status === "idle" && !full && `اختاري ${length} رموز بالترتيب. اضغطي خانة لمسح رمزها.`}
-          {status === "idle" && full && "اضغطي «افتحي» حين تطمئنين."}
+          {status === "wrong" && "القفل ما انفتح، الرموز أو ترتيبها ما صاح. راجعي الدلائل."}
+          {status === "idle" && !full && `اختاري ${length} رموز بالترتيب. اضغطي على الخانة عشان تمسحي الرمز.`}
+          {status === "idle" && full && "اضغطي «افتحي» لمن تتأكدي."}
         </p>
       </div>
     </div>

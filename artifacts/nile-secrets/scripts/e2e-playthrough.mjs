@@ -106,7 +106,7 @@ function farPoints(targets, k) {
 }
 
 async function tapFrame(page, pts) {
-  const frame = host(page).locator('[role="group"][aria-label^="ابحثي"]');
+  const frame = host(page).locator('[role="group"][aria-label^="دوّري"]');
   for (const p of pts) {
     await frame.scrollIntoViewIfNeeded();
     const b = await frame.boundingBox();
@@ -520,7 +520,7 @@ async function runInterrupt(browser, levels, rows) {
     await waitLevelReady(page, L4);
     await solveAndWait(page, L4);
     const st4 = await starsShown(page);
-    await page.getByRole("button", { name: "المستوى التالي" }).tap();
+    await page.getByRole("button", { name: "المستوى الجاي" }).tap();
     await waitLevelReady(page, L5);
     await host(page).getByRole("button").filter({ hasText: /^٩$/ }).first().tap(); // إدخال رمز جزئي
     await page.reload(); await sleep(600);
@@ -541,9 +541,9 @@ async function runInterrupt(browser, levels, rows) {
     await page.getByRole("button", { name: "ابدئي الرحلة" }).tap();
     await page.locator(".stage-narrative h1").waitFor({ timeout: 8000 });
     const trail = [];
-    const snap = async () => { await sleep(500); trail.push(await page.evaluate(() => location.hash)); return page.evaluate(() => ({ crash: !!document.body.innerText.match(/حدث خطأ|العودة للخريطة/) && !!document.querySelector(".error-boundary, [role=alert]"), empty: document.body.innerText.trim().length < 5 })); };
+    const snap = async () => { await sleep(500); trail.push(await page.evaluate(() => location.hash)); return page.evaluate(() => ({ crash: !!document.body.innerText.match(/حصل خلل|ارجعي للخريطة/) && !!document.querySelector(".error-boundary, [role=alert]"), empty: document.body.innerText.trim().length < 5 })); };
     const bad = [];
-    await page.getByRole("button", { name: "العودة إلى خريطة الفصل" }).tap(); await sleep(700);
+    await page.getByRole("button", { name: "ارجعي لخريطة الفصل" }).tap(); await sleep(700);
     const node = page.locator("button.lv-node").nth(1);
     if (await node.count() && !(await node.isDisabled())) { await node.tap(); await sleep(700); }
     for (let i = 0; i < 4; i++) { await page.goBack().catch(() => {}); if (page.url().startsWith("about:")) break; const r = await snap(); if (r.crash || r.empty) bad.push("رجوع " + (i + 1) + " " + (await page.evaluate(() => location.href.slice(-24) + " | " + document.body.innerText.trim().slice(0, 40).replace(/\n/g, " ")))); }
@@ -752,13 +752,13 @@ function mulberry(seed) {
         if (L.isBoss || L.index === 7) {
           await page.getByRole("button", { name: "قطعة الخريطة" }).tap();
           await page.locator(".rw-card").waitFor({ timeout: 8000 });
-          await page.getByRole("button", { name: "التالي" }).tap();
+          await page.getByRole("button", { name: "الجاي" }).tap();
           await page.locator(".rw-title").waitFor({ timeout: 8000 });
           if (L.chapter === 5) {
             await page.getByRole("button", { name: "الخاتمة" }).tap();
             await page.locator(".ending-screen").waitFor({ timeout: 8000 });
           } else {
-            await page.getByRole("button", { name: "العودة إلى الخريطة" }).tap();
+            await page.getByRole("button", { name: "ارجعي للخريطة" }).tap();
             await page.locator(".map-screen").waitFor({ timeout: 8000 });
             if (next) {
               const stop = page.locator("button.map-stop").nth(L.chapter);
@@ -771,7 +771,7 @@ function mulberry(seed) {
             }
           }
         } else if (next) {
-          await page.getByRole("button", { name: "المستوى التالي" }).tap();
+          await page.getByRole("button", { name: "المستوى الجاي" }).tap();
         }
         if (jsErrors.length) throw new Error("أخطاء JS أثناء الانتقال: " + jsErrors.slice(0, 2).join(" | "));
         rows.push({ id: L.id, type: L.puzzle.type, ok: true, note: "", stars: String(stars), ms });

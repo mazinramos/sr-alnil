@@ -173,9 +173,9 @@ export default function MatchingPuzzle({ config, onResult }: PuzzleProps<Cfg>) {
           تأكيد
         </button>
         <p className="min-h-[1.5rem] text-sm" aria-live="polite">
-          {status === "right" && "الروابط كلها صحيحة!"}
-          {status === "wrong" && "بعض الروابط ليست صحيحة، أعيدي النظر في الدلائل وغيّري ما تشكين فيه."}
-          {status === "idle" && (selected ? "الآن اختاري ما يقابله من العمود الآخر." : "اختاري عنصراً من اليمين ثم ما يقابله من اليسار.")}
+          {status === "right" && "التوصيلات كلها صاح!"}
+          {status === "wrong" && "في توصيلات ما صاح، راجعي الدلائل وغيّري البتشكي فيها."}
+          {status === "idle" && (selected ? "هسّه اختاري البقابلو من العمود التاني." : "اختاري حاجة من اليمين وبعدين البقابلها من الشمال.")}
         </p>
       </div>
     </div>
