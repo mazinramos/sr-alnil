@@ -462,7 +462,9 @@ async function runMatrix(browser, levels, rows) {
     page.on("pageerror", (e) => errs.push(String(e).slice(0, 100)));
     await page.goto(BASE + "#/");
     for (const l of levels) await forceComplete(page, l.id);
-    for (const [type, L] of byType) {
+    const extraL = levels.find((l) => l.id === "c3-l5"); // hotspot ثانٍ بصورة فعلية وأهداف أصغر
+    for (const L of [...byType.values(), ...(extraL ? [extraL] : [])]) {
+      const type = L.puzzle.type;
       const tag = `${w}×${h} ${L.id}`;
       try {
         for (const lv of levels) await forceComplete(page, lv.id);
