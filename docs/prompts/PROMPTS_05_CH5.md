@@ -1,6 +1,6 @@
 # PROMPTS_05 — الدفعة 5: الفصل الخامس (الضفة الهادئة)
 
-> الحساب F — مدير الفن. **13 صورة** للفصل 5 (الضفة الهادئة): 7 خلفيات، بورتريهان (رحاب وتعبيرها)، 4 أيقونات.
+> الحساب F — مدير الفن. **12 صورة** للفصل 5 (الضفة الهادئة): 7 خلفيات، بورتريهان (رحاب وتعبيرها)، 3 أيقونات.
 > الترتيب: خلفيات الطبقة A (`c5-l1` ثم `c5-l4` ثم `c5-l7`) ← رحاب ← أيقونات A (رمز الخيط وأغراض الذاكرة) ← الطبقة B.
 > الإضاءة: غروب هادئ وماء ساكن، وفي الأرشيف ضوء مصابيح دافئ.
 > مصدر الحقيقة: `src/content/chapters/ch5.ts` (A) و`docs/SYMBOLS.md`.
@@ -15,7 +15,7 @@
 **حدود الحجم:** خلفية ≤ 250KB، شاشة عامة ≤ 300KB، بورتريه ≤ 200KB، أيقونة ≤ 40KB.
 
 ## ملاحظات هذه الدفعة
-- **c5-l1 (memory):** أزواج الذاكرة الخمسة: دفتر صفية، قرص الشمس، قطعة المركب، الميزان النحاسي، مفتاح الحجر. لدينا من قبل `sun-disc` و`boat-piece` (الدفعة 1)، وأضفت جديداً: `notebook-safiya` و`brass-scale` و`stone-key`. أزواج `ch5.ts` بلا `icon:` الآن فتظهر نصاً؛ A يضيف حقول `icon:` بعد وصول الصور (قرار 31/10): `notebook-safiya` و`sun-disc` و`boat-piece` (موجودتان) و`brass-scale` و`stone-key`.
+- **c5-l1 (memory) محدّث 1/11 (قرار A):** أزواج الذاكرة الخمسة: دفتر صفية، قرص الشمس، قطعة المركب، الميزان النحاسي، **الطائر المنقوش** (حلّ محلّ «مفتاح الحجر» الذي حُذف من الجرد، فصار المجموع 100). لدينا من قبل `sun-disc` و`boat-piece` و`bird-carving` (الدفعة 1)، والجديد `notebook-safiya` و`brass-scale` فقط. أزواج `ch5.ts` بلا `icon:` الآن فتظهر نصاً؛ A يضيف حقول `icon:` بعد وصول الصور (قرار 31/10): `notebook-safiya` و`sun-disc` و`boat-piece` (موجودتان) و`brass-scale`.
 - **c5-l4 (matching):** لوحات الأسماء بنقوش خطية مجرّدة عمداً؛ أي رسم دالّ (سمك، نجوم، خبز) يكشف حل الربط.
 - **c5-l2 وc5-l3:** القطع الخمس في الصورتين بمنمنمات ورموز مطابقة لخلايا `ui/map-full` (1: قرية وشمس، 2: جزيرة وموجة، 3: سوق وميزان، 4: أطلال وعين، 5: ضفة وخيط). ولّدهما **بعد** اعتماد `map-full`.
 - **c5-l5:** صندوق بسيط بلا نقش عمداً؛ يتباين مع صندوق صفية المنقوش في الفصل 1.
@@ -28,7 +28,7 @@
 - الملف: `public/art/c5/l1.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 5 — الطبقة A
-- الغرض: خلفية c5-l1 «ذاكرة الرحلة» (memory): مرسى صغير عند الغروب. (البطاقات أغراض الرحلة الخمسة: دفتر صفية، قرص الشمس، قطعة المركب، الميزان النحاسي، مفتاح الحجر.)
+- الغرض: خلفية c5-l1 «ذاكرة الرحلة» (memory): مرسى صغير عند الغروب. (البطاقات أغراض الرحلة الخمسة: دفتر صفية، قرص الشمس، قطعة المركب، الميزان النحاسي، الطائر المنقوش.)
 - المرجع المرفق: `docs/reference/village.jpg`
 - البرومبت الكامل (للصق):
 ```
@@ -168,27 +168,7 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
   2. مميّز عن symbol-c3 (هذا جسم ثلاثي الأبعاد لا نقش)
   3. خلفية رمادية فاتحة وحواف نظيفة
 
-### 8 — stone-key
-- الملف: `public/art/items/stone-key.webp`
-- الحجم المطلوب: 256×256 شفاف
-- الدفعة والأولوية: Batch 5 — الطبقة A
-- الغرض: مفتاح الحجر في c5-l1 (memory). مقترح: A يضيف `icon:` لأزواج الذاكرة في `ch5.ts`.
-- المرجع المرفق: لا شيء (لا ترفق أي صورة)
-- البرومبت الكامل (للصق):
-```
-Single game puzzle icon, painterly realistic digital painting with soft shading, warm hand-painted game-icon illustration style, the object centered and filling about 80 percent of the square, slightly three-quarter view, soft warm light from the upper left, plain flat light-gray background with clean edges for easy cutout, no cast shadow on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. Instantly readable at small size. No text, no letters, no numbers, no watermark. Square 1:1 ratio, 1024x1024.
-Object: A single old heavy key whose large round bow and thick shaft look carved from weathered gray-ochre stone, with a worn dark iron bit at the end, small cracks and tiny moss in the crevices.
-Constraints: no text, no letters, no numbers, no watermark, plain flat light-gray background, only one object.
-Plain flat light-gray background only: do NOT include any scene, room, wall, floor, mat, table or sky behind the object. The object floats alone on the gray, centered, with clean edges.
-```
-- مواضع إلزامية: لا يوجد
-- تجنّب: مفتاح حديث أو لامع، حروف أو علامات، أكثر من مفتاح
-- فحص القبول:
-  1. مفتاح ثقيل قديم بمقبض وساق حجريين ورأس حديدي
-  2. مميّز عن بقية أغراض الذاكرة بالشكل والمادة
-  3. خلفية رمادية فاتحة وحواف نظيفة
-
-### 9 — c5-l2
+### 8 — c5-l2
 - الملف: `public/art/c5/l2.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 5 — الطبقة B
@@ -210,7 +190,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
   2. على الحافة اليسرى لكل قطعة علامة نهر زرقاء قصيرة ظاهرة عند منتصفها
   3. لا نص ولا أشخاص والثلث السفلي هادئ
 
-### 10 — c5-l3
+### 9 — c5-l3
 - الملف: `public/art/c5/l3.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 5 — الطبقة B
@@ -234,7 +214,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
   2. قطعتان مموّهتان إضافيتان: قصاصة بلا ماء عند (84,66) ونسخة بخط مقطوع عند (10,66)
   3. لا نص ولا أشخاص وكل القطع الإضافية على الحصير بفراغ حولها
 
-### 11 — c5-l5
+### 10 — c5-l5
 - الملف: `public/art/c5/l5.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 5 — الطبقة B
@@ -255,7 +235,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
   2. مصباح زيت وضوء دافئ
   3. لا نص ولا أشخاص والثلث السفلي هادئ
 
-### 12 — c5-l6
+### 11 — c5-l6
 - الملف: `public/art/c5/l6.webp`
 - الحجم المطلوب: 1536×1024 (3:2)
 - الدفعة والأولوية: Batch 5 — الطبقة B
@@ -276,7 +256,7 @@ Constraints: no text, no letters, no numbers, no people, no watermark; no readab
   2. دواة وقلم قصب ووردة مجففة وضوء دافئ
   3. لا حروف حقيقية ولا أشخاص والثلث السفلي هادئ
 
-### 13 — rihab-serious
+### 12 — rihab-serious
 - الملف: `public/art/chars/rihab-serious.webp`
 - الحجم المطلوب: 768×768 شفاف
 - الدفعة والأولوية: Batch 5 — الطبقة B
@@ -308,15 +288,14 @@ Constraints: no text, no letters, no watermark, plain flat light-gray background
 | 5 | symbol-c5 | A | [ ] | [ ] | [ ] | |
 | 6 | notebook-safiya | A | [ ] | [ ] | [ ] | |
 | 7 | brass-scale | A | [ ] | [ ] | [ ] | |
-| 8 | stone-key | A | [ ] | [ ] | [ ] | |
-| 9 | c5-l2 | B | [ ] | [ ] | [ ] | |
-| 10 | c5-l3 | B | [ ] | [ ] | [ ] | |
-| 11 | c5-l5 | B | [ ] | [ ] | [ ] | |
-| 12 | c5-l6 | B | [ ] | [ ] | [ ] | |
-| 13 | rihab-serious | B | [ ] | [ ] | [ ] | |
+| 8 | c5-l2 | B | [ ] | [ ] | [ ] | |
+| 9 | c5-l3 | B | [ ] | [ ] | [ ] | |
+| 10 | c5-l5 | B | [ ] | [ ] | [ ] | |
+| 11 | c5-l6 | B | [ ] | [ ] | [ ] | |
+| 12 | rihab-serious | B | [ ] | [ ] | [ ] | |
 
 ## أسئلة وملاحظات لأصحاب الفصول
-1. **ch5.ts (A):** إضافة `icon:` لأزواج c5-l1 بعد وصول الصور (الأسماء في الملاحظات أعلاه).
+1. **ch5.ts (A):** إضافة `icon:` لأزواج c5-l1 بعد وصول الصور (`notebook-safiya` و`brass-scale` جديدتان، و`sun-disc` و`boat-piece` و`bird-carving` موجودة).
 2. **c5-l2 (B/A):** علامة خط المجرى على حافة كل قطعة (بقعة حبر زرقاء قصيرة) مواضعها مؤقتة؛ تُضبط من `/preview/coords` بعد وصول الصورة.
 3. **c5-l3 (B/A):** مراكز القطع مأخوذة من ترتيب S نفسه في الخريطة (1 و2 و3 أعلى، 4 و5 أسفل)؛ لو اختلف الترتيب أخبرني.
 4. **c5-l6 (A):** مفتاح الشفرة أيقونات `symbol-c1..c5`؛ لم أرسم رموزاً على الورقة حتى لا تكشف الحل.

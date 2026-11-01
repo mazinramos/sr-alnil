@@ -2,8 +2,8 @@
 
 > مولَّد آلياً بـ `python3 docs/prompts/make_status.py` (آخر تحديث 2026-11-01). لا تعدّله يدوياً. الحالة: **موجودة** (صورة فعلية) | **مؤقتة** (صورة من النسخة الأولى تُستبدل بنفس الاسم) | **ناقصة** (لا ملف؛ تسقط الواجهة لبديل). الطبقة A لازمة للتسليم.
 
-**المخطّط 101 صورة:** موجودة 47، مؤقتة 3، ناقصة 51.
-**الطبقة A:** موجودة 30 من 60، مؤقتة 3، ناقصة 27.
+**المخطّط 100 صورة:** موجودة 47، مؤقتة 3، ناقصة 50.
+**الطبقة A:** موجودة 30 من 59، مؤقتة 3، ناقصة 26.
 **الطبقة B:** موجودة 17 من 41، مؤقتة 0، ناقصة 24.
 
 ## دفعة الفصل 1 (27)
@@ -114,7 +114,7 @@
 | 18 | `carve-reed` | أيقونة | `items/carve-reed.webp` | ناقصة | A | - |
 | 19 | `carve-smooth` | أيقونة | `items/carve-smooth.webp` | ناقصة | B | - |
 
-## دفعة الفصل 5 (13)
+## دفعة الفصل 5 (12)
 
 | # | ID | النوع | الملف | الحالة | الطبقة | يعتمد عليه لغز؟ |
 |---|---|---|---|---|---|---|
@@ -125,12 +125,11 @@
 | 05 | `symbol-c5` | أيقونة | `items/symbol-c5.webp` | ناقصة | A | - |
 | 06 | `notebook-safiya` | أيقونة | `items/notebook-safiya.webp` | ناقصة | A | - |
 | 07 | `brass-scale` | أيقونة | `items/brass-scale.webp` | ناقصة | A | - |
-| 08 | `stone-key` | أيقونة | `items/stone-key.webp` | ناقصة | A | - |
-| 09 | `c5-l2` | خلفية | `c5/l2.webp` | ناقصة | B | نعم: hotspot |
-| 10 | `c5-l3` | خلفية | `c5/l3.webp` | ناقصة | B | نعم: route |
-| 11 | `c5-l5` | خلفية | `c5/l5.webp` | ناقصة | B | - |
-| 12 | `c5-l6` | خلفية | `c5/l6.webp` | ناقصة | B | - |
-| 13 | `rihab-serious` | بورتريه | `chars/rihab-serious.webp` | ناقصة | B | - |
+| 08 | `c5-l2` | خلفية | `c5/l2.webp` | ناقصة | B | نعم: hotspot |
+| 09 | `c5-l3` | خلفية | `c5/l3.webp` | ناقصة | B | نعم: route |
+| 10 | `c5-l5` | خلفية | `c5/l5.webp` | ناقصة | B | - |
+| 11 | `c5-l6` | خلفية | `c5/l6.webp` | ناقصة | B | - |
+| 12 | `rihab-serious` | بورتريه | `chars/rihab-serious.webp` | ناقصة | B | - |
 
 ## صور الألغاز: تُولَّد أولاً ويُتحقَّق منها قبل غيرها
 
@@ -148,6 +147,6 @@
 
 ## المتبقي (غير موجودة) حسب الأولوية
 
-**الطبقة A (30):** `c2-l1` (مؤقتة), `c2-l4`, `c2-l7`, `saif-neutral`, `symbol-c2`, `star-sign-1`, `star-sign-2`, `star-sign-3`, `star-sign-4`, `star-sign-5`, `c4-l1` (مؤقتة), `c4-l4`, `c4-l7`, `othman-neutral`, `symbol-c4`, `carve-light`, `carve-wing`, `carve-channel`, `carve-anchor`, `c4-l2-puzzle`, `carve-star`, `carve-reed`, `c5-l1`, `c5-l4`, `c5-l7` (مؤقتة), `rihab-neutral`, `symbol-c5`, `notebook-safiya`, `brass-scale`, `stone-key`
+**الطبقة A (29):** `c2-l1` (مؤقتة), `c2-l4`, `c2-l7`, `saif-neutral`, `symbol-c2`, `star-sign-1`, `star-sign-2`, `star-sign-3`, `star-sign-4`, `star-sign-5`, `c4-l1` (مؤقتة), `c4-l4`, `c4-l7`, `othman-neutral`, `symbol-c4`, `carve-light`, `carve-wing`, `carve-channel`, `carve-anchor`, `c4-l2-puzzle`, `carve-star`, `carve-reed`, `c5-l1`, `c5-l4`, `c5-l7` (مؤقتة), `rihab-neutral`, `symbol-c5`, `notebook-safiya`, `brass-scale`
 
 **الطبقة B (24):** `c2-l2`, `c2-l3`, `c2-l5`, `c2-l6`, `adam-smiling`, `adam-serious`, `knot-red`, `knot-blue`, `knot-yellow`, `knot-green`, `river-stone`, `cargo-sack`, `c4-l2`, `c4-l3`, `c4-l5`, `c4-l6`, `hala-serious`, `torch`, `carve-smooth`, `c5-l2`, `c5-l3`, `c5-l5`, `c5-l6`, `rihab-serious`

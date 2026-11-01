@@ -48,7 +48,7 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 
 ---
 
-## 3) الجرد الكامل (101 صورة، محدّث 31/10)
+## 3) الجرد الكامل (100 صورة، محدّث 1/11)
 
 **الفئات:** UI = شاشات عامة | BG = خلفية مستوى | CH = بورتريه | EX = تعبير إضافي | IC = أيقونة | PZ = صورة لغز.
 **الطبقة:** A = أولوية قصوى، B = بعدها.
@@ -119,7 +119,7 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 | rihab-neutral | public/art/chars/rihab-neutral.webp | CH | A | 5 |
 | rihab-serious | public/art/chars/rihab-serious.webp | EX | B | 5 |
 
-### 3.4 الأيقونات (46) — كلها 256×256 شفاف، `public/art/items/{id}.webp`
+### 3.4 الأيقونات (45) — كلها 256×256 شفاف، `public/art/items/{id}.webp`
 > **القائمة مؤقتة:** الـ IDs النهائية تأتي من حقل `icon` في ملفات الفصول (C وD وE وA). سأعدّل بعد استلامها.
 
 | الدفعة | الأيقونات |
@@ -128,7 +128,7 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 | 2 (12) | river-stone, star-sign-1, star-sign-2, star-sign-3, star-sign-4, star-sign-5, knot-red, knot-blue, knot-yellow, knot-green, cargo-sack, symbol-c2 |
 | 3 (10) | bead-blue, copper-weight, weaver-shuttle, spice-cumin, spice-cinnamon, spice-clove, spice-pepper, ledger-page, tea-glass, symbol-c3 |
 | 4 (9) | carve-light, carve-wing, carve-channel, carve-anchor, carve-star, carve-reed, carve-smooth (اختياري), torch, symbol-c4 |
-| 5 (4) | symbol-c5, notebook-safiya, brass-scale, stone-key |
+| 5 (3) | symbol-c5, notebook-safiya, brass-scale |
 
 الطبقة: A لـ sun-disc وbird-carving وboat-piece وsymbol-c1..c5 (مطلوبة في c4-l5 وc5-l5/l6)، والباقي B (بديلها lucide).
 
@@ -144,8 +144,8 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 | 2 | PROMPTS_02_CH2.md | 7 BG + سيف + 2 تعبير آدم + 12 أيقونة | 22 |
 | 3 | PROMPTS_03_CH3.md | 7 BG + حليمة (2 تعبير) + تعبير يونس + 10 أيقونات | 20 |
 | 4 | PROMPTS_04_CH4.md | 7 BG + الحاج عثمان + تعبير هالة + c4-l2-puzzle + 9 أيقونات | 19 |
-| 5 | PROMPTS_05_CH5.md | 7 BG + رحاب (2 تعبير) + 4 أيقونات | 13 |
-| | | **المجموع** | **101** |
+| 5 | PROMPTS_05_CH5.md | 7 BG + رحاب (2 تعبير) + 3 أيقونات | 12 |
+| | | **المجموع** | **100** |
 
 الترتيب داخل كل دفعة: UI (إن وُجدت) ← الطبقة A (l1, l4, l7) ← l2, l3, l5, l6 ← بورتريهات ← أيقونات. وفي آخر كل ملف جدول تتبّع بـ checkbox.
 
@@ -160,6 +160,8 @@ Plain flat light-gray background only: do NOT include any scene, room, wall, flo
 5. المرجع في `docs/reference/` (`village.jpg` و`nour.png`). بورتريهات neutral لـ nour وadam وyunus وhala موجودة في `public/art/chars` ولا تُعاد (لم تكن في الجرد أصلاً).
 6. استثناء الخرائط من الأنكور: موافق.
 7. أسماء الأيقونات مؤقتة: قبل كل دفعة `grep "icon:" src/content/chapters/*.ts` وتحديث الجرد وإبلاغ مازن بالتغيير.
+
+**تعديل 1/11 (NEXT8، قرار A):** حُذفت `stone-key` من الجرد (استبدلها A في c5-l1 بـ«الطائر المنقوش»، أيقونته `bird-carving` موجودة)، فصار المجموع **100** وأُعيد ترقيم ملفات ch5 (08 `c5-l2` … 12 `rihab-serious`).
 
 **تعديل لاحق (الدفعة 1):** (أ) `ui/map-full` صار خلايا لا شرائح. (ب) أيقونات `jar-*` تُظهر المحتوى بلا أغطية ملوّنة. (ج) تحديث 31/10: صار المجموع 98 (حُذف `market-scissors` تخميناً بلا مرجع؛ `carving-*` صارت `carve-light/wing/channel/anchor` لتطابق ids عناصر `ch4.ts`؛ أُضيفت `notebook-safiya` و`brass-scale` و`stone-key` لأزواج c5-l1). (د) تحديث NEXT4 (31/10): c4-l1 صار بست علامات فأُضيفت `carve-star` و`carve-reed` و`carve-smooth` (المجموع 101)، وأُعيدت كتابة `c4-l2-puzzle` (عين في المركز ومجرى من الأعلى للأسفل بلا ظلال على الحواف)، واعتُمد ICON_ANCHOR نسخة 2 والأيقونات بلا مرجع. (هـ) `jar-wheat` و`jar-henna` و`jar-incense` و`jar-dates` من الطبقة B إلى **A** (c1-l4 من الطبقة A).
 
