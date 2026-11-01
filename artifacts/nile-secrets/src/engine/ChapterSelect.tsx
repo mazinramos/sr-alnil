@@ -59,7 +59,7 @@ export default function ChapterSelect() {
           <div className="map-intro">
             <div className="eyebrow dark-eyebrow"><span /> سجل الرحلة <span /></div>
             <h1>على أثر <em>الموية</em></h1>
-            <p>من أوضة حبوبة صفية للضفة البيهدا عندها النهر. اختاري محطتك الجاية، أو ارجعي للأماكن البتركتي فيها علامة.</p>
+            <p>من غرفة حبوبة صفية للضفة البيهدا عندها النهر. اختاري محطتك الجاية، أو ارجعي للأماكن البتركتي فيها علامة.</p>
             <div className="map-stat-row">
               <div><b>{pad2(chaptersDone)}</b><span>محطات خلصت</span></div>
               <div><b>{pad2(p.discoveredClues.length)}</b><span>دلائل لقيتيها</span></div>
