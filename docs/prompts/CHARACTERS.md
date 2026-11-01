@@ -23,6 +23,25 @@ Edit the attached approved portrait instead of creating a new one. Keep everythi
 - إن فشل التعبير **مرتين**: اتركه وأخبر A. اللعبة تعمل بدونه، إذ تعرض الواجهة تعبيراً مفقوداً بصورة neutral (ثم بحرف الاسم الأول إن غابت neutral).
 - **لا تغيّر وجه neutral المعتمد أبداً** لتوافق تعبيراً جديداً. التعبير هو الذي يُعاد.
 
+## نتائج مراجعة التعابير الواصلة (1/11)
+| الشخصية | التعبير | النتيجة | الإجراء |
+|---|---|---|---|
+| halima | smiling | **متسقة** مع neutral (الوجه والثوب والقرطان) | لا شيء |
+| yunus | smiling | **وجه مختلف** عن neutral | إعادة محاولة **واحدة** فقط (أدناه) |
+
+**يونس: ما الذي اختلف؟** في `yunus-smiling`: الشعر أكثر تجعيداً، واللحية أقصر وأرمد (أبيض عند الذقن)، والوجه أنحف، والإطار أبعد (الكتفان كاملتان) من إطار neutral الأقرب. القميص والسترة متطابقان.
+
+**إعادة المحاولة (مرة واحدة فقط):** ارفق `public/art/chars/yunus-neutral.webp` مع الرسالة نفسها، ثم اكتب لجيمناي:
+```
+same man, same hair, same beard, only the expression changes
+```
+وإن لم تكفِ هذه الجملة وحدها فاستعمل الصيغة الأطول (مع المرفق نفسه):
+```
+Regenerate this image. It must be exactly the same man as in the attached portrait: the same short curly black hair with gray at the temples (not more tightly curled), the same short gray-white beard (not shorter and not whiter), the same rounder face (not thinner), the same close framing, the same tan collarless shirt and terracotta-brown waistcoat. Only the expression changes, to: a relaxed, knowing, genuinely warm smile, the eyes crinkled kindly, gaze straight at the viewer.
+```
+- إن فشلت **المحاولة الثانية** فتبقى الصورة الحالية كما هي (شخصية ثانوية، الطبقة B). **لا محاولة ثالثة.**
+- **لا تغيّر** `yunus-neutral` المعتمد.
+
 ## CHAR_ANCHOR
 ```
 Half-body character portrait, painterly realistic digital painting, same style, palette and lighting quality as the reference image, soft warm light from the front-left, calm dignified presence, Sudanese character with natural proportions and natural hands (hands out of frame or simply resting), plain flat light-gray background with clean edges for easy cutout, no shadows on the background. Muted palette: sandy gold, terracotta brown-red, calm Nile blue, dusty palm green, warm violet shadows. No text, no letters, no watermark, no logo-like props. Square 1:1 ratio, 1024x1024.
