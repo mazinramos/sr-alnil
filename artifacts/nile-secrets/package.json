@@ -20,6 +20,7 @@
     "thumbs": "node scripts/make-thumbs.mjs",
     "test:thumbs": "node scripts/check-thumbs.mjs",
     "verify": "node scripts/verify.mjs",
+    "dialect": "node --experimental-strip-types scripts/check-dialect.mjs",
     "share-assets": "node scripts/make-share-assets.mjs",
     "check:og": "node scripts/check-og.mjs"
   },
