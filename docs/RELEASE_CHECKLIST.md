@@ -9,21 +9,24 @@
 npm ci && npm run check && npm run test:content && npm run test:e2e
 ```
 الاختبارات الآلية الأربعة: `test:unlock` وtest:migrate (ضمن `npm test`)، و`test:content`، و`test:e2e` (يحلّ المستويات الـ35 على 375px). المطلوب أن تنتهي كلها بدون فشل. التفاصيل أدناه لمن يريد تشغيل كل واحد على حدة.
-- [ ] `git pull` ثم `npm install`
+- [ ] `git pull` ثم `npm install` ثم **`npm run verify`** (انظري الفقرة التالية) وتأكدي من «✓ كل شيء سليم»
 - [ ] `npm run typecheck` ينتهي بدون أخطاء
 - [ ] `npm run check` (TypeScript + البناء) ينتهي بدون أخطاء
 - [ ] `npm test` ينتهي بـ 3 مجموعات OK: الفتح (`unlock`)، الترحيل (`migrate`)، المحتوى (`content`)
 - [ ] تحذيرات `test:content` معروفة ومقبولة من A (ليست أخطاء)
 - [ ] `npm run report:assets` ثم افتحي `docs/MISSING_ASSETS.md`: لا ملف أولوية A ناقص (أو أُبلغ A بالنواقص)
 
+### الفحص الشامل بأمر واحد: `npm run verify`
+من داخل `artifacts/nile-secrets/`. يشغّل بالترتيب: `typecheck` ثم `check` ثم `test:content` ثم `test:unlock` ثم `test:migrate` ثم `test:thumbs`، ثم يتأكد أن لكل خلفية مصغّرة حديثة، ثم يطبع ملخص الصور الناقصة، وينتهي بـ **«✓ كل شيء سليم»**. يقف عند أول فشل بسطر `✗ توقّف عند: …` وآخر 25 سطراً من الخطأ. لا يشمل `test:e2e` (يحتاج متصفحاً)، فشغّليه منفصلاً. يستغرق نحو نصف دقيقة. شغّليه بعد كل `git pull` وقبل كل تسليم.
+
 ### بعد كل دفعة صور جديدة (يشغّلها مازن أو حساب B)
 ```
-npm run thumbs && npm run report:assets && npm run test:content
+npm run thumbs && npm run report:assets && npm run verify
 ```
 - `thumbs` يولّد مصغّرات خفيفة لخلفيات المستويات في `public/art/thumbs/` (تُستعمل في شاشة عقد الفصل لتخفيف التحميل على الشبكات البطيئة؛ غيابها لا يكسر شيئاً).
 - `report:assets` يحدّث `docs/MISSING_ASSETS.md`: راجعي ما بقي ناقصاً (الأولوية A أولاً).
-- `test:content` يتأكد أن المحتوى سليم.
-- ثم اعملي commit للصور والمصغّرات و`MISSING_ASSETS.md` معاً.
+- `verify` يتأكد أن كل شيء سليم، ومنها أن مصغّرة كل خلفية حديثة (تُعاد المصغّرة تلقائياً لو تغيّر الأصل).
+- ثم اعملي commit للصور والمصغّرات و`thumbs/manifest.json` و`MISSING_ASSETS.md` معاً.
 
 ## 2) الرابط (Vercel، انظري `docs/DEPLOY.md`)
 - [ ] آخر commit على `main` منشور، وحالة النشر خضراء

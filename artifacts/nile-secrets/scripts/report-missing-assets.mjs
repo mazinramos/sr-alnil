@@ -1,4 +1,4 @@
-// تشغيل: npm run report:assets  → يكتب docs/MISSING_ASSETS.md
+// تشغيل: npm run report:assets  → يكتب docs/MISSING_ASSETS.md   (مع --summary: سطر ملخص فقط بدون كتابة)
 // يجمع كل خلفية وأيقونة وبورتريه وصورة واجهة مستعملة في المحتوى والكود، ويسرد ما ليس له ملف في public/art.
 import { readdir, readFile, writeFile, access } from "node:fs/promises";
 import path from "node:path";
@@ -104,5 +104,10 @@ for (const [kind, title] of sections) {
   body.push("");
 }
 md += `**المطلوب ${totalNeeded} ملفاً، الناقص ${totalMissing}** (منها أولوية A: ${missingA}) — مستويات في المحتوى: ${levelCount}.\n\n` + body.join("\n") + "\n";
-await writeFile(OUT, md, "utf8");
-console.log(`المطلوب ${totalNeeded}، الناقص ${totalMissing} (A: ${missingA}) → docs/MISSING_ASSETS.md`);
+if (process.argv.includes("--summary")) {
+  // ملخص فقط: لا يكتب الملف (يستعمله npm run verify)
+  console.log(`صور: المطلوب ${totalNeeded}، الناقص ${totalMissing} (أولوية A: ${missingA})`);
+} else {
+  await writeFile(OUT, md, "utf8");
+  console.log(`المطلوب ${totalNeeded}، الناقص ${totalMissing} (A: ${missingA}) → docs/MISSING_ASSETS.md`);
+}
