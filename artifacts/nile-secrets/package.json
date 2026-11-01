@@ -20,7 +20,8 @@
     "thumbs": "node scripts/make-thumbs.mjs",
     "test:thumbs": "node scripts/check-thumbs.mjs",
     "verify": "node scripts/verify.mjs",
-    "share-assets": "node scripts/make-share-assets.mjs"
+    "share-assets": "node scripts/make-share-assets.mjs",
+    "check:og": "node scripts/check-og.mjs"
   },
   "dependencies": {
     "framer-motion": "^14.7.1",
