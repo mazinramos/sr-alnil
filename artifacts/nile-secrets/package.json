@@ -19,7 +19,8 @@
     "export:levels": "node --experimental-strip-types scripts/export-levels-md.mjs",
     "thumbs": "node scripts/make-thumbs.mjs",
     "test:thumbs": "node scripts/check-thumbs.mjs",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "share-assets": "node scripts/make-share-assets.mjs"
   },
   "dependencies": {
     "framer-motion": "^14.7.1",
