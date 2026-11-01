@@ -10,6 +10,7 @@
  *            E2E_SEED=7           (بذرة اختيار مستويات السيناريو)
  *            E2E_BASE_URL=http://127.0.0.1:5173   (خادم قائم بدل تشغيل vite)
  *            E2E_HEADED=1         (متصفح مرئي)
+ *            --dist               (يبني dist ويشغّل vite preview ويلعب عليه؛ هذا ما يُنشر على Vercel. المحتوى يُقرأ من المصدر عبر esbuild لا من الصفحة)
  *            --mode=matrix        (مصفوفة المقاسات: مستوى من كل نوع على 5 مقاسات؛ تمرير أفقي/نص مقصوص/أهداف <44px)
  *            --mode=interrupt     (انقطاعات: إعادة تحميل، رجوع، ضغط مزدوج، تدوير الشاشة، تبديل التبويب)
  *            --mode=net           (زمن التحميل بمحاكاة 3G؛ الأدق مع E2E_BASE_URL على نسخة build عبر vite preview)
@@ -32,6 +33,7 @@ const ONLY = (ARGS.find((a) => a.startsWith("--only=")) || "").replace("--only="
 const SCENARIOS = !ARGS.includes("--no-scenarios") && (ONLY.length === 0 || !!ARGS.find((a) => a.startsWith("--scenario=")));
 const SEED = Number(process.env.E2E_SEED || 7);
 const SCEN = (ARGS.find((a) => a.startsWith("--scenario=")) || "").replace("--scenario=", ""); // id:أخطاء:تلميحات (يمكن فصل عدة سيناريوهات بفاصلة)
+const DIST = ARGS.includes("--dist");
 const MODE = (ARGS.find((a) => a.startsWith("--mode=")) || "").replace("--mode=", "");
 const STORAGE_KEY = "nile-secrets-progress-v2";
 
@@ -46,10 +48,26 @@ function loadPlaywright() {
   return createRequire(path.join(globalRoot, "x.js"))("playwright");
 }
 
+/** يقرأ الفصول من المصدر مباشرة (للوضع --dist حيث لا يتوفر src/ في الصفحة). */
+async function loadChaptersNode() {
+  const esbuild = await import(path.join(ROOT, "node_modules", "esbuild", "lib", "main.js")).then((m) => m.default || m);
+  const fs = await import("node:fs");
+  const os = await import("node:os");
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "e2e-content-"));
+  const entry = path.join(dir, "entry.ts");
+  const files = fs.readdirSync(path.join(ROOT, "src", "content", "chapters")).filter((f) => /^ch\d+\.ts$/.test(f)).sort();
+  fs.writeFileSync(entry, files.map((f, i) => `import c${i} from ${JSON.stringify(path.join(ROOT, "src", "content", "chapters", f))};`).join("\n") + `\nexport default [${files.map((_, i) => "c" + i).join(",")}];`);
+  const out = path.join(dir, "out.mjs");
+  await esbuild.build({ entryPoints: [entry], bundle: true, format: "esm", outfile: out, logLevel: "silent" });
+  const mod = await import(out);
+  return JSON.parse(JSON.stringify(mod.default)).sort((a, b) => a.id - b.id);
+}
+
 async function startServer() {
   if (EXTERNAL) return null;
   const vite = path.join(ROOT, "node_modules", "vite", "bin", "vite.js");
-  const child = spawn(process.execPath, [vite, "--port", String(PORT), "--host", "127.0.0.1", "--strictPort"], { cwd: ROOT, stdio: "ignore" });
+  if (DIST) execSync(`${JSON.stringify(process.execPath)} ${JSON.stringify(vite)} build`, { cwd: ROOT, stdio: "ignore" });
+  const child = spawn(process.execPath, [vite, ...(DIST ? ["preview"] : []), "--port", String(PORT), "--host", "127.0.0.1", "--strictPort"], { cwd: ROOT, stdio: "ignore" });
   for (let i = 0; i < 60; i++) {
     try { const r = await fetch(BASE); if (r.ok) return child; } catch { /* لم يبدأ بعد */ }
     await sleep(500);
@@ -693,7 +711,7 @@ function mulberry(seed) {
 
     await page.goto(BASE + "#/");
     await page.locator(".title-screen").waitFor({ timeout: 15000 });
-    const chapters = await page.evaluate(async () => (await import("/src/engine/content.ts")).getChapters().map((c) => JSON.parse(JSON.stringify(c))));
+    const chapters = DIST ? await loadChaptersNode() : await page.evaluate(async () => (await import("/src/engine/content.ts")).getChapters().map((c) => JSON.parse(JSON.stringify(c))));
     const levels = chapters.flatMap((c) => [...c.levels].sort((a, b) => a.index - b.index));
     if (MODE) {
       if (MODE === "matrix") await runMatrix(browser, levels, rows);
@@ -764,6 +782,12 @@ function mulberry(seed) {
       }
     }
 
+    if (!SCEN && !ONLY.length) {
+      // خادم vite (dev وpreview) يردّ index.html بحالة 200 للملف المفقود، فنفحص وجود صور الخلفيات على القرص.
+      const fs = await import("node:fs");
+      const missing = levels.filter((l) => l.background && l.background.startsWith("/") && !fs.existsSync(path.join(ROOT, "public", l.background.split("#")[0]))).map((l) => l.id);
+      rows.push({ id: "(خلفيات تسقط لبديل)", type: "-", ok: true, note: missing.length ? `${missing.length}: ${missing.join(" ")}` : "لا شيء", stars: "-", ms: 0 });
+    }
     if (!SCEN && !ONLY.length) rows.push({ id: "(صور /art/)", type: "-", ok: artBad.size === 0, note: artBad.size ? "404: " + [...artBad].slice(0, 6).join(", ") : "", stars: "-", ms: 0 });
 
     // الخاتمة: لو مرّ المسار الكامل نكون قد وصلنا إليها
