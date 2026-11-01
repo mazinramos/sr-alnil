@@ -33,9 +33,9 @@ const ch1: Chapter = {
         needed: 3,
         // نسب مئوية على الصورة الفعلية: الكوّة العليا اليسرى، إطار الباب، بين الجرار والسلّة
         targets: [
-          { id: "sun-disc", label: "قرص الشمس", x: 14.6, y: 27, r: 7.2 },
-          { id: "bird-carving", label: "الطائر", x: 48.3, y: 41, r: 7.5 },
-          { id: "boat-piece", label: "قطعة المركب", x: 26, y: 78, r: 7.2 },
+          { id: "sun-disc", label: "قرص الشمس", x: 14.6, y: 27, r: 7.6 },
+          { id: "bird-carving", label: "الطائر", x: 48.3, y: 41, r: 7.6 },
+          { id: "boat-piece", label: "قطعة المركب", x: 26, y: 78, r: 7.6 },
         ],
       },
       hints: [

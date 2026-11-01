@@ -10,6 +10,9 @@
  *            E2E_SEED=7           (بذرة اختيار مستويات السيناريو)
  *            E2E_BASE_URL=http://127.0.0.1:5173   (خادم قائم بدل تشغيل vite)
  *            E2E_HEADED=1         (متصفح مرئي)
+ *            --mode=matrix        (مصفوفة المقاسات: مستوى من كل نوع على 5 مقاسات؛ تمرير أفقي/نص مقصوص/أهداف <44px)
+ *            --mode=interrupt     (انقطاعات: إعادة تحميل، رجوع، ضغط مزدوج، تدوير الشاشة، تبديل التبويب)
+ *            --mode=net           (زمن التحميل بمحاكاة 3G؛ الأدق مع E2E_BASE_URL على نسخة build عبر vite preview)
  *
  * المتطلبات: حزمة playwright (محلية أو عامة) مع Chromium. الاختبار يقرأ المحتوى من خادم التطوير (vite)
  * عبر استيراد src/engine/content.ts في الصفحة، فلا يعمل على نسخة dist الجاهزة.
@@ -29,6 +32,7 @@ const ONLY = (ARGS.find((a) => a.startsWith("--only=")) || "").replace("--only="
 const SCENARIOS = !ARGS.includes("--no-scenarios") && (ONLY.length === 0 || !!ARGS.find((a) => a.startsWith("--scenario=")));
 const SEED = Number(process.env.E2E_SEED || 7);
 const SCEN = (ARGS.find((a) => a.startsWith("--scenario=")) || "").replace("--scenario=", ""); // id:أخطاء:تلميحات (يمكن فصل عدة سيناريوهات بفاصلة)
+const MODE = (ARGS.find((a) => a.startsWith("--mode=")) || "").replace("--mode=", "");
 const STORAGE_KEY = "nile-secrets-progress-v2";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -399,6 +403,272 @@ async function reloadAt(page, hash) {
   await sleep(500);
 }
 
+
+/* ---------------- أوضاع المتانة ---------------- */
+const VIEWPORTS = [[360, 640], [390, 844], [412, 915], [768, 1024], [1280, 800]];
+
+async function measureLayout(page) {
+  return page.evaluate(() => {
+    const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && cs.display !== "none"; };
+    const d = (el) => `${el.tagName.toLowerCase()}${el.className && typeof el.className === "string" ? "." + el.className.split(/\s+/)[0] : ""}«${(el.textContent || el.getAttribute("aria-label") || "").trim().slice(0, 22)}»`;
+    const doc = document.documentElement;
+    const hscroll = doc.scrollWidth - doc.clientWidth;
+    const clipped = [];
+    for (const el of document.querySelectorAll(".stage-narrative *, .puzzle-host *, .stage-footnote, .result-card *")) {
+      if (!vis(el) || !(el.textContent || "").trim()) continue;
+      const cs = getComputedStyle(el);
+      const hid = cs.overflowX !== "visible" || cs.overflowY !== "visible";
+      if (hid && (el.scrollWidth > el.clientWidth + 1 || el.scrollHeight > el.clientHeight + 1) && el.children.length === 0) clipped.push(d(el));
+      const r = el.getBoundingClientRect();
+      if (el.children.length === 0 && (r.right > innerWidth + 1 || r.left < -1)) clipped.push("خارج الشاشة: " + d(el));
+    }
+    const small = [];
+    for (const el of document.querySelectorAll("button, [role=button], [role=checkbox], [role=radio], a[href], input, select")) {
+      if (!vis(el) || el.disabled) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 43.5 || r.height < 43.5) small.push(`${d(el)} ${Math.round(r.width)}×${Math.round(r.height)}${el.closest(".puzzle-host") ? " [لغز]" : " [واجهة]"}`);
+    }
+    const host = document.querySelector(".puzzle-host");
+    const hostBox = host ? host.getBoundingClientRect() : null;
+    return { hscroll, clipped: [...new Set(clipped)].slice(0, 6), small: [...new Set(small)], hostW: hostBox ? Math.round(hostBox.width) : 0, bodyH: doc.scrollHeight, vh: innerHeight };
+  });
+}
+
+async function runMatrix(browser, levels, rows) {
+  const byType = new Map();
+  for (const l of levels) if (!byType.has(l.puzzle.type)) byType.set(l.puzzle.type, l);
+  for (const [w, h] of VIEWPORTS) {
+    const ctx = await browser.newContext({ viewport: { width: w, height: h }, hasTouch: w < 1000, isMobile: w < 1000 });
+    const page = await ctx.newPage();
+    const errs = [];
+    page.on("pageerror", (e) => errs.push(String(e).slice(0, 100)));
+    await page.goto(BASE + "#/");
+    for (const l of levels) await forceComplete(page, l.id);
+    for (const [type, L] of byType) {
+      const tag = `${w}×${h} ${L.id}`;
+      try {
+        for (const lv of levels) await forceComplete(page, lv.id);
+        await reloadAt(page, `/level/${L.id}`);
+        await waitLevelReady(page, L);
+        await sleep(400);
+        const m = await measureLayout(page);
+        // أهداف hotspot: القطر بالبكسل (r نسبة من عرض الإطار)
+        let hot = "";
+        if (type === "hotspot") {
+          const minD = Math.min(...L.puzzle.targets.map((t) => (2 * t.r / 100) * m.hostW));
+          if (minD < 44) hot = `هدف hotspot ${Math.round(minD)}px`;
+        }
+        const problems = [];
+        if (m.hscroll > 1) problems.push(`تمرير أفقي ${m.hscroll}px`);
+        if (m.clipped.length) problems.push("نص مقصوص: " + m.clipped.slice(0, 3).join("، "));
+        const smallPuzzle = m.small.filter((x) => x.includes("[لغز]"));
+        if (smallPuzzle.length) problems.push("لمس<44 في اللغز: " + smallPuzzle.slice(0, 3).join("، "));
+        if (hot) problems.push(hot);
+        if (errs.length) problems.push("خطأ JS: " + errs[0]);
+        const chrome = m.small.filter((x) => x.includes("[واجهة]"));
+        rows.push({ id: tag, type, ok: problems.length === 0, note: (process.env.E2E_DEBUG ? JSON.stringify({ h: m.hscroll, hw: m.hostW, bh: m.bodyH, vh: m.vh, s: m.small.length }) + " " : "") + problems.join(" | ") + (chrome.length ? ` (واجهة<44: ${chrome.length})` : ""), stars: "-", ms: 0 });
+        errs.length = 0;
+      } catch (e) {
+        rows.push({ id: tag, type, ok: false, note: String(e.message || e).split("\n")[0].slice(0, 200), stars: "-", ms: 0 });
+      }
+    }
+    await ctx.close();
+  }
+}
+
+async function runInterrupt(browser, levels, rows) {
+  const get = (id) => levels.find((l) => l.id === id);
+  const add = (id, ok, note = "") => rows.push({ id, type: "-", ok, note, stars: "-", ms: 0 });
+  const newPage = async (except = null) => {
+    const opts = {};
+    const ctx = await browser.newContext({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true, ...opts });
+    const page = await ctx.newPage();
+    const errs = [];
+    page.on("pageerror", (e) => errs.push(String(e).slice(0, 120)));
+    page.on("console", (m) => { if (m.type() === "error" && !NOISE.test(m.text())) errs.push("console: " + m.text().slice(0, 100)); });
+    await page.goto(BASE + "#/");
+    await page.locator(".title-screen").waitFor({ timeout: 15000 });
+    if (except) for (const lv of levels) if (!except.includes(lv.id)) await forceComplete(page, lv.id);
+    return { ctx, page, errs };
+  };
+
+  // (أ) إعادة تحميل وسط مستوى ثم المتابعة
+  try {
+    const { ctx, page, errs } = await newPage(["c1-l4", "c1-l5"]);
+    const L4 = get("c1-l4"), L5 = get("c1-l5");
+    await reloadAt(page, "/level/c1-l4");
+    await waitLevelReady(page, L4);
+    await solveAndWait(page, L4);
+    const st4 = await starsShown(page);
+    await page.getByRole("button", { name: "المستوى التالي" }).tap();
+    await waitLevelReady(page, L5);
+    await host(page).getByRole("button").filter({ hasText: /^٩$/ }).first().tap(); // إدخال رمز جزئي
+    await page.reload(); await sleep(600);
+    await waitLevelReady(page, L5);
+    const before = await readProgress(page);
+    await solveAndWait(page, L5);
+    const st5 = await starsShown(page);
+    const prog = await readProgress(page);
+    const keys = Object.keys(prog?.completed || {});
+    const okp = keys.includes("c1-l4") && keys.includes("c1-l5") && prog.completed["c1-l4"].stars === 3;
+    add("أ) إعادة تحميل وسط مستوى", okp && st4 === 3 && st5 === 3 && !errs.length && !!before?.completed?.["c1-l4"], okp ? (errs[0] || "") : "التقدّم: " + JSON.stringify(keys));
+    await ctx.close();
+  } catch (e) { add("أ) إعادة تحميل وسط مستوى", false, String(e.message || e).split("\n")[0].slice(0, 200)); }
+
+  // (ب) زر الرجوع/الأمام بين الشاشات
+  try {
+    const { ctx, page, errs } = await newPage();
+    await page.getByRole("button", { name: "ابدئي الرحلة" }).tap();
+    await page.locator(".stage-narrative h1").waitFor({ timeout: 8000 });
+    const trail = [];
+    const snap = async () => { await sleep(500); trail.push(await page.evaluate(() => location.hash)); return page.evaluate(() => ({ crash: !!document.body.innerText.match(/حدث خطأ|العودة للخريطة/) && !!document.querySelector(".error-boundary, [role=alert]"), empty: document.body.innerText.trim().length < 5 })); };
+    const bad = [];
+    await page.getByRole("button", { name: "العودة إلى خريطة الفصل" }).tap(); await sleep(700);
+    const node = page.locator("button.lv-node").nth(1);
+    if (await node.count() && !(await node.isDisabled())) { await node.tap(); await sleep(700); }
+    for (let i = 0; i < 4; i++) { await page.goBack().catch(() => {}); if (page.url().startsWith("about:")) break; const r = await snap(); if (r.crash || r.empty) bad.push("رجوع " + (i + 1) + " " + (await page.evaluate(() => location.href.slice(-24) + " | " + document.body.innerText.trim().slice(0, 40).replace(/\n/g, " ")))); }
+    for (let i = 0; i < 4; i++) { await page.goForward().catch(() => {}); await sleep(300); const r = await snap(); if (r.crash || r.empty) bad.push("أمام " + (i + 1)); }
+    await page.goto(BASE + "#/level/c9-l9"); await sleep(500);
+    const unk = await page.evaluate(() => document.body.innerText.trim().length);
+    add("ب) الرجوع والأمام بين الشاشات", !bad.length && !errs.length && unk > 5, (bad.join("، ") || errs[0] || "") + ` [${trail.join(" ")}]`.slice(0, 120));
+    await ctx.close();
+  } catch (e) { add("ب) الرجوع والأمام بين الشاشات", false, String(e.message || e).split("\n")[0].slice(0, 200)); }
+
+  // (ج) ضغط مزدوج سريع على «تأكيد» و«تلميح»
+  for (const [id, kind] of [["c1-l3", "صحيح"], ["c1-l3", "خاطئ"], ["c1-l5", "قفل صحيح"], ["c1-l4", "ربط خاطئ"]]) {
+    const name = `ج) ضغطتان سريعتان على التأكيد (${id} ${kind})`;
+    try {
+      const { ctx, page, errs } = await newPage([]);
+      const L = get(id);
+      await reloadAt(page, `/level/${id}`);
+      await waitLevelReady(page, L);
+      const confirmName = L.puzzle.type === "codelock" ? "افتحي" : "تأكيد";
+      const h = host(page);
+      const c = page.getByRole("button", { name: confirmName, exact: true }).first();
+      if (id === "c1-l3") {
+        const pick = kind === "صحيح" ? L.puzzle.correct : ["forget"];
+        for (const oid of pick) await h.getByRole("checkbox", { name: L.puzzle.options.find((o) => o.id === oid).label }).tap();
+      } else if (id === "c1-l5") {
+        for (const sid of L.puzzle.solution) await btn(h, L.puzzle.symbols.find((x) => x.id === sid).label).tap();
+      } else if (id === "c1-l4") {
+        const cols = h.locator("div.grid.grid-cols-2 > div");
+        L.puzzle.left.forEach(() => {});
+        for (let i = 0; i < L.puzzle.left.length; i++) {
+          const l = L.puzzle.left[i];
+          const r = L.puzzle.right.find((x) => x.id === L.puzzle.solution[L.puzzle.left[(i + 1) % L.puzzle.left.length].id]); // إزاحة = ربط خاطئ
+          await cols.nth(0).locator("button", { has: page.getByText(l.label, { exact: true }) }).first().tap();
+          await cols.nth(1).locator("button", { has: page.getByText(r.label, { exact: true }) }).first().tap();
+        }
+      }
+      await c.evaluate((el) => { el.click(); el.click(); });
+      await sleep(1200);
+      const foot = (await page.locator(".stage-footnote").textContent().catch(() => "")) || "";
+      const att = Number((foot.match(/محاولات:\s*(\d+)/) || [])[1] || 0);
+      const stars = await starsShown(page).catch(() => 0);
+      const progC = await readProgress(page);
+      const rec = progC?.completed?.[id];
+      const wantRight = kind.includes("صحيح");
+      const okc = wantRight ? stars === 3 && rec?.attempts === 1 : att <= 1;
+      add(name, okc && !errs.length, wantRight ? `نجوم ${stars} محاولات ${rec?.attempts}` : `عدّاد المحاولات بعد ضغطتين خاطئتين: ${att}${errs[0] ? " | " + errs[0] : ""}`);
+      await ctx.close();
+    } catch (e) { add(name, false, String(e.message || e).split("\n")[0].slice(0, 200)); }
+  }
+  try {
+    const { ctx, page, errs } = await newPage([]);
+    const L = get("c1-l1");
+    await reloadAt(page, "/level/c1-l1");
+    await waitLevelReady(page, L);
+    const hb = page.locator(".hint-button");
+    await hb.evaluate((el) => { el.click(); el.click(); });
+    await sleep(500);
+    const shown = await page.locator(".hint-text, .hint-list li, .hint").count();
+    await SOLVE.hotspot(page, L.puzzle);
+    await page.locator(".result-card").waitFor({ timeout: 15000 });
+    const stars = await starsShown(page);
+    const rec = (await readProgress(page))?.completed?.["c1-l1"];
+    add("ج) ضغطتان سريعتان على «تلميح» (c1-l1)", !errs.length && rec && rec.hints <= 2, `تلميحات محفوظة ${rec?.hints}، نجوم ${stars}${errs[0] ? " | " + errs[0] : ""}`);
+    await ctx.close();
+  } catch (e) { add("ج) ضغطتان سريعتان على «تلميح» (c1-l1)", false, String(e.message || e).split("\n")[0].slice(0, 200)); }
+
+  // (د) تدوير الشاشة وسط لغز سحب (jigsaw) ولغز ترتيب
+  for (const id of ["c1-l7", "c2-l4"]) {
+    try {
+      const { ctx, page, errs } = await newPage([]);
+      const L = get(id);
+      await reloadAt(page, `/level/${id}`);
+      await waitLevelReady(page, L);
+      const firstBtn = host(page).locator("button:not([disabled])").first();
+      await firstBtn.tap().catch(() => {});
+      await page.setViewportSize({ width: 812, height: 375 }); await sleep(600);
+      await page.setViewportSize({ width: 375, height: 812 }); await sleep(600);
+      const m = await measureLayout(page);
+      await SOLVE[L.puzzle.type](page, L.puzzle).catch((e) => { throw new Error("الحل بعد التدوير: " + String(e.message).split("\n")[0].slice(0, 80)); });
+      await page.locator(".result-card").waitFor({ timeout: 15000 }).catch(() => { throw new Error("لم تظهر النتيجة بعد التدوير"); });
+      add(`د) تدوير الشاشة وسط ${L.puzzle.type} (${id})`, !errs.length && m.hscroll <= 1, errs[0] || (m.hscroll > 1 ? "تمرير أفقي بعد العودة" : ""));
+      await ctx.close();
+    } catch (e) { add(`د) تدوير الشاشة (${id})`, false, String(e.message || e).split("\n")[0].slice(0, 200)); }
+  }
+
+  // (هـ) تبديل التبويب ثم العودة
+  try {
+    const { ctx, page, errs } = await newPage([]);
+    const L = get("c2-l1");
+    await reloadAt(page, "/level/c2-l1");
+    await waitLevelReady(page, L);
+    await host(page).locator("button:not([disabled])").first().tap().catch(() => {});
+    const other = await ctx.newPage(); await other.goto("about:blank"); await other.bringToFront();
+    await page.evaluate(() => { Object.defineProperty(document, "visibilityState", { value: "hidden", configurable: true }); document.dispatchEvent(new Event("visibilitychange")); window.dispatchEvent(new Event("blur")); });
+    await sleep(2500);
+    await page.bringToFront();
+    await page.evaluate(() => { Object.defineProperty(document, "visibilityState", { value: "visible", configurable: true }); document.dispatchEvent(new Event("visibilitychange")); window.dispatchEvent(new Event("focus")); });
+    await sleep(500);
+    await reloadAt(page, "/level/c2-l1");
+    await waitLevelReady(page, L);
+    await solveAndWait(page, L);
+    const stars = await starsShown(page);
+    const rec = (await readProgress(page))?.completed?.["c2-l1"];
+    add("هـ) تبديل التبويب ثم العودة (c2-l1)", !errs.length && stars === 3 && rec?.attempts === 1, errs[0] || `نجوم ${stars}`);
+    await ctx.close();
+  } catch (e) { add("هـ) تبديل التبويب ثم العودة", false, String(e.message || e).split("\n")[0].slice(0, 200)); }
+}
+
+async function runNet(browser, rows) {
+  const profiles = [
+    { name: "3G سريع (1.6Mbps/150ms)", down: (1.6 * 1024 * 1024) / 8, up: (750 * 1024) / 8, lat: 150 },
+    { name: "3G بطيء (400kbps/400ms)", down: (400 * 1024) / 8, up: (400 * 1024) / 8, lat: 400 },
+  ];
+  for (const pr of profiles) {
+    const ctx = await browser.newContext({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true, serviceWorkers: "block" });
+    const page = await ctx.newPage();
+    const cdp = await ctx.newCDPSession(page);
+    await cdp.send("Network.enable");
+    await cdp.send("Network.setCacheDisabled", { cacheDisabled: true });
+    await cdp.send("Network.emulateNetworkConditions", { offline: false, downloadThroughput: pr.down, uploadThroughput: pr.up, latency: pr.lat });
+    let bytes = 0;
+    cdp.on("Network.loadingFinished", (e) => { bytes += e.encodedDataLength || 0; });
+    const t0 = Date.now();
+    const sec = (t) => ((t - t0) / 1000).toFixed(1);
+    try {
+      await page.goto(BASE + "#/", { waitUntil: "commit", timeout: 120000 });
+      await page.locator(".title-screen").waitFor({ timeout: 120000 });
+      const tTitle = Date.now();
+      const b1 = bytes;
+      await page.evaluate(() => { location.hash = "#/map"; });
+      await page.locator(".map-screen").waitFor({ timeout: 120000 });
+      const tMap = Date.now();
+      await page.evaluate(() => { location.hash = "#/level/c1-l1"; });
+      await page.locator(".puzzle-host").waitFor({ timeout: 120000 });
+      const tLevel = Date.now();
+      await page.waitForFunction(() => { const im = [...document.images]; const bg = getComputedStyle(document.querySelector(".puzzle-host")?.parentElement || document.body).backgroundImage; return im.length === 0 || im.every((i) => i.complete); }, null, { timeout: 120000 }).catch(() => {});
+      const tImg = Date.now();
+      rows.push({ id: `شبكة ${pr.name}`, type: "-", ok: true, note: `#/ يظهر ${sec(tTitle)}ث | #/map ${((tMap - tTitle) / 1000).toFixed(1)}ث بعده | أول مستوى ${((tLevel - tMap) / 1000).toFixed(1)}ث (صوره ${sec(tImg)}ث إجمالاً) | منقول ${(bytes / 1024).toFixed(0)}KB (عند العنوان ${(b1 / 1024).toFixed(0)}KB)`, stars: "-", ms: tImg - t0 });
+    } catch (e) {
+      rows.push({ id: `شبكة ${pr.name}`, type: "-", ok: false, note: String(e.message || e).split("\n")[0].slice(0, 160), stars: "-", ms: 0 });
+    }
+    await ctx.close();
+  }
+}
+
 /* ---------------- المسار الرئيسي ---------------- */
 function mulberry(seed) {
   let a = seed >>> 0;
@@ -414,6 +684,7 @@ function mulberry(seed) {
   const artBad = new Set(); // صور /art/ التي رجعت بحالة ≥400
   const fail = (id, type, msg, ms = 0) => rows.push({ id, type, ok: false, note: msg, stars: "-", ms });
   try {
+    if (MODE === "net") { await runNet(browser, rows); throw Object.assign(new Error("__mode_done__"), { modeDone: true }); } // لا يحتاج محتوى الخادم
     const ctx = await browser.newContext({ viewport: { width: 375, height: 812 }, hasTouch: true, isMobile: true });
     const page = await ctx.newPage();
     page.on("response", (r) => { if (r.status() >= 400 && r.url().includes("/art/")) artBad.add(`${r.status()} ${new URL(r.url()).pathname}`); });
@@ -424,6 +695,13 @@ function mulberry(seed) {
     await page.locator(".title-screen").waitFor({ timeout: 15000 });
     const chapters = await page.evaluate(async () => (await import("/src/engine/content.ts")).getChapters().map((c) => JSON.parse(JSON.stringify(c))));
     const levels = chapters.flatMap((c) => [...c.levels].sort((a, b) => a.index - b.index));
+    if (MODE) {
+      if (MODE === "matrix") await runMatrix(browser, levels, rows);
+      else if (MODE === "interrupt") await runInterrupt(browser, levels, rows);
+      else if (MODE === "net") await runNet(browser, rows);
+      else rows.push({ id: "(وضع)", type: "-", ok: false, note: "وضع غير معروف: " + MODE, stars: "-", ms: 0 });
+      throw Object.assign(new Error("__mode_done__"), { modeDone: true });
+    }
     const picked = SCEN ? [] : ONLY.length ? levels.filter((l) => ONLY.includes(l.id)) : levels;
     if (levels.length !== 35) rows.push({ id: "(محتوى)", type: "-", ok: false, note: `عدد المستويات ${levels.length} بدل 35`, stars: "-", ms: 0 });
 
@@ -540,7 +818,7 @@ function mulberry(seed) {
     }
 
   } catch (e) {
-    rows.push({ id: "(تشغيل)", type: "-", ok: false, note: String(e.message || e).split("\n")[0], stars: "-", ms: 0 });
+    if (!e.modeDone) rows.push({ id: "(تشغيل)", type: "-", ok: false, note: String(e.message || e).split("\n")[0], stars: "-", ms: 0 });
   } finally {
     await browser.close().catch(() => {});
     server?.kill();
