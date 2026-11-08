@@ -1,0 +1,12 @@
+.intro-layer { position: fixed; inset: 0; z-index: 1000; background: #1b2a2f; color: #f8f4e8; display: grid; place-items: center; transition: opacity .45s ease; }
+.intro-layer.is-closing { opacity: 0; pointer-events: none; }
+.intro-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #1b2a2f; opacity: 0; transition: opacity .6s ease; }
+.intro-video.is-on { opacity: 1; }
+.intro-gate { position: relative; z-index: 1; text-align: center; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 14px; animation: rise-in .8s both; }
+.intro-gate h1 { margin: 6px 0 0; font-family: var(--o-font-editorial); font-size: clamp(56px, 12vw, 110px); line-height: 1.1; font-weight: 500; letter-spacing: -.04em; }
+.intro-gate h1 em { color: #c9966c; font-style: normal; }
+.intro-gate p { margin: 0 0 14px; color: #e5d5bd; font-family: var(--o-font-editorial); font-size: clamp(16px, 2.2vw, 22px); }
+.intro-mark { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(224,177,90,.6); font-size: 30px; color: #e0b15a; }
+.intro-skip-link { opacity: .8; }
+.intro-skip { position: absolute; z-index: 2; top: max(14px, env(safe-area-inset-top)); left: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(248,244,232,.45); background: rgba(21,38,42,.55); color: #f8f4e8; font: inherit; font-size: 14px; cursor: pointer; backdrop-filter: blur(6px); }
+.intro-skip:hover, .intro-skip:focus-visible { background: rgba(21,38,42,.85); }

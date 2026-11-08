@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { navigate, useRoute } from "./engine/router";
 import { getLevel } from "./engine/content";
 import { isLevelUnlocked, useProgress } from "./engine/store";
@@ -15,12 +15,16 @@ import RewardScreen from "./engine/RewardScreen";
 import ErrorBoundary from "./engine/ErrorBoundary";
 import StorageNotice from "./engine/StorageNotice";
 import { installClickSound } from "./engine/audio";
+import IntroVideo, { introSeen } from "./engine/IntroVideo";
 
 export default function App() {
   const route = useRoute();
+  // المقدّمة بتظهر مرة وحدة، وبس لو اللاعب دخل من الصفحة الرئيسية (مش رابط مستوى مباشر).
+  const [intro, setIntro] = useState(() => route.path.length === 0 && !introSeen() && !navigator.webdriver);
   return (
     <ErrorBoundary variant="full" resetKey={route.path.join("/")}>
       <Routes />
+      {intro && <IntroVideo onDone={() => setIntro(false)} />}
       <StorageNotice />
     </ErrorBoundary>
   );
