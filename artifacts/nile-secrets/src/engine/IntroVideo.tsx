@@ -57,11 +57,8 @@ export default function IntroVideo({ onDone }: { onDone: () => void }) {
       </video>
 
       {!playing && (
-        <>
-        <div className="intro-dust" aria-hidden>{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ left: `${(i * 37 + 8) % 100}%`, animationDelay: `${(i * 0.9) % 8}s`, animationDuration: `${7 + (i % 5)}s` }} />)}</div>
-          <svg className="intro-river" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden>{[14, 30, 46].map((y, i) => <path key={y} d={`M-100 ${y}q25-10 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0`} opacity={1 - i * 0.25} />)}</svg>
-        <div className="intro-gate">
-          <Logo size={150} animated />
+                <div className="intro-gate">
+          <Logo size={110} animated />
           <h1>سرّ <em>النيل</em></h1>
           <p>حكاية بتبدأ من دفتر قديم.</p>
           <button className="button button-light intro-btn" onClick={start} autoFocus>
@@ -69,7 +66,6 @@ export default function IntroVideo({ onDone }: { onDone: () => void }) {
           </button>
           <button className="text-button intro-skip-link" onClick={finish}>تخطّي المقدّمة</button>
         </div>
-        </>
       )}
 
       {playing && (

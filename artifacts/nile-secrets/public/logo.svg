@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220"><defs><radialGradient id="g" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#2f6b73"/><stop offset="1" stop-color="#1b2a2f"/></radialGradient><clipPath id="c"><circle cx="110" cy="110" r="80"/></clipPath></defs>
 <circle cx="110" cy="110" r="104" fill="url(#g)"/>
 <circle cx="110" cy="110" r="102" fill="none" stroke="#e0b15a" stroke-width="3"/>
-<circle cx="110" cy="110" r="88" fill="none" stroke="#e0b15a" stroke-width="1" opacity=".55"/>
-<g stroke="#e0b15a" stroke-width="2" stroke-linecap="round" opacity=".8"><path d="M110 8v8M110 204v8M8 110h8M204 110h8M38 38l5 5M182 38l-5 5M38 182l5-5M182 182l-5-5"/></g>
-<g clip-path="url(#c)"><circle cx="110" cy="66" r="34" fill="#e0b15a" opacity=".16"/>
+<g clip-path="url(#c)">
 <path d="M20 160q22-10 45 0t45 0 45 0 45 0" fill="none" stroke="#2f6b73" stroke-width="5" stroke-linecap="round"/><path d="M20 176q22-10 45 0t45 0 45 0 45 0" fill="none" stroke="#2f6b73" stroke-width="4" stroke-linecap="round" opacity=".7"/></g>
 <path d="M62 104q0 50 48 50t48-50" fill="none" stroke="#e0b15a" stroke-width="9" stroke-linecap="round"/>
 <path d="M110 150V84M110 86l30 40h-30z" fill="#efe3c8" stroke="#efe3c8" stroke-width="3" stroke-linejoin="round" opacity=".95"/>
-<circle cx="110" cy="56" r="10" fill="#e0b15a"/><g stroke="#e0b15a" stroke-width="2.5" stroke-linecap="round"><path d="M110 36v-6M110 82v0M90 56h-6M130 56h6M96 42l-4-4M124 42l4-4"/></g></svg>
+<circle cx="110" cy="56" r="10" fill="#e0b15a"/></svg>

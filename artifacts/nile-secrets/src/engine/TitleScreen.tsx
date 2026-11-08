@@ -18,12 +18,10 @@ export default function TitleScreen() {
       <section className="title-screen">
         <div className="title-art" style={{ backgroundImage: titleArt }} />
         <div className="title-shade" />
-        <header className="top-mark"><Logo size={38} /><span>حكايات على النهر</span><span className="mark-line" /></header>
         <div className="title-content">
-          <div className="eyebrow"><span /> مغامرة ألغاز وحكاية <span /></div>
+          <Logo size={72} />
           <h1>سرّ <em>النيل</em></h1>
           <p className="title-subtitle">الحاجة البتتحفظ في الذاكرة ما بتضيع مع الموية.</p>
-          <p className="title-description">اتبعي أثر دفتر قديم من بيت حبوبة صفية لضفاف النهر. كل علامة بتودّي لحكاية، وكل حكاية بتخص زول.</p>
           <div className="title-actions">
             <button className="button button-light" onClick={() => navigate(started ? "/map" : "/level/c1-l1")}>
               <span>{started ? "كمّلي الرحلة" : "ابدئي الرحلة"}</span><ChevronLeft size={18} />
@@ -31,10 +29,7 @@ export default function TitleScreen() {
             {started && <button className="text-button" onClick={() => setConfirm(true)}>ابدئي حكاية جديدة</button>}
             <button className="text-button" onClick={() => setIntro(true)}>شاهدي المقدّمة</button>
           </div>
-          <div className="title-meta"><span>٣٥ مستوى</span><i /> <span>ألغاز من غير مؤقّت</span><i /> <span>بيتحفظ براهو</span></div>
         </div>
-        <div className="title-side-note"><span>ضفاف من الخيال</span><span>حكاية عن الذاكرة والمكان</span></div>
-        <div className="title-index">01 <span>/</span> 05</div>
         {intro && <IntroVideo onDone={() => setIntro(false)} />}
         {confirm && <ConfirmDialog onCancel={() => setConfirm(false)} onConfirm={() => { resetProgress(); setConfirm(false); }} />}
       </section>
