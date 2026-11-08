@@ -30,7 +30,7 @@ export default function TitleScreen() {
             <button className="text-button" onClick={() => setIntro(true)}>شاهدي المقدّمة</button>
           </div>
         </div>
-        {intro && <IntroVideo onDone={() => setIntro(false)} />}
+        {intro && <IntroVideo direct onDone={() => setIntro(false)} />}
         {confirm && <ConfirmDialog onCancel={() => setConfirm(false)} onConfirm={() => { resetProgress(); setConfirm(false); }} />}
       </section>
     </main>

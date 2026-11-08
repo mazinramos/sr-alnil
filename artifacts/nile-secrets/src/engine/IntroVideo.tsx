@@ -17,8 +17,8 @@ function markSeen() {
  * مقدّمة الحكاية. المتصفحات ما بتسمح بصوت تلقائي قبل لمسة من اللاعب،
  * فبنبدأ بشاشة بوّابة بشكل اللعبة، ولمسة زرّها هي اللي بتفتح الصوت وتشغّل الفيديو.
  */
-export default function IntroVideo({ onDone }: { onDone: () => void }) {
-  const [playing, setPlaying] = useState(false);
+export default function IntroVideo({ onDone, direct = false }: { onDone: () => void; direct?: boolean }) {
+  const [playing, setPlaying] = useState(direct);
   const [closing, setClosing] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
 
@@ -36,6 +36,15 @@ export default function IntroVideo({ onDone }: { onDone: () => void }) {
     v.currentTime = 0;
     v.play().catch(() => finish());
   };
+
+  // «شاهدي المقدّمة» من داخل اللعبة: اللمسة حصلت خلاص، فنشغّل طوالي (وإن رفض المتصفح بنرجع للبوّابة).
+  useEffect(() => {
+    if (!direct) return;
+    const v = ref.current;
+    if (!v) return;
+    v.muted = !getProgress().settings.sound;
+    v.play().catch(() => setPlaying(false));
+  }, [direct]);
 
   useEffect(() => {
     const k = (e: KeyboardEvent) => { if (e.key === "Escape") finish(); };
