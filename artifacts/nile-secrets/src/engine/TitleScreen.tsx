@@ -5,6 +5,7 @@ import { resetProgress, useProgress } from "./store";
 import { ConfirmDialog } from "./Drawers";
 import { STOP_ART, useArt } from "./legacyArt";
 import IntroVideo from "./IntroVideo";
+import Logo from "./Logo";
 
 export default function TitleScreen() {
   const p = useProgress();
@@ -17,7 +18,7 @@ export default function TitleScreen() {
       <section className="title-screen">
         <div className="title-art" style={{ backgroundImage: titleArt }} />
         <div className="title-shade" />
-        <header className="top-mark"><span className="mark-glyph">ن</span><span>حكايات على النهر</span><span className="mark-line" /></header>
+        <header className="top-mark"><Logo size={38} /><span>حكايات على النهر</span><span className="mark-line" /></header>
         <div className="title-content">
           <div className="eyebrow"><span /> مغامرة ألغاز وحكاية <span /></div>
           <h1>سرّ <em>النيل</em></h1>

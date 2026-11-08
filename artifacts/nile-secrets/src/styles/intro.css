@@ -10,3 +10,27 @@
 .intro-skip-link { opacity: .8; }
 .intro-skip { position: absolute; z-index: 2; top: max(14px, env(safe-area-inset-top)); left: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(248,244,232,.45); background: rgba(21,38,42,.55); color: #f8f4e8; font: inherit; font-size: 14px; cursor: pointer; backdrop-filter: blur(6px); }
 .intro-skip:hover, .intro-skip:focus-visible { background: rgba(21,38,42,.85); }
+.logo { display: block; overflow: visible; }
+.logo-anim .lg-ring { stroke-dasharray: 650; stroke-dashoffset: 650; animation: lg-draw 1.6s .1s ease forwards; }
+.logo-anim .lg-hull { stroke-dasharray: 160; stroke-dashoffset: 160; animation: lg-draw 1.1s .7s ease forwards; }
+.logo-anim .lg-sail, .logo-anim .lg-ticks, .logo-anim .lg-rays { opacity: 0; animation: lg-fade .8s 1.3s ease forwards; }
+.logo-anim .lg-sun { transform-origin: 110px 56px; animation: lg-rise 1s 1.1s ease both, lg-pulse 3.2s 2.2s ease-in-out infinite; }
+.logo-anim .lg-glow { animation: lg-pulse 3.2s 2s ease-in-out infinite; transform-origin: 110px 66px; }
+.logo-anim .lg-wave { animation: lg-drift 5s linear infinite; }
+.logo-anim .lg-wave2 { animation-duration: 7s; animation-direction: reverse; }
+.logo-anim .lg-hull, .logo-anim .lg-sail { transform-origin: 110px 150px; }
+.logo-anim .lg-sail { animation: lg-fade .8s 1.3s ease forwards, lg-bob 4s 2.2s ease-in-out infinite; }
+@keyframes lg-draw { to { stroke-dashoffset: 0; } }
+@keyframes lg-fade { to { opacity: .95; } }
+@keyframes lg-rise { from { transform: translateY(26px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes lg-pulse { 50% { transform: scale(1.12); } }
+@keyframes lg-drift { to { transform: translateX(90px); } }
+@keyframes lg-bob { 50% { transform: rotate(-2.5deg); } }
+.intro-dust { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.intro-dust i { position: absolute; bottom: -10px; width: 3px; height: 3px; border-radius: 50%; background: #e0b15a; opacity: 0; animation: dust 9s linear infinite; }
+@keyframes dust { 10% { opacity: .7; } 100% { transform: translateY(-105vh) translateX(24px); opacity: 0; } }
+.intro-river { position: absolute; left: 0; right: 0; bottom: 0; height: 22vh; pointer-events: none; opacity: .5; }
+.intro-river path { fill: none; stroke: #2f6b73; stroke-width: 2; animation: lg-drift 12s linear infinite; }
+.intro-gate .intro-btn { animation: btn-breathe 2.6s 2s ease-in-out infinite; }
+@keyframes btn-breathe { 50% { box-shadow: 0 0 0 8px rgba(224,177,90,.18); } }
+@media (prefers-reduced-motion: reduce) { .logo-anim *, .intro-dust i, .intro-river path, .intro-gate .intro-btn { animation: none !important; stroke-dashoffset: 0 !important; opacity: 1; } .intro-dust { display:none } }

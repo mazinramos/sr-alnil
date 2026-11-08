@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, SkipForward } from "lucide-react";
 import { getProgress } from "./store";
+import Logo from "./Logo";
 import "../styles/intro.css";
 
-const SEEN_KEY = "nile-intro-seen";
+const SEEN_KEY = "nile-intro-seen-v2";
 
 export function introSeen(): boolean {
   try { return localStorage.getItem(SEEN_KEY) === "1"; } catch { return false; }
@@ -56,15 +57,19 @@ export default function IntroVideo({ onDone }: { onDone: () => void }) {
       </video>
 
       {!playing && (
+        <>
+        <div className="intro-dust" aria-hidden>{Array.from({ length: 14 }, (_, i) => <i key={i} style={{ left: `${(i * 37 + 8) % 100}%`, animationDelay: `${(i * 0.9) % 8}s`, animationDuration: `${7 + (i % 5)}s` }} />)}</div>
+          <svg className="intro-river" viewBox="0 0 400 60" preserveAspectRatio="none" aria-hidden>{[14, 30, 46].map((y, i) => <path key={y} d={`M-100 ${y}q25-10 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0`} opacity={1 - i * 0.25} />)}</svg>
         <div className="intro-gate">
-          <div className="intro-mark"><span className="mark-glyph">ن</span></div>
+          <Logo size={150} animated />
           <h1>سرّ <em>النيل</em></h1>
           <p>حكاية بتبدأ من دفتر قديم.</p>
-          <button className="button button-light" onClick={start} autoFocus>
+          <button className="button button-light intro-btn" onClick={start} autoFocus>
             <span>ادخلي إلى الحكاية</span><ChevronLeft size={18} />
           </button>
           <button className="text-button intro-skip-link" onClick={finish}>تخطّي المقدّمة</button>
         </div>
+        </>
       )}
 
       {playing && (
