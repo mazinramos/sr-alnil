@@ -20,7 +20,7 @@ import IntroVideo, { introSeen } from "./engine/IntroVideo";
 export default function App() {
   const route = useRoute();
   // المقدّمة بتظهر مرة وحدة، وبس لو اللاعب دخل من الصفحة الرئيسية (مش رابط مستوى مباشر).
-  const [intro, setIntro] = useState(() => route.path.length === 0 && !introSeen() && !navigator.webdriver);
+  const [intro, setIntro] = useState(() => /[?&#]intro\b/.test(location.href) || (route.path.length === 0 && !introSeen() && !navigator.webdriver));
   return (
     <ErrorBoundary variant="full" resetKey={route.path.join("/")}>
       <Routes />
